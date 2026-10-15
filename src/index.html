@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TradingView Multi-Window & SplitSync</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- TOP TRADINGVIEW DESKTOP TAB BAR (media_1792050718127_5f46646b.png) -->
+  <div class="app-tab-strip">
+    <div class="app-tabs-wrapper" id="appTabsWrapper">
+      <!-- Tabs rendered dynamically by app.js -->
+    </div>
+    <button id="btnAddNewTab" class="btn-add-tab" title="New Tab (Ctrl+T)">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M12 5v14M5 12h14"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- TOP MASTER TOOLBAR (LTR - Clean Trading Terminal Style) -->
+  <header class="app-header">
+    <!-- LEFT: BRAND & LAYOUT -->
+    <div class="header-left">
+      <!-- App Brand -->
+      <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="3" width="9" height="18" rx="2"></rect>
+          <rect x="13" y="3" width="9" height="18" rx="2"></rect>
+          <path d="M7 8v8M18 8v8M4 12h5M15 12h5" stroke-width="1.5"></path>
+        </svg>
+        <span>TV <span class="highlight">SplitSync</span></span>
+      </div>
+
+      <!-- Split Screen Layout Selector (Microsoft Edge Style) -->
+      <div class="layout-dropdown-wrapper">
+        <button id="btnLayoutDropdown" class="btn-layout-split" title="Select split layout">
+          <svg class="split-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+            <path d="M12 3v18"></path>
+          </svg>
+          <span id="currentLayoutLabel">2 Split Vertical (Edge)</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"></path>
+          </svg>
+        </button>
+
+        <div id="layoutMenu" class="dropdown-menu">
+          <div class="dropdown-title">Split Screen Layouts</div>
+          <div class="layout-option" data-layout="1">
+            <div class="layout-preview-icon"></div>
+            <span>Single (1 Chart)</span>
+          </div>
+          <div class="layout-option active" data-layout="2v">
+            <div class="layout-preview-icon split-2v"><div></div><div></div></div>
+            <span>2 Split Vertical (Edge Style)</span>
+          </div>
+          <div class="layout-option" data-layout="2h">
+            <div class="layout-preview-icon split-2h"><div></div><div></div></div>
+            <span>2 Split Horizontal</span>
+          </div>
+          <div class="layout-option" data-layout="3">
+            <div class="layout-preview-icon split-2v"><div></div><div style="display:flex;flex-direction:column;"><div style="flex:1;border-bottom:1px solid #787b86"></div><div style="flex:1"></div></div></div>
+            <span>3 Charts (1 Left / 2 Right)</span>
+          </div>
+          <div class="layout-option" data-layout="4">
+            <div class="layout-preview-icon split-4"><div></div><div></div><div></div><div></div></div>
+            <span>4 Grid (2x2)</span>
+          </div>
+          <div class="layout-option" data-layout="6">
+            <div class="layout-preview-icon split-4" style="grid-template-columns:1fr 1fr 1fr;"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <span>6 Grid (3x2)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reset Split Ratio -->
+      <button id="btnResetSplit" class="icon-btn" title="Reset split divider to 50/50">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 4v16M4 12h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- CENTER: SYMBOL SEARCH, VERTICAL WATCHLIST & FAVORITE DRAWING TOOLS -->
+    <div class="header-center">
+      <!-- Global Symbol Input with Live Broker Autocomplete -->
+      <div class="global-symbol-container">
+        <div class="global-symbol-box">
+          <svg class="search-box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input id="inputGlobalSymbol" type="text" placeholder="Search ticker or broker..." autocomplete="off" spellcheck="false" />
+          <button id="btnApplyGlobalSymbol" class="btn-apply-symbol" title="Apply symbol to all charts (Enter)">Apply</button>
+        </div>
+        <div id="symbolAutocompleteList" class="symbol-autocomplete-dropdown"></div>
+      </div>
+
+      <!-- Vertical Watchlist Dropdown Button & Menu -->
+      <div class="watchlist-dropdown-wrap">
+        <button id="btnWatchlistToggle" class="btn-watchlist-toggle" title="View & manage your saved pairs list">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span>Watchlist</span>
+          <span id="watchlistBadgeCount" class="watchlist-badge">0</span>
+          <svg class="chevron-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M6 9l6 6 6-6"></path>
+          </svg>
+        </button>
+
+        <div id="watchlistDropdownMenu" class="watchlist-menu-dropdown">
+          <div class="watchlist-menu-header">
+            <span class="watchlist-menu-title">Saved Pairs</span>
+            <span class="watchlist-menu-hint">Click to switch symbol</span>
+          </div>
+          <div class="watchlist-quick-add">
+            <input type="text" id="inputWatchlistQuickAdd" placeholder="Add custom pair (e.g. OANDA:EURUSD)..." autocomplete="off" />
+            <button id="btnWatchlistQuickAdd" title="Add to list">+</button>
+          </div>
+          <div id="watchlistVerticalList" class="watchlist-vertical-items">
+            <!-- Dynamically populated from localStorage -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Master Favorite Drawing Toolbar (Shared for all charts - Dynamically rendered with customization) -->
+      <div id="favoriteDrawingsBar" class="favorite-drawings-bar">
+        <!-- Dynamically rendered by app.js based on user customization -->
+      </div>
+    </div>
+
+    <!-- RIGHT: SYNC TOGGLES & ACTIONS -->
+    <div class="header-right">
+      <!-- Sync Controls -->
+      <div class="sync-controls">
+        <button id="btnToggleCrosshairSync" class="sync-toggle-btn active" title="Synchronize crosshair across all charts and windows in real-time">
+          <span class="sync-indicator"></span>
+          <span>Crosshair</span>
+        </button>
+        <button id="btnToggleSymbolSync" class="sync-toggle-btn active" title="Synchronize ticker/symbol across all charts and windows">
+          <span class="sync-indicator"></span>
+          <span>Symbol</span>
+        </button>
+      </div>
+
+      <!-- Drawings Sync Button -->
+      <button id="btnSyncDrawings" class="btn-sync-drawings" title="Save and instantly sync drawings/lines to cloud (Ctrl+S)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+          <path d="M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+        </svg>
+        <span>Sync (Ctrl+S)</span>
+      </button>
+
+      <!-- Toggle Chart Info Overlay Badges -->
+      <button id="btnToggleChartInfo" class="icon-toggle-btn active" title="Toggle Chart Info (Symbol & Timeframe in top-left of each chart)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        <span>Chart Info</span>
+      </button>
+
+      <!-- Toggle Drawing Toolbars -->
+      <button id="btnToggleDrawingToolbar" class="icon-toggle-btn" title="Toggle left drawing toolbar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+          <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+          <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+        </svg>
+        <span>Drawings</span>
+      </button>
+
+      <!-- Toggle Clean Max-Space Mode -->
+      <button id="btnToggleCleanMode" class="icon-toggle-btn active" title="Toggle clean mode (removes clutter for maximum chart space)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+          <path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+        </svg>
+        <span>Max Space</span>
+      </button>
+
+      <!-- Detach to independent window (Multi-Monitor Ctrl+N) -->
+      <button id="btnNewWindow" class="icon-btn" title="Open new detached window for secondary monitors (Ctrl+N)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+      </button>
+
+      <!-- Fullscreen Toggle -->
+      <button id="btnFullscreen" class="icon-btn" title="Toggle Fullscreen (F11)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+        </svg>
+      </button>
+
+      <!-- Account / Sign In Button -->
+      <button id="btnAccountLogin" class="btn-account-login" title="Account & Cloud Sync (Sign in with Google)">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span id="accountLoginText">Sign In</span>
+      </button>
+
+      <!-- Help / Shortcuts -->
+      <button id="btnHelp" class="icon-btn" title="Shortcuts & Multi-Window Guide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- WORKSPACE CONTAINER (DYNAMIC SPLIT PANES) -->
+  <main id="workspace" class="workspace-container">
+    <!-- Panes and resizable splitters are generated dynamically by app.js -->
+  </main>
+
+  <!-- DRAG SHIELD (ACTIVE DURING SPLITTER DRAGGING) -->
+  <div id="dragShield" class="drag-shield"></div>
+
+  <!-- HELP MODAL -->
+  <div id="helpModal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Multi-Window & SplitSync Quick Guide</h3>
+        <button id="btnCloseHelp" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>A high-performance standalone desktop terminal for multi-chart TradingView workflows:</p>
+        <ul>
+          <li><strong>Multi-Window (Ctrl+N):</strong> Open new independent windows. Move them across multiple physical monitors.</li>
+          <li><strong>Cross-Window Crosshair Sync:</strong> Moving your mouse anywhere displays synchronized crosshairs and timestamps across all charts and screens in real-time.</li>
+          <li><strong>Symbol Sync:</strong> Changing symbols in any window or via the Watchlist updates all synchronized charts simultaneously.</li>
+          <li><strong>Custom Watchlist:</strong> Add your favorite tickers using the <code>+</code> button. Click any ticker to view, or click <code>&times;</code> to remove.</li>
+          <li><strong>Drawings Cloud Sync (Ctrl+S):</strong> Instantly saves line tools, Fibonacci levels, and technical analysis to your TradingView account.</li>
+          <li><strong>Edge Split-Screen:</strong> Smooth draggable splitters with 50/50 double-click reset and 2V, 2H, 3-Chart, 4-Grid, and 6-Grid presets.</li>
+          <li><strong>Clean Mode / Max Space:</strong> Eliminates sidebars, promotional popups, and bottom panels to provide an unobstructed candlestick view.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUSTOMIZE DRAWING TOOLS MODAL -->
+  <div id="customizeToolsModal" class="modal-backdrop">
+    <div class="modal-card customize-modal-card">
+      <div class="modal-header">
+        <div class="modal-header-left">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path>
+          </svg>
+          <span class="modal-title-text">Customize Favorite Drawing Tools</span>
+          <span id="customizeToolsCountBadge" class="tools-count-badge">0 selected</span>
+        </div>
+        <button id="btnCloseCustomizeTools" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body customize-modal-body">
+        <p class="customize-modal-sub">Choose which drawing tools appear on the master top toolbar. Uncheck tools you don't use to keep it clean.</p>
+        <div id="customizeToolsGrid" class="customize-tools-grid">
+          <!-- Populated dynamically by app.js -->
+        </div>
+      </div>
+      <div class="modal-footer customize-modal-footer">
+        <button id="btnResetDefaultTools" class="btn-tool-action">Reset to Default</button>
+        <button id="btnDoneCustomizeTools" class="btn-tool-action primary">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCOUNT / SIGN IN MODAL -->
+  <div id="accountModal" class="modal-backdrop">
+    <div class="modal-card account-modal-card">
+      <div class="modal-header">
+        <div class="modal-header-left">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#2962ff" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span class="modal-title-text">TradingView Account & Google Sign In</span>
+        </div>
+        <button id="btnCloseAccount" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body account-modal-body">
+        <div id="accountStatusBox" class="account-status-box">
+          <span class="account-status-dot"></span>
+          <span id="accountStatusVal" class="account-status-text">Checking login status...</span>
+        </div>
+
+        <div class="login-cards-container">
+          <!-- Method 1: Google Sign In -->
+          <div class="login-card primary">
+            <div class="login-card-header">
+              <svg viewBox="0 0 24 24" width="22" height="22">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+              </svg>
+              <h4>Option 1: Sign in with Google (ورود مستقیم با گوگل)</h4>
+            </div>
+            <p>پنجره رسمی گوگل بدون خطای امنیتی باز می‌شود. کافیست اکانت گوگل خود را انتخاب کنید تا مستقیماً وارد شوید.</p>
+            <button id="btnLaunchGoogleLogin" class="btn-card-action primary">Continue with Google</button>
+          </div>
+
+          <!-- Method 2: System Browser (Official TradingView Desktop Connect) -->
+          <div class="login-card">
+            <div class="login-card-header">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2962ff" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              <h4>Option 2: Sign in with Browser (اتصال خودکار با مرورگر)</h4>
+            </div>
+            <p>مرورگر پیش‌فرض باز می‌شود و صفحه تأیید دسترسی تریدینگ‌ویو نمایش می‌یابد. با زدن دکمه <strong>Grant Access</strong> برنامه خودکار لاگین می‌شود.</p>
+            <button id="btnOpenExternalBrowser" class="btn-card-action">Launch Browser Sign-in (باز کردن مرورگر)</button>
+
+            <!-- Waiting / Token Ingestion Section -->
+            <div id="browserAuthWaitingArea" class="browser-auth-waiting-area" style="display:none;">
+              <div class="browser-auth-spinner-row">
+                <div class="mini-spinner"></div>
+                <span id="browserAuthStatusText">منتظر تأیید در مرورگر...</span>
+              </div>
+              <p class="browser-auth-subtext">اگر پس از زدن Grant Access مرورگر به برنامه بازنگشت، روی دکمه <strong>Copy secret key</strong> در مرورگر کلیک کنید و دکمه زیر را بزنید:</p>
+              <div class="token-input-row" style="margin-top:6px; display:flex; gap:8px;">
+                <button id="btnPasteSecretKey" class="btn-tool-action primary" style="flex:1;">📋 چسباندن خودکار کلید (Paste Token)</button>
+              </div>
+              <div class="token-manual-row" style="margin-top:6px; display:flex; gap:8px;">
+                <input type="text" id="inputAuthToken" placeholder="یا توکن/لینک را اینجا وارد کنید..." autocomplete="off" style="flex:1; background:#131722; border:1px solid var(--border-color); border-radius:6px; padding:6px 10px; color:#fff; font-size:11px;" />
+                <button id="btnSubmitAuthToken" class="btn-tool-action">ورود</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fast Cookie Sync -->
+        <div class="cookie-sync-panel">
+          <div class="cookie-sync-header">
+            <span>Fast Session ID Sync (Optional)</span>
+            <span class="cookie-sync-hint">Paste <code>sessionid</code> cookie if already logged in on Chrome/Firefox</span>
+          </div>
+          <div class="cookie-sync-row">
+            <input type="password" id="inputSessionCookie" placeholder="Paste sessionid cookie from browser..." autocomplete="off" />
+            <button id="btnApplySessionCookie" class="btn-tool-action primary">Apply</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer account-modal-footer" style="display:flex; justify-content:space-between; align-items:center;">
+        <button id="btnReloadCharts" class="btn-tool-action">Reload All Charts</button>
+        <button id="btnCloseAccountDone" class="btn-tool-action primary">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toastNotification" class="toast-popup"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

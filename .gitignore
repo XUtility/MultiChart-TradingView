@@ -1,0 +1,10 @@
+node_modules/
+dist/
+build/
+scratch/
+temp_inspect_data_*
+*.log
+*.tmp
+*.zip
+.DS_Store
+Thumbs.db
