@@ -1,1 +1,128 @@
-function a0_0x168b(_0x558e1c,_0x133193){_0x558e1c=_0x558e1c-(-0x1fd*0xc+-0x2*-0x1e5+0xa1*0x23);const _0x54400c=a0_0x5889();let _0x348211=_0x54400c[_0x558e1c];if(a0_0x168b['gUejaa']===undefined){var _0x394d6b=function(_0x125e51){const _0x50bbfd='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x5e1ea7='',_0x5c3bf6='';for(let _0xb605d=-0x515+0x159f+-0x1d*0x92,_0xeea2a7,_0x55f717,_0x15b70f=-0x2*0x16f+-0x1d12+-0x490*-0x7;_0x55f717=_0x125e51['charAt'](_0x15b70f++);~_0x55f717&&(_0xeea2a7=_0xb605d%(0x5a+-0x51c*-0x5+-0x19e2)?_0xeea2a7*(0x1d10+-0x278*0x9+0x1*-0x698)+_0x55f717:_0x55f717,_0xb605d++%(0xd*0x64+-0x2*-0x12e6+-0x1a*0x1a6))?_0x5e1ea7+=String['fromCharCode'](0x1*0x25b2+0x8a+-0x253d&_0xeea2a7>>(-(0x2205*-0x1+-0x1e75+0x407c)*_0xb605d&0xe7a+0x1ad7*0x1+-0x294b)):-0x48f+-0x1*-0xcc5+-0x836){_0x55f717=_0x50bbfd['indexOf'](_0x55f717);}for(let _0x5de1b4=0x8*-0x22d+0x4a*0x1c+0x1*0x950,_0x2a8b25=_0x5e1ea7['length'];_0x5de1b4<_0x2a8b25;_0x5de1b4++){_0x5c3bf6+='%'+('00'+_0x5e1ea7['charCodeAt'](_0x5de1b4)['toString'](-0x132a+-0x2*-0x8+0x1be*0xb))['slice'](-(-0x11*0xf3+0x3*-0x70a+-0x1*-0x2543));}return decodeURIComponent(_0x5c3bf6);};a0_0x168b['PcKEaF']=_0x394d6b,a0_0x168b['ukZOFP']={},a0_0x168b['gUejaa']=!![];}const _0x343ad8=_0x54400c[-0x8*0x10d+0x36*0x27+0x2e];a0_0x168b['BZEAap']!==_0x343ad8&&(a0_0x168b['ukZOFP']={},a0_0x168b['BZEAap']=_0x343ad8);const _0x3396f7=a0_0x168b['ukZOFP'][_0x558e1c];return _0x3396f7===undefined?(_0x348211=a0_0x168b['PcKEaF'](_0x348211),a0_0x168b['ukZOFP'][_0x558e1c]=_0x348211):_0x348211=_0x3396f7,_0x348211;}(function(_0x475512,_0x243805){const _0x3a601a=a0_0x168b,_0xf73700=_0x475512();while(!![]){try{const _0x4fe5d9=-parseInt(_0x3a601a(0x20f))/(0xbf7+-0x2*-0x708+-0x1a06)*(-parseInt(_0x3a601a(0x213))/(-0x2*0x664+0x1513+-0x849))+-parseInt(_0x3a601a(0x1f6))/(-0xd*0x6e+0xa56+0x4bd*-0x1)*(-parseInt(_0x3a601a(0x205))/(-0xa*0x39e+0x6e5+0x1d4b))+-parseInt(_0x3a601a(0x20c))/(-0x5f5*0x2+-0x24c*0x7+0x47*0x65)*(-parseInt(_0x3a601a(0x1fb))/(-0x2573+0x5*0x4a3+0xe4a))+-parseInt(_0x3a601a(0x204))/(-0x151+-0x2161*-0x1+-0x2009)*(-parseInt(_0x3a601a(0x215))/(0x146*-0x11+-0x1287+0x2835))+-parseInt(_0x3a601a(0x1f2))/(-0x394*0x8+0x10ef+0xbba)*(parseInt(_0x3a601a(0x200))/(-0x5*0x6b1+-0x14d5+0x3654))+-parseInt(_0x3a601a(0x202))/(-0x1ffe+0xaa*0x17+0x10c3)+parseInt(_0x3a601a(0x21d))/(0x553+0x25*0xad+-0x1e48)*(-parseInt(_0x3a601a(0x21a))/(-0x838+-0x1*-0x237c+-0x1b37));if(_0x4fe5d9===_0x243805)break;else _0xf73700['push'](_0xf73700['shift']());}catch(_0x1b3be0){_0xf73700['push'](_0xf73700['shift']());}}}(a0_0x5889,0x7bd2+0x2*0x5eaf3+0x1*-0x51f0c),(function(){const _0x570dbc=a0_0x168b,_0xc2ec1={'oFAMC':_0x570dbc(0x216),'AlCtX':_0x570dbc(0x20d),'SDMsu':_0x570dbc(0x1f8),'NvUkT':_0x570dbc(0x21b),'SZYai':function(_0x5bbd4e,_0x853b2){return _0x5bbd4e===_0x853b2;},'xiwHs':function(_0x4b4bb2,_0x1dc6c1){return _0x4b4bb2===_0x1dc6c1;},'egWqF':'loading','XJuEk':_0x570dbc(0x218),'IhlFY':function(_0x426430){return _0x426430();}};if(_0xc2ec1['SZYai'](typeof window,_0x570dbc(0x219)))return;function _0x24b52c(){const _0x2f9d31=_0x570dbc,_0x252cb2={'ZhWCD':_0xc2ec1[_0x2f9d31(0x217)],'JRkFN':'session-login-completed'},_0x4efb88=window[_0x2f9d31(0x1f4)];if(!_0x4efb88||!_0x4efb88[_0x2f9d31(0x1f3)])return;const {invoke:_0x30cfa9}=_0x4efb88[_0x2f9d31(0x1f3)],_0x4273e5=_0x4efb88['event'];console[_0x2f9d31(0x1fa)](_0xc2ec1['SDMsu']),window['electronAPI']={'isTauri':!![],'minimizeWindow':()=>_0x30cfa9(_0x2f9d31(0x211)),'maximizeWindow':()=>_0x30cfa9(_0x2f9d31(0x1f9)),'closeWindow':()=>_0x30cfa9('window_close'),'toggleFullscreen':()=>_0x30cfa9(_0x2f9d31(0x1fc)),'broadcastSync':_0x5e1f60=>_0x30cfa9(_0x2f9d31(0x1f5),{'data':_0x5e1f60}),'onBroadcastSync':_0x53bebf=>{const _0x4d4fd7=_0x2f9d31;_0x4273e5&&_0x4273e5[_0x4d4fd7(0x208)]&&_0x4273e5[_0x4d4fd7(0x208)](_0x4d4fd7(0x20a),_0x153b80=>_0x53bebf(_0x153b80['payload']));},'openNewWindow':_0x1816ce=>_0x30cfa9(_0x2f9d31(0x210),{'config':_0x1816ce||null}),'onWindowCountUpdate':_0x2a7b58=>{_0x4273e5&&_0x4273e5['listen']&&_0x4273e5['listen'](_0x252cb2['ZhWCD'],_0x4b4d52=>_0x2a7b58(_0x4b4d52['payload']));},'getChartPreloadPath':()=>'','searchSymbols':_0x43fec4=>_0x30cfa9(_0x2f9d31(0x212),{'query':_0x43fec4}),'openExternal':_0x1b5f7e=>_0x30cfa9(_0x2f9d31(0x1ff)),'openLoginWindow':()=>_0x30cfa9(_0x2f9d31(0x1ff)),'startBrowserLogin':()=>_0x30cfa9(_0x2f9d31(0x1ff)),'submitAuthToken':_0x2f0582=>_0x30cfa9(_0x2f9d31(0x214),{'tokenOrUrl':_0x2f0582,'keySource':null}),'readClipboardText':()=>_0x30cfa9(_0x2f9d31(0x1f7)),'setSessionCookie':async _0x1431de=>{return{'success':!![]};},'checkLoginStatus':async()=>{return{'loggedIn':![]};},'onSessionLoginCompleted':_0x365938=>{const _0x1bb746=_0x2f9d31;_0x4273e5&&_0x4273e5[_0x1bb746(0x208)]&&_0x4273e5[_0x1bb746(0x208)](_0x252cb2[_0x1bb746(0x20b)],_0x4a64df=>_0x365938(_0x4a64df[_0x1bb746(0x201)]));},'syncChartViews':_0x18354d=>_0x30cfa9(_0x2f9d31(0x203),{'panes':_0x18354d}),'setChartsVisible':_0x5aff78=>_0x30cfa9(_0x2f9d31(0x21c),{'visible':_0x5aff78}),'evalInChart':(_0x946169,_0x2bdc37)=>_0x30cfa9(_0x2f9d31(0x209),{'paneId':_0x946169,'script':_0x2bdc37}),'evalInAllCharts':_0x3bab91=>_0x30cfa9(_0x2f9d31(0x1fd),{'script':_0x3bab91}),'onChartMessage':_0x332358=>{const _0x53082e=_0x2f9d31;_0x4273e5&&_0x4273e5[_0x53082e(0x208)]&&_0x4273e5['listen'](_0xc2ec1['oFAMC'],_0x45246d=>_0x332358(_0x45246d[_0x53082e(0x201)]));}},console['log'](_0xc2ec1[_0x2f9d31(0x207)]);}_0xc2ec1[_0x570dbc(0x20e)](document[_0x570dbc(0x1fe)],_0xc2ec1[_0x570dbc(0x1f1)])?document['addEventListener'](_0xc2ec1[_0x570dbc(0x206)],_0x24b52c):_0xc2ec1['IhlFY'](_0x24b52c);}()));function a0_0x5889(){const _0x33ad13=['ndq0ndy4yvjUCeLK','zwDxCuy','odCXodiXrM9hAKno','y29Yzq','x19uqvvssv9F','yNjVywrJyxn0x3n5BMm','ndy4zfHnDvfl','CMvHzf9JBgLWyM9HCMq','w1rHDxjPqNjPzgDLxsbdB25Uzwn0Aw5NihDPBMrVDY5LBgvJDhjVBKfqssb0BYbuyxvYAsb2mIbIywnRzw5KlI4U','D2LUzg93x21HEgLTAxPL','Bg9N','nJzkAxzfyxe','Dg9Nz2XLx2z1BgXZy3jLzw4','zxzHBf9PBL9HBgXFy2HHCNrZ','CMvHzhLtDgf0zq','C3rHCNrFyNjVD3nLCL9SB2DPBG','mtbAELrssuy','Cgf5Bg9Hza','mtaYmdy5nZDxtuDut0q','C3LUy19JAgfYDf92Awv3CW','mJfevfHiwvK','mJaYmeTWtwjivW','weP1rwS','tNzvA1q','BgLZDgvU','zxzHBf9PBL9JAgfYDa','B24TyNjVywrJyxn0lxn5BMm','sLjRrK4','mJaXnZG1y1DlEKnO','D2LUzg93lwnVDw50lxvWzgf0zq','EgL3shm','m3rPvgHdsW','B3bLBL9UzxDFD2LUzg93','D2LUzg93x21PBMLTAxPL','C2vHCMnOx3n5BwjVBhm','nJiYoda2z1PzwLHc','C3vIBwL0x2f1DgHFDg9Rzw4','mtm4otu3nNfxqxjWwq','y2HHCNqTBwvZC2fNzq','qwXdDfG','re9nq29UDgvUDeXVywrLza','Dw5KzwzPBMvK','mty5t1nbEMP3','w1rHDxjPqNjPzgDLxsb3Aw5KB3CUzwXLy3rYB25bueKGC3vJy2vZC2z1BgX5ignVBM5Ly3rLzcb0BYbuyxvYAsb2mI4','C2v0x2nOyxj0C192AxnPyMXL'];a0_0x5889=function(){return _0x33ad13;};return a0_0x5889();}
+/**
+ * Tauri Bridge for MultiChart-TradingView
+ * Bridges window.electronAPI calls to native Tauri v2 commands and event emitters.
+ * Enables app.js to run identically on both Electron and Tauri with zero regressions.
+ */
+(function() {
+  if (typeof window === 'undefined') return;
+
+  window.__chartMessageListeners = window.__chartMessageListeners || [];
+  window.__broadcastSyncListeners = window.__broadcastSyncListeners || [];
+  window.__windowCountListeners = window.__windowCountListeners || [];
+  window.__sessionLoginListeners = window.__sessionLoginListeners || [];
+
+  // Global direct dispatch hook called by Rust native backend eval
+  window.__tvReceiveChartMessage = function(msg) {
+    if (!msg) return;
+    window.__chartMessageListeners.forEach(fn => {
+      try { fn(msg); } catch(e) { console.error('[TauriBridge] onChartMessage error:', e); }
+    });
+  };
+
+  function getInvoke() {
+    const tauri = window.__TAURI__ || window.__TAURI_INTERNALS__;
+    if (!tauri) return null;
+    return (tauri.core && typeof tauri.core.invoke === 'function' ? tauri.core.invoke : null) ||
+           (window.__TAURI_INTERNALS__ && typeof window.__TAURI_INTERNALS__.invoke === 'function' ? window.__TAURI_INTERNALS__.invoke : null) ||
+           (typeof tauri.invoke === 'function' ? tauri.invoke : null);
+  }
+
+  function safeInvoke(cmd, args) {
+    const fn = getInvoke();
+    if (fn) {
+      return fn(cmd, args || {});
+    }
+    return new Promise((resolve, reject) => {
+      let tries = 0;
+      const poll = setInterval(() => {
+        tries++;
+        const readyFn = getInvoke();
+        if (readyFn) {
+          clearInterval(poll);
+          readyFn(cmd, args || {}).then(resolve).catch(reject);
+        } else if (tries > 40) {
+          clearInterval(poll);
+          reject(new Error('Tauri invoke timed out for command: ' + cmd));
+        }
+      }, 25);
+    });
+  }
+
+  // Define window.electronAPI SYNCHRONOUSLY so app.js can attach listeners without race conditions
+  window.electronAPI = {
+    isTauri: true,
+
+    minimizeWindow: () => safeInvoke('window_minimize'),
+    maximizeWindow: () => safeInvoke('window_maximize'),
+    closeWindow: () => safeInvoke('window_close'),
+    toggleFullscreen: () => safeInvoke('toggle_fullscreen'),
+
+    broadcastSync: (data) => safeInvoke('broadcast_sync', { data }),
+    onBroadcastSync: (callback) => {
+      if (typeof callback === 'function') window.__broadcastSyncListeners.push(callback);
+    },
+
+    openNewWindow: (config) => safeInvoke('open_new_window', { config: config || null }),
+    onWindowCountUpdate: (callback) => {
+      if (typeof callback === 'function') window.__windowCountListeners.push(callback);
+    },
+
+    getChartPreloadPath: () => '',
+    searchSymbols: (query) => safeInvoke('search_symbols', { query }),
+    openExternal: (url) => safeInvoke('start_browser_login'),
+    openLoginWindow: () => safeInvoke('start_browser_login'),
+    startBrowserLogin: () => safeInvoke('start_browser_login'),
+    submitAuthToken: (tokenOrUrl) => safeInvoke('submit_auth_token', { tokenOrUrl, keySource: null }),
+    readClipboardText: () => safeInvoke('read_clipboard'),
+    setSessionCookie: async () => ({ success: true }),
+    checkLoginStatus: async () => ({ loggedIn: false }),
+    onSessionLoginCompleted: (callback) => {
+      if (typeof callback === 'function') window.__sessionLoginListeners.push(callback);
+    },
+
+    // Tauri Native Multi-Chart View Controllers
+    syncChartViews: (panes) => safeInvoke('sync_chart_views', { panes }),
+    setChartsVisible: (visible) => safeInvoke('set_charts_visible', { visible }),
+    evalInChart: (paneId, script) => safeInvoke('eval_in_chart', { paneId, script }),
+    evalInAllCharts: (script) => safeInvoke('eval_in_all_charts', { script }),
+    onChartMessage: (callback) => {
+      if (typeof callback === 'function') {
+        window.__chartMessageListeners.push(callback);
+      }
+    }
+  };
+
+  // Wire up Tauri event listeners as soon as event module is available
+  function initTauriEventListeners() {
+    const tauri = window.__TAURI__ || window.__TAURI_INTERNALS__;
+    const eventModule = (tauri && tauri.event) || (window.__TAURI__ && window.__TAURI__.event);
+    if (eventModule && eventModule.listen) {
+      eventModule.listen('chart-message', (event) => {
+        window.__tvReceiveChartMessage(event.payload);
+      });
+      eventModule.listen('on-broadcast-sync', (event) => {
+        window.__broadcastSyncListeners.forEach(fn => { try { fn(event.payload); } catch(e) {} });
+      });
+      eventModule.listen('window-count-update', (event) => {
+        window.__windowCountListeners.forEach(fn => { try { fn(event.payload); } catch(e) {} });
+      });
+      eventModule.listen('session-login-completed', (event) => {
+        window.__sessionLoginListeners.forEach(fn => { try { fn(event.payload); } catch(e) {} });
+      });
+      return true;
+    }
+    return false;
+  }
+
+  if (!initTauriEventListeners()) {
+    let retries = 0;
+    const poll = setInterval(() => {
+      retries++;
+      if (initTauriEventListeners() || retries > 50) {
+        clearInterval(poll);
+      }
+    }, 50);
+  }
+
+  console.log('[TauriBridge] Synchronous window.electronAPI initialized successfully.');
+})();

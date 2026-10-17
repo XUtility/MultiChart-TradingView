@@ -1,1 +1,1582 @@
-function a0_0x363c(){const _0x49067a=['ywrK','vMnKrM0','CMf0Aw9y','DhyTC3bSAxrZEw5JlwnYB3nZAgfPCI1VDMvYBgf5','Dg5tvwW','C2v0lxn5BwjVBa','BgvMDa','Aw5JBhvKzxm','nsbnsu5vvevt','EejJzuS','BM9Uzq','tNzSBeq','DhjHBNnSyxrLm2qO','BgLUA0DYB3vW','A05Us3O','vK1XBhK','Be5jEMK','vfzFu1Loq19fwevdx0Xbwu9vvf9vuerbveu','A2v5zg93BG','Bw91C2vTB3zL','tezvzfi','yK1YBKC','BMH5zNi','C25bAhu','mZq0odmYrNv2sKPW','zNvUy3rPB24','ChvZAa','C3LTyM9S','BM93','AgLKzs1KCMf3Aw5NlxrVB2XIyxi','y2XLyw4TBw9Kzq','s2nUwNG','Cg9ZDe1LC3nHz2u','C3LUyY1KCMf3Aw5NCW','Bw91C2v1Ca','cIaGicaGihbVC2L0Aw9UoIbHyNnVBhv0ztSkicaGicaGBgvMDdOGmdSkicaGicaGCMLNAhq6ida7cIaGicaGihrVCdOGmdSkicaGicaGAgvPz2H0oIaXChG7cIaGicaGigjHy2TNCM91BMq6ihjNyMeOndeSidK4lcaYntuSidaUncK7cIaGicaGigjVCMrLCI1IB3r0B206idfWEcbKyxnOzwqGCMDIysGYntuSidi1nsWGmJu1lcaWlJqPoWOGicaGicbWB2LUDgvYlwv2zw50CZOGBM9UztSkicaGicaGD2LSBc1JAgfUz2u6ihrYyw5ZzM9YBtSkicaGicaGDhjHBNnMB3jToIb0CMfUC2XHDguZzcGWlcaTmtaWChGSidaPoWOGicaGicbKAxnWBgf5oIbUB25LoWOGicaG','BwnWwhy','A1njsuO','DMLZAwjSzq','rNnLuNy','wxv2yw8','AefWsNK','zgLZCgXHEq','zhH5vKq','ntqWotqWsMP4uNjV','rw50zxi','zgL2','zwXLy3rYB24','rvjJAgm','zNbpDNm','Dgv4DenVBNrLBNq','lMnOyxj0lw1HCMT1Cc10ywjSzsbBy2XHC3mQpsj0Aw1LqxHPCYjDifTJBgfZCYO9iMjHzgDLiL0SifTJBgfZCYO9iNrPBwuTyxHPCYjDifTJBgfZCYO9iMjHzgDLiL0SifTKyxrHlw5HBwu9iNrPBwuTyxHPCY1IywrNzsjD','sM5sCLi','y2HHBMDL','C3bSAxq','lMnOyxj0lwnVBNrYB2XZlwjHCIWGw2nSyxnZkJ0Iy2HHCNqTy29UDhjVBhmTyMfYiL0Sic5SyxLVDxrFx2fYzweTlwjVDhrVBsWGzgL2w2rHDgeTBMfTzt0IDgLTzs1Yyw5NzxmIxq','mtuGtuLovvrfuW','y2HHCNqTzhjHD2LUzY10B29SlwnOyw5Nzwq','EuLTEey','EKjjtuW','C2nYAxb0','mZvLCvLIC2G','Aw5PDc1Wyw5L','CMvZAxPL','ENPIvuW','C3vIC3rYAw5N','wMXiAMq','sgLgDfO','q2rcCgu','wwfkAgC','mtvn','qvHNqKK','uuj5yKW','rNDurwq','DhjHBNnMB3jT','A0PwCfG','i2HLywrLCI10B29SyMfYlwLUDgvYDMfSCYbBy2XHC3mQpsjTzw51lsjDlcaJAgvHzgvYlxrVB2XIyxiTAw50zxj2ywXZifTKyxrHlw5HBwu9iM1LBNuTAw5UzxiIxsWGi2HLywrLCI10B29SyMfYlwLUDgvYDMfSCYbIDxr0B25By2XHC3mQpsjHCNjVDYjD','Bg9JyxrPB24','zM9YrwfJAa','BvfOAwC','yxbWzw5Kq2HPBgq','CuHQqvO','r3DuqxC','Aw5UzxjxAwr0Aa','mtiW','ntjWEa','v0vfsW','uuP2twS','seL2s3q','rKfluu8','uMn0uhG','zgf0yq','C29Tzq','ANzPz3q','mZq0nJG3mMXRtMDUtG','y3nZvgv4Da','C3rHDgu','C3LUyY1JCM9ZC2HHAxi','mJqW','mtaWjq','yM9KEq','C3rHCNrZv2L0Aa','DgLTzvrLEhq','C3r5Bgu','AMDrDw0','s2LIzu8','i2HLywrLCI10B29SyMfYlwLUDgvYDMfSCYbIDxr0B24SicnOzwfKzxiTDg9VBgjHCI1PBNrLCNzHBhmGw3jVBgu9iMj1DhrVBIjDlcbBzgf0ys12ywX1zv0SifTKyxrHlw5HBwu9iMLUDgvYDMfSlwj1DhrVBIjD','z1bmB0G','lMXHEw91Df9FyxjLys0Ty2vUDgvYic5JAgfYDc1JB250ywLUzxiSic5SyxLVDxrFx2fYzweTlwnLBNrLCIbKAxzBy2XHC3mQpsjJAgfYDc1JB250ywLUzxiIxsWGlMXHEw91Df9FyxjLys0Ty2vUDgvYigrPDLTJBgfZCYO9iMnOyxj0lwD1As13CMfWCgvYiL0','y29UDgfPBNm','y2XPy2S','y3jLyxrLrwXLBwvUDa','tu9oveG','AhzzChG','DhjPBq','zgLZCgf0y2HfDMvUDa','Dg9tDhjPBMC','Dg9VBa','refz','u2Xdrei','DhLWzq','qunUvgW','DMPRExq','vfzFsvbdoG','y2HHCNqTC3LTyM9SlwrLDgvJDgvK','vfzFu1Loq19fwevdx1nfvf9twu1ct0W','z2v0','C3jTquO','AgvPz2H0','mty0mtq4meLVC2fpuG','y2HHCNqTy3jVC3nOywLYlw1VDMu','reDTwxC','Dg9vChbLCKnHC2u','ncbit1vsuW','y2fSyYGXmdaLic0GntjWEcK','Aw5WDxq','C2vHCMnO','Bwf4','ug5eCKK','qwvIBey','twLmyMK','i2HLywrLCI10B29SyMfYlxn5BwjVBc1ZzwfYy2GSifTKyxrHlw5HBwu9iMXLz2vUzc1ZzxjPzxmTAxrLBsjD','EgLcyKm','BKXUsfu','vxbeC1O','mJe1nta0vLj6Ceff','mteZu0D1y3by','A2fUtLy','zNjVBq','y2XPzw50wa','u3ror0y','BLPOrM0','mtiWota2BLzbs2D3','tgnZu3q','Bw91C2vSzwf2zq','swnOr24','msbnt05usa','y1DIqK0','ChGSidaSidaPihrYyw5ZBgf0zvGOltuWjsK','zLP6zKi','msbxruvl','A2v5Dxa','y3z6wMy','ne5pqunAwq','C2v0lwrYyxDPBMCTDg9VBa','re9nq29UDgvUDeXVywrLza','zgfeBuq','x190DKrPC3bHDgnOtwvZC2fNzq','DwLVDNO','CM91BMq','tMDUB1u','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','A29kAuq','msbeqvK','y2HHCNqTzhjHD2LUz3mTC2f2zwq','mtb8oxWXmxW0Fdn8ohW2FdeYFdv8mtn8mNW3Fdb8mq','sgrUC1q','vwDKA08','C2v0uhjVCgvYDhK','q0fJtwe','Bg9HzgLUzW','AgvHza','ywrKrxzLBNrmAxn0zw5LCG','v3rwtg0','CxvLCNLtzwXLy3rVCKfSBa','mZz2AMjnt2G','y2XHC3nmAxn0','u01utg4','r01NAw8','zw5HyMXLza','C1Dprum','cIaGicaGihbVC2L0Aw9UoIbHyNnVBhv0ztSkicaGicaGDg9WoIaWoWOGicaGicbIB3r0B206ida7cIaGicaGigXLzNq6ida7cIaGicaGihDPzhrOoIaXChG7cIaGicaGigjHy2TNCM91BMq6ihjNyMeOndeSidK4lcaYntuSidaUosK7cIaGicaGigjVEc1ZAgfKB3C6idaGmca0ChGGCMDIysG0msWGotGSidi1nsWGmc42ktSkicaGicaGyM9YzgvYlxjPz2H0oIaXChGGzgfZAgvKihjNyMeOmJu1lcaYntuSidi1nsWGmc44ktSkicaGicaGCg9PBNrLCI1LDMvUDhm6ig5VBMu7cIaGicaGihDPBgWTy2HHBMDLoIb0CMfUC2zVCM07cIaGicaGihrYyw5ZzM9YBtOGDhjHBNnSyxrLm2qOlteWmhb4lcaWlcaWktSkicaGia','zvHsvKi','C3rYAw5NAwz5','B2rvEwG','vfzFu1Loq19fwevdx1nfvf9euKfxsu5hx1rpt0W','AwjUv1i','zxHLy3v0zuPHDMfty3jPChq','yxHWvgC','r1njvLi','quPOuhe','su5pq2C','zg9JDw1LBNrfBgvTzw50','wwTXBfe','yMXVy2S','CMvTB3zL','rfjrqvq','A2zPDfC','vuzYvNy','AvHJteO','CMfUzg9T','DLP0vhK','Cxroshe','mhb4','DgLTzwzYyw1L','cIaGicaGihbVC2L0Aw9UoIbMAxHLzdSkicaGicaGDg9WoIaWoWOGicaGicbSzwz0oIaWoWOGicaGicb3Awr0AdOGmtaWjtSkicaGicaGAgvPz2H0oIaXmdaLoWOGicaGicbWB2LUDgvYlwv2zw50CZOGBM9UztSkicaGicaGEI1PBMrLEdOGotK5otK5oWOGicaGicbKAxnWBgf5oIbUB25LoWOGicaG','qvfozvu','AhjYEMq','A1H1qxu','CxvLCNLtzwXLy3rVCG','CwvYAue','Aw1WB3j0yw50','AgLKzurYyxDPBMDuB29SyMfY','nduZnhDYwM5VqW','C2v0lwrYyxDPBMCTDg9VBgjHCG','B2jQzwn0','DKntqNG','tgj2zwS','z2v0qxr0CMLIDxrL','Aururu4','Dw5KzwzPBMvK','CMf0Aw9z','Aw5UzxjizwLNAhq','CgfUzv9Pza','C2vUzfrVsg9ZDa','y2XPzw50wq','vvPvEwi','vfzFu1Loq19tvefurv9vuerbveu'];a0_0x363c=function(){return _0x49067a;};return a0_0x363c();}const a0_0x18a165=a0_0x1030;(function(_0x1449ea,_0x866d31){const _0x5c84b3=a0_0x1030,_0x36f166=_0x1449ea();while(!![]){try{const _0x304276=parseInt(_0x5c84b3(0x146))/(-0x3a*-0x1d+0xe21*0x1+-0x14b2)*(-parseInt(_0x5c84b3(0xa5))/(-0xf9*-0x6+-0xe5*0x1a+-0x17*-0xc2))+-parseInt(_0x5c84b3(0xcc))/(0x2344+-0x6*0x20b+-0x7*0x349)+-parseInt(_0x5c84b3(0x157))/(-0xde3*-0x2+-0x1628+-0x1de*0x3)*(-parseInt(_0x5c84b3(0x135))/(0xbf5+0x2270+-0x2e60))+parseInt(_0x5c84b3(0x14c))/(-0x1e0a+0xdd4+0x103c)*(-parseInt(_0x5c84b3(0xf1))/(0x22b5+0x23*0xb6+-0x3b90))+parseInt(_0x5c84b3(0x145))/(-0x2*0x332+0x10b1*0x1+-0xa45)*(parseInt(_0x5c84b3(0x7f))/(0x2*-0x489+0x95d*0x1+0x3*-0x16))+-parseInt(_0x5c84b3(0xe0))/(0x18a7+0x118b+-0x2a28)+parseInt(_0x5c84b3(0x112))/(0x2ab*-0xb+0x1*-0x7c3+0x2527*0x1);if(_0x304276===_0x866d31)break;else _0x36f166['push'](_0x36f166['shift']());}catch(_0x36796c){_0x36f166['push'](_0x36f166['shift']());}}}(a0_0x363c,0x3*0x7dbf+0x5e726+-0x1*0x3f797));function a0_0x1030(_0x351431,_0x4edcb0){_0x351431=_0x351431-(-0x233*0x3+0xbb9*0x1+0x4a9*-0x1);const _0x5ddc55=a0_0x363c();let _0x546442=_0x5ddc55[_0x351431];if(a0_0x1030['fikAiN']===undefined){var _0x38dff1=function(_0x371426){const _0x4f6a88='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x56de7f='',_0xe4a96c='';for(let _0x4e648b=0x1*0x1fcb+-0x8e7*-0x1+-0x28b2,_0x57c3e7,_0x3b24a1,_0x3e33d6=-0x79d*-0x2+-0x1138+-0x33*-0xa;_0x3b24a1=_0x371426['charAt'](_0x3e33d6++);~_0x3b24a1&&(_0x57c3e7=_0x4e648b%(-0x1c83+0x1a7*0x11+0x70)?_0x57c3e7*(0x1932+-0x1355+-0x59d)+_0x3b24a1:_0x3b24a1,_0x4e648b++%(-0x1a*-0x116+-0x1*0x1b6f+-0xc9))?_0x56de7f+=String['fromCharCode'](0x260f+0x1*-0x7f+-0x2491&_0x57c3e7>>(-(0x35*0xb1+0x1b*-0x2e+-0x1fc9)*_0x4e648b&0x10eb+0x1*-0x246b+-0x15*-0xee)):-0x131+-0x21*-0xee+0x1*-0x1d7d){_0x3b24a1=_0x4f6a88['indexOf'](_0x3b24a1);}for(let _0x3d71b3=0x23b9+0x4d4*-0x6+-0x13*0x5b,_0x55dba0=_0x56de7f['length'];_0x3d71b3<_0x55dba0;_0x3d71b3++){_0xe4a96c+='%'+('00'+_0x56de7f['charCodeAt'](_0x3d71b3)['toString'](-0x1b*0xed+-0x971*-0x2+0x62d*0x1))['slice'](-(-0x248e+-0x6a5*0x3+0x9*0x647));}return decodeURIComponent(_0xe4a96c);};a0_0x1030['bpAniN']=_0x38dff1,a0_0x1030['UzEhZh']={},a0_0x1030['fikAiN']=!![];}const _0x473dd7=_0x5ddc55[0x1*-0x24da+-0x20f0+0x45ca];a0_0x1030['BNxMFB']!==_0x473dd7&&(a0_0x1030['UzEhZh']={},a0_0x1030['BNxMFB']=_0x473dd7);const _0x2b0b55=a0_0x1030['UzEhZh'][_0x351431];return _0x2b0b55===undefined?(_0x546442=a0_0x1030['bpAniN'](_0x546442),a0_0x1030['UzEhZh'][_0x351431]=_0x546442):_0x546442=_0x2b0b55,_0x546442;}let _ipcRenderer=null,webFrame=null;try{if(typeof require===a0_0x18a165(0xcd)){const el=require(a0_0x18a165(0xe3));_ipcRenderer=el['ipcRenderer'],webFrame=el['webFrame'];}}catch(a0_0x588e9e){}const __tvMessageHandlers={},ipcRenderer={'sendToHost':function(_0x2800e3,_0x528b56){const _0x51632d=a0_0x18a165,_0xe5d543={'sQnpw':function(_0x438d8e,_0x46cb10){return _0x438d8e===_0x46cb10;},'hApJy':'function','DGmYw':_0x51632d(0x12f),'MiLbi':function(_0x592adb,_0x135ec9){return _0x592adb!==_0x135ec9;},'FszUf':_0x51632d(0xac)};if(_ipcRenderer&&_0xe5d543['sQnpw'](typeof _ipcRenderer[_0x51632d(0xb0)],_0xe5d543[_0x51632d(0xdd)]))_ipcRenderer[_0x51632d(0xb0)](_0x2800e3,_0x528b56);else try{document['title']=_0xe5d543[_0x51632d(0x137)]+JSON[_0x51632d(0x87)]({'channel':_0x2800e3,'payload':_0x528b56,'paneId':_0xe5d543[_0x51632d(0x140)](typeof paneId,_0xe5d543['FszUf'])?paneId:null,'_ts':Date[_0x51632d(0xd0)]()});}catch(_0x37664b){}},'on':function(_0x323676,_0xd83ec4){const _0x2ec736=a0_0x18a165,_0x559e03={'qHjAZ':function(_0x1c3a3c,_0x36c753){return _0x1c3a3c===_0x36c753;},'cWbBM':_0x2ec736(0xcd)};if(!__tvMessageHandlers[_0x323676])__tvMessageHandlers[_0x323676]=[];__tvMessageHandlers[_0x323676][_0x2ec736(0xce)](_0xd83ec4),_ipcRenderer&&_0x559e03[_0x2ec736(0x105)](typeof _ipcRenderer['on'],_0x559e03[_0x2ec736(0x151)])&&_ipcRenderer['on'](_0x323676,_0xd83ec4);}};window[a0_0x18a165(0x15b)]=function(_0x17e9f1,_0x519105){const _0x2bed60={'ERchc':function(_0x397358,_0x260247,_0xbf4a0e){return _0x397358(_0x260247,_0xbf4a0e);}},_0x51b39d=__tvMessageHandlers[_0x17e9f1];_0x51b39d&&_0x51b39d['forEach'](_0x19322b=>{const _0x403e98=a0_0x1030;try{_0x2bed60[_0x403e98(0xe4)](_0x19322b,{'channel':_0x17e9f1},_0x519105);}catch(_0x565e8c){}});},(function(){const _0x53ce16=a0_0x18a165,_0x3cb24b={'mQhig':_0x53ce16(0x163),'PnDrI':_0x53ce16(0xe2),'UgdkO':_0x53ce16(0xb7),'iDTEN':_0x53ce16(0xf0),'QBybL':_0x53ce16(0xa7),'koJiD':function(_0x3b3553,_0x1a0469){return _0x3b3553===_0x1a0469;},'OvcaH':_0x53ce16(0xb3),'srmAJ':_0x53ce16(0x130),'HdnsT':function(_0x5e65a2,_0x1c648e){return _0x5e65a2!==_0x1c648e;},'AQNeU':'chart-timeframe-detected','qBBad':'TV_SYNC_TOOL_CHANGED','lNIzi':_0x53ce16(0xed),'CZsgB':function(_0x44e4ca,_0x5cf2c6){return _0x44e4ca-_0x5cf2c6;},'RctPx':function(_0x2eeacf,_0x4add28){return _0x2eeacf>_0x4add28;},'NgnoU':_0x53ce16(0x136),'INOCg':'chart-crosshair-leave','tAvrU':_0x53ce16(0xc7),'qSHPd':_0x53ce16(0xf3),'uiovz':_0x53ce16(0xc5),'vCSBx':'tv-splitsync-clean-ui-styles','tTuKw':_0x53ce16(0xde),'HIvKt':_0x53ce16(0xbe),'UFrVv':_0x53ce16(0xa3),'vjkyt':_0x53ce16(0x9b),'zBIML':'bottom','QPfQu':_0x53ce16(0x117),'NhAYN':'.layout__area--center','NvllD':_0x53ce16(0xd1),'odUyh':_0x53ce16(0xba),'tnSUl':'width','KUvlr':_0x53ce16(0x109),'fqshd':_0x53ce16(0x120),'qtNHq':function(_0x460567){return _0x460567();},'KcnZx':function(_0x40f653,_0x1954a3,_0x4627a4){return _0x40f653(_0x1954a3,_0x4627a4);},'fpOvs':function(_0x427348){return _0x427348();},'axpTg':function(_0x4752dd){return _0x4752dd();},'KibeO':function(_0x312b2e){return _0x312b2e();},'jvigt':'clean-mode','AeblF':'TV_SYNC_EXEC_SET_DRAWING_TOOLBAR','IchGn':function(_0x2d8c30){return _0x2d8c30();},'FAKQO':function(_0x11caec){return _0x11caec();},'dxyVD':function(_0x25af09){return _0x25af09();},'WtVLm':function(_0x4d0890){return _0x4d0890();},'yImxF':function(_0x310c42,_0x2f3e81,_0x1ac4c5){return _0x310c42(_0x2f3e81,_0x1ac4c5);},'AXgBI':function(_0x2620ea){return _0x2620ea();},'SlCDB':function(_0x3020f5){return _0x3020f5();},'GMgio':function(_0x47b954){return _0x47b954();},'VMqly':function(_0x206333,_0x412dde,_0x38c30a){return _0x206333(_0x412dde,_0x38c30a);},'xBceK':_0x53ce16(0x89),'kNnKz':_0x53ce16(0x92),'nhyfr':_0x53ce16(0xc6),'YaJhg':function(_0x30bc08,_0x1730be,_0x1ac51a){return _0x30bc08(_0x1730be,_0x1ac51a);},'fZzfB':_0x53ce16(0x155),'UpDsZ':'input[data-role=\x22search\x22],\x20input[type=\x22text\x22][class*=\x22search\x22]','bntoA':_0x53ce16(0x13b),'FSyjG':_0x53ce16(0x131),'nZhFm':_0x53ce16(0x141),'oDNax':function(_0xb98d64,_0x34c353,_0xdae649){return _0xb98d64(_0x34c353,_0xdae649);},'YkqlQ':'TV_SYNC_EXEC_SET_TIMEFRAME','jgQum':function(_0x27d028,_0x1b48d9){return _0x27d028(_0x1b48d9);},'cvzZf':_0x53ce16(0xbc),'AglaD':_0x53ce16(0xfa),'FJERp':'30M','bMrnG':_0x53ce16(0x116),'sWOEC':_0x53ce16(0x139),'xiBbC':_0x53ce16(0x12a),'UZUyb':'1\x20DAY','GSIVR':_0x53ce16(0x10a),'LcsSt':_0x53ce16(0x154),'Lbvek':_0x53ce16(0x124),'CdBpe':_0x53ce16(0x150),'HiFtZ':_0x53ce16(0x11e),'Yuvao':_0x53ce16(0x100),'kJVpX':_0x53ce16(0x162),'ibnWR':function(_0x246cdd){return _0x246cdd();},'nLnHU':function(_0x27ceff){return _0x27ceff();},'eXRVB':function(_0x5b53cc){return _0x5b53cc();},'vZtTy':_0x53ce16(0xaf),'vptqD':function(_0x29ffd7,_0xd6449){return _0x29ffd7+_0xd6449;},'GwTAw':'pane_','StNGF':'set-clean-mode','LFUdR':_0x53ce16(0x158),'FseRv':_0x53ce16(0x115),'CAcMa':_0x53ce16(0xd6),'gPLoH':_0x53ce16(0xb9),'ACnTl':_0x53ce16(0xd5),'JnRrR':function(_0xe4abf6){return _0xe4abf6();},'FwTEd':function(_0x108eb2){return _0x108eb2();},'ojPDY':function(_0x542aa1){return _0x542aa1();}};let _0x285d85=null,_0x4dd66f='A',_0x51b187=![],_0x2ffe24='',_0x14924a='';const _0x25c8f8=new URLSearchParams(window[_0x53ce16(0x101)][_0x53ce16(0x13c)]);_0x285d85=_0x25c8f8[_0x53ce16(0x132)](_0x3cb24b[_0x53ce16(0x99)])||_0x3cb24b['vptqD'](_0x3cb24b[_0x53ce16(0x106)],Math[_0x53ce16(0x98)]()[_0x53ce16(0x128)](0x1*0x1c70+-0x1*0x2196+-0x54a*-0x1)[_0x53ce16(0xf5)](0x1b83+-0x1*-0x1d92+-0x3913,0x22bc+-0x209*0x4+-0x1a91));let _0x448af6=window[_0x53ce16(0x107)]||-0x19*-0x153+-0xe22+-0x9f*0x17,_0xe76762=window[_0x53ce16(0xae)]||0x1*-0x1efd+-0x406*0x9+-0x1771*-0x3;window[_0x53ce16(0x7c)](_0x3cb24b['qSHPd'],()=>{const _0x396295=_0x53ce16;_0x448af6=window[_0x396295(0x107)]||-0x2*-0x110c+-0x1c35+-0x133,_0xe76762=window[_0x396295(0xae)]||-0x258d+-0x1*0x1da7+0x4654;},{'passive':!![]});let _0xc2ce0a=null,_0x3f1581=null,_0x1da3be=null,_0x510bd0=null;function _0x502449(){const _0x23a198=_0x53ce16,_0x20fbf8=_0x3cb24b[_0x23a198(0x103)][_0x23a198(0xea)]('|');let _0x2c3bf3=0x45*-0x2+0x3*-0x91d+-0x1*-0x1be1;while(!![]){switch(_0x20fbf8[_0x2c3bf3++]){case'0':_0xc2ce0a[_0x23a198(0x104)](_0x510bd0);continue;case'1':(document[_0x23a198(0x118)]||document[_0x23a198(0x90)])[_0x23a198(0x104)](_0xc2ce0a);continue;case'2':_0xc2ce0a[_0x23a198(0x104)](_0x3f1581);continue;case'3':_0x3f1581=document['createElement'](_0x3cb24b[_0x23a198(0x13e)]);continue;case'4':_0xc2ce0a[_0x23a198(0x11b)][_0x23a198(0x113)]=_0x23a198(0x9d);continue;case'5':_0x510bd0=document[_0x23a198(0x123)](_0x3cb24b[_0x23a198(0x13e)]);continue;case'6':_0x1da3be=document[_0x23a198(0x123)](_0x3cb24b['PnDrI']);continue;case'7':_0xc2ce0a[_0x23a198(0x104)](_0x1da3be);continue;case'8':_0x3f1581[_0x23a198(0x11b)][_0x23a198(0x113)]=_0x23a198(0x85);continue;case'9':_0xc2ce0a=document['createElement'](_0x23a198(0xe2));continue;case'10':if(_0xc2ce0a)return;continue;case'11':_0xc2ce0a['id']=_0x3cb24b[_0x23a198(0x77)];continue;case'12':_0x1da3be[_0x23a198(0x11b)][_0x23a198(0x113)]=_0x23a198(0xd7);continue;case'13':_0x510bd0[_0x23a198(0x11b)][_0x23a198(0x113)]='\x0a\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20bottom:\x2024px;\x0a\x20\x20\x20\x20\x20\x20left:\x200;\x0a\x20\x20\x20\x20\x20\x20background:\x20#2962ff;\x0a\x20\x20\x20\x20\x20\x20color:\x20#ffffff;\x0a\x20\x20\x20\x20\x20\x20font-size:\x2011px;\x0a\x20\x20\x20\x20\x20\x20font-weight:\x20700;\x0a\x20\x20\x20\x20\x20\x20font-family:\x20-apple-system,\x20BlinkMacSystemFont,\x20\x27Segoe\x20UI\x27,\x20Roboto,\x20sans-serif;\x0a\x20\x20\x20\x20\x20\x20padding:\x202px\x207px;\x0a\x20\x20\x20\x20\x20\x20border-radius:\x204px;\x0a\x20\x20\x20\x20\x20\x20box-shadow:\x200\x202px\x208px\x20rgba(0,\x200,\x200,\x200.6);\x0a\x20\x20\x20\x20\x20\x20white-space:\x20nowrap;\x0a\x20\x20\x20\x20\x20\x20pointer-events:\x20none;\x0a\x20\x20\x20\x20\x20\x20will-change:\x20transform;\x0a\x20\x20\x20\x20\x20\x20transform:\x20translate3d(-100px,\x200,\x200)\x20translateX(-50%);\x0a\x20\x20\x20\x20';continue;}break;}}function _0xc5587d(){const _0x27374e=_0x53ce16,_0x1d471a='\x0a\x20\x20\x20\x20\x20\x20(function()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20window.__TVSync\x20=\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20getChartApi:\x20function()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20try\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(window.TradingViewApi\x20&&\x20window.TradingViewApi._activeChartWidgetWV)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return\x20window.TradingViewApi._activeChartWidgetWV.value();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(window.ChartApiInstance)\x20return\x20window.ChartApiInstance;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20catch(e)\x20{}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return\x20null;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20setSymbol:\x20function(symbol)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20try\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20chart\x20=\x20this.getChartApi();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(chart\x20&&\x20typeof\x20chart.setSymbol\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20chart.setSymbol(symbol,\x20{});\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return\x20true;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20catch(e)\x20{}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return\x20false;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20setTimeframe:\x20function(tf)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20try\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20chart\x20=\x20this.getChartApi();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(chart\x20&&\x20typeof\x20chart.setResolution\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20chart.setResolution(String(tf),\x20{});\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return\x20true;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20catch(e)\x20{}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return\x20false;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20getState:\x20function()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20chart\x20=\x20this.getChartApi();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(!chart)\x20return\x20null;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20try\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20symbol:\x20typeof\x20chart.symbol\x20===\x20\x27function\x27\x20?\x20chart.symbol()\x20:\x20null,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20resolution:\x20typeof\x20chart.resolution\x20===\x20\x27function\x27\x20?\x20chart.resolution()\x20:\x20null\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20};\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20catch(e)\x20{\x20return\x20null;\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20ensureDrawingSystemEnabled:\x20function()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20try\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20col\x20=\x20window._exposed_chartWidgetCollection;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20active\x20=\x20col\x20&&\x20col.activeChartWidget\x20?\x20col.activeChartWidget.value()\x20:\x20null;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(active\x20&&\x20typeof\x20active.getCheckableActionState\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20cur\x20=\x20active.getCheckableActionState(\x27drawingToolbarAction\x27);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(cur\x20===\x20false)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20active.executeActionById(\x27drawingToolbarAction\x27);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(col\x20&&\x20typeof\x20col.lineToolPropertiesToolbar\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20lbar\x20=\x20col.lineToolPropertiesToolbar();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(lbar\x20&&\x20typeof\x20lbar.setValue\x20===\x20\x27function\x27)\x20lbar.setValue(true);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(col\x20&&\x20col._lineToolPropertiesToolbar\x20&&\x20typeof\x20col._lineToolPropertiesToolbar.setValue\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20col._lineToolPropertiesToolbar.setValue(true);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20catch(e)\x20{}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20setDrawingToolbar:\x20function(visible)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20this.ensureDrawingSystemEnabled();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20this.ensureFullBleedLayout();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20ensureFullBleedLayout:\x20function()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20try\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20col\x20=\x20window._exposed_chartWidgetCollection;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(!col)\x20return;\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(!col.__splitsyncHooked)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20col.__splitsyncHooked\x20=\x20true;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20col._computeContentBox\x20=\x20function()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20isClean\x20=\x20document.body\x20&&\x20(document.body.classList.contains(\x27clean-mode\x27)\x20||\x20document.documentElement.classList.contains(\x27clean-mode\x27));\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20topOffset\x20=\x20isClean\x20?\x200\x20:\x2038;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20h\x20=\x20Math.max(100,\x20(window.innerHeight\x20||\x20document.documentElement.clientHeight\x20||\x20800)\x20-\x20topOffset);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20w\x20=\x20Math.max(100,\x20(window.innerWidth\x20||\x20document.documentElement.clientWidth\x20||\x201000));\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return\x20{\x20width:\x20w,\x20height:\x20h,\x20top:\x200,\x20left:\x200\x20};\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20};\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20//\x20Close\x20right\x20widgetbar\x20tabs\x20if\x20active\x20to\x20prevent\x20internal\x20width\x20subtraction\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20activeTabs\x20=\x20document.querySelectorAll(\x27[class*=\x22widgetbar\x22]\x20[class*=\x22isActive-\x22],\x20[class*=\x22widgetbar\x22]\x20.active,\x20button[aria-pressed=\x22true\x22][class*=\x22button-\x22]\x27);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20activeTabs.forEach(function(tab)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20parentRight\x20=\x20tab.closest(\x27.layout__area--right,\x20div[data-name=\x22right-toolbar\x22],\x20div[class*=\x22widgetbar\x22]\x27);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(parentRight)\x20tab.click();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20});\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20col._updateLayout();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20active\x20=\x20col.activeChartWidget\x20?\x20col.activeChartWidget.value()\x20:\x20null;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(active\x20&&\x20typeof\x20active.resize\x20===\x20\x27function\x27)\x20active.resize();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(active\x20&&\x20typeof\x20active.paint\x20===\x20\x27function\x27)\x20active.paint();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20catch(e)\x20{}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20disableStayInDrawingMode:\x20function()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20try\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20col\x20=\x20window._exposed_chartWidgetCollection;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(col\x20&&\x20col._stayInDrawingMode\x20&&\x20typeof\x20col._stayInDrawingMode.setValue\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20col._stayInDrawingMode.setValue(false);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(col\x20&&\x20col.stayInDrawingMode\x20&&\x20typeof\x20col.stayInDrawingMode.setValue\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20col.stayInDrawingMode.setValue(false);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20active\x20=\x20col\x20&&\x20col.activeChartWidget\x20?\x20col.activeChartWidget.value()\x20:\x20null;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(active\x20&&\x20typeof\x20active.getCheckableActionState\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20[\x27drawingToolbarStayInDrawingModeAction\x27,\x20\x27stayInDrawingModeAction\x27,\x20\x27stayInDrawingMode\x27].forEach(function(act)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20try\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(active.getCheckableActionState(act)\x20===\x20true)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20active.executeActionById(act);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20catch(e)\x20{}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20});\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(window.TradingView\x20&&\x20window.TradingView.settings\x20&&\x20typeof\x20window.TradingView.settings.setValue\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20window.TradingView.settings.setValue(\x27tradingview.stayInDrawingMode\x27,\x20false);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20catch(e)\x20{}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20_getDrawingCount:\x20function()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20try\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20col\x20=\x20window._exposed_chartWidgetCollection;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20active\x20=\x20col\x20&&\x20col.activeChartWidget\x20?\x20col.activeChartWidget.value()\x20:\x20null;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(!active)\x20return\x200;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20m\x20=\x20active.model\x20?\x20(active.model().model\x20?\x20active.model().model()\x20:\x20active.model())\x20:\x20null;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(m)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(typeof\x20m.allLineTools\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return\x20m.allLineTools().length;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(m.panes\x20&&\x20m.panes()[0]\x20&&\x20typeof\x20m.panes()[0].dataSources\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return\x20m.panes()[0].dataSources().length;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20catch(e)\x20{}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return\x200;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20selectDrawingTool:\x20function(toolName)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20try\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20col\x20=\x20window._exposed_chartWidgetCollection;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(!col)\x20return;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20active\x20=\x20col.activeChartWidget\x20?\x20col.activeChartWidget.value()\x20:\x20null;\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(toolName\x20===\x20\x27removeAllDrawingTools\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(active\x20&&\x20typeof\x20active.removeAllDrawingTools\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20active.removeAllDrawingTools();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20//\x20Turn\x20off\x20stayInDrawingMode\x20so\x20TradingView\x20naturally\x20reverts\x20to\x20cursor\x20after\x201\x20drawing\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20this.disableStayInDrawingMode();\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20window.__currentSelectedTool\x20=\x20toolName;\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20function\x20setToolInternal(name)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20applied\x20=\x20false;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20try\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(col\x20&&\x20col._tool\x20&&\x20typeof\x20col._tool.setValue\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20col._tool.setValue(name);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(col._tool.value\x20&&\x20col._tool.value()\x20===\x20name)\x20applied\x20=\x20true;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20catch(e)\x20{}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20try\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(window.TradingViewApi\x20&&\x20typeof\x20window.TradingViewApi.selectLineTool\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20window.TradingViewApi.selectLineTool(name);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20applied\x20=\x20true;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20catch(e)\x20{}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20try\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(active\x20&&\x20typeof\x20active.setTool\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20active.setTool(name);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20applied\x20=\x20true;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20catch(e)\x20{}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return\x20applied;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(toolName\x20===\x20\x27eraser\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20setToolInternal(\x27eraser\x27);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(toolName\x20===\x20\x27cursor\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20setToolInternal(\x27cursor\x27);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20//\x20Try\x20exact\x20tool\x20name\x20first\x20(e.g.\x20LineToolArrowMarkUp,\x20LineToolArrowMarkDown,\x20LineToolTrendLine,\x20etc.)\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20ok\x20=\x20setToolInternal(toolName);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(!ok)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20//\x20Secondary\x20fallback\x20if\x20toolName\x20has\x20or\x20lacks\x20LineTool\x20prefix\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(toolName.indexOf(\x27LineTool\x27)\x20===\x200)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20setToolInternal(toolName.replace(/^LineTool/,\x20\x27\x27));\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20else\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20setToolInternal(\x27LineTool\x27\x20+\x20toolName);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20catch(e)\x20{}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20};\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20//\x20Ensure\x20full\x20bleed\x20and\x20drawing\x20system\x20on\x20initial\x20startup\x0a\x20\x20\x20\x20\x20\x20\x20\x20setTimeout(function()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(window.__TVSync)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20window.__TVSync.ensureFullBleedLayout();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20window.__TVSync.ensureDrawingSystemEnabled();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20window.__TVSync.disableStayInDrawingMode();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20},\x201500);\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20//\x20Subscribe\x20to\x20tool\x20changes\x20naturally\x20without\x20interrupting\x20drawing\x0a\x20\x20\x20\x20\x20\x20\x20\x20function\x20setupToolSubscriptions()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20try\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20col\x20=\x20window._exposed_chartWidgetCollection;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(col\x20&&\x20col._tool\x20&&\x20typeof\x20col._tool.subscribe\x20===\x20\x27function\x27\x20&&\x20!col.__toolSubscribed)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20col.__toolSubscribed\x20=\x20true;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20col._tool.subscribe(function(tool)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20window.__currentSelectedTool\x20=\x20tool;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20window.postMessage({\x20type:\x20\x27TV_SYNC_TOOL_CHANGED\x27,\x20tool:\x20tool\x20},\x20\x27*\x27);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20});\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20catch(e)\x20{}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20setupToolSubscriptions();\x0a\x20\x20\x20\x20\x20\x20\x20\x20setInterval(setupToolSubscriptions,\x202000);\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20//\x20Debounced\x20resize\x20listener\x20to\x20avoid\x20jumping/flickering\x0a\x20\x20\x20\x20\x20\x20\x20\x20var\x20tvResizeTimer\x20=\x20null;\x0a\x20\x20\x20\x20\x20\x20\x20\x20window.addEventListener(\x27resize\x27,\x20function()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(tvResizeTimer)\x20clearTimeout(tvResizeTimer);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20tvResizeTimer\x20=\x20setTimeout(function()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(window.__TVSync\x20&&\x20typeof\x20window.__TVSync.ensureFullBleedLayout\x20===\x20\x27function\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20window.__TVSync.ensureFullBleedLayout();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x20120);\x0a\x20\x20\x20\x20\x20\x20\x20\x20},\x20{\x20passive:\x20true\x20});\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20//\x20Send\x20status\x20updates\x20when\x20chart\x20is\x20ready\x0a\x20\x20\x20\x20\x20\x20\x20\x20setInterval(function()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20var\x20state\x20=\x20window.__TVSync.getState();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(state\x20&&\x20state.symbol)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20window.postMessage({\x20type:\x20\x27TV_SYNC_STATE_UPDATE\x27,\x20state:\x20state\x20},\x20\x27*\x27);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20},\x201500);\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20window.addEventListener(\x27message\x27,\x20function(event)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(!event.data\x20||\x20!event.data.type)\x20return;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(event.data.type\x20===\x20\x27TV_SYNC_EXEC_SET_SYMBOL\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20window.__TVSync.setSymbol(event.data.symbol);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20else\x20if\x20(event.data.type\x20===\x20\x27TV_SYNC_EXEC_SET_TIMEFRAME\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20window.__TVSync.setTimeframe(event.data.timeframe);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20else\x20if\x20(event.data.type\x20===\x20\x27TV_SYNC_EXEC_SET_DRAWING_TOOLBAR\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20window.__TVSync.setDrawingToolbar(event.data.visible);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20else\x20if\x20(event.data.type\x20===\x20\x27TV_SYNC_EXEC_SET_DRAWING_TOOL\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20window.__TVSync.selectDrawingTool(event.data.tool);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20else\x20if\x20(event.data.type\x20===\x20\x27TV_SYNC_EXEC_LAYOUT_UPDATE\x27)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20window.__TVSync.ensureFullBleedLayout();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20});\x0a\x20\x20\x20\x20\x20\x20})();\x0a\x20\x20\x20\x20';try{webFrame[_0x27374e(0x8b)](_0x1d471a);}catch(_0x4f926a){try{const _0x4980ee=document['createElement'](_0x3cb24b[_0x27374e(0xab)]);_0x4980ee[_0x27374e(0xe6)]=_0x1d471a,(document[_0x27374e(0x7b)]||document[_0x27374e(0x90)])['appendChild'](_0x4980ee);}catch(_0x5ac577){}}}window[_0x53ce16(0x7c)]('message',_0x24065e=>{const _0x29ed17=_0x53ce16;if(!_0x24065e[_0x29ed17(0x10f)]||typeof _0x24065e[_0x29ed17(0x10f)]!==_0x3cb24b[_0x29ed17(0xfc)])return;if(_0x3cb24b[_0x29ed17(0x160)](_0x24065e[_0x29ed17(0x10f)][_0x29ed17(0x12c)],_0x3cb24b['OvcaH'])){const {symbol:_0x2856b8,resolution:_0x21a76a}=_0x24065e[_0x29ed17(0x10f)][_0x29ed17(0x114)];_0x2856b8&&_0x2856b8!==_0x2ffe24&&(_0x2ffe24=_0x2856b8,ipcRenderer[_0x29ed17(0xb0)](_0x3cb24b[_0x29ed17(0x133)],{'symbol':_0x2856b8,'paneId':_0x285d85})),_0x21a76a&&_0x3cb24b['HdnsT'](_0x21a76a,_0x14924a)&&(_0x14924a=_0x21a76a,ipcRenderer['sendToHost'](_0x3cb24b[_0x29ed17(0x9e)],{'timeframe':_0x21a76a,'paneId':_0x285d85}));}else _0x3cb24b['koJiD'](_0x24065e[_0x29ed17(0x10f)]['type'],_0x3cb24b['qBBad'])&&ipcRenderer['sendToHost'](_0x3cb24b[_0x29ed17(0xc4)],{'tool':_0x24065e[_0x29ed17(0x10f)][_0x29ed17(0x129)],'paneId':_0x285d85});});let _0x5b68f2=0xf31*0x2+0x1de3+-0x3c45,_0x4b57b4='',_0x2c731e=0x84*0x16+-0x238f*0x1+-0x1*-0x1837;function _0x45e6de(){const _0x3eda7e=_0x53ce16,_0x31a023={'iXcLJ':function(_0x578193,_0xb07039){return _0x578193<_0xb07039;},'hvYpx':function(_0x2992cc,_0x45e499){return _0x3cb24b['CZsgB'](_0x2992cc,_0x45e499);},'hrrzd':function(_0x270989,_0x20db0b){return _0x270989/_0x20db0b;},'VcdFm':function(_0x522ff3,_0x52af4e){const _0x15ccee=a0_0x1030;return _0x3cb24b[_0x15ccee(0x10e)](_0x522ff3,_0x52af4e);},'AJhPq':_0x3cb24b[_0x3eda7e(0x15e)],'kXuAu':_0x3cb24b[_0x3eda7e(0x8f)]};document['addEventListener'](_0x3cb24b['tAvrU'],_0x2c63c8=>{const _0x4e97f2=_0x3eda7e;_0x51b187=!![];const _0x2f0918=performance[_0x4e97f2(0xd0)]();if(_0x31a023[_0x4e97f2(0x97)](_0x31a023[_0x4e97f2(0x125)](_0x2f0918,_0x5b68f2),0x2115*-0x1+-0x1c67+-0x2*-0x1ec3))return;_0x5b68f2=_0x2f0918;const _0x2089f6=Math[_0x4e97f2(0x13d)](-0x45d+-0x23b6+-0x1*-0x2813,Math['min'](-0x1e57+0x4*0x329+0x2c*0x67,_0x31a023[_0x4e97f2(0x9f)](_0x2c63c8['clientX'],_0x448af6))),_0xc2794d=Math['max'](0x15cd+-0x290*0xd+0x1a5*0x7,Math['min'](-0xdf*0x2a+0x1fd4+0x4c3,_0x2c63c8[_0x4e97f2(0xb1)]/_0xe76762));if(_0x31a023[_0x4e97f2(0xb5)](_0x31a023[_0x4e97f2(0x125)](_0x2f0918,_0x2c731e),-0x3*-0x8d9+-0xe13+-0xc32)){_0x2c731e=_0x2f0918;try{const _0x472414=document[_0x4e97f2(0xa1)](_0x4e97f2(0xe7));_0x472414&&_0x472414[_0x4e97f2(0xe6)]&&(_0x4b57b4=_0x472414[_0x4e97f2(0xe6)][_0x4e97f2(0x126)]());}catch(_0x3db06b){}}ipcRenderer[_0x4e97f2(0xb0)](_0x31a023[_0x4e97f2(0x8e)],{'paneId':_0x285d85,'clientX':_0x2c63c8[_0x4e97f2(0x149)],'clientY':_0x2c63c8['clientY'],'ratioX':_0x2089f6,'ratioY':_0xc2794d,'timeText':_0x4b57b4,'timestamp':Date[_0x4e97f2(0xd0)]()});},{'passive':!![]}),document['addEventListener'](_0x3eda7e(0x14e),()=>{const _0x1de0d9=_0x3eda7e;_0x51b187=![],ipcRenderer[_0x1de0d9(0xb0)](_0x31a023[_0x1de0d9(0xa0)],{'paneId':_0x285d85});});}function _0x26e594(){const _0x5ad169=_0x53ce16;window[_0x5ad169(0x127)](new Event(_0x3cb24b['qSHPd'])),window[_0x5ad169(0x127)](new UIEvent(_0x5ad169(0xf3)));try{window[_0x5ad169(0xd4)]({'type':_0x3cb24b[_0x5ad169(0x15c)]},'*');}catch(_0x37f4e3){}}function _0x20da35(){const _0x119ed6=_0x53ce16,_0x5f3b2d=document[_0x119ed6(0x123)](_0x119ed6(0x11b));_0x5f3b2d['id']=_0x3cb24b[_0x119ed6(0xa8)],_0x5f3b2d[_0x119ed6(0xe6)]=_0x119ed6(0x15f),(document['head']||document[_0x119ed6(0x90)])['appendChild'](_0x5f3b2d),_0x1ce6a8();}function _0x24f793(){const _0x3db260=_0x53ce16,_0x224ba1={'ESUny':_0x3cb24b['tTuKw'],'QJvMk':_0x3cb24b[_0x3db260(0x10c)],'daDmD':_0x3cb24b[_0x3db260(0x96)],'kfitW':_0x3cb24b[_0x3db260(0x12e)],'kanNV':_0x3cb24b['zBIML'],'SMTLn':_0x3cb24b['QPfQu']};try{const _0x568446=document[_0x3db260(0x7e)](_0x3db260(0xeb));_0x568446['forEach'](_0x43672b=>{const _0xc1d352=_0x3db260;_0x43672b[_0xc1d352(0x11b)][_0xc1d352(0x78)](_0x224ba1['ESUny'],_0x224ba1[_0xc1d352(0x10b)],_0x224ba1[_0xc1d352(0x15a)]),_0x43672b[_0xc1d352(0x11b)][_0xc1d352(0x78)](_0xc1d352(0x134),_0x224ba1[_0xc1d352(0x95)],_0xc1d352(0xa3));});const _0x13cff9=document[_0x3db260(0xa1)](_0x3cb24b['NhAYN']);if(_0x13cff9){_0x13cff9[_0x3db260(0x11b)]['setProperty'](_0x3cb24b[_0x3db260(0xef)],_0x3cb24b[_0x3db260(0x12e)],_0x3db260(0xa3));const _0x144806=document[_0x3db260(0x118)][_0x3db260(0x80)]['contains'](_0x3cb24b[_0x3db260(0xbf)])||document[_0x3db260(0x90)][_0x3db260(0x80)][_0x3db260(0x121)](_0x3db260(0xd1));_0x144806?(_0x13cff9[_0x3db260(0x11b)][_0x3db260(0x78)](_0x3cb24b['odUyh'],_0x3db260(0x9b),_0x3cb24b['UFrVv']),_0x13cff9[_0x3db260(0x11b)]['setProperty'](_0x3cb24b[_0x3db260(0xb8)],_0x3db260(0x117),_0x3cb24b[_0x3db260(0x96)])):(_0x13cff9[_0x3db260(0x11b)][_0x3db260(0x78)](_0x3cb24b[_0x3db260(0x88)],_0x3cb24b['KUvlr'],_0x3cb24b[_0x3db260(0x96)]),_0x13cff9[_0x3db260(0x11b)][_0x3db260(0x78)](_0x3cb24b['tnSUl'],_0x3db260(0x13a),_0x3cb24b[_0x3db260(0x96)]));}const _0x285b2d=document[_0x3db260(0x7e)](_0x3cb24b['fqshd']);_0x285b2d[_0x3db260(0x102)](_0x13c69b=>{const _0x19abb7=_0x3db260;_0x13c69b[_0x19abb7(0x11b)][_0x19abb7(0x78)](_0x224ba1[_0x19abb7(0x147)],'0px',_0x19abb7(0xa3)),_0x13c69b['style'][_0x19abb7(0x78)]('height',_0x224ba1[_0x19abb7(0x81)],_0x19abb7(0xa3));});}catch(_0x44b962){}}let _0x5b5282=null;function _0x1ce6a8(){const _0x5c0667=_0x53ce16;_0x3cb24b[_0x5c0667(0x9a)](_0x24f793);try{const _0x21b731=new MutationObserver(()=>{const _0x131e2d=_0x5c0667,_0x25a1d0={'zzbUL':function(_0xfa6acc){return _0x3cb24b['qtNHq'](_0xfa6acc);}};if(_0x5b5282)return;_0x5b5282=_0x3cb24b[_0x131e2d(0xd3)](setTimeout,()=>{const _0x380950=_0x131e2d;_0x5b5282=null,_0x25a1d0[_0x380950(0xf4)](_0x24f793);},0x20e*0xa+-0x1ccd+0x96d);});_0x21b731['observe'](document[_0x5c0667(0x118)]||document[_0x5c0667(0x90)],{'childList':!![],'subtree':!![]});}catch(_0x8ffa){}}ipcRenderer['on'](_0x53ce16(0xf2),(_0x57bb91,_0x387cc2)=>{const _0x297a97=_0x53ce16,_0x3e9fa8={'mcpXv':function(_0x506b88){return _0x506b88();},'TMcZD':function(_0x1eba88){const _0x45870f=a0_0x1030;return _0x3cb24b[_0x45870f(0x9a)](_0x1eba88);}};_0x285d85=_0x387cc2['paneId']||_0x285d85,_0x4dd66f=_0x387cc2[_0x297a97(0xc1)]||_0x4dd66f;const _0x349eb7=_0x3cb24b[_0x297a97(0x164)](_0x387cc2['hideDrawingToolbar'],undefined)?!!_0x387cc2[_0x297a97(0xa4)]:![];_0x349eb7?(document[_0x297a97(0x118)][_0x297a97(0x80)][_0x297a97(0xb4)](_0x3cb24b[_0x297a97(0xbf)]),document[_0x297a97(0x90)][_0x297a97(0x80)]['add'](_0x3cb24b['NvllD'])):(document[_0x297a97(0x118)][_0x297a97(0x80)][_0x297a97(0x93)](_0x3cb24b[_0x297a97(0xbf)]),document['documentElement'][_0x297a97(0x80)][_0x297a97(0x93)](_0x3cb24b['NvllD']));_0x387cc2['cleanMode']?(document[_0x297a97(0x118)][_0x297a97(0x80)][_0x297a97(0xb4)](_0x3cb24b['jvigt']),document[_0x297a97(0x90)][_0x297a97(0x80)][_0x297a97(0xb4)](_0x3cb24b[_0x297a97(0x111)])):(document[_0x297a97(0x118)][_0x297a97(0x80)][_0x297a97(0x93)](_0x3cb24b[_0x297a97(0x111)]),document[_0x297a97(0x90)]['classList'][_0x297a97(0x93)](_0x3cb24b[_0x297a97(0x111)]));try{window[_0x297a97(0xd4)]({'type':_0x3cb24b[_0x297a97(0x13f)],'visible':!_0x349eb7},'*');}catch(_0xdd197d){}_0x3cb24b[_0x297a97(0x8c)](_0x24f793),_0x26e594(),_0x3cb24b[_0x297a97(0xd3)](setTimeout,()=>{const _0x1aeb99=_0x297a97;_0x3cb24b[_0x1aeb99(0xe5)](_0x24f793),_0x3cb24b[_0x1aeb99(0x8c)](_0x26e594);},0x1*-0x25f1+0xf6a+0x171d),setTimeout(()=>{const _0x28d130=_0x297a97;_0x3e9fa8[_0x28d130(0xd8)](_0x24f793),_0x3e9fa8['TMcZD'](_0x26e594);},0x127*0x1+-0x10b7*0x2+0x223b),setTimeout(()=>{const _0xc5cd1f=_0x297a97;_0x3cb24b[_0xc5cd1f(0x11d)](_0x24f793),_0x3cb24b['fpOvs'](_0x26e594);},0x1c62+-0x2f5*0xb+0x8d5);}),ipcRenderer['on'](_0x53ce16(0xa6),(_0x5a87d9,_0x254e1b)=>{const _0x2e08f6=_0x53ce16,_0x4e2853={'kWkLm':function(_0xc2d9b1){return _0xc2d9b1();},'Avhcq':function(_0x410094){const _0x1d1d23=a0_0x1030;return _0x3cb24b[_0x1d1d23(0x10d)](_0x410094);}},_0x2bb52b=!!_0x254e1b[_0x2e08f6(0xda)];_0x2bb52b?(document[_0x2e08f6(0x118)][_0x2e08f6(0x80)][_0x2e08f6(0x93)](_0x3cb24b[_0x2e08f6(0xbf)]),document['documentElement'][_0x2e08f6(0x80)][_0x2e08f6(0x93)](_0x3cb24b[_0x2e08f6(0xbf)])):(document['body'][_0x2e08f6(0x80)][_0x2e08f6(0xb4)](_0x3cb24b['NvllD']),document[_0x2e08f6(0x90)][_0x2e08f6(0x80)]['add'](_0x3cb24b[_0x2e08f6(0xbf)]));try{window['postMessage']({'type':_0x3cb24b[_0x2e08f6(0x13f)],'visible':_0x2bb52b},'*');}catch(_0x127c0b){}_0x3cb24b[_0x2e08f6(0xdf)](_0x24f793),_0x3cb24b[_0x2e08f6(0x7d)](_0x26e594),_0x3cb24b['KcnZx'](setTimeout,()=>{_0x24f793(),_0x4e2853['kWkLm'](_0x26e594);},-0x58f*0x4+-0x2348+0x39b6),setTimeout(()=>{_0x4e2853['Avhcq'](_0x24f793),_0x26e594();},0x24f6+-0x3*-0x6a9+0x51b*-0xb),_0x3cb24b[_0x2e08f6(0xee)](setTimeout,()=>{const _0x3cbab9=_0x2e08f6;_0x24f793(),_0x3cb24b[_0x3cbab9(0x14f)](_0x26e594);},-0x1c4e+-0x6b2*0x2+0x2ba6);}),ipcRenderer['on'](_0x3cb24b[_0x53ce16(0x14a)],(_0x17604e,_0x2bce2c)=>{const _0x131c6c=_0x53ce16,_0x28250d={'qeriA':function(_0x330fe4){const _0x2793c9=a0_0x1030;return _0x3cb24b[_0x2793c9(0x12b)](_0x330fe4);},'ksKLa':function(_0x3dd144){const _0x3760a6=a0_0x1030;return _0x3cb24b[_0x3760a6(0xfb)](_0x3dd144);}};_0x2bce2c[_0x131c6c(0x83)]?(document['body'][_0x131c6c(0x80)][_0x131c6c(0xb4)](_0x3cb24b[_0x131c6c(0x111)]),document['documentElement']['classList'][_0x131c6c(0xb4)](_0x3cb24b[_0x131c6c(0x111)])):(document[_0x131c6c(0x118)]['classList'][_0x131c6c(0x93)](_0x131c6c(0xd2)),document[_0x131c6c(0x90)]['classList'][_0x131c6c(0x93)](_0x3cb24b[_0x131c6c(0x111)])),_0x3cb24b[_0x131c6c(0xdf)](_0x24f793),_0x3cb24b[_0x131c6c(0x82)](_0x26e594),_0x3cb24b[_0x131c6c(0xee)](setTimeout,()=>{const _0x3af7ce=_0x131c6c;_0x3cb24b[_0x3af7ce(0x8c)](_0x24f793),_0x26e594();},-0x2346+-0x1*0x26cf+0x4a47*0x1),_0x3cb24b[_0x131c6c(0xee)](setTimeout,()=>{const _0xdd9716=_0x131c6c;_0x3cb24b[_0xdd9716(0xfb)](_0x24f793),_0x3cb24b[_0xdd9716(0x7d)](_0x26e594);},-0x1*0x1edb+0x267e+-0x15f*0x5),_0x3cb24b[_0x131c6c(0xc3)](setTimeout,()=>{const _0x574628=_0x131c6c;_0x28250d[_0x574628(0xa2)](_0x24f793),_0x28250d['ksKLa'](_0x26e594);},-0x2614+-0x1fac+0x11ed*0x4);}),ipcRenderer['on'](_0x3cb24b[_0x53ce16(0xc8)],(_0x51fada,_0x53e188)=>{const _0x42a5f4=_0x53ce16;try{window[_0x42a5f4(0xd4)]({'type':_0x3cb24b[_0x42a5f4(0xbd)],'tool':_0x53e188[_0x42a5f4(0x129)]},'*');}catch(_0x1b1a5a){}}),ipcRenderer['on'](_0x3cb24b[_0x53ce16(0xdb)],(_0x2a3efc,_0x16e0f7)=>{const _0x42c0fd=_0x53ce16;if(_0x51b187){if(_0xc2ce0a)_0xc2ce0a[_0x42c0fd(0x11b)][_0x42c0fd(0xde)]=_0x3cb24b[_0x42c0fd(0x10c)];return;}_0x3cb24b[_0x42c0fd(0xfb)](_0x502449),_0xc2ce0a[_0x42c0fd(0x11b)]['display']=_0x42c0fd(0x92);const _0x464c70=Math[_0x42c0fd(0x15d)](_0x16e0f7[_0x42c0fd(0xb6)]*_0x448af6);_0x3f1581[_0x42c0fd(0x11b)][_0x42c0fd(0xfe)]=_0x42c0fd(0xc0)+_0x464c70+'px,\x200,\x200)';_0x16e0f7[_0x42c0fd(0x11a)]?(_0x510bd0[_0x42c0fd(0xe6)]=_0x16e0f7[_0x42c0fd(0x11a)],_0x510bd0[_0x42c0fd(0x11b)]['transform']=_0x42c0fd(0xc0)+_0x464c70+_0x42c0fd(0x152),_0x510bd0['style'][_0x42c0fd(0xde)]=_0x3cb24b[_0x42c0fd(0xc2)]):_0x510bd0[_0x42c0fd(0x11b)][_0x42c0fd(0xde)]=_0x3cb24b[_0x42c0fd(0x10c)];if(_0x3cb24b[_0x42c0fd(0x164)](_0x16e0f7[_0x42c0fd(0xad)],undefined)){const _0x5e7a5a=Math[_0x42c0fd(0x15d)](_0x16e0f7[_0x42c0fd(0xad)]*_0xe76762);_0x1da3be[_0x42c0fd(0x11b)][_0x42c0fd(0xfe)]='translate3d(0,\x20'+_0x5e7a5a+'px,\x200)',_0x1da3be['style'][_0x42c0fd(0xde)]=_0x3cb24b[_0x42c0fd(0xc2)];}}),ipcRenderer['on']('clear-crosshair',()=>{const _0x4a86a4=_0x53ce16;_0xc2ce0a&&(_0xc2ce0a[_0x4a86a4(0x11b)]['display']=_0x3cb24b['HIvKt']);});function _0x43b1b2(){const _0x5ce64a=_0x53ce16;try{const _0x3b3071=document[_0x5ce64a(0xa1)]('#header-toolbar-save-load,\x20[data-name=\x22save-load-menu\x22],\x20button[data-tooltip*=\x22Save\x22]');return _0x3b3071?_0x3b3071[_0x5ce64a(0x122)]():window[_0x5ce64a(0x127)](new KeyboardEvent(_0x3cb24b['nhyfr'],{'key':'s','ctrlKey':!![],'bubbles':!![]})),!![];}catch(_0x4c9e30){return![];}}let _0x4ae979=null;document['addEventListener'](_0x3cb24b[_0x53ce16(0x79)],()=>{const _0x3ae6e5=_0x53ce16;if(_0x4ae979)clearTimeout(_0x4ae979);_0x4ae979=_0x3cb24b[_0x3ae6e5(0xf9)](setTimeout,()=>{const _0x47e233=_0x3ae6e5;_0x3cb24b[_0x47e233(0x11d)](_0x43b1b2);},0x65e*0x2+-0x1b1+-0x65b);},{'passive':!![]}),ipcRenderer['on'](_0x3cb24b[_0x53ce16(0x11f)],(_0x423c6d,_0xb47409)=>{const _0x16b0de=_0x53ce16,_0x54124a={'DRQAT':_0x3cb24b[_0x16b0de(0xca)],'kSIIJ':_0x16b0de(0xe1),'tUMFs':_0x3cb24b[_0x16b0de(0x153)],'ZlHjd':_0x3cb24b[_0x16b0de(0x144)],'vLhEt':_0x3cb24b['bntoA'],'afNTn':_0x16b0de(0xe9),'snAhu':function(_0x3be8ba,_0x453ca0,_0x368cf7){return _0x3be8ba(_0x453ca0,_0x368cf7);}},_0x523e13=_0xb47409[_0x16b0de(0xcf)];if(!_0x523e13)return;window[_0x16b0de(0xd4)]({'type':_0x3cb24b['FSyjG'],'symbol':_0x523e13},'*');try{const _0x495cdf=document['querySelector'](_0x3cb24b[_0x16b0de(0x14b)]);_0x495cdf&&(_0x495cdf['click'](),_0x3cb24b['oDNax'](setTimeout,()=>{const _0x431ba9=_0x16b0de,_0xc2e5b1=document[_0x431ba9(0xa1)](_0x54124a[_0x431ba9(0xf6)]);_0xc2e5b1&&(_0xc2e5b1['value']=_0x523e13,_0xc2e5b1[_0x431ba9(0x127)](new Event(_0x54124a['vLhEt'],{'bubbles':!![]})),_0xc2e5b1[_0x431ba9(0x127)](new Event(_0x54124a['afNTn'],{'bubbles':!![]})),_0x54124a[_0x431ba9(0xcb)](setTimeout,()=>{const _0x40fb24=_0x431ba9;_0xc2e5b1[_0x40fb24(0x127)](new KeyboardEvent(_0x54124a[_0x40fb24(0x94)],{'key':_0x54124a[_0x40fb24(0xd9)],'keyCode':0xd,'which':0xd,'bubbles':!![]})),_0xc2e5b1[_0x40fb24(0x127)](new KeyboardEvent(_0x54124a['tUMFs'],{'key':_0x40fb24(0xe1),'keyCode':0xd,'which':0xd,'bubbles':!![]}));},0x14aa+0x49e+0x18d0*-0x1));},0x20d7+-0x4*-0x46b+-0x3233));}catch(_0x507b61){}}),ipcRenderer['on']('set-timeframe',(_0x428dcf,_0x48d1cb)=>{const _0x5dce4f=_0x53ce16,_0x29575d=_0x48d1cb[_0x5dce4f(0x9c)];if(!_0x29575d)return;window[_0x5dce4f(0xd4)]({'type':_0x3cb24b[_0x5dce4f(0x91)],'timeframe':_0x29575d},'*');const _0xb7ee99=_0x3cb24b[_0x5dce4f(0x11c)](String,_0x29575d)['toUpperCase'](),_0x3d7d3d={'1':['1','1M','1\x20MINUTE'],'3':['3','3M'],'5':['5','5M',_0x3cb24b[_0x5dce4f(0x156)]],'15':['15',_0x3cb24b['AglaD'],_0x5dce4f(0xec)],'30':['30',_0x3cb24b['FJERp']],'60':['60','1H','1\x20HOUR'],'120':[_0x5dce4f(0x108),'2H'],'240':[_0x3cb24b[_0x5dce4f(0xc9)],'4H',_0x3cb24b[_0x5dce4f(0x84)]],'D':['1D','D',_0x3cb24b[_0x5dce4f(0x142)],_0x3cb24b[_0x5dce4f(0xb2)]],'1D':['1D','D','DAY',_0x5dce4f(0x161)],'W':['1W','W',_0x3cb24b[_0x5dce4f(0x8d)],_0x3cb24b[_0x5dce4f(0x14d)]],'1W':['1W','W',_0x3cb24b['GSIVR'],_0x3cb24b[_0x5dce4f(0x14d)]],'M':['1M','M',_0x3cb24b[_0x5dce4f(0xa9)],_0x3cb24b[_0x5dce4f(0xf8)]],'1M':['1M','M',_0x3cb24b[_0x5dce4f(0xa9)],_0x5dce4f(0x150)]},_0x4c3b8d=_0x3d7d3d[_0xb7ee99]||[_0xb7ee99];try{const _0x25a3f1=Array[_0x5dce4f(0x148)](document[_0x5dce4f(0x7e)](_0x3cb24b[_0x5dce4f(0xf7)]));let _0x5581eb=![];for(let _0x50b42f of _0x25a3f1){const _0x28a532=(_0x50b42f[_0x5dce4f(0xe6)]||'')[_0x5dce4f(0x126)]()[_0x5dce4f(0x138)](),_0x4525a0=(_0x50b42f[_0x5dce4f(0xaa)]('data-value')||'')['trim']()[_0x5dce4f(0x138)]();if(_0x4c3b8d[_0x5dce4f(0xbb)](_0x28a532)||_0x4c3b8d[_0x5dce4f(0xbb)](_0x4525a0)){_0x50b42f['click'](),_0x5581eb=!![];break;}}if(!_0x5581eb){const _0x126393=document[_0x5dce4f(0xa1)](_0x3cb24b[_0x5dce4f(0xdc)]);_0x126393&&(_0x126393[_0x5dce4f(0x122)](),setTimeout(()=>{const _0x353e5c=_0x5dce4f,_0xad74f4=Array[_0x353e5c(0x148)](document[_0x353e5c(0x7e)]('div[data-name=\x22menu-inner\x22]\x20[role=\x22button\x22],\x20div[role=\x22menuitem\x22]'));for(let _0x5a7b1d of _0xad74f4){const _0x5197ae=(_0x5a7b1d['textContent']||'')['trim']()[_0x353e5c(0x138)]();if(_0x4c3b8d[_0x353e5c(0x110)](_0x47441b=>_0x5197ae===_0x47441b||_0x5197ae[_0x353e5c(0x119)](_0x47441b+'\x20'))){_0x5a7b1d[_0x353e5c(0x122)]();return;}}},0x18d*0x11+0x1bb0+-0x35a9));}}catch(_0x41c0d4){}}),ipcRenderer['on'](_0x3cb24b[_0x53ce16(0x12d)],()=>{const _0x3a1315=_0x53ce16;_0x3cb24b[_0x3a1315(0x8a)](_0x43b1b2),_0x3cb24b['YaJhg'](setTimeout,()=>{const _0x94404b=_0x3a1315;ipcRenderer[_0x94404b(0xb0)](_0x3cb24b[_0x94404b(0xff)],{'paneId':_0x285d85});},0x23e9+0x1acd*-0x1+-0x78c);}),document['readyState']===_0x53ce16(0x7a)?document[_0x53ce16(0x7c)](_0x53ce16(0x159),()=>{const _0x2b0a28=_0x53ce16;_0x3cb24b[_0x2b0a28(0x143)](_0xc5587d),_0x3cb24b[_0x2b0a28(0x86)](_0x20da35),_0x3cb24b[_0x2b0a28(0xe5)](_0x45e6de);}):(_0x3cb24b[_0x53ce16(0xe8)](_0xc5587d),_0x3cb24b[_0x53ce16(0xfd)](_0x20da35),_0x3cb24b['ojPDY'](_0x45e6de));}());
+/**
+ * Chart Preload Script (High Performance 120 FPS / Zero Lag)
+ * Injected into each TradingView webview instance.
+ * Facilitates bidirectional synchronization: Crosshair, Symbol, Timeframe, and Drawings.
+ */
+let _ipcRenderer = null;
+let webFrame = null;
+try {
+  if (typeof require === 'function') {
+    const el = require('electron');
+    _ipcRenderer = el.ipcRenderer;
+    webFrame = el.webFrame;
+  }
+} catch(e) {}
+
+let paneId = null;
+try {
+  const urlParams = new URLSearchParams(window.location.search);
+  paneId = urlParams.get('pane_id');
+} catch(e) {}
+
+const __tvMessageHandlers = {};
+const ipcRenderer = {
+  sendToHost: function(channel, data) {
+    if (_ipcRenderer && typeof _ipcRenderer.sendToHost === 'function') {
+      _ipcRenderer.sendToHost(channel, data);
+    } else {
+      try {
+        document.title = 'TV_IPC:' + JSON.stringify({ channel: channel, payload: data, paneId: paneId, _ts: Date.now() });
+      } catch(err) {}
+    }
+  },
+  on: function(channel, callback) {
+    if (!__tvMessageHandlers[channel]) __tvMessageHandlers[channel] = [];
+    __tvMessageHandlers[channel].push(callback);
+    if (_ipcRenderer && typeof _ipcRenderer.on === 'function') {
+      _ipcRenderer.on(channel, callback);
+    }
+  }
+};
+
+window.__tvDispatchMessage = function(channel, data) {
+  const handlers = __tvMessageHandlers[channel];
+  if (handlers) {
+    handlers.forEach(fn => {
+      try { fn({ channel: channel }, data); } catch(e) {}
+    });
+  }
+};
+
+(function() {
+  let initHideDrawing = false;
+  let initCleanMode = true;
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    paneId = urlParams.get('pane_id') || paneId;
+    if (urlParams.has('hide_drawing')) {
+      initHideDrawing = urlParams.get('hide_drawing') === '1' || urlParams.get('hide_drawing') === 'true';
+    }
+    if (urlParams.has('clean_mode')) {
+      initCleanMode = urlParams.get('clean_mode') !== '0' && urlParams.get('clean_mode') !== 'false';
+    }
+  } catch(e) {}
+
+  if (!paneId) {
+    try {
+      paneId = 'pane_' + Math.random().toString(36).substring(2, 7);
+    } catch(e) {
+      paneId = 'pane_default';
+    }
+  }
+
+  // --- MULTI-CHART STABILITY & ANTI-CONNECTION-DROP SHIELD ---
+  // 1. Isolate BroadcastChannel per pane to prevent TradingView tab eviction across panes
+  try {
+    const OrigBroadcastChannel = window.BroadcastChannel;
+    if (OrigBroadcastChannel) {
+      window.BroadcastChannel = class ScopedBroadcastChannel extends OrigBroadcastChannel {
+        constructor(channelName) {
+          super(`${channelName}_${paneId || 'p'}`);
+        }
+      };
+    }
+  } catch(e) {}
+
+  // 2. Isolate Web Locks (navigator.locks) so all panes acquire locks concurrently
+  try {
+    if (navigator.locks && typeof navigator.locks.request === 'function') {
+      const origRequest = navigator.locks.request.bind(navigator.locks);
+      navigator.locks.request = function(name, options, callback) {
+        const scopedName = (typeof name === 'string') ? `${name}_${paneId || 'p'}` : name;
+        if (typeof options === 'function') {
+          return origRequest(scopedName, options);
+        }
+        return origRequest(scopedName, options, callback);
+      };
+    }
+  } catch(e) {}
+
+  // 3. Prevent cross-tab heartbeat/session takeover via storage events
+  try {
+    const origAddEventListener = window.addEventListener.bind(window);
+    window.addEventListener = function(type, listener, options) {
+      if (type === 'storage') {
+        const safeListener = function(event) {
+          if (event && event.key) {
+            const k = String(event.key).toLowerCase();
+            if (
+              k.includes('active_session') ||
+              k.includes('chart_session') ||
+              k.includes('active_tab') ||
+              k.includes('heartbeat') ||
+              k.includes('device_id') ||
+              k.includes('concurrent') ||
+              k.includes('tab_id') ||
+              k.includes('session_id')
+            ) {
+              return;
+            }
+          }
+          if (typeof listener === 'function') {
+            return listener.call(this, event);
+          } else if (listener && typeof listener.handleEvent === 'function') {
+            return listener.handleEvent(event);
+          }
+        };
+        return origAddEventListener(type, safeListener, options);
+      }
+      return origAddEventListener(type, listener, options);
+    };
+  } catch(e) {}
+
+  // 4. WebSocket Optimization: Block secondary push/chat sockets to protect data socket quota
+  try {
+    const OrigWebSocket = window.WebSocket;
+    if (OrigWebSocket) {
+      function GuardedWebSocket(url, protocols) {
+        const urlStr = String(url || '').toLowerCase();
+        // If secondary social/pushstream/chat socket, provide inert mock to preserve socket quota
+        if (
+          urlStr.includes('pushstream.tradingview.com') ||
+          urlStr.includes('chat.tradingview.com') ||
+          urlStr.includes('news-ws') ||
+          urlStr.includes('/social/') ||
+          urlStr.includes('/notifications/')
+        ) {
+          const dummy = new EventTarget();
+          dummy.binaryType = 'blob';
+          dummy.bufferedAmount = 0;
+          dummy.extensions = '';
+          dummy.protocol = '';
+          dummy.readyState = 3; // CLOSED
+          dummy.url = String(url);
+          dummy.send = function() {};
+          dummy.close = function() {};
+          Object.setPrototypeOf(dummy, OrigWebSocket.prototype);
+          return dummy;
+        }
+
+        let instance;
+        if (protocols !== undefined) {
+          instance = new OrigWebSocket(url, protocols);
+        } else {
+          instance = new OrigWebSocket(url);
+        }
+        return instance;
+      }
+
+      GuardedWebSocket.prototype = OrigWebSocket.prototype;
+      GuardedWebSocket.CONNECTING = OrigWebSocket.CONNECTING || 0;
+      GuardedWebSocket.OPEN = OrigWebSocket.OPEN || 1;
+      GuardedWebSocket.CLOSING = OrigWebSocket.CLOSING || 2;
+      GuardedWebSocket.CLOSED = OrigWebSocket.CLOSED || 3;
+
+      window.WebSocket = GuardedWebSocket;
+    }
+  } catch(e) {}
+
+  function applyInitialClasses() {
+    try {
+      if (initHideDrawing) {
+        document.body && document.body.classList.add('hide-drawing-toolbar');
+        document.documentElement && document.documentElement.classList.add('hide-drawing-toolbar');
+      } else {
+        document.body && document.body.classList.remove('hide-drawing-toolbar');
+        document.documentElement && document.documentElement.classList.remove('hide-drawing-toolbar');
+      }
+      if (initCleanMode) {
+        document.body && document.body.classList.add('clean-mode');
+        document.documentElement && document.documentElement.classList.add('clean-mode');
+      } else {
+        document.body && document.body.classList.remove('clean-mode');
+        document.documentElement && document.documentElement.classList.remove('clean-mode');
+      }
+    } catch(e) {}
+  }
+
+  let linkGroup = 'A';
+  let isMouseOverThisChart = false;
+  let lastReportedSymbol = '';
+  let lastReportedTimeframe = '';
+
+  // Cached viewport dimensions for ultra-fast ratio calculation (zero DOM reflows)
+  let cachedWidth = window.innerWidth || 1200;
+  let cachedHeight = window.innerHeight || 800;
+  window.addEventListener('resize', () => {
+    cachedWidth = window.innerWidth || 1200;
+    cachedHeight = window.innerHeight || 800;
+  }, { passive: true });
+
+  // (Crosshair overlay removed per user request for clean performance)
+
+  // Chart Info in-page DOM Overlay Badge
+  let chartInfoOverlay = null;
+
+  function createChartInfoOverlay() {
+    if (chartInfoOverlay || document.getElementById('tv-splitsync-chart-info-overlay')) {
+      chartInfoOverlay = document.getElementById('tv-splitsync-chart-info-overlay');
+      return;
+    }
+    const container = document.body || document.documentElement;
+    if (!container) return;
+
+    chartInfoOverlay = document.createElement('div');
+    chartInfoOverlay.id = 'tv-splitsync-chart-info-overlay';
+    chartInfoOverlay.className = 'chart-info-overlay';
+
+    chartInfoOverlay.innerHTML = `
+      <div class="info-badge-details">
+        <span class="info-badge-symbol" title="Current Symbol">---</span>
+        <span class="info-badge-broker" style="display:none"></span>
+        <button type="button" class="info-badge-tf" title="Click to change timeframe">
+          <span class="info-badge-tf-label">---</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="8" height="8" class="info-badge-tf-arrow">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </div>
+      <button type="button" class="info-badge-toggle" title="Toggle info badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+      </button>
+      <div class="info-badge-tf-menu hidden">
+        <div class="tf-menu-sec-title">Minutes</div>
+        <div class="tf-menu-grid">
+          <button type="button" class="tf-btn" data-tf="1">1m</button>
+          <button type="button" class="tf-btn" data-tf="3">3m</button>
+          <button type="button" class="tf-btn" data-tf="5">5m</button>
+          <button type="button" class="tf-btn" data-tf="15">15m</button>
+          <button type="button" class="tf-btn" data-tf="30">30m</button>
+          <button type="button" class="tf-btn" data-tf="45">45m</button>
+        </div>
+        <div class="tf-menu-sec-title">Hours</div>
+        <div class="tf-menu-grid tf-grid-4">
+          <button type="button" class="tf-btn" data-tf="60">1h</button>
+          <button type="button" class="tf-btn" data-tf="120">2h</button>
+          <button type="button" class="tf-btn" data-tf="180">3h</button>
+          <button type="button" class="tf-btn" data-tf="240">4h</button>
+        </div>
+        <div class="tf-menu-sec-title">Days & Weeks</div>
+        <div class="tf-menu-grid">
+          <button type="button" class="tf-btn" data-tf="D">1D</button>
+          <button type="button" class="tf-btn" data-tf="W">1W</button>
+          <button type="button" class="tf-btn" data-tf="M">1M</button>
+        </div>
+      </div>
+    `;
+
+    const toggleBtn = chartInfoOverlay.querySelector('.info-badge-toggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        chartInfoOverlay.classList.toggle('collapsed');
+        const tfMenu = chartInfoOverlay.querySelector('.info-badge-tf-menu');
+        if (tfMenu) tfMenu.classList.add('hidden');
+      });
+    }
+
+    const tfBtn = chartInfoOverlay.querySelector('.info-badge-tf');
+    const tfMenu = chartInfoOverlay.querySelector('.info-badge-tf-menu');
+    if (tfBtn && tfMenu) {
+      tfBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        tfMenu.classList.toggle('hidden');
+      });
+
+      function applyTf(selectedTf) {
+        if (!selectedTf) return;
+        if (window.__TVSync && typeof window.__TVSync.setTimeframe === 'function') {
+          window.__TVSync.setTimeframe(selectedTf);
+          ipcRenderer.sendToHost('chart-timeframe-detected', { timeframe: selectedTf, paneId: paneId });
+        }
+        tfMenu.classList.add('hidden');
+      }
+
+      tfMenu.querySelectorAll('.tf-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const selectedTf = btn.getAttribute('data-tf');
+          applyTf(selectedTf);
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!tfMenu.contains(e.target) && !tfBtn.contains(e.target)) {
+          tfMenu.classList.add('hidden');
+        }
+      });
+    }
+
+    container.appendChild(chartInfoOverlay);
+  }
+
+  // Native Main World TradingView API and layout controller (Zero CSP restrictions)
+  window.__TVSync = {
+    getChartApi: function() {
+      try {
+        if (window.TradingViewApi && window.TradingViewApi._activeChartWidgetWV) {
+          return window.TradingViewApi._activeChartWidgetWV.value();
+        }
+        if (window.ChartApiInstance) return window.ChartApiInstance;
+        var col = window._exposed_chartWidgetCollection;
+        if (col && col.activeChartWidget) {
+          return typeof col.activeChartWidget.value === 'function' ? col.activeChartWidget.value() : col.activeChartWidget;
+        }
+      } catch(e) {}
+      return null;
+    },
+
+    setSymbol: function(symbol) {
+      try {
+        var chart = this.getChartApi();
+        if (chart && typeof chart.setSymbol === 'function') {
+          chart.setSymbol(symbol, {});
+          this.updateChartInfo(symbol);
+          return true;
+        }
+        var col = window._exposed_chartWidgetCollection;
+        if (col && typeof col.setSymbol === 'function') {
+          col.setSymbol(symbol);
+          this.updateChartInfo(symbol);
+          return true;
+        }
+      } catch(e) {}
+      return false;
+    },
+
+    setTimeframe: function(tf) {
+      try {
+        var strTf = String(tf);
+        var chart = this.getChartApi();
+        if (chart && typeof chart.setResolution === 'function') {
+          chart.setResolution(strTf, {});
+          this.updateChartInfo(null, strTf);
+          return true;
+        }
+        var col = window._exposed_chartWidgetCollection;
+        if (col && typeof col.setResolution === 'function') {
+          col.setResolution(strTf);
+          this.updateChartInfo(null, strTf);
+          return true;
+        }
+        var active = col && col.activeChartWidget ? (typeof col.activeChartWidget.value === 'function' ? col.activeChartWidget.value() : col.activeChartWidget) : null;
+        if (active && typeof active.setResolution === 'function') {
+          active.setResolution(strTf, {});
+          this.updateChartInfo(null, strTf);
+          return true;
+        }
+      } catch(e) {}
+      return false;
+    },
+
+    updateChartInfo: function(sym, tf, brk) {
+      createChartInfoOverlay();
+      if (!chartInfoOverlay) return;
+      if (sym) {
+        let ticker = sym;
+        let broker = brk || '';
+        if (ticker.includes(':')) {
+          const parts = ticker.split(':');
+          if (!broker) broker = parts[0];
+          ticker = parts[1];
+        }
+        const symEl = chartInfoOverlay.querySelector('.info-badge-symbol');
+        const brkEl = chartInfoOverlay.querySelector('.info-badge-broker');
+        if (symEl) symEl.textContent = ticker;
+        if (brkEl) {
+          brkEl.textContent = broker || 'TV';
+          brkEl.style.display = broker ? 'inline-block' : 'none';
+        }
+      }
+      if (tf) {
+        const tfLabel = chartInfoOverlay.querySelector('.info-badge-tf-label') || chartInfoOverlay.querySelector('.info-badge-tf');
+        let formattedTf = String(tf).toUpperCase();
+        const tfMap = {
+          '1': '1m', '2': '2m', '3': '3m', '5': '5m', '10': '10m', '15': '15m', '30': '30m', '45': '45m',
+          '60': '1h', '120': '2h', '180': '3h', '240': '4h', '360': '6h', '480': '8h', '720': '12h',
+          'D': '1D', '1D': '1D', '2D': '2D', '3D': '3D',
+          'W': '1W', '1W': '1W', '2W': '2W',
+          'M': '1M', '1M': '1M', '3M': '3M', '6M': '6M', '12M': '12M'
+        };
+        const displayTf = tfMap[formattedTf] || formattedTf;
+        if (tfLabel) {
+          tfLabel.textContent = displayTf;
+        }
+        // Also highlight active button in menu
+        const tfMenu = chartInfoOverlay.querySelector('.info-badge-tf-menu');
+        if (tfMenu) {
+          tfMenu.querySelectorAll('.tf-btn').forEach(b => {
+            const bTf = b.getAttribute('data-tf');
+            const isActive = (bTf === String(tf) || bTf === formattedTf || bTf.toUpperCase() === formattedTf);
+            b.classList.toggle('active', isActive);
+          });
+        }
+      }
+    },
+
+    setChartInfoVisible: function(visible) {
+      createChartInfoOverlay();
+      if (!chartInfoOverlay) return;
+      if (visible) {
+        chartInfoOverlay.classList.remove('hidden');
+      } else {
+        chartInfoOverlay.classList.add('hidden');
+      }
+    },
+
+    getState: function() {
+      var chart = this.getChartApi();
+      if (!chart) return null;
+      try {
+        return {
+          symbol: typeof chart.symbol === 'function' ? chart.symbol() : null,
+          resolution: typeof chart.resolution === 'function' ? chart.resolution() : null
+        };
+      } catch(e) { return null; }
+    },
+
+    ensureDrawingSystemEnabled: function() {
+      try {
+        var col = window._exposed_chartWidgetCollection;
+        var active = col && col.activeChartWidget ? col.activeChartWidget.value() : null;
+        if (active && typeof active.getCheckableActionState === 'function') {
+          var cur = active.getCheckableActionState('drawingToolbarAction');
+          if (cur === false) {
+            active.executeActionById('drawingToolbarAction');
+          }
+        }
+        if (col && typeof col.lineToolPropertiesToolbar === 'function') {
+          var lbar = col.lineToolPropertiesToolbar();
+          if (lbar && typeof lbar.setValue === 'function') lbar.setValue(true);
+        }
+        if (col && col._lineToolPropertiesToolbar && typeof col._lineToolPropertiesToolbar.setValue === 'function') {
+          col._lineToolPropertiesToolbar.setValue(true);
+        }
+      } catch(e) {}
+    },
+
+    setDrawingToolbar: function(visible) {
+      if (visible) {
+        this.ensureDrawingSystemEnabled();
+      }
+      this.ensureFullBleedLayout();
+    },
+
+    ensureFullBleedLayout: function() {
+      try {
+        var col = window._exposed_chartWidgetCollection;
+        if (!col) return;
+
+        col._computeContentBox = function() {
+          var isClean = document.body && (document.body.classList.contains('clean-mode') || document.documentElement.classList.contains('clean-mode'));
+          var isHideDrawing = document.body && (document.body.classList.contains('hide-drawing-toolbar') || document.documentElement.classList.contains('hide-drawing-toolbar'));
+          var topOffset = isClean ? 0 : 38;
+          var leftOffset = isHideDrawing ? 0 : 52;
+          var h = Math.max(100, (window.innerHeight || document.documentElement.clientHeight || 800) - topOffset);
+          var w = Math.max(100, (window.innerWidth || document.documentElement.clientWidth || 1000) - leftOffset);
+          return { width: w, height: h, top: 0, left: 0 };
+        };
+
+        // Close right widgetbar tabs if active to prevent internal width subtraction
+        var activeTabs = document.querySelectorAll('[class*="widgetbar"] [class*="isActive-"], [class*="widgetbar"] .active, button[aria-pressed="true"][class*="button-"]');
+        activeTabs.forEach(function(tab) {
+          var parentRight = tab.closest('.layout__area--right, div[data-name="right-toolbar"], div[class*="widgetbar"]');
+          if (parentRight) tab.click();
+        });
+
+        col._updateLayout();
+        var active = col.activeChartWidget ? col.activeChartWidget.value() : null;
+        if (active && typeof active.resize === 'function') active.resize();
+        if (active && typeof active.paint === 'function') active.paint();
+      } catch(e) {}
+    },
+
+    disableStayInDrawingMode: function() {
+      try {
+        var col = window._exposed_chartWidgetCollection;
+        if (col && col._stayInDrawingMode && typeof col._stayInDrawingMode.setValue === 'function') {
+          col._stayInDrawingMode.setValue(false);
+        }
+        if (col && col.stayInDrawingMode && typeof col.stayInDrawingMode.setValue === 'function') {
+          col.stayInDrawingMode.setValue(false);
+        }
+        var active = col && col.activeChartWidget ? col.activeChartWidget.value() : null;
+        if (active && typeof active.getCheckableActionState === 'function') {
+          ['drawingToolbarStayInDrawingModeAction', 'stayInDrawingModeAction', 'stayInDrawingMode'].forEach(function(act) {
+            try {
+              if (active.getCheckableActionState(act) === true) {
+                active.executeActionById(act);
+              }
+            } catch(e) {}
+          });
+        }
+        if (window.TradingView && window.TradingView.settings && typeof window.TradingView.settings.setValue === 'function') {
+          window.TradingView.settings.setValue('tradingview.stayInDrawingMode', false);
+        }
+      } catch(e) {}
+    },
+
+    _getDrawingCount: function() {
+      try {
+        var col = window._exposed_chartWidgetCollection;
+        var active = col && col.activeChartWidget ? col.activeChartWidget.value() : null;
+        if (!active) return 0;
+        var m = active.model ? (active.model().model ? active.model().model() : active.model()) : null;
+        if (m) {
+          if (typeof m.allLineTools === 'function') {
+            return m.allLineTools().length;
+          }
+          if (m.panes && m.panes()[0] && typeof m.panes()[0].dataSources === 'function') {
+            return m.panes()[0].dataSources().length;
+          }
+        }
+      } catch(e) {}
+      return 0;
+    },
+
+    selectDrawingTool: function(toolName) {
+      try {
+        window.__pendingDrawingTool = toolName;
+        window.__currentSelectedTool = toolName;
+
+        var col = window._exposed_chartWidgetCollection;
+        var active = col && col.activeChartWidget ? (typeof col.activeChartWidget.value === 'function' ? col.activeChartWidget.value() : col.activeChartWidget) : null;
+
+        if (toolName === 'removeAllDrawingTools') {
+          try { if (active && typeof active.removeAllDrawingTools === 'function') active.removeAllDrawingTools(); } catch(e) {}
+          try { if (col && typeof col.removeAllDrawingTools === 'function') col.removeAllDrawingTools(); } catch(e) {}
+          return;
+        }
+
+        // If collection not ready yet, poll rapidly to apply as soon as it appears
+        if (!col) {
+          let retries = 0;
+          const retryTimer = setInterval(function() {
+            retries++;
+            if (window._exposed_chartWidgetCollection) {
+              clearInterval(retryTimer);
+              if (window.__TVSync && typeof window.__TVSync.selectDrawingTool === 'function') {
+                window.__TVSync.selectDrawingTool(toolName);
+              }
+            } else if (retries >= 30) {
+              clearInterval(retryTimer);
+            }
+          }, 100);
+        }
+
+        // Turn off stayInDrawingMode so TradingView naturally reverts to cursor after 1 drawing
+        this.ensureDrawingSystemEnabled();
+        this.disableStayInDrawingMode();
+
+        var TOOL_ALIASES = {
+          'LineToolTrendLine': ['LineToolTrendLine', 'TrendLine', 'trend_line'],
+          'LineToolHorzLine': ['LineToolHorzLine', 'HorizontalLine', 'LineToolHorizontalLine', 'horz_line'],
+          'LineToolHorzRay': ['LineToolHorzRay', 'HorizontalRay', 'LineToolHorizontalRay', 'horz_ray'],
+          'LineToolRay': ['LineToolRay', 'Ray', 'ray'],
+          'LineToolArrow': ['LineToolArrow', 'Arrow', 'arrow_line'],
+          'LineToolExtended': ['LineToolExtended', 'ExtendedLine', 'LineToolExtendedLine', 'extended_line'],
+          'LineToolVertLine': ['LineToolVertLine', 'VerticalLine', 'LineToolVerticalLine', 'vert_line', 'vertical_line'],
+          'LineToolCrossLine': ['LineToolCrossLine', 'CrossLine', 'LineToolCrosshair', 'cross_line'],
+          'LineToolParallelChannel': ['LineToolParallelChannel', 'ParallelChannel', 'LineToolChannel', 'parallel_channel', 'channel'],
+          'LineToolDisjointChannel': ['LineToolDisjointAngle', 'LineToolDisjointChannel', 'DisjointAngle', 'DisjointChannel', 'disjoint_angle'],
+          'LineToolFlatBottom': ['LineToolFlatBottom', 'FlatBottom', 'flat_bottom'],
+          'LineToolArrowMarkUp': ['LineToolArrowMarkUp', 'ArrowMarkUp', 'arrow_up', 'arrow_mark_up'],
+          'LineToolArrowMarkDown': ['LineToolArrowMarkDown', 'ArrowMarkDown', 'arrow_down', 'arrow_mark_down'],
+          'LineToolArrowMarker': ['LineToolArrowMarker', 'ArrowMarker', 'arrow_marker'],
+          'LineToolFlagMark': ['LineToolFlagMark', 'FlagMark', 'flag_mark', 'flag'],
+          'LineToolRectangle': ['LineToolRectangle', 'Rectangle', 'rectangle'],
+          'LineToolRotatedRectangle': ['LineToolRotatedRectangle', 'RotatedRectangle', 'rotated_rectangle'],
+          'LineToolCircle': ['LineToolCircle', 'Circle', 'LineToolEllipse', 'Ellipse', 'circle', 'ellipse'],
+          'LineToolTriangle': ['LineToolTriangle', 'Triangle', 'triangle'],
+          'LineToolArc': ['LineToolArc', 'Arc', 'LineToolCurve', 'Curve', 'arc', 'curve'],
+          'LineToolPath': ['LineToolPath', 'Path', 'LineToolPolyline', 'Polyline', 'path', 'polyline'],
+          'LineToolFibRetracement': ['LineToolFibRetracement', 'LineToolRetracements', 'FibRetracement', 'Retracements', 'fib_retracement'],
+          'LineToolTrendBasedFibExtension': ['LineToolTrendBasedFibExtension', 'TrendBasedFibExtension', 'FibExtension', 'trend_based_fib_extension'],
+          'LineToolFibChannel': ['LineToolFibChannel', 'FibChannel', 'fib_channel'],
+          'LineToolFibTimeZone': ['LineToolFibTimeZone', 'FibTimeZone', 'fib_time_zone'],
+          'LineToolPitchfork': ['LineToolPitchfork', 'Pitchfork', 'pitchfork'],
+          'LineToolGannBox': ['LineToolGannBox', 'GannBox', 'gann_box', 'gann-box', 'gannbox'],
+          'LineToolGannSquare': ['LineToolGannSquare', 'GannSquare', 'gann_square', 'gann-square', 'gannsquare'],
+          'LineToolGannComplex': ['LineToolGannComplex', 'GannComplex', 'gann_complex', 'gann-complex', 'ganncomplex'],
+          'LineToolGannFan': ['LineToolGannFan', 'GannFan', 'gann_fan', 'gann-fan', 'gannfan'],
+          'LineToolGannFixed': ['LineToolGannFixed', 'GannFixed', 'gann_fixed', 'gann-fixed'],
+          'LineToolBrush': ['LineToolBrush', 'Brush', 'brush'],
+          'LineToolHighlighter': ['LineToolHighlighter', 'Highlighter', 'highlighter'],
+          'LineToolText': ['LineToolText', 'Text', 'text'],
+          'LineToolCallout': ['LineToolCallout', 'Callout', 'callout'],
+          'LineToolPriceLabel': ['LineToolPriceLabel', 'PriceLabel', 'price_label'],
+          'LineToolPriceNote': ['LineToolPriceNote', 'PriceNote', 'price_note'],
+          'LineToolRiskRewardLong': ['LineToolRiskRewardLong', 'LineToolLongPosition', 'RiskRewardLong', 'LongPosition', 'long_position'],
+          'LineToolRiskRewardShort': ['LineToolRiskRewardShort', 'LineToolShortPosition', 'RiskRewardShort', 'ShortPosition', 'short_position'],
+          'LineToolPrediction': ['LineToolPrediction', 'LineToolPositionForecast', 'Prediction', 'PositionForecast', 'prediction', 'forecast'],
+          'LineToolDateAndPriceRange': ['LineToolDateAndPriceRange', 'DateAndPriceRange', 'date_and_price_range'],
+          'LineToolPriceRange': ['LineToolPriceRange', 'PriceRange', 'price_range'],
+          'LineToolDateRange': ['LineToolDateRange', 'DateRange', 'date_range'],
+          'measure': ['measure', 'LineToolMeasure', 'Measure'],
+          'eraser': ['eraser', 'LineToolEraser', 'Eraser'],
+          'cursor': ['cursor', 'LineToolCursor', 'Cursor', 'crosshair', 'pointer']
+        };
+
+        function tryApplyTool(name) {
+          var ok = false;
+
+          // 1. Chart collection tool WatchedValue
+          try {
+            var toolWV = null;
+            if (col) {
+              if (typeof col.tool === 'function') toolWV = col.tool();
+              else if (col._tool) toolWV = col._tool;
+            }
+            if (toolWV && typeof toolWV.setValue === 'function') {
+              toolWV.setValue(name);
+              var curVal = typeof toolWV.value === 'function' ? toolWV.value() : toolWV.value;
+              if (curVal === name) ok = true;
+            }
+          } catch(e) {}
+
+          // 2. Chart collection direct setTool
+          try {
+            if (col && typeof col.setTool === 'function') {
+              col.setTool(name);
+              ok = true;
+            }
+          } catch(e) {}
+          try {
+            if (col && typeof col.selectLineTool === 'function') {
+              col.selectLineTool(name);
+              ok = true;
+            }
+          } catch(e) {}
+
+          // 3. Active Chart Widget API
+          try {
+            if (active) {
+              if (typeof active.setTool === 'function') {
+                active.setTool(name);
+                ok = true;
+              }
+              if (typeof active.selectLineTool === 'function') {
+                active.selectLineTool(name);
+                ok = true;
+              }
+              if (typeof active.setDrawingTool === 'function') {
+                active.setDrawingTool(name);
+                ok = true;
+              }
+            }
+          } catch(e) {}
+
+          // 4. TradingView Public API
+          try {
+            if (window.TradingViewApi && typeof window.TradingViewApi.selectLineTool === 'function') {
+              window.TradingViewApi.selectLineTool(name);
+              ok = true;
+            }
+          } catch(e) {}
+
+          // 5. Model and LineToolsModel
+          try {
+            if (active && active.model) {
+              var m = typeof active.model === 'function' ? active.model() : active.model;
+              if (m) {
+                var innerM = typeof m.model === 'function' ? m.model() : m;
+                if (innerM) {
+                  if (typeof innerM.setTool === 'function') {
+                    innerM.setTool(name);
+                    ok = true;
+                  }
+                  if (typeof innerM.selectLineTool === 'function') {
+                    innerM.selectLineTool(name);
+                    ok = true;
+                  }
+                  var ltM = typeof innerM.lineToolsModel === 'function' ? innerM.lineToolsModel() : innerM.lineToolsModel;
+                  if (ltM) {
+                    if (typeof ltM.setTool === 'function') {
+                      ltM.setTool(name);
+                      ok = true;
+                    }
+                    if (typeof ltM.selectLineTool === 'function') {
+                      ltM.selectLineTool(name);
+                      ok = true;
+                    }
+                  }
+                }
+              }
+            }
+          } catch(e) {}
+
+          // 6. DOM left drawing toolbar button matching
+          try {
+            var raw = name.replace(/^LineTool/, '').toLowerCase();
+            var hyphenated = name.replace(/^LineTool/, '').replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '');
+            var selList = [
+              '[data-name="' + name + '"]',
+              '[data-name="' + raw + '"]',
+              '[data-name="' + hyphenated + '"]',
+              '[data-name="linetool-' + raw + '"]',
+              '[data-name="linetool-' + hyphenated + '"]',
+              '[data-name*="' + raw + '"]',
+              '[data-name*="' + hyphenated + '"]',
+              '[data-value="' + name + '"]',
+              '[data-value="' + raw + '"]',
+              '[data-value="' + hyphenated + '"]',
+              '[data-tool="' + name + '"]',
+              '[data-tool="' + raw + '"]',
+              '[data-tool="' + hyphenated + '"]',
+              'button[data-name*="' + raw + '" i]',
+              'button[data-name*="' + hyphenated + '" i]',
+              'div[data-name*="' + raw + '" i]',
+              'div[data-name*="' + hyphenated + '" i]',
+              '[aria-label*="' + raw + '" i]',
+              '[aria-label*="' + hyphenated + '" i]',
+              '[title*="' + raw + '" i]',
+              '[title*="' + hyphenated + '" i]'
+            ];
+            for (var s = 0; s < selList.length; s++) {
+              var domBtn = document.querySelector(selList[s]);
+              if (domBtn) {
+                domBtn.click();
+                ok = true;
+                break;
+              }
+            }
+          } catch(e) {}
+
+          return ok;
+        }
+
+        var aliases = TOOL_ALIASES[toolName] || [
+          toolName,
+          toolName.replace(/^LineTool/, ''),
+          'LineTool' + toolName
+        ];
+
+        var applied = false;
+        for (var i = 0; i < aliases.length; i++) {
+          if (tryApplyTool(aliases[i])) {
+            applied = true;
+            break;
+          }
+        }
+        if (!applied) {
+          tryApplyTool(toolName);
+          tryApplyTool(toolName.replace(/^LineTool/, ''));
+        }
+
+        try {
+          window.focus();
+          var canvas = document.querySelector('canvas');
+          if (canvas) canvas.focus();
+        } catch(e) {}
+      } catch(e) {}
+    }
+  };
+
+  function setupToolSubscriptions() {
+    try {
+      var col = window._exposed_chartWidgetCollection;
+      var toolWV = null;
+      if (col) {
+        if (typeof col.tool === 'function') toolWV = col.tool();
+        else if (col._tool) toolWV = col._tool;
+      }
+      if (toolWV && typeof toolWV.subscribe === 'function' && !col.__toolSubscribed) {
+        col.__toolSubscribed = true;
+        toolWV.subscribe(function(tool) {
+          window.__currentSelectedTool = tool;
+          ipcRenderer.sendToHost('chart-drawing-tool-changed', { tool: tool, paneId: paneId });
+        });
+      }
+    } catch(e) {}
+  }
+
+  // Hook TradingView collection as soon as loaded (and stop polling once hooked)
+  let tvCollectionHooked = false;
+  const tvHookTimer = setInterval(function() {
+    if (window._exposed_chartWidgetCollection) {
+      tvCollectionHooked = true;
+      clearInterval(tvHookTimer);
+      if (window.__TVSync) {
+        window.__TVSync.ensureFullBleedLayout();
+        window.__TVSync.disableStayInDrawingMode();
+        setupToolSubscriptions();
+        if (window.__pendingDrawingTool) {
+          window.__TVSync.selectDrawingTool(window.__pendingDrawingTool);
+        }
+      }
+    }
+  }, 100);
+
+  // Debounced resize listener to avoid jumping/flickering
+  var tvResizeTimer = null;
+  window.addEventListener('resize', function() {
+    if (tvResizeTimer) clearTimeout(tvResizeTimer);
+    tvResizeTimer = setTimeout(function() {
+      if (window.__TVSync && typeof window.__TVSync.ensureFullBleedLayout === 'function') {
+        window.__TVSync.ensureFullBleedLayout();
+      }
+      enforceCleanLayout();
+    }, 80);
+  }, { passive: true });
+
+  // Send status updates when chart is ready
+  setInterval(function() {
+    if (window.__TVSync && typeof window.__TVSync.getState === 'function') {
+      var state = window.__TVSync.getState();
+      if (state && state.symbol) {
+        if (typeof window.__TVSync.updateChartInfo === 'function') {
+          window.__TVSync.updateChartInfo(state.symbol, state.resolution);
+        }
+        if (state.symbol !== lastReportedSymbol) {
+          lastReportedSymbol = state.symbol;
+          ipcRenderer.sendToHost('chart-symbol-detected', { symbol: state.symbol, paneId: paneId });
+        }
+        if (state.resolution && state.resolution !== lastReportedTimeframe) {
+          lastReportedTimeframe = state.resolution;
+          ipcRenderer.sendToHost('chart-timeframe-detected', { timeframe: state.resolution, paneId: paneId });
+        }
+      }
+    }
+  }, 1500);
+
+  window.addEventListener('message', function(event) {
+    if (!event.data || !event.data.type) return;
+    if (event.data.type === 'TV_SYNC_EXEC_SET_SYMBOL') {
+      window.__TVSync.setSymbol(event.data.symbol);
+    } else if (event.data.type === 'TV_SYNC_EXEC_SET_TIMEFRAME') {
+      window.__TVSync.setTimeframe(event.data.timeframe);
+    } else if (event.data.type === 'TV_SYNC_EXEC_SET_DRAWING_TOOLBAR') {
+      window.__TVSync.setDrawingToolbar(event.data.visible);
+    } else if (event.data.type === 'TV_SYNC_EXEC_SET_DRAWING_TOOL') {
+      window.__TVSync.selectDrawingTool(event.data.tool);
+    } else if (event.data.type === 'TV_SYNC_EXEC_LAYOUT_UPDATE') {
+      window.__TVSync.ensureFullBleedLayout();
+    }
+  });
+
+  // Handle messages from the injected main world script
+  window.addEventListener('message', (event) => {
+    if (!event.data || typeof event.data !== 'object') return;
+    
+    if (event.data.type === 'TV_SYNC_STATE_UPDATE') {
+      const { symbol, resolution } = event.data.state;
+      if (symbol && symbol !== lastReportedSymbol) {
+        lastReportedSymbol = symbol;
+        ipcRenderer.sendToHost('chart-symbol-detected', { symbol, paneId });
+      }
+      if (resolution && resolution !== lastReportedTimeframe) {
+        lastReportedTimeframe = resolution;
+        ipcRenderer.sendToHost('chart-timeframe-detected', { timeframe: resolution, paneId });
+      }
+    }
+    else if (event.data.type === 'TV_SYNC_TOOL_CHANGED') {
+      ipcRenderer.sendToHost('chart-drawing-tool-changed', { tool: event.data.tool, paneId });
+    }
+  });
+
+
+
+  // Clean up surrounding bars to maximize chart space (Single shared master bar)
+  function triggerChartResize() {
+    window.dispatchEvent(new Event('resize'));
+    window.dispatchEvent(new UIEvent('resize'));
+    try {
+      window.postMessage({ type: 'TV_SYNC_EXEC_LAYOUT_UPDATE' }, '*');
+    } catch(e) {}
+  }
+
+  // Clean up surrounding bars to maximize chart space (Single shared master bar)
+  function cleanUI() {
+    const target = document.head || document.documentElement;
+    if (!target) return;
+    if (document.getElementById('tv-splitsync-clean-ui-styles')) return;
+
+    const style = document.createElement('style');
+    style.id = 'tv-splitsync-clean-ui-styles';
+    style.textContent = `
+      /* Hide Promotional elements, toasts, banners (NEVER hide floating properties toolbars or color dialogs) */
+      [data-name="go-pro-button"],
+      [class*="trial-banner"],
+      [class*="banner-"],
+      #overlap-manager-root > div[class*="container-"][class*="banner-"] {
+        display: none !important;
+      }
+
+      /* In-chart DOM info badge overlay */
+      .chart-info-overlay {
+        position: fixed !important;
+        top: 10px !important;
+        left: 60px !important;
+        z-index: 999999 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        background: rgba(20, 24, 35, 0.90) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-radius: 6px !important;
+        padding: 3px 8px !important;
+        color: #ffffff !important;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5) !important;
+        pointer-events: auto !important;
+        user-select: none !important;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+
+      body.hide-drawing-toolbar .chart-info-overlay,
+      html.hide-drawing-toolbar .chart-info-overlay {
+        left: 10px !important;
+      }
+
+      .chart-info-overlay.hidden {
+        display: none !important;
+      }
+
+      .chart-info-overlay.collapsed .info-badge-details {
+        display: none !important;
+      }
+
+      .chart-info-overlay.collapsed {
+        padding: 3px 5px !important;
+        opacity: 0.6 !important;
+      }
+
+      .chart-info-overlay.collapsed:hover {
+        opacity: 1 !important;
+      }
+
+      .chart-info-overlay .info-badge-details {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+      }
+
+      .chart-info-overlay .info-badge-symbol {
+        font-size: 12px !important;
+        font-weight: 800 !important;
+        color: #ffffff !important;
+        letter-spacing: 0.3px !important;
+      }
+
+      .chart-info-overlay .info-badge-broker {
+        font-size: 9px !important;
+        font-weight: 700 !important;
+        background: rgba(41, 98, 255, 0.2) !important;
+        color: #2962ff !important;
+        border: 1px solid rgba(41, 98, 255, 0.4) !important;
+        padding: 1px 4px !important;
+        border-radius: 3px !important;
+        text-transform: uppercase !important;
+      }
+
+      .chart-info-overlay .info-badge-tf {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 3px !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        background: rgba(255, 152, 0, 0.2) !important;
+        color: #ff9800 !important;
+        border: 1px solid rgba(255, 152, 0, 0.4) !important;
+        padding: 2px 6px !important;
+        border-radius: 4px !important;
+        text-transform: uppercase !important;
+        cursor: pointer !important;
+        transition: all 0.15s ease !important;
+        font-family: inherit !important;
+        line-height: 1 !important;
+      }
+
+      .chart-info-overlay .info-badge-tf:hover {
+        background: rgba(255, 152, 0, 0.35) !important;
+        border-color: #ff9800 !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 2px 6px rgba(255, 152, 0, 0.3) !important;
+      }
+
+      .chart-info-overlay .info-badge-tf-arrow {
+        color: #ff9800 !important;
+        transition: transform 0.15s ease !important;
+      }
+
+      .chart-info-overlay .info-badge-tf-menu {
+        position: absolute !important;
+        top: calc(100% + 6px) !important;
+        left: 0 !important;
+        background: rgba(18, 22, 34, 0.96) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.16) !important;
+        border-radius: 8px !important;
+        padding: 8px !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75) !important;
+        z-index: 1000000 !important;
+        width: 175px !important;
+        box-sizing: border-box !important;
+      }
+
+      .chart-info-overlay .info-badge-tf-menu.hidden {
+        display: none !important;
+      }
+
+      .chart-info-overlay .tf-menu-sec-title {
+        font-size: 9px !important;
+        font-weight: 800 !important;
+        color: #787b86 !important;
+        letter-spacing: 0.5px !important;
+        text-transform: uppercase !important;
+        margin: 4px 0 4px 2px !important;
+      }
+
+      .chart-info-overlay .tf-menu-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 4px !important;
+        margin-bottom: 6px !important;
+      }
+
+      .chart-info-overlay .tf-menu-grid.tf-grid-4 {
+        grid-template-columns: repeat(4, 1fr) !important;
+      }
+
+      .chart-info-overlay .tf-menu-grid:last-child {
+        margin-bottom: 0 !important;
+      }
+
+      .chart-info-overlay .tf-btn {
+        background: rgba(255, 255, 255, 0.06) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 4px !important;
+        color: #d1d4dc !important;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        font-family: inherit !important;
+        padding: 4px 0 !important;
+        cursor: pointer !important;
+        text-align: center !important;
+        transition: all 0.12s ease !important;
+        line-height: 1.2 !important;
+      }
+
+      .chart-info-overlay .tf-btn:hover {
+        background: #2962ff !important;
+        color: #ffffff !important;
+        border-color: #2962ff !important;
+        transform: translateY(-1px) !important;
+      }
+
+      .chart-info-overlay .tf-btn.active {
+        background: rgba(255, 152, 0, 0.25) !important;
+        color: #ff9800 !important;
+        border-color: #ff9800 !important;
+        font-weight: 700 !important;
+      }
+
+      .chart-info-overlay .info-badge-toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 18px !important;
+        height: 18px !important;
+        border-radius: 3px !important;
+        background: transparent !important;
+        border: none !important;
+        color: #787b86 !important;
+        cursor: pointer !important;
+        transition: all 0.15s ease !important;
+        margin-left: 2px !important;
+        padding: 0 !important;
+      }
+
+      .chart-info-overlay .info-badge-toggle:hover {
+        color: #ffffff !important;
+        background: rgba(255, 255, 255, 0.15) !important;
+      }
+
+      /* 1. Reset parent containers so they fill 100% with no empty borders/strips */
+      html, body,
+      .js-rootresizer__contents,
+      [class*="layout-with-border-radius"] {
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      /* 2. Remove Right Sidebar (Watchlist, Alerts, News, Social - Image 3) */
+      .layout__area--right,
+      div[data-name="right-toolbar"],
+      div[class*="widgetbar-wrap"],
+      div[class*="widgetbar-pages"],
+      div[class*="widgetbar-tabs"],
+      div[class*="widgetbar-"],
+      #overlap-manager-root div[class*="widgetbar-"] {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        min-width: 0 !important;
+        visibility: hidden !important;
+      }
+
+      /* 3. Remove Bottom Time Range Bar & Chart Controls Bar (Eliminates the bottom bar completely!) */
+      .layout__area--bottom,
+      .chart-controls-bar,
+      [class*="chart-controls-bar"],
+      .chart-toolbar.chart-controls-bar,
+      div[data-name="time-ranges"],
+      div[class*="bottom-widgetbar-content"],
+      div[class*="bottom-widgetbar"],
+      div[class*="date-range-wrapper"] {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        visibility: hidden !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      /* 4. Left Drawing Toolbar Toggle (Hides ONLY the left sidebar, NEVER the floating line tool properties toolbar) */
+      body.hide-drawing-toolbar .layout__area--left,
+      html.hide-drawing-toolbar .layout__area--left,
+      body.hide-drawing-toolbar .layout__area--left #drawing-toolbar,
+      html.hide-drawing-toolbar .layout__area--left #drawing-toolbar {
+        display: none !important;
+        width: 0 !important;
+        min-width: 0 !important;
+        visibility: hidden !important;
+      }
+
+      /* Ensure Floating Line Tool Properties Toolbar (Color, Thickness, Style, Settings, Lock, Trash) is ALWAYS VISIBLE */
+      div[class*="tv-floating-toolbar"],
+      div[class*="floating-toolbar"],
+      div[data-name="linetool-properties"],
+      div[data-name="drawing-properties-toolbar"],
+      div[class*="drawingPropertiesToolbar"],
+      #overlap-manager-root div[class*="tv-floating-toolbar"],
+      #overlap-manager-root div[class*="floating-toolbar"],
+      #overlap-manager-root [data-name="linetool-properties"] {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        z-index: 99999 !important;
+      }
+
+      /* Ensure Color picker, Line width, and dropdown menus from the floating toolbar work */
+      #overlap-manager-root div[class*="menu-"],
+      #overlap-manager-root div[class*="popup-"],
+      #overlap-manager-root div[class*="dropdown-"],
+      #overlap-manager-root div[data-name="menu-inner"] {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        z-index: 100000 !important;
+      }
+
+      body.hide-drawing-toolbar .layout__area--center,
+      html.hide-drawing-toolbar .layout__area--center {
+        left: 0 !important;
+        width: 100% !important;
+      }
+
+      body:not(.hide-drawing-toolbar) .layout__area--left {
+        display: block !important;
+        width: 52px !important;
+      }
+
+      body:not(.hide-drawing-toolbar) .layout__area--center {
+        left: 52px !important;
+        width: calc(100% - 52px) !important;
+      }
+
+      /* 5. Clean Mode (Top Header): Eliminates top bar for maximum candle space */
+      body.clean-mode .layout__area--top,
+      body.clean-mode .layout__area--topleft,
+      body.clean-mode div[data-name="header-toolbar"],
+      body.clean-mode #header-toolbar-root,
+      html.clean-mode .layout__area--top,
+      html.clean-mode .layout__area--topleft,
+      html.clean-mode div[data-name="header-toolbar"],
+      html.clean-mode #header-toolbar-root {
+        display: none !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        visibility: hidden !important;
+      }
+
+      body.clean-mode .layout__area--center,
+      html.clean-mode .layout__area--center {
+        top: 0 !important;
+        height: 100% !important;
+      }
+
+      body:not(.clean-mode) .layout__area--center {
+        top: 38px !important;
+        height: calc(100% - 38px) !important;
+      }
+
+      /* 6. Layout area center & chart container must span completely to all edges with zero bottom gap */
+      .layout__area--center,
+      .layout__area--center .chart-container,
+      .layout__area--center div[class*="chart-container"],
+      .layout__area--center div[class*="chart-gui-wrapper"],
+      .layout__area--center div[class*="viewWrapper-"],
+      .layout__area--center div[data-name="chart-layout"] {
+        bottom: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+      }
+
+      .layout__area--center {
+        position: absolute !important;
+        bottom: 0 !important;
+        right: 0 !important;
+      }
+
+      .layout__area--center .chart-container,
+      .layout__area--center div[class*="chart-container"],
+      .layout__area--center div[class*="chart-gui-wrapper"] {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+    `;
+    (document.head || document.documentElement).appendChild(style);
+
+    // Dynamic layout observer to eliminate any late-rendered bottom bar or gap
+    setupCleanLayoutObserver();
+  }
+
+  function enforceCleanLayout() {
+    try {
+      const bottomBars = document.querySelectorAll('.chart-controls-bar, [class*="chart-controls-bar"], .layout__area--bottom, div[data-name="time-ranges"], div[class*="bottom-widgetbar"]');
+      bottomBars.forEach(el => {
+        el.style.setProperty('display', 'none', 'important');
+        el.style.setProperty('height', '0px', 'important');
+        el.style.setProperty('min-height', '0px', 'important');
+        el.style.setProperty('visibility', 'hidden', 'important');
+      });
+
+      const rightBars = document.querySelectorAll('.layout__area--right, div[data-name="right-toolbar"], div[class*="widgetbar-wrap"], div[class*="widgetbar-pages"], div[class*="widgetbar-tabs"], div[class*="widgetbar-"]');
+      rightBars.forEach(el => {
+        el.style.setProperty('display', 'none', 'important');
+        el.style.setProperty('width', '0px', 'important');
+        el.style.setProperty('min-width', '0px', 'important');
+        el.style.setProperty('visibility', 'hidden', 'important');
+      });
+
+      const centerArea = document.querySelector('.layout__area--center');
+      if (centerArea) {
+        centerArea.style.setProperty('bottom', '0px', 'important');
+        centerArea.style.setProperty('right', '0px', 'important');
+        const isToolbarHidden = document.body.classList.contains('hide-drawing-toolbar') || document.documentElement.classList.contains('hide-drawing-toolbar');
+        if (isToolbarHidden) {
+          centerArea.style.setProperty('left', '0px', 'important');
+          centerArea.style.setProperty('width', '100%', 'important');
+        } else {
+          centerArea.style.setProperty('left', '52px', 'important');
+          centerArea.style.setProperty('width', 'calc(100% - 52px)', 'important');
+        }
+        const isClean = document.body.classList.contains('clean-mode') || document.documentElement.classList.contains('clean-mode');
+        if (isClean) {
+          centerArea.style.setProperty('top', '0px', 'important');
+          centerArea.style.setProperty('height', '100%', 'important');
+        } else {
+          centerArea.style.setProperty('top', '38px', 'important');
+          centerArea.style.setProperty('height', 'calc(100% - 38px)', 'important');
+        }
+      }
+
+      const containers = document.querySelectorAll('.layout__area--center .chart-container, .layout__area--center div[class*="chart-container"], .layout__area--center div[class*="chart-gui-wrapper"]');
+      containers.forEach(c => {
+        c.style.setProperty('top', '0px', 'important');
+        c.style.setProperty('left', '0px', 'important');
+        c.style.setProperty('right', '0px', 'important');
+        c.style.setProperty('bottom', '0px', 'important');
+        c.style.setProperty('width', '100%', 'important');
+        c.style.setProperty('height', '100%', 'important');
+      });
+    } catch(e) {}
+  }
+
+  let cleanLayoutDebounceTimer = null;
+  function setupCleanLayoutObserver() {
+    enforceCleanLayout();
+    try {
+      const observer = new MutationObserver(() => {
+        if (cleanLayoutDebounceTimer) return;
+        cleanLayoutDebounceTimer = setTimeout(() => {
+          cleanLayoutDebounceTimer = null;
+          enforceCleanLayout();
+        }, 300);
+      });
+      observer.observe(document.body || document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    } catch(e) {}
+  }
+
+  // Handle messages received from the host application
+  ipcRenderer.on('init-pane', (event, data) => {
+    paneId = data.paneId || paneId;
+    linkGroup = data.linkGroup || linkGroup;
+    const hideDrawing = data.hideDrawingToolbar !== undefined ? !!data.hideDrawingToolbar : false;
+    if (hideDrawing) {
+      document.body.classList.add('hide-drawing-toolbar');
+      document.documentElement.classList.add('hide-drawing-toolbar');
+    } else {
+      document.body.classList.remove('hide-drawing-toolbar');
+      document.documentElement.classList.remove('hide-drawing-toolbar');
+    }
+    if (data.cleanMode) {
+      document.body.classList.add('clean-mode');
+      document.documentElement.classList.add('clean-mode');
+    } else {
+      document.body.classList.remove('clean-mode');
+      document.documentElement.classList.remove('clean-mode');
+    }
+    if (window.__TVSync && typeof window.__TVSync.setDrawingToolbar === 'function') {
+      window.__TVSync.setDrawingToolbar(!hideDrawing);
+    }
+    enforceCleanLayout();
+    triggerChartResize();
+    setTimeout(() => { enforceCleanLayout(); triggerChartResize(); }, 150);
+    setTimeout(() => { enforceCleanLayout(); triggerChartResize(); }, 500);
+    setTimeout(() => { enforceCleanLayout(); triggerChartResize(); }, 1200);
+  });
+
+  ipcRenderer.on('set-drawing-toolbar', (event, data) => {
+    const visible = !!data.visible;
+    if (visible) {
+      document.body.classList.remove('hide-drawing-toolbar');
+      document.documentElement.classList.remove('hide-drawing-toolbar');
+    } else {
+      document.body.classList.add('hide-drawing-toolbar');
+      document.documentElement.classList.add('hide-drawing-toolbar');
+    }
+    if (window.__TVSync && typeof window.__TVSync.setDrawingToolbar === 'function') {
+      window.__TVSync.setDrawingToolbar(visible);
+    }
+    enforceCleanLayout();
+    triggerChartResize();
+    setTimeout(() => { enforceCleanLayout(); triggerChartResize(); }, 50);
+    setTimeout(() => { enforceCleanLayout(); triggerChartResize(); }, 200);
+    setTimeout(() => { enforceCleanLayout(); triggerChartResize(); }, 500);
+  });
+
+  ipcRenderer.on('set-clean-mode', (event, data) => {
+    if (data.enabled) {
+      document.body.classList.add('clean-mode');
+      document.documentElement.classList.add('clean-mode');
+    } else {
+      document.body.classList.remove('clean-mode');
+      document.documentElement.classList.remove('clean-mode');
+    }
+    if (window.__TVSync && typeof window.__TVSync.ensureFullBleedLayout === 'function') {
+      window.__TVSync.ensureFullBleedLayout();
+    }
+    enforceCleanLayout();
+    triggerChartResize();
+    setTimeout(() => { enforceCleanLayout(); triggerChartResize(); }, 50);
+    setTimeout(() => { enforceCleanLayout(); triggerChartResize(); }, 200);
+    setTimeout(() => { enforceCleanLayout(); triggerChartResize(); }, 500);
+  });
+
+  ipcRenderer.on('set-drawing-tool', (event, data) => {
+    try {
+      if (window.__TVSync && typeof window.__TVSync.selectDrawingTool === 'function') {
+        window.__TVSync.selectDrawingTool(data.tool);
+      }
+    } catch(e) {}
+  });
+
+  ipcRenderer.on('set-chart-info-visible', (event, data) => {
+    try {
+      if (window.__TVSync && typeof window.__TVSync.setChartInfoVisible === 'function') {
+        window.__TVSync.setChartInfoVisible(!!data.visible);
+      }
+    } catch(e) {}
+  });
+
+  ipcRenderer.on('update-chart-info', (event, data) => {
+    try {
+      if (window.__TVSync && typeof window.__TVSync.updateChartInfo === 'function') {
+        window.__TVSync.updateChartInfo(data.symbol, data.timeframe, data.broker);
+      }
+    } catch(e) {}
+  });
+
+
+  function triggerSaveLayout() {
+    try {
+      const saveBtn = document.querySelector('#header-toolbar-save-load, [data-name="save-load-menu"], button[data-tooltip*="Save"]');
+      if (saveBtn) {
+        saveBtn.click();
+      } else {
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: 's', ctrlKey: true, bubbles: true }));
+      }
+      return true;
+    } catch(e) { return false; }
+  }
+
+  // Auto-save drawings whenever mouse is released (debounced 1.2s)
+  let saveDebounceTimer = null;
+  document.addEventListener('mouseup', () => {
+    if (saveDebounceTimer) clearTimeout(saveDebounceTimer);
+    saveDebounceTimer = setTimeout(() => {
+      triggerSaveLayout();
+    }, 1200);
+  }, { passive: true });
+
+  ipcRenderer.on('set-symbol', (event, data) => {
+    const targetSymbol = data.symbol;
+    if (!targetSymbol) return;
+
+    window.postMessage({ type: 'TV_SYNC_EXEC_SET_SYMBOL', symbol: targetSymbol }, '*');
+
+    // Attempt in-page search dialog
+    try {
+      const symbolBtn = document.querySelector('#header-toolbar-symbol-search, [data-name="legend-series-item"]');
+      if (symbolBtn) {
+        symbolBtn.click();
+        setTimeout(() => {
+          const input = document.querySelector('input[data-role="search"], input[type="text"][class*="search"]');
+          if (input) {
+            input.value = targetSymbol;
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            input.dispatchEvent(new Event('change', { bubbles: true }));
+            setTimeout(() => {
+              input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', keyCode: 13, which: 13, bubbles: true }));
+              input.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter', keyCode: 13, which: 13, bubbles: true }));
+            }, 120);
+          }
+        }, 80);
+      }
+    } catch(e) {}
+  });
+
+  ipcRenderer.on('set-timeframe', (event, data) => {
+    const targetTf = data.timeframe;
+    if (!targetTf) return;
+
+    window.postMessage({ type: 'TV_SYNC_EXEC_SET_TIMEFRAME', timeframe: targetTf }, '*');
+
+    const tfNorm = String(targetTf).toUpperCase();
+    const map = {
+      '1': ['1', '1M', '1 MINUTE'],
+      '3': ['3', '3M'],
+      '5': ['5', '5M', '5 MINUTES'],
+      '15': ['15', '15M', '15 MINUTES'],
+      '30': ['30', '30M'],
+      '60': ['60', '1H', '1 HOUR'],
+      '120': ['120', '2H'],
+      '240': ['240', '4H', '4 HOURS'],
+      'D': ['1D', 'D', 'DAY', '1 DAY'],
+      '1D': ['1D', 'D', 'DAY', '1 DAY'],
+      'W': ['1W', 'W', 'WEEK', '1 WEEK'],
+      '1W': ['1W', 'W', 'WEEK', '1 WEEK'],
+      'M': ['1M', 'M', 'MONTH', '1 MONTH'],
+      '1M': ['1M', 'M', 'MONTH', '1 MONTH']
+    };
+    const targets = map[tfNorm] || [tfNorm];
+
+    try {
+      const buttons = Array.from(document.querySelectorAll('#header-toolbar-intervals button, #header-toolbar-intervals [role="button"], [data-value], [data-name="interval-button"]'));
+      let clicked = false;
+      for (let b of buttons) {
+        const txt = (b.textContent || '').trim().toUpperCase();
+        const val = (b.getAttribute('data-value') || '').trim().toUpperCase();
+        if (targets.includes(txt) || targets.includes(val)) {
+          b.click();
+          clicked = true;
+          break;
+        }
+      }
+
+      if (!clicked) {
+        const dropdown = document.querySelector('#header-toolbar-intervals [class*="menu-"], #header-toolbar-intervals [data-name="menu-inner"], #header-toolbar-intervals button[class*="arrow"]');
+        if (dropdown) {
+          dropdown.click();
+          setTimeout(() => {
+            const items = Array.from(document.querySelectorAll('div[data-name="menu-inner"] [role="button"], div[role="menuitem"]'));
+            for (let it of items) {
+              const itText = (it.textContent || '').trim().toUpperCase();
+              if (targets.some(t => itText === t || itText.startsWith(t + ' '))) {
+                it.click();
+                return;
+              }
+            }
+          }, 100);
+        }
+      }
+    } catch(e) {}
+  });
+
+  // Force cloud save of drawings / layout
+  ipcRenderer.on('sync-drawings', () => {
+    triggerSaveLayout();
+    setTimeout(() => {
+      ipcRenderer.sendToHost('chart-drawings-saved', { paneId });
+    }, 400);
+  });
+
+  // --- AUTOMATIC CONNECTION RECOVERY & ERROR SUPPRESSION (Lightweight, Zero-CPU overhead) ---
+  function setupConnectionErrorRecovery() {
+    function recoverConnection() {
+      try {
+        // 1. Direct targeted selector for TradingView reconnect button
+        const reconnectBtn = document.querySelector('button[data-name="reconnect"], button[class*="reconnect"], [data-dialog-name="reconnect"] button');
+        if (reconnectBtn && reconnectBtn.offsetParent !== null) {
+          reconnectBtn.click();
+          return;
+        }
+
+        // 2. Dismiss blocking connection-loss modals if present
+        const modal = document.querySelector('[data-dialog-name="connection-error"], [data-dialog-name="multiple-tabs-limit"], [data-dialog-name="session-limit"]');
+        if (modal) {
+          const closeBtn = modal.querySelector('button[data-name="close"], [class*="close-"], button[aria-label="Close"]');
+          if (closeBtn) {
+            closeBtn.click();
+          } else {
+            modal.style.setProperty('display', 'none', 'important');
+          }
+        }
+      } catch(e) {}
+    }
+
+    // Relaxed periodic check every 3.5s (Zero impact on drawing performance)
+    setInterval(recoverConnection, 3500);
+  }
+
+  // Initialize once DOM is ready
+  function initPreload() {
+    try { applyInitialClasses(); } catch(e) {}
+    try { cleanUI(); } catch(e) {}
+    try { createChartInfoOverlay(); } catch(e) {}
+    try { enforceCleanLayout(); } catch(e) {}
+    try { setupConnectionErrorRecovery(); } catch(e) {}
+    if (window.__TVSync && typeof window.__TVSync.ensureFullBleedLayout === 'function') {
+      try { window.__TVSync.ensureFullBleedLayout(); } catch(e) {}
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPreload);
+  } else {
+    initPreload();
+  }
+})();

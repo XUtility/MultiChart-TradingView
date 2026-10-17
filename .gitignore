@@ -1,10 +1,20 @@
 node_modules/
 dist/
+dist_staging/
+release_build/
+resources/
 build/
 scratch/
 temp_inspect_data_*
 *.log
 *.tmp
 *.zip
+*.exe
+*.pdb
 .DS_Store
 Thumbs.db
+current_screen.png
+
+# Tauri build artifacts
+src-tauri/target/
+src-tauri/gen/schemas/

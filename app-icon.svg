@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#181c27"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#26a69a"/>
+      <stop offset="100%" stop-color="#1e8278"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Squircle with subtle border -->
+  <rect x="8" y="8" width="496" height="496" rx="108" fill="url(#bgGrad)" stroke="rgba(255,255,255,0.12)" stroke-width="6"/>
+
+  <!-- Left Chart Pane (Green) -->
+  <rect x="52" y="52" width="186" height="408" rx="20" fill="url(#greenGrad)"/>
+
+  <!-- Right Top Chart Pane (Blue) -->
+  <rect x="274" y="52" width="186" height="186" rx="20" fill="url(#blueGrad)"/>
+
+  <!-- Right Bottom Chart Pane (Green) -->
+  <rect x="274" y="274" width="186" height="186" rx="20" fill="url(#greenGrad)"/>
+</svg>

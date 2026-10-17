@@ -1,6 +1,11 @@
 @echo off
-title TradingView Multi-Window SplitSync
+title MultiChart-TradingView
 cd /d "%~dp0"
-taskkill /F /IM electron.exe >nul 2>&1
-start "" "node_modules\electron\dist\electron.exe" .
-exit
+if exist "%~dp0MultiChart-TradingView.exe" (
+    start "" "%~dp0MultiChart-TradingView.exe"
+    exit
+)
+if exist "%~dp0run-tauri.bat" (
+    call "%~dp0run-tauri.bat"
+    exit
+)

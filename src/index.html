@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TradingView Multi-Window & SplitSync</title>
+  <link rel="icon" type="image/png" href="icon32.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -47,31 +48,233 @@
           </svg>
         </button>
 
-        <div id="layoutMenu" class="dropdown-menu">
-          <div class="dropdown-title">Split Screen Layouts</div>
-          <div class="layout-option" data-layout="1">
-            <div class="layout-preview-icon"></div>
-            <span>Single (1 Chart)</span>
+        <div id="layoutMenu" class="dropdown-menu tv-layout-dropdown">
+          <!-- Row 1: Single Chart -->
+          <div class="tv-layout-row">
+            <span class="tv-layout-row-num">1</span>
+            <div class="tv-layout-options">
+              <button class="tv-layout-btn" data-layout="1" title="Single (1 Chart)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+            </div>
           </div>
-          <div class="layout-option active" data-layout="2v">
-            <div class="layout-preview-icon split-2v"><div></div><div></div></div>
-            <span>2 Split Vertical (Edge Style)</span>
+
+          <!-- Row 2: 2 Charts -->
+          <div class="tv-layout-row">
+            <span class="tv-layout-row-num">2</span>
+            <div class="tv-layout-options">
+              <button class="tv-layout-btn active" data-layout="2v" title="2 Charts (Vertical Split)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="2h" title="2 Charts (Horizontal Split)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+            </div>
           </div>
-          <div class="layout-option" data-layout="2h">
-            <div class="layout-preview-icon split-2h"><div></div><div></div></div>
-            <span>2 Split Horizontal</span>
+
+          <!-- Row 3: 3 Charts -->
+          <div class="tv-layout-row">
+            <span class="tv-layout-row-num">3</span>
+            <div class="tv-layout-options">
+              <button class="tv-layout-btn" data-layout="3v" title="3 Columns (Vertical)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="10" y1="1.5" x2="10" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="18" y1="1.5" x2="18" y2="18.5" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="3h" title="3 Rows (Horizontal)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="7" x2="26.5" y2="7" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="13" x2="26.5" y2="13" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="3-left" title="3 Charts (1 Left / 2 Right)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="3-right" title="3 Charts (2 Left / 1 Right)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="14" y2="10" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="3-top" title="3 Charts (1 Top / 2 Bottom)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="10" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="3-bottom" title="3 Charts (2 Top / 1 Bottom)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="10" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+            </div>
           </div>
-          <div class="layout-option" data-layout="3">
-            <div class="layout-preview-icon split-2v"><div></div><div style="display:flex;flex-direction:column;"><div style="flex:1;border-bottom:1px solid #787b86"></div><div style="flex:1"></div></div></div>
-            <span>3 Charts (1 Left / 2 Right)</span>
+
+          <!-- Row 4: 4 Charts -->
+          <div class="tv-layout-row">
+            <span class="tv-layout-row-num">4</span>
+            <div class="tv-layout-options">
+              <button class="tv-layout-btn" data-layout="4-grid" title="4 Grid (2x2)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="4h" title="4 Rows (Horizontal)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="5.7" x2="26.5" y2="5.7" stroke="currentColor" stroke-width="1.2"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="1.5" y1="14.3" x2="26.5" y2="14.3" stroke="currentColor" stroke-width="1.2"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="4v" title="4 Columns (Vertical)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="7.7" y1="1.5" x2="7.7" y2="18.5" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.2"/><line x1="20.3" y1="1.5" x2="20.3" y2="18.5" stroke="currentColor" stroke-width="1.2"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="4-left" title="4 Charts (1 Left / 3 Right)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="7" x2="26.5" y2="7" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="13" x2="26.5" y2="13" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="4-right" title="4 Charts (3 Left / 1 Right)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="7" x2="14" y2="7" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="13" x2="14" y2="13" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="4-top" title="4 Charts (1 Top / 3 Bottom)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="10" y1="10" x2="10" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="18" y1="10" x2="18" y2="18.5" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="4-bottom" title="4 Charts (3 Top / 1 Bottom)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="10" y1="1.5" x2="10" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="18" y1="1.5" x2="18" y2="10" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="4-cols-2-1" title="4 Charts (2 Left / 2 Right Stacked)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="10" y1="1.5" x2="10" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="18" y1="1.5" x2="18" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="18" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="4-cols-1-2" title="4 Charts (2 Left Stacked / 2 Right)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="10" y1="1.5" x2="10" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="18" y1="1.5" x2="18" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="10" y2="10" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="4-rows-2-1" title="4 Charts (2 Top / 2 Bottom Rows)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="14.5" x2="26.5" y2="14.5" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+            </div>
           </div>
-          <div class="layout-option" data-layout="4">
-            <div class="layout-preview-icon split-4"><div></div><div></div><div></div><div></div></div>
-            <span>4 Grid (2x2)</span>
+
+          <!-- Row 5: 5 Charts -->
+          <div class="tv-layout-row">
+            <span class="tv-layout-row-num">5</span>
+            <div class="tv-layout-options">
+              <button class="tv-layout-btn" data-layout="5-top" title="5 Charts (1 Top / 4 Bottom)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="9" x2="26.5" y2="9" stroke="currentColor" stroke-width="1.3"/><line x1="7.7" y1="9" x2="7.7" y2="18.5" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="9" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.2"/><line x1="20.3" y1="9" x2="20.3" y2="18.5" stroke="currentColor" stroke-width="1.2"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="5v" title="5 Columns (Vertical)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="6.5" y1="1.5" x2="6.5" y2="18.5" stroke="currentColor" stroke-width="1.1"/><line x1="11.5" y1="1.5" x2="11.5" y2="18.5" stroke="currentColor" stroke-width="1.1"/><line x1="16.5" y1="1.5" x2="16.5" y2="18.5" stroke="currentColor" stroke-width="1.1"/><line x1="21.5" y1="1.5" x2="21.5" y2="18.5" stroke="currentColor" stroke-width="1.1"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="5h" title="5 Rows (Horizontal)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="5" x2="26.5" y2="5" stroke="currentColor" stroke-width="1.1"/><line x1="1.5" y1="8.3" x2="26.5" y2="8.3" stroke="currentColor" stroke-width="1.1"/><line x1="1.5" y1="11.6" x2="26.5" y2="11.6" stroke="currentColor" stroke-width="1.1"/><line x1="1.5" y1="15" x2="26.5" y2="15" stroke="currentColor" stroke-width="1.1"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="5-left" title="5 Charts (1 Left / 4 Right)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="5.7" x2="26.5" y2="5.7" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="14.3" x2="26.5" y2="14.3" stroke="currentColor" stroke-width="1.2"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="5-right" title="5 Charts (4 Left / 1 Right)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="5.7" x2="14" y2="5.7" stroke="currentColor" stroke-width="1.2"/><line x1="1.5" y1="10" x2="14" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="1.5" y1="14.3" x2="14" y2="14.3" stroke="currentColor" stroke-width="1.2"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="5-grid-2-3" title="5 Charts (2 Top / 3 Bottom)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="10" y1="10" x2="10" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="18" y1="10" x2="18" y2="18.5" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="5-grid-3-2" title="5 Charts (3 Top / 2 Bottom)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="10" y1="1.5" x2="10" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="18" y1="1.5" x2="18" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="10" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="5-bottom" title="5 Charts (4 Top / 1 Bottom)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="11" x2="26.5" y2="11" stroke="currentColor" stroke-width="1.3"/><line x1="7.7" y1="1.5" x2="7.7" y2="11" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="1.5" x2="14" y2="11" stroke="currentColor" stroke-width="1.2"/><line x1="20.3" y1="1.5" x2="20.3" y2="11" stroke="currentColor" stroke-width="1.2"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="5-cols-2-3" title="5 Charts (2 Left / 3 Right Stacked)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="10" y1="1.5" x2="10" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="18" y1="1.5" x2="18" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="18" y1="7" x2="26.5" y2="7" stroke="currentColor" stroke-width="1.3"/><line x1="18" y1="13" x2="26.5" y2="13" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="5-cols-3-2" title="5 Charts (3 Left Stacked / 2 Right)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="10" y1="1.5" x2="10" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="18" y1="1.5" x2="18" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="7" x2="10" y2="7" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="13" x2="10" y2="13" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+            </div>
           </div>
-          <div class="layout-option" data-layout="6">
-            <div class="layout-preview-icon split-4" style="grid-template-columns:1fr 1fr 1fr;"><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <span>6 Grid (3x2)</span>
+
+          <!-- Row 6: 6 Charts -->
+          <div class="tv-layout-row">
+            <span class="tv-layout-row-num">6</span>
+            <div class="tv-layout-options">
+              <button class="tv-layout-btn" data-layout="6-grid" title="6 Grid (3x2)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="10" y1="1.5" x2="10" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="18" y1="1.5" x2="18" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="6v" title="6 Columns (Vertical)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="5.6" y1="1.5" x2="5.6" y2="18.5" stroke="currentColor" stroke-width="1.0"/><line x1="9.8" y1="1.5" x2="9.8" y2="18.5" stroke="currentColor" stroke-width="1.0"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.0"/><line x1="18.2" y1="1.5" x2="18.2" y2="18.5" stroke="currentColor" stroke-width="1.0"/><line x1="22.4" y1="1.5" x2="22.4" y2="18.5" stroke="currentColor" stroke-width="1.0"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="6h" title="6 Rows (Horizontal)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="4.3" x2="26.5" y2="4.3" stroke="currentColor" stroke-width="1.0"/><line x1="1.5" y1="7.1" x2="26.5" y2="7.1" stroke="currentColor" stroke-width="1.0"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.0"/><line x1="1.5" y1="12.8" x2="26.5" y2="12.8" stroke="currentColor" stroke-width="1.0"/><line x1="1.5" y1="15.6" x2="26.5" y2="15.6" stroke="currentColor" stroke-width="1.0"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="6-grid-2x3" title="6 Grid (2x3)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="7" x2="26.5" y2="7" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="13" x2="26.5" y2="13" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="6-top-2-4" title="6 Charts (2 Top / 4 Bottom)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="7.7" y1="10" x2="7.7" y2="18.5" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="10" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.2"/><line x1="20.3" y1="10" x2="20.3" y2="18.5" stroke="currentColor" stroke-width="1.2"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="6-top-4-2" title="6 Charts (4 Top / 2 Bottom)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="7.7" y1="1.5" x2="7.7" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="1.5" x2="14" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="20.3" y1="1.5" x2="20.3" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="10" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Row 7: 7 Charts -->
+          <div class="tv-layout-row">
+            <span class="tv-layout-row-num">7</span>
+            <div class="tv-layout-options">
+              <button class="tv-layout-btn" data-layout="7-grid-4-3" title="7 Charts (4 Top / 3 Bottom)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/><line x1="7.7" y1="1.5" x2="7.7" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="1.5" x2="14" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="20.3" y1="1.5" x2="20.3" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="10" y1="10" x2="10" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="18" y1="10" x2="18" y2="18.5" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="7v" title="7 Columns (Vertical)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="5.1" y1="1.5" x2="5.1" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="8.6" y1="1.5" x2="8.6" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="12.2" y1="1.5" x2="12.2" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="15.8" y1="1.5" x2="15.8" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="19.4" y1="1.5" x2="19.4" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="22.9" y1="1.5" x2="22.9" y2="18.5" stroke="currentColor" stroke-width="0.9"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="7-left" title="7 Charts (1 Left / 6 Right)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="7" x2="26.5" y2="7" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="13" x2="26.5" y2="13" stroke="currentColor" stroke-width="1.3"/><line x1="20.3" y1="1.5" x2="20.3" y2="18.5" stroke="currentColor" stroke-width="1.2"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Row 8: 8 Charts -->
+          <div class="tv-layout-row">
+            <span class="tv-layout-row-num">8</span>
+            <div class="tv-layout-options">
+              <button class="tv-layout-btn" data-layout="8-grid" title="8 Grid (4x2)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="7.7" y1="1.5" x2="7.7" y2="18.5" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.2"/><line x1="20.3" y1="1.5" x2="20.3" y2="18.5" stroke="currentColor" stroke-width="1.2"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.3"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="8-grid-2x4" title="8 Grid (2x4)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="5.7" x2="26.5" y2="5.7" stroke="currentColor" stroke-width="1.2"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="1.5" y1="14.3" x2="26.5" y2="14.3" stroke="currentColor" stroke-width="1.2"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="8v" title="8 Columns (Vertical)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="4.6" y1="1.5" x2="4.6" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="7.7" y1="1.5" x2="7.7" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="10.8" y1="1.5" x2="10.8" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="17.1" y1="1.5" x2="17.1" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="20.3" y1="1.5" x2="20.3" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="23.4" y1="1.5" x2="23.4" y2="18.5" stroke="currentColor" stroke-width="0.9"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="8h" title="8 Rows (Horizontal)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="3.6" x2="26.5" y2="3.6" stroke="currentColor" stroke-width="0.9"/><line x1="1.5" y1="5.7" x2="26.5" y2="5.7" stroke="currentColor" stroke-width="0.9"/><line x1="1.5" y1="7.9" x2="26.5" y2="7.9" stroke="currentColor" stroke-width="0.9"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="0.9"/><line x1="1.5" y1="12.1" x2="26.5" y2="12.1" stroke="currentColor" stroke-width="0.9"/><line x1="1.5" y1="14.3" x2="26.5" y2="14.3" stroke="currentColor" stroke-width="0.9"/><line x1="1.5" y1="16.4" x2="26.5" y2="16.4" stroke="currentColor" stroke-width="0.9"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Row 9: 9 Charts -->
+          <div class="tv-layout-row">
+            <span class="tv-layout-row-num">9</span>
+            <div class="tv-layout-options">
+              <button class="tv-layout-btn" data-layout="9-grid" title="9 Grid (3x3)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="9.8" y1="1.5" x2="9.8" y2="18.5" stroke="currentColor" stroke-width="1.2"/><line x1="18.2" y1="1.5" x2="18.2" y2="18.5" stroke="currentColor" stroke-width="1.2"/><line x1="1.5" y1="7.2" x2="26.5" y2="7.2" stroke="currentColor" stroke-width="1.2"/><line x1="1.5" y1="12.8" x2="26.5" y2="12.8" stroke="currentColor" stroke-width="1.2"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Row 10: 10 Charts -->
+          <div class="tv-layout-row">
+            <span class="tv-layout-row-num">10</span>
+            <div class="tv-layout-options">
+              <button class="tv-layout-btn" data-layout="10-grid" title="10 Grid (5x2)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="6.5" y1="1.5" x2="6.5" y2="18.5" stroke="currentColor" stroke-width="1.1"/><line x1="11.5" y1="1.5" x2="11.5" y2="18.5" stroke="currentColor" stroke-width="1.1"/><line x1="16.5" y1="1.5" x2="16.5" y2="18.5" stroke="currentColor" stroke-width="1.1"/><line x1="21.5" y1="1.5" x2="21.5" y2="18.5" stroke="currentColor" stroke-width="1.1"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Row 12: 12 Charts -->
+          <div class="tv-layout-row">
+            <span class="tv-layout-row-num">12</span>
+            <div class="tv-layout-options">
+              <button class="tv-layout-btn" data-layout="12-grid" title="12 Grid (4x3)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="7.2" x2="26.5" y2="7.2" stroke="currentColor" stroke-width="1.1"/><line x1="1.5" y1="12.8" x2="26.5" y2="12.8" stroke="currentColor" stroke-width="1.1"/><line x1="7.7" y1="1.5" x2="7.7" y2="18.5" stroke="currentColor" stroke-width="1.1"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.1"/><line x1="20.3" y1="1.5" x2="20.3" y2="18.5" stroke="currentColor" stroke-width="1.1"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Row 16: 16 Charts -->
+          <div class="tv-layout-row">
+            <span class="tv-layout-row-num">16</span>
+            <div class="tv-layout-options">
+              <button class="tv-layout-btn" data-layout="16-grid" title="16 Grid (4x4)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="5.7" x2="26.5" y2="5.7" stroke="currentColor" stroke-width="1.1"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.1"/><line x1="1.5" y1="14.3" x2="26.5" y2="14.3" stroke="currentColor" stroke-width="1.1"/><line x1="7.7" y1="1.5" x2="7.7" y2="18.5" stroke="currentColor" stroke-width="1.1"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.1"/><line x1="20.3" y1="1.5" x2="20.3" y2="18.5" stroke="currentColor" stroke-width="1.1"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="16-grid-2x8" title="16 Grid (8x2)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="1.1"/><line x1="4.6" y1="1.5" x2="4.6" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="7.7" y1="1.5" x2="7.7" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="10.8" y1="1.5" x2="10.8" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="17.1" y1="1.5" x2="17.1" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="20.2" y1="1.5" x2="20.2" y2="18.5" stroke="currentColor" stroke-width="0.9"/><line x1="23.3" y1="1.5" x2="23.3" y2="18.5" stroke="currentColor" stroke-width="0.9"/></svg>
+              </button>
+              <button class="tv-layout-btn" data-layout="16-grid-8x2" title="16 Grid (2x8)">
+                <svg viewBox="0 0 28 20"><rect x="1.5" y="1.5" width="25" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="14" y1="1.5" x2="14" y2="18.5" stroke="currentColor" stroke-width="1.1"/><line x1="1.5" y1="3.6" x2="26.5" y2="3.6" stroke="currentColor" stroke-width="0.9"/><line x1="1.5" y1="5.7" x2="26.5" y2="5.7" stroke="currentColor" stroke-width="0.9"/><line x1="1.5" y1="7.8" x2="26.5" y2="7.8" stroke="currentColor" stroke-width="0.9"/><line x1="1.5" y1="10" x2="26.5" y2="10" stroke="currentColor" stroke-width="0.9"/><line x1="1.5" y1="12.1" x2="26.5" y2="12.1" stroke="currentColor" stroke-width="0.9"/><line x1="1.5" y1="14.2" x2="26.5" y2="14.2" stroke="currentColor" stroke-width="0.9"/><line x1="1.5" y1="16.3" x2="26.5" y2="16.3" stroke="currentColor" stroke-width="0.9"/></svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -99,30 +302,78 @@
         <div id="symbolAutocompleteList" class="symbol-autocomplete-dropdown"></div>
       </div>
 
-      <!-- Vertical Watchlist Dropdown Button & Menu -->
+      <!-- Master Timeframe Dropdown (Sets Active Chart Timeframe / Custom Timeframes) -->
+      <div class="top-tf-dropdown-wrap">
+        <button id="btnTopTimeframe" class="btn-top-tf" title="Select or type custom timeframe for active chart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span id="topTimeframeLabel">1D</span>
+          <svg class="chevron-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M6 9l6 6 6-6"></path>
+          </svg>
+        </button>
+
+        <div id="topTfDropdownMenu" class="dropdown-menu top-tf-menu-dropdown">
+          <div class="tf-menu-sec-title">Minutes</div>
+          <div class="tf-menu-grid tf-grid-3">
+            <button type="button" class="top-tf-btn" data-tf="1">1m</button>
+            <button type="button" class="top-tf-btn" data-tf="3">3m</button>
+            <button type="button" class="top-tf-btn" data-tf="5">5m</button>
+            <button type="button" class="top-tf-btn" data-tf="15">15m</button>
+            <button type="button" class="top-tf-btn" data-tf="30">30m</button>
+            <button type="button" class="top-tf-btn" data-tf="45">45m</button>
+          </div>
+          <div class="tf-menu-sec-title">Hours</div>
+          <div class="tf-menu-grid tf-grid-4">
+            <button type="button" class="top-tf-btn" data-tf="60">1h</button>
+            <button type="button" class="top-tf-btn" data-tf="120">2h</button>
+            <button type="button" class="top-tf-btn" data-tf="180">3h</button>
+            <button type="button" class="top-tf-btn" data-tf="240">4h</button>
+          </div>
+          <div class="tf-menu-sec-title">Days & Weeks</div>
+          <div class="tf-menu-grid tf-grid-3">
+            <button type="button" class="top-tf-btn" data-tf="1D">1D</button>
+            <button type="button" class="top-tf-btn" data-tf="1W">1W</button>
+            <button type="button" class="top-tf-btn" data-tf="1M">1M</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Multiple Watchlists Dropdown Button & Panel -->
       <div class="watchlist-dropdown-wrap">
-        <button id="btnWatchlistToggle" class="btn-watchlist-toggle" title="View & manage your saved pairs list">
+        <button id="btnWatchlistToggle" class="btn-watchlist-toggle" title="View & manage multiple watchlists">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
           </svg>
-          <span>Watchlist</span>
+          <span id="watchlistActiveTitle">Watchlist</span>
           <span id="watchlistBadgeCount" class="watchlist-badge">0</span>
           <svg class="chevron-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M6 9l6 6 6-6"></path>
           </svg>
         </button>
 
-        <div id="watchlistDropdownMenu" class="watchlist-menu-dropdown">
-          <div class="watchlist-menu-header">
-            <span class="watchlist-menu-title">Saved Pairs</span>
-            <span class="watchlist-menu-hint">Click to switch symbol</span>
+        <div id="watchlistDropdownMenu" class="watchlist-menu-dropdown multi-watchlist-panel">
+          <!-- Multi-Watchlist Tabs Bar -->
+          <div class="watchlist-nav-header">
+            <div id="watchlistTabsBar" class="watchlist-tabs-bar">
+              <!-- Dynamically populated: ⭐ Favorites, 🪙 Crypto, 💱 Forex, 📈 Stocks, + New -->
+            </div>
+            <button id="btnWatchlistNewTab" class="btn-watchlist-new-tab" title="Create new custom watchlist">+</button>
           </div>
+
           <div class="watchlist-quick-add">
-            <input type="text" id="inputWatchlistQuickAdd" placeholder="Add custom pair (e.g. OANDA:EURUSD)..." autocomplete="off" />
-            <button id="btnWatchlistQuickAdd" title="Add to list">+</button>
+            <input type="text" id="inputWatchlistQuickAdd" placeholder="Add pair to current list (e.g. BTCUSDT, EURUSD)..." autocomplete="off" />
+            <button id="btnWatchlistQuickAdd" title="Add to current list">+</button>
           </div>
+
           <div id="watchlistVerticalList" class="watchlist-vertical-items">
-            <!-- Dynamically populated from localStorage -->
+            <!-- Dynamically populated from active watchlist -->
+          </div>
+
+          <div class="watchlist-footer">
+            <button id="btnDeleteCurrentWatchlist" class="btn-delete-watchlist" style="display:none;" title="Delete current custom watchlist">Delete this watchlist</button>
           </div>
         </div>
       </div>
@@ -137,10 +388,6 @@
     <div class="header-right">
       <!-- Sync Controls -->
       <div class="sync-controls">
-        <button id="btnToggleCrosshairSync" class="sync-toggle-btn active" title="Synchronize crosshair across all charts and windows in real-time">
-          <span class="sync-indicator"></span>
-          <span>Crosshair</span>
-        </button>
         <button id="btnToggleSymbolSync" class="sync-toggle-btn active" title="Synchronize ticker/symbol across all charts and windows">
           <span class="sync-indicator"></span>
           <span>Symbol</span>
@@ -197,14 +444,7 @@
         </svg>
       </button>
 
-      <!-- Account / Sign In Button -->
-      <button id="btnAccountLogin" class="btn-account-login" title="Account & Cloud Sync (Sign in with Google)">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
-        <span id="accountLoginText">Sign In</span>
-      </button>
+
 
       <!-- Help / Shortcuts -->
       <button id="btnHelp" class="icon-btn" title="Shortcuts & Multi-Window Guide">
@@ -235,8 +475,7 @@
         <p>A high-performance standalone desktop terminal for multi-chart TradingView workflows:</p>
         <ul>
           <li><strong>Multi-Window (Ctrl+N):</strong> Open new independent windows. Move them across multiple physical monitors.</li>
-          <li><strong>Cross-Window Crosshair Sync:</strong> Moving your mouse anywhere displays synchronized crosshairs and timestamps across all charts and screens in real-time.</li>
-          <li><strong>Symbol Sync:</strong> Changing symbols in any window or via the Watchlist updates all synchronized charts simultaneously.</li>
+          <li><strong>Symbol Sync:</strong> Toggle between synchronized charts across all panes or independent symbols per chart.</li>
           <li><strong>Custom Watchlist:</strong> Add your favorite tickers using the <code>+</code> button. Click any ticker to view, or click <code>&times;</code> to remove.</li>
           <li><strong>Drawings Cloud Sync (Ctrl+S):</strong> Instantly saves line tools, Fibonacci levels, and technical analysis to your TradingView account.</li>
           <li><strong>Edge Split-Screen:</strong> Smooth draggable splitters with 50/50 double-click reset and 2V, 2H, 3-Chart, 4-Grid, and 6-Grid presets.</li>
@@ -273,90 +512,7 @@
     </div>
   </div>
 
-  <!-- ACCOUNT / SIGN IN MODAL -->
-  <div id="accountModal" class="modal-backdrop">
-    <div class="modal-card account-modal-card">
-      <div class="modal-header">
-        <div class="modal-header-left">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#2962ff" stroke-width="2">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-          </svg>
-          <span class="modal-title-text">TradingView Account & Google Sign In</span>
-        </div>
-        <button id="btnCloseAccount" class="modal-close-btn">&times;</button>
-      </div>
-      <div class="modal-body account-modal-body">
-        <div id="accountStatusBox" class="account-status-box">
-          <span class="account-status-dot"></span>
-          <span id="accountStatusVal" class="account-status-text">Checking login status...</span>
-        </div>
 
-        <div class="login-cards-container">
-          <!-- Method 1: Google Sign In -->
-          <div class="login-card primary">
-            <div class="login-card-header">
-              <svg viewBox="0 0 24 24" width="22" height="22">
-                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-              </svg>
-              <h4>Option 1: Sign in with Google (ورود مستقیم با گوگل)</h4>
-            </div>
-            <p>پنجره رسمی گوگل بدون خطای امنیتی باز می‌شود. کافیست اکانت گوگل خود را انتخاب کنید تا مستقیماً وارد شوید.</p>
-            <button id="btnLaunchGoogleLogin" class="btn-card-action primary">Continue with Google</button>
-          </div>
-
-          <!-- Method 2: System Browser (Official TradingView Desktop Connect) -->
-          <div class="login-card">
-            <div class="login-card-header">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2962ff" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-              </svg>
-              <h4>Option 2: Sign in with Browser (اتصال خودکار با مرورگر)</h4>
-            </div>
-            <p>مرورگر پیش‌فرض باز می‌شود و صفحه تأیید دسترسی تریدینگ‌ویو نمایش می‌یابد. با زدن دکمه <strong>Grant Access</strong> برنامه خودکار لاگین می‌شود.</p>
-            <button id="btnOpenExternalBrowser" class="btn-card-action">Launch Browser Sign-in (باز کردن مرورگر)</button>
-
-            <!-- Waiting / Token Ingestion Section -->
-            <div id="browserAuthWaitingArea" class="browser-auth-waiting-area" style="display:none;">
-              <div class="browser-auth-spinner-row">
-                <div class="mini-spinner"></div>
-                <span id="browserAuthStatusText">منتظر تأیید در مرورگر...</span>
-              </div>
-              <p class="browser-auth-subtext">اگر پس از زدن Grant Access مرورگر به برنامه بازنگشت، روی دکمه <strong>Copy secret key</strong> در مرورگر کلیک کنید و دکمه زیر را بزنید:</p>
-              <div class="token-input-row" style="margin-top:6px; display:flex; gap:8px;">
-                <button id="btnPasteSecretKey" class="btn-tool-action primary" style="flex:1;">📋 چسباندن خودکار کلید (Paste Token)</button>
-              </div>
-              <div class="token-manual-row" style="margin-top:6px; display:flex; gap:8px;">
-                <input type="text" id="inputAuthToken" placeholder="یا توکن/لینک را اینجا وارد کنید..." autocomplete="off" style="flex:1; background:#131722; border:1px solid var(--border-color); border-radius:6px; padding:6px 10px; color:#fff; font-size:11px;" />
-                <button id="btnSubmitAuthToken" class="btn-tool-action">ورود</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Fast Cookie Sync -->
-        <div class="cookie-sync-panel">
-          <div class="cookie-sync-header">
-            <span>Fast Session ID Sync (Optional)</span>
-            <span class="cookie-sync-hint">Paste <code>sessionid</code> cookie if already logged in on Chrome/Firefox</span>
-          </div>
-          <div class="cookie-sync-row">
-            <input type="password" id="inputSessionCookie" placeholder="Paste sessionid cookie from browser..." autocomplete="off" />
-            <button id="btnApplySessionCookie" class="btn-tool-action primary">Apply</button>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer account-modal-footer" style="display:flex; justify-content:space-between; align-items:center;">
-        <button id="btnReloadCharts" class="btn-tool-action">Reload All Charts</button>
-        <button id="btnCloseAccountDone" class="btn-tool-action primary">Done</button>
-      </div>
-    </div>
-  </div>
 
   <!-- TOAST NOTIFICATION -->
   <div id="toastNotification" class="toast-popup"></div>

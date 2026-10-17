@@ -1,12 +1,9 @@
 {
-  "name": "tradingview-splitsync",
+  "name": "multichart-tradingview",
   "version": "1.0.0",
-  "description": "TradingView Multi-Window & SplitSync Desktop Terminal",
-  "main": "main.js",
+  "description": "Professional Multi-Window & Multi-Chart TradingView Desktop Terminal (Tauri Edition)",
   "scripts": {
-    "start": "electron ."
-  },
-  "devDependencies": {
-    "electron": "^33.4.11"
+    "tauri:dev": "cargo tauri dev --manifest-path src-tauri/Cargo.toml",
+    "tauri:build": "cargo tauri build --manifest-path src-tauri/Cargo.toml"
   }
 }
