@@ -52,11 +52,22 @@
 | `Double-Click Splitter` | Reset Split Ratio to 50/50 |
 | `Enter` (in search) | Apply Symbol to All Connected Charts |
 
+### 📦 Edition Comparison (مقایسه نسخه‌ها)
+| Feature | ⚡ Tauri Edition (Recommended) | 🌐 Electron Edition |
+| :--- | :--- | :--- |
+| **Download Size (ZIP)** | **~3.1 MB** (97% smaller!) | ~115 MB |
+| **Installed / Extracted Size** | **~7.1 MB** (Single .exe) | ~220 MB (Full folder) |
+| **RAM Usage per Chart** | **~40 - 60 MB** (Native WebView2) | ~150 - 200 MB |
+| **Startup Speed** | Instant (< 0.5s) | ~2 - 3s |
+| **Architecture** | Rust + Native Windows WebView2 | Node.js + Chromium |
+
 ### 📥 Download & Installation
 1. Go to the [Releases](https://github.com/XUtility/MultiChart-TradingView/releases) page.
-2. Download `MultiChart-TradingView-v1.0.0-Portable-x64.zip`.
-3. Extract the folder anywhere on your PC (e.g. `C:\MultiChart`).
-4. Run `MultiChart-TradingView.exe` or `Start-TradingView.bat`.
+2. Download your preferred edition:
+   * **`MultiChart-TradingView-Tauri-v1.0.0-Portable.zip` (3.1 MB - Recommended):** Ultra-lightweight, single `.exe` portable binary.
+   * **`MultiChart-TradingView-v1.0.0-Portable-x64.zip` (115 MB):** Classic Electron edition with bundled Chromium.
+3. Extract the ZIP archive anywhere on your PC.
+4. Run `MultiChart-TradingView.exe` (or `run-tauri.bat`).
 *No installation, admin rights, or extra software required.*
 
 ---
@@ -106,9 +117,11 @@
 
 ### 🚀 نحوه دانلود و اجرا
 1. به صفحه [Releases](https://github.com/XUtility/MultiChart-TradingView/releases) مراجعه کنید.
-2. فایل `MultiChart-TradingView-v1.0.0-Portable-x64.zip` را دانلود کنید.
+2. نسخه مورد نظر خود را انتخاب و دانلود کنید:
+   * **نسخه توری (Tauri Edition - پیشنهادی):** فایل `MultiChart-TradingView-Tauri-v1.0.0-Portable.zip` با **حجم باورنکردنی تنها ۳.۱ مگابایت** و اجرای آنی بدون نیاز به نصب.
+   * **نسخه الکترون (Electron Edition):** فایل `MultiChart-TradingView-v1.0.0-Portable-x64.zip` با حجم ۱۱۵ مگابایت شامل مرورگر کرومیوم مستقل.
 3. فایل زیپ را در هر پوشه‌ای استخراج (Extract) کنید.
-4. روی فایل `MultiChart-TradingView.exe` (یا `Start-TradingView.bat`) دابل کلیک کنید تا برنامه بدون نیاز به هیچ نصب یا نرم‌افزار جانبی اجرا شود.
+4. روی فایل `MultiChart-TradingView.exe` (یا `run-tauri.bat`) دابل کلیک کنید تا برنامه فوراً اجرا شود.
 
 ---
 
