@@ -25,6 +25,10 @@ pub struct ChartPaneInfo {
 
 use std::sync::atomic::{AtomicU64, Ordering};
 static WV_SEQ: AtomicU64 = AtomicU64::new(1);
+/// Newest layout request already applied, as (page session, counter). Requests are async and
+/// overlap whenever a cold webview is being created, and an older one arriving late must never
+/// hide a pane that a newer one just showed. The session makes a shell reload restart the run.
+static SYNC_APPLIED: std::sync::Mutex<(u64, u64)> = std::sync::Mutex::new((0, 0));
 
 /// `sync_chart_views` is async and awaits between webview creations, so two overlapping
 /// IPC calls could both see an empty registry slot and create a webview for the same pane.
@@ -172,10 +176,20 @@ pub mod commands {
     #[tauri::command]
     pub async fn sync_chart_views(
         window: tauri::Window,
+        session: u64,
+        seq: u64,
         panes: Vec<ChartPaneInfo>,
         state: tauri::State<'_, AppState>,
     ) -> Result<(), String> {
         let _guard = SYNC_LOCK.lock().await;
+
+        {
+            let mut last = SYNC_APPLIED.lock().map_err(|e| e.to_string())?;
+            if session < last.0 || (session == last.0 && seq <= last.1) {
+                return Ok(());
+            }
+            *last = (session, seq);
+        }
 
         let app = window.app_handle().clone();
         let global_visible = *state.charts_visible.lock().map_err(|e| e.to_string())?;

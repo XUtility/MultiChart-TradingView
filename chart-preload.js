@@ -49,6 +49,15 @@ window.__tvDispatchMessage = function(channel, data) {
   }
 };
 
+/* If the WebView2 process behind a pane dies, the native handle survives and every later sync
+   just calls show() on a corpse: the cell stays black and nothing can refresh it. Silence from
+   this heartbeat is how the shell detects that and rebuilds the pane. */
+if (paneId) {
+  setInterval(function () {
+    try { ipcRenderer.sendToHost('pane-heartbeat', { at: Date.now() }); } catch(e) {}
+  }, 2500);
+}
+
 /* TradingView paints a bare white (light profile) or black page for the seconds before the
    chart renders, which inside a grid of panes reads as a broken window. Cover it with the
    shell's own background until the first chart canvas is on screen. */

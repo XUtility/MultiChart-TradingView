@@ -2151,6 +2151,10 @@
   if (window.electronAPI && window.electronAPI.onChartMessage) {
     window.electronAPI.onChartMessage((msg) => {
       if (!msg) return;
+      if (msg.channel === 'pane-heartbeat') {
+        if (msg.paneId) paneHeartbeats.set(msg.paneId, Date.now());
+        return;
+      }
       const curTab = getActiveTab();
       const tabPanes = (curTab && curTab.panes) ? curTab.panes : state.panes;
       const targetPane = tabPanes.find(p => p.id === msg.paneId) || tabPanes[0];
@@ -2167,64 +2171,126 @@
 
     if (syncTauriTimer) clearTimeout(syncTauriTimer);
     syncTauriTimer = setTimeout(() => {
-      requestAnimationFrame(() => {
-        const curTab = getActiveTab();
-        if (!curTab) return;
+      let delivered = false;
+      const deliver = () => {
+        if (delivered) return;
+        delivered = true;
+        pushTauriChartBounds();
+      };
+      // The frame callback gives settled layout, but a page with no frames (window minimised
+      // or covered) never runs it, and the lost push leaves a pane hidden for good because the
+      // DOM never changes again. The timer is the guarantee that the request always lands.
+      requestAnimationFrame(deliver);
+      setTimeout(deliver, 120);
+    }, 20);
+  }
 
-        const visiblePanes = getVisiblePanesForTab(curTab);
-        const visibleIds = new Set(visiblePanes.map(p => p.id));
-        const panesToSync = [];
+  function pushTauriChartBounds() {
+    const curTab = getActiveTab();
+    if (!curTab) return;
 
-        // 1. Visible panes of the active tab (visible: true with real client rects)
-        visiblePanes.forEach(pane => {
-          const paneEl = document.getElementById(`container_${pane.id}`);
-          const pAcc = pane.accountId || curTab.accountId || 'acc_1';
-          if (paneEl && paneEl.offsetParent !== null) {
-            const rect = paneEl.getBoundingClientRect();
-            if (rect.width > 20 && rect.height > 20) {
-              panesToSync.push({
-                id: pane.id,
-                x: Math.round(rect.left),
-                y: Math.round(rect.top),
-                width: Math.round(rect.width),
-                height: Math.round(rect.height),
-                symbol: pane.symbol || curTab.symbol || 'BINANCE:BTCUSDT',
-                timeframe: pane.timeframe || '1D',
-                visible: true,
-                account_id: pAcc
-              });
-            }
-          }
-        });
+    const visiblePanes = getVisiblePanesForTab(curTab);
+    const visibleIds = new Set(visiblePanes.map(p => p.id));
+    const panesToSync = [];
 
-        // 2. Inactive panes across active tab and background tabs (visible: false)
-        // Keeps background webviews alive in memory without closing them
-        state.tabs.forEach(tab => {
-          if (Array.isArray(tab.panes)) {
-            tab.panes.forEach(pane => {
-              if (!visibleIds.has(pane.id)) {
-                panesToSync.push({
-                  id: pane.id,
-                  x: 0,
-                  y: 0,
-                  width: 0,
-                  height: 0,
-                  symbol: pane.symbol || tab.symbol || 'BINANCE:BTCUSDT',
-                  timeframe: pane.timeframe || '1D',
-                  visible: false,
-                  account_id: pane.accountId || tab.accountId || 'acc_1'
-                });
-              }
+    // 1. Visible panes of the active tab (visible: true with real client rects)
+    visiblePanes.forEach(pane => {
+      const paneEl = document.getElementById(`container_${pane.id}`);
+      const pAcc = pane.accountId || curTab.accountId || 'acc_1';
+      if (paneEl && paneEl.offsetParent !== null) {
+        const rect = paneEl.getBoundingClientRect();
+        if (rect.width > 20 && rect.height > 20) {
+          panesToSync.push({
+            id: pane.id,
+            x: Math.round(rect.left),
+            y: Math.round(rect.top),
+            width: Math.round(rect.width),
+            height: Math.round(rect.height),
+            symbol: pane.symbol || curTab.symbol || 'BINANCE:BTCUSDT',
+            timeframe: pane.timeframe || '1D',
+            visible: true,
+            account_id: pAcc
+          });
+        }
+      }
+    });
+
+    // 2. Inactive panes across active tab and background tabs (visible: false)
+    // Keeps background webviews alive in memory without closing them
+    state.tabs.forEach(tab => {
+      if (Array.isArray(tab.panes)) {
+        tab.panes.forEach(pane => {
+          if (!visibleIds.has(pane.id)) {
+            panesToSync.push({
+              id: pane.id,
+              x: 0,
+              y: 0,
+              width: 0,
+              height: 0,
+              symbol: pane.symbol || tab.symbol || 'BINANCE:BTCUSDT',
+              timeframe: pane.timeframe || '1D',
+              visible: false,
+              account_id: pane.accountId || tab.accountId || 'acc_1'
             });
           }
         });
+      }
+    });
 
-        if (panesToSync.length > 0) {
-          window.electronAPI.syncChartViews(panesToSync);
-        }
-      });
-    }, 20);
+    if (panesToSync.length > 0) {
+      window.electronAPI.syncChartViews(panesToSync);
+    }
+
+    // Only panes that are on screen are policed: hidden ones are throttled by the browser and
+    // their silence means nothing. Newly visible panes get their clock started here.
+    const now = Date.now();
+    const onScreen = new Set();
+    panesToSync.forEach(p => {
+      if (!p.visible) return;
+      onScreen.add(p.id);
+      if (!paneVisibleSince.has(p.id)) paneVisibleSince.set(p.id, now);
+    });
+    paneVisibleSince.forEach((_, id) => { if (!onScreen.has(id)) paneVisibleSince.delete(id); });
   }
+
+  // --- PANE LIVENESS WATCHDOG ---
+  // A pane whose renderer died keeps answering to show()/hide() while painting nothing, so the
+  // only way back to a live chart is to drop the dead webview and let the next sync build a new
+  // one. That is what the missing heartbeats below trigger.
+  const paneHeartbeats = new Map();
+  const paneVisibleSince = new Map();
+  const PANE_DEAD_MS = 9000;
+
+  setInterval(() => {
+    if (document.hidden) return;
+    const now = Date.now();
+    const dead = [];
+    paneVisibleSince.forEach((since, id) => {
+      const beat = paneHeartbeats.get(id);
+      // Only a pane that proved itself alive once can be declared dead; a cold pane that is
+      // still loading, or one that never comes up at all, must not be rebuilt in a loop.
+      if (beat === undefined) return;
+      if (now - Math.max(beat, since) > PANE_DEAD_MS) dead.push(id);
+    });
+    if (dead.length === 0) return;
+    dead.forEach(id => {
+      paneVisibleSince.delete(id);
+      paneHeartbeats.delete(id);
+    });
+    if (window.electronAPI.closeChartViews) window.electronAPI.closeChartViews(dead).catch(() => {});
+    syncTauriChartBounds();
+  }, 4000);
+
+  // Coming back from a minimised or covered window, replay the current layout once: the
+  // native layer may have missed requests while this page had no frames to run. Restart the
+  // heartbeat grace period too, because throttled pages stop reporting while hidden.
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) return;
+    const now = Date.now();
+    paneVisibleSince.forEach((_, id) => paneVisibleSince.set(id, now));
+    syncTauriChartBounds();
+  });
+
   window.syncTauriChartBounds = syncTauriChartBounds;
 
   // Prevent any browser viewport auto-scroll (locks tab strip and header in place)

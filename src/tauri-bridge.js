@@ -7,6 +7,8 @@
   if (typeof window === 'undefined') return;
 
   window.__chartMessageListeners = window.__chartMessageListeners || [];
+  window.__syncChartSeq = window.__syncChartSeq || 0;
+  window.__syncChartSession = Date.now();
   window.__broadcastSyncListeners = window.__broadcastSyncListeners || [];
   window.__windowCountListeners = window.__windowCountListeners || [];
   window.__sessionLoginListeners = window.__sessionLoginListeners || [];
@@ -81,7 +83,11 @@
     },
 
     // Tauri Native Multi-Chart View Controllers
-    syncChartViews: (panes) => safeInvoke('sync_chart_views', { panes }),
+    // Each push carries a rising sequence number: requests are asynchronous and can overlap,
+    // and the native layer must apply the newest layout, never an older one that arrives late.
+    syncChartViews: (panes) => safeInvoke('sync_chart_views', {
+      panes, session: window.__syncChartSession, seq: ++window.__syncChartSeq
+    }),
     closeChartViews: (paneIds) => safeInvoke('close_chart_views', { paneIds }),
     logToFile: (msg) => safeInvoke('log_to_file', { msg }),
     setChartsVisible: (visible) => safeInvoke('set_charts_visible', { visible }),
