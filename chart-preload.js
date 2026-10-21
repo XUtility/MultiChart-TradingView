@@ -20,6 +20,7 @@ try {
 } catch(e) {}
 
 const __tvMessageHandlers = {};
+const STUDIES_LEGEND_KEY = 'tv-splitsync-studies-legend';
 const ipcRenderer = {
   sendToHost: function(channel, data) {
     if (_ipcRenderer && typeof _ipcRenderer.sendToHost === 'function') {
@@ -48,9 +49,48 @@ window.__tvDispatchMessage = function(channel, data) {
   }
 };
 
+/* TradingView paints a bare white (light profile) or black page for the seconds before the
+   chart renders, which inside a grid of panes reads as a broken window. Cover it with the
+   shell's own background until the first chart canvas is on screen. */
+(function installBootVeil() {
+  const BOOT_TIMEOUT_MS = 10000;
+  const root = document.documentElement;
+  if (!root) { setTimeout(installBootVeil, 15); return; }
+  if (document.getElementById('tv-boot-veil')) return;
+
+  const style = document.createElement('style');
+  style.textContent =
+    '#tv-boot-veil{position:fixed;inset:0;z-index:2147483000;background:#131722;' +
+    'display:flex;align-items:center;justify-content:center;pointer-events:none}' +
+    '#tv-boot-veil i{width:20px;height:20px;border-radius:50%;' +
+    'border:2px solid rgba(209,212,220,.22);border-top-color:#2962ff;' +
+    'animation:tv-boot-spin .8s linear infinite}' +
+    '@keyframes tv-boot-spin{to{transform:rotate(360deg)}}';
+
+  const veil = document.createElement('div');
+  veil.id = 'tv-boot-veil';
+  veil.appendChild(document.createElement('i'));
+  root.appendChild(style);
+  root.appendChild(veil);
+
+  const startedAt = Date.now();
+  const timer = setInterval(() => {
+    let painted = false;
+    const canvases = document.getElementsByTagName('canvas');
+    for (let i = 0; i < canvases.length; i++) {
+      if (canvases[i].width >= 100 && canvases[i].height >= 100) { painted = true; break; }
+    }
+    if (painted || Date.now() - startedAt > BOOT_TIMEOUT_MS) {
+      clearInterval(timer);
+      try { veil.remove(); style.remove(); } catch(e) {}
+    }
+  }, 150);
+})();
+
 (function() {
   let initHideDrawing = false;
   let initCleanMode = true;
+  let initStudiesLegend = true;
   try {
     const urlParams = new URLSearchParams(window.location.search);
     paneId = urlParams.get('pane_id') || paneId;
@@ -60,6 +100,9 @@ window.__tvDispatchMessage = function(channel, data) {
     if (urlParams.has('clean_mode')) {
       initCleanMode = urlParams.get('clean_mode') !== '0' && urlParams.get('clean_mode') !== 'false';
     }
+    // Each account profile has its own storage, so the legend preference is kept here as well
+    // as in the shell; a webview rebuilt after startup restores it without waiting for a push.
+    initStudiesLegend = localStorage.getItem(STUDIES_LEGEND_KEY) !== '0';
   } catch(e) {}
 
   if (!paneId) {
@@ -130,49 +173,39 @@ window.__tvDispatchMessage = function(channel, data) {
     };
   } catch(e) {}
 
-  // 4. WebSocket Optimization: Block secondary push/chat sockets to protect data socket quota
+  // 4. WebSocket Optimization & Live Data Stream Tracking
+  const _activeDataSockets = new Set();
+  window.__activeDataSockets = _activeDataSockets;
+  window.__isTabActive = true;
+
   try {
     const OrigWebSocket = window.WebSocket;
     if (OrigWebSocket) {
-      function GuardedWebSocket(url, protocols) {
-        const urlStr = String(url || '').toLowerCase();
-        // If secondary social/pushstream/chat socket, provide inert mock to preserve socket quota
-        if (
-          urlStr.includes('pushstream.tradingview.com') ||
-          urlStr.includes('chat.tradingview.com') ||
-          urlStr.includes('news-ws') ||
-          urlStr.includes('/social/') ||
-          urlStr.includes('/notifications/')
-        ) {
-          const dummy = new EventTarget();
-          dummy.binaryType = 'blob';
-          dummy.bufferedAmount = 0;
-          dummy.extensions = '';
-          dummy.protocol = '';
-          dummy.readyState = 3; // CLOSED
-          dummy.url = String(url);
-          dummy.send = function() {};
-          dummy.close = function() {};
-          Object.setPrototypeOf(dummy, OrigWebSocket.prototype);
-          return dummy;
-        }
-
+      function TrackedWebSocket(url, protocols) {
         let instance;
         if (protocols !== undefined) {
           instance = new OrigWebSocket(url, protocols);
         } else {
           instance = new OrigWebSocket(url);
         }
+
+        _activeDataSockets.add(instance);
+        const onCleanup = () => {
+          _activeDataSockets.delete(instance);
+        };
+        instance.addEventListener('close', onCleanup);
+        instance.addEventListener('error', onCleanup);
+
         return instance;
       }
 
-      GuardedWebSocket.prototype = OrigWebSocket.prototype;
-      GuardedWebSocket.CONNECTING = OrigWebSocket.CONNECTING || 0;
-      GuardedWebSocket.OPEN = OrigWebSocket.OPEN || 1;
-      GuardedWebSocket.CLOSING = OrigWebSocket.CLOSING || 2;
-      GuardedWebSocket.CLOSED = OrigWebSocket.CLOSED || 3;
+      TrackedWebSocket.prototype = OrigWebSocket.prototype;
+      TrackedWebSocket.CONNECTING = OrigWebSocket.CONNECTING || 0;
+      TrackedWebSocket.OPEN = OrigWebSocket.OPEN || 1;
+      TrackedWebSocket.CLOSING = OrigWebSocket.CLOSING || 2;
+      TrackedWebSocket.CLOSED = OrigWebSocket.CLOSED || 3;
 
-      window.WebSocket = GuardedWebSocket;
+      window.WebSocket = TrackedWebSocket;
     }
   } catch(e) {}
 
@@ -191,6 +224,10 @@ window.__tvDispatchMessage = function(channel, data) {
       } else {
         document.body && document.body.classList.remove('clean-mode');
         document.documentElement && document.documentElement.classList.remove('clean-mode');
+      }
+      if (!initStudiesLegend) {
+        document.body && document.body.classList.add('hide-studies-legend');
+        document.documentElement && document.documentElement.classList.add('hide-studies-legend');
       }
     } catch(e) {}
   }
@@ -235,6 +272,7 @@ window.__tvDispatchMessage = function(channel, data) {
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </button>
+        <button type="button" class="info-badge-studies" title="Indicators, metrics and strategies">ƒ Indicators</button>
       </div>
       <button type="button" class="info-badge-toggle" title="Toggle info badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12">
@@ -310,7 +348,45 @@ window.__tvDispatchMessage = function(channel, data) {
       });
     }
 
+    // Clean mode hides TradingView's top toolbar, so the indicators dialog needs its own entry point.
+    const studiesBtn = chartInfoOverlay.querySelector('.info-badge-studies');
+    if (studiesBtn) {
+      studiesBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openIndicatorsDialog();
+      });
+    }
+
     container.appendChild(chartInfoOverlay);
+  }
+
+  function openIndicatorsDialog() {
+    // Clean mode hides the top toolbar, but its button still handles the click.
+    const btn = document.querySelector('[data-name="open-indicators-dialog"]');
+    if (!btn) return false;
+    btn.click();
+    return true;
+  }
+
+  function updateStudiesBadge() {
+    if (!chartInfoOverlay) return;
+    const studiesBtn = chartInfoOverlay.querySelector('.info-badge-studies');
+    if (!studiesBtn) return;
+    const count = document.querySelectorAll('[class*="item-"][class*="study-"]').length;
+    const label = count > 0 ? `\u0192 ${count}` : '\u0192 Indicators';
+    // Rewriting identical text would re-trigger the layout observer that calls us.
+    if (studiesBtn.textContent !== label) studiesBtn.textContent = label;
+  }
+
+  // The badge is pinned to the top-left, exactly where the chart legend draws its indicator list.
+  function placeBadgeClearOfLegend() {
+    if (!chartInfoOverlay) return;
+    const legend = document.querySelector('[class*="chart-gui-wrapper__legend"]')
+      || document.querySelector('[class*="chart-legend"]');
+    const rect = legend ? legend.getBoundingClientRect() : null;
+    const top = rect && rect.height > 2 ? Math.round(rect.bottom) + 6 : 10;
+    chartInfoOverlay.style.setProperty('top', `${top}px`, 'important');
+    updateStudiesBadge();
   }
 
   // Native Main World TradingView API and layout controller (Zero CSP restrictions)
@@ -425,6 +501,18 @@ window.__tvDispatchMessage = function(channel, data) {
       } else {
         chartInfoOverlay.classList.add('hidden');
       }
+    },
+
+    setStudiesLegendVisible: function(visible) {
+      const show = visible !== false;
+      try { localStorage.setItem(STUDIES_LEGEND_KEY, show ? '1' : '0'); } catch(e) {}
+      [document.body, document.documentElement].forEach(el => {
+        if (!el) return;
+        if (show) el.classList.remove('hide-studies-legend');
+        else el.classList.add('hide-studies-legend');
+      });
+      initStudiesLegend = show;
+      placeBadgeClearOfLegend();
     },
 
     getState: function() {
@@ -1004,6 +1092,29 @@ window.__tvDispatchMessage = function(channel, data) {
         transition: transform 0.15s ease !important;
       }
 
+      .chart-info-overlay .info-badge-studies {
+        display: inline-flex !important;
+        align-items: center !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        background: rgba(41, 98, 255, 0.2) !important;
+        color: #60a5fa !important;
+        border: 1px solid rgba(41, 98, 255, 0.4) !important;
+        padding: 2px 6px !important;
+        border-radius: 4px !important;
+        cursor: pointer !important;
+        transition: all 0.15s ease !important;
+        font-family: inherit !important;
+        line-height: 1 !important;
+      }
+
+      .chart-info-overlay .info-badge-studies:hover {
+        background: rgba(41, 98, 255, 0.4) !important;
+        border-color: #2962ff !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 2px 6px rgba(41, 98, 255, 0.35) !important;
+      }
+
       .chart-info-overlay .info-badge-tf-menu {
         position: absolute !important;
         top: calc(100% + 6px) !important;
@@ -1227,7 +1338,7 @@ window.__tvDispatchMessage = function(channel, data) {
       .layout__area--center,
       .layout__area--center .chart-container,
       .layout__area--center div[class*="chart-container"],
-      .layout__area--center div[class*="chart-gui-wrapper"],
+      .layout__area--center div[class*="chart-gui-wrapper"]:not([class*="legend"]),
       .layout__area--center div[class*="viewWrapper-"],
       .layout__area--center div[data-name="chart-layout"] {
         bottom: 0 !important;
@@ -1244,7 +1355,7 @@ window.__tvDispatchMessage = function(channel, data) {
 
       .layout__area--center .chart-container,
       .layout__area--center div[class*="chart-container"],
-      .layout__area--center div[class*="chart-gui-wrapper"] {
+      .layout__area--center div[class*="chart-gui-wrapper"]:not([class*="legend"]) {
         position: absolute !important;
         top: 0 !important;
         left: 0 !important;
@@ -1252,6 +1363,28 @@ window.__tvDispatchMessage = function(channel, data) {
         bottom: 0 !important;
         width: 100% !important;
         height: 100% !important;
+      }
+
+      /* 7. TradingView clamps the legend row to "100% minus the price axis area" with an
+         inline style sized for the normal window; in our full-bleed panes that goes
+         negative and hides the whole indicator list, so re-clamp it to the pane. */
+      .layout__area--center div[class*="chart-gui-wrapper__"][class*="legend-"] {
+        max-width: calc(100% - 70px) !important;
+      }
+
+      /* 8. On short panes TradingView switches the legend to its "micro" state and hides the
+         study rows behind an expand arrow, so the indicator list is never visible. */
+      .layout__area--center div[class*="chart-gui-wrapper__"][class*="legend-"] [class*="sources-"] {
+        display: flex !important;
+      }
+
+      /* 9. Toolbar toggle: drop the whole legend strip (symbol header + indicator rows) */
+      body.hide-studies-legend div[class*="chart-gui-wrapper__"][class*="legend-"],
+      html.hide-studies-legend div[class*="chart-gui-wrapper__"][class*="legend-"],
+      body.hide-studies-legend [class*="chart-legend"],
+      html.hide-studies-legend [class*="chart-legend"] {
+        display: none !important;
+        visibility: hidden !important;
       }
     `;
     (document.head || document.documentElement).appendChild(style);
@@ -1300,7 +1433,7 @@ window.__tvDispatchMessage = function(channel, data) {
         }
       }
 
-      const containers = document.querySelectorAll('.layout__area--center .chart-container, .layout__area--center div[class*="chart-container"], .layout__area--center div[class*="chart-gui-wrapper"]');
+      const containers = document.querySelectorAll('.layout__area--center .chart-container, .layout__area--center div[class*="chart-container"], .layout__area--center div[class*="chart-gui-wrapper"]:not([class*="legend"])');
       containers.forEach(c => {
         c.style.setProperty('top', '0px', 'important');
         c.style.setProperty('left', '0px', 'important');
@@ -1309,6 +1442,8 @@ window.__tvDispatchMessage = function(channel, data) {
         c.style.setProperty('width', '100%', 'important');
         c.style.setProperty('height', '100%', 'important');
       });
+
+      placeBadgeClearOfLegend();
     } catch(e) {}
   }
 
@@ -1534,32 +1669,106 @@ window.__tvDispatchMessage = function(channel, data) {
     }, 400);
   });
 
-  // --- AUTOMATIC CONNECTION RECOVERY & ERROR SUPPRESSION (Lightweight, Zero-CPU overhead) ---
-  function setupConnectionErrorRecovery() {
-    function recoverConnection() {
-      try {
-        // 1. Direct targeted selector for TradingView reconnect button
-        const reconnectBtn = document.querySelector('button[data-name="reconnect"], button[class*="reconnect"], [data-dialog-name="reconnect"] button');
-        if (reconnectBtn && reconnectBtn.offsetParent !== null) {
-          reconnectBtn.click();
-          return;
-        }
+  // --- AUTOMATIC CONNECTION RESTORE & ANTI-MODAL SHIELD ---
+  function attemptConnectionRestore() {
+    let handled = false;
 
-        // 2. Dismiss blocking connection-loss modals if present
-        const modal = document.querySelector('[data-dialog-name="connection-error"], [data-dialog-name="multiple-tabs-limit"], [data-dialog-name="session-limit"]');
-        if (modal) {
-          const closeBtn = modal.querySelector('button[data-name="close"], [class*="close-"], button[aria-label="Close"]');
+    try {
+      // 1. Direct targeted selectors for TradingView reconnect / restore buttons (EN + FA)
+      const allButtons = document.querySelectorAll('button, [role="button"]');
+      for (const btn of allButtons) {
+        const text = (btn.textContent || '').trim().toLowerCase();
+        const dataName = (btn.getAttribute('data-name') || '').toLowerCase();
+        if (
+          text === 'restore connection' ||
+          text.includes('restore connection') ||
+          text === 'reconnect' ||
+          text.includes('reconnect') ||
+          text.includes('بازیابی اتصال') ||
+          text.includes('برقراری مجدد') ||
+          text.includes('تلاش مجدد') ||
+          dataName === 'reconnect' ||
+          dataName === 'restore-connection'
+        ) {
+          try {
+            btn.click();
+            handled = true;
+          } catch(e) {}
+        }
+      }
+
+      // 2. Look for the "We've closed this connection" dialog or connection limit dialogs
+      const modals = document.querySelectorAll(
+        '[data-dialog-name="connection-error"], [data-dialog-name="multiple-tabs-limit"], [data-dialog-name="session-limit"], [class*="dialog-"], [class*="modal-"], [role="dialog"]'
+      );
+      for (const m of modals) {
+        const text = (m.textContent || '').toLowerCase();
+        if (
+          text.includes("closed this connection") ||
+          text.includes("plan's limits") ||
+          text.includes("connection closed") ||
+          text.includes("restore connection") ||
+          text.includes("اتصال بسته شد") ||
+          text.includes("محدودیت پلن") ||
+          text.includes("اتصال را دوباره")
+        ) {
+          const btns = m.querySelectorAll('button');
+          for (const b of btns) {
+            const bText = (b.textContent || '').toLowerCase();
+            if (
+              bText.includes('restore') ||
+              bText.includes('reconnect') ||
+              bText.includes('بازیابی') ||
+              bText.includes('برقرار') ||
+              bText.includes('تلاش')
+            ) {
+              try { b.click(); handled = true; } catch(e) {}
+            }
+          }
+          const closeBtn = m.querySelector('button[data-name="close"], [class*="close-"], button[aria-label="Close"]');
           if (closeBtn) {
-            closeBtn.click();
+            try { closeBtn.click(); } catch(e) {}
           } else {
-            modal.style.setProperty('display', 'none', 'important');
+            try { m.style.setProperty('display', 'none', 'important'); } catch(e) {}
           }
         }
-      } catch(e) {}
-    }
+      }
+    } catch(e) {}
 
-    // Relaxed periodic check every 3.5s (Zero impact on drawing performance)
-    setInterval(recoverConnection, 3500);
+    return handled;
+  }
+
+  // Wake-up and hibernation triggers (NO page reload, NO artificial socket kills)
+  window.__wakeUpChart = function() {
+    window.__isTabActive = true;
+    try {
+      window.dispatchEvent(new Event('resize'));
+    } catch(e) {}
+    attemptConnectionRestore();
+  };
+
+  window.__sleepChart = function() {
+    window.__isTabActive = false;
+  };
+
+  window.__hibernateChart = window.__sleepChart;
+  window.__unhibernateChart = window.__wakeUpChart;
+
+  ipcRenderer.on('hibernate-chart', () => {
+    if (window.__sleepChart) window.__sleepChart();
+  });
+
+  ipcRenderer.on('unhibernate-chart', () => {
+    if (window.__wakeUpChart) window.__wakeUpChart();
+  });
+
+  function setupConnectionErrorRecovery() {
+    // Continuously check every 1.5s on active chart to instantly auto-click "Restore connection"
+    setInterval(() => {
+      if (window.__isTabActive !== false) {
+        attemptConnectionRestore();
+      }
+    }, 1500);
   }
 
   // Initialize once DOM is ready

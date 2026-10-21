@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Overlay</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* This page is a transparent mirror: only the open overlay may paint, everything
+       else must stay see-through so the native chart webviews show through. */
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: transparent !important;
+      overflow: hidden !important;
+    }
+    *, *::before, *::after {
+      transition: none !important;
+      animation: none !important;
+      caret: auto !important;
+    }
+    body > :not([data-ov]) { visibility: hidden !important; }
+    [data-ov], [data-ov] * { visibility: visible !important; }
+  </style>
+</head>
+<body>
+<script>
+(function () {
+  function invoke() {
+    var t = window.__TAURI__;
+    return (t && t.core && typeof t.core.invoke === 'function') ? t.core.invoke : null;
+  }
+
+  function forward(e, type) {
+    var fn = invoke();
+    if (!fn) return;
+    fn('overlay_event', {
+      event: {
+        type: type || e.type,
+        x: e.clientX,
+        y: e.clientY,
+        button: e.button || 0,
+        buttons: e.buttons || 0,
+        deltaY: e.deltaY || 0,
+        deltaX: e.deltaX || 0,
+        ctrlKey: !!e.ctrlKey,
+        shiftKey: !!e.shiftKey,
+        altKey: !!e.altKey,
+        metaKey: !!e.metaKey
+      }
+    });
+  }
+
+  ['pointerdown', 'pointerup', 'mousedown', 'mouseup', 'click', 'dblclick', 'contextmenu', 'wheel'].forEach(function (type) {
+    document.addEventListener(type, function (e) {
+      if (type === 'contextmenu') e.preventDefault();
+      forward(e);
+    }, { capture: true, passive: type === 'wheel' });
+  });
+
+  window.__renderMirror = function (raw) {
+    var data;
+    try { data = JSON.parse(raw); } catch (err) { return; }
+    document.documentElement.className = data.htmlClass || '';
+    document.body.className = data.bodyClass || '';
+    var vp = document.getElementById('mirror-viewport');
+    if (!vp) {
+      vp = document.createElement('style');
+      vp.id = 'mirror-viewport';
+      document.head.appendChild(vp);
+    }
+    vp.textContent = 'html,body{width:' + data.vw + 'px;height:' + data.vh + 'px}';
+    document.body.innerHTML = data.html;
+  };
+
+  window.addEventListener('DOMContentLoaded', function () {
+    var fn = invoke();
+    if (fn) fn('overlay_event', { event: { type: 'mirror-ready' } });
+  });
+})();
+</script>
+</body>
+</html>

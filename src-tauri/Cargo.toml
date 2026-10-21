@@ -15,7 +15,7 @@ name = "app_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
-tauri-build = { version = "2.6.3" }
+tauri-build = { version = "2.6.3", features = [] }
 
 [dependencies]
 serde_json = "1.0"
@@ -28,6 +28,7 @@ open = "5.3"
 arboard = "3.4"
 url = "2.5"
 urlencoding = "2.1"
+tokio = { version = "1", features = ["time", "sync"] }
 
 [[bin]]
 name = "MultiChart-TradingView"

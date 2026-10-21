@@ -55,16 +55,37 @@
     return s;
   }
 
+  // TradingView profiles with an independent session/cookie each. A tab picks one of
+  // them (click its badge); every pane of that tab inherits it.
+  const ACCOUNT_IDS = ['acc_1', 'acc_2', 'acc_3', 'acc_4', 'acc_5', 'acc_6', 'acc_7', 'acc_8'];
+
+  function getAccountShortLabel(accId) {
+    if (!accId) return 'A1';
+    return String(accId).replace('acc_', 'A').toUpperCase();
+  }
+
   // Helper: Factory to create a tab workspace data object
-  function createTabObject(title, symbol, layout = '2v', panesConfig = null, customId = null, splitRatio = 50, splitRatioSub = 50) {
+  function createTabObject(title, symbol, layout = '2v', panesConfig = null, customId = null, splitRatio = 50, splitRatioSub = 50, accountId = null) {
     const tabId = customId || ('tab_' + Math.random().toString(36).substring(2, 8));
     const sym = symbol || 'BINANCE:BTCUSDT';
     const { symbol: ticker } = parseSymbolAndBroker(sym);
     const defaultTimeframes = ['1D', '240', '60', '15', '5', '1', '1W', '1M', '30', '45', '120', '180', '2D', '3D', '3M', '12M'];
 
+    // A tab keeps one account for every pane: a layout with 4, 8 or even 16 charts must
+    // not silently spread itself over profiles that are not signed in. Any pane account
+    // stored by the old round-robin is ignored, which folds those workspaces back together.
+    let tabAcc = accountId;
+    if (!tabAcc) {
+      const tabs = (state && Array.isArray(state.tabs)) ? state.tabs : [];
+      const source = tabs.find(t => t.id === (state && state.activeTabId)) || tabs[tabs.length - 1];
+      tabAcc = (source && source.accountId) || 'acc_1';
+    }
+
     const panes = [];
     for (let i = 0; i < 16; i++) {
       const savedP = (Array.isArray(panesConfig) && panesConfig[i]) ? panesConfig[i] : {};
+      const paneAcc = tabAcc;
+
       panes.push({
         id: `${tabId}_p${i + 1}`,
         symbol: savedP.symbol || sym,
@@ -72,6 +93,7 @@
         group: 'A',
         isMaximized: false,
         isInfoCollapsed: !!savedP.isInfoCollapsed,
+        accountId: paneAcc,
         webview: null
       });
     }
@@ -83,6 +105,7 @@
       layout: layout || '2v',
       splitRatio: typeof splitRatio === 'number' ? splitRatio : 50,
       splitRatioSub: typeof splitRatioSub === 'number' ? splitRatioSub : 50,
+      accountId: tabAcc,
       panes: panes,
       workspaceEl: null
     };
@@ -114,6 +137,7 @@
     showDrawingToolbar: savedTabData?.showDrawingToolbar ?? false,
     cleanMode: savedTabData?.cleanMode ?? true,
     showChartInfo: savedTabData?.showChartInfo ?? true,
+    showStudiesLegend: savedTabData?.showStudiesLegend ?? true,
     activeDrawingTool: savedTabData?.activeDrawingTool || 'cursor',
     maximizedPaneId: null
   };
@@ -127,12 +151,13 @@
       st.panes,
       st.id,
       st.splitRatio,
-      st.splitRatioSub
+      st.splitRatioSub,
+      st.accountId
     ));
     state.activeTabId = savedTabData.activeTabId || state.tabs[0].id;
   } else {
     state.tabs = [
-      createTabObject('BTCUSDT', 'BINANCE:BTCUSDT', '1')
+      createTabObject('BTCUSDT', 'BINANCE:BTCUSDT', '1', null, null, 50, 50, 'acc_1')
     ];
     state.activeTabId = state.tabs[0].id;
   }
@@ -177,10 +202,12 @@
           layout: tab.layout,
           splitRatio: tab.splitRatio,
           splitRatioSub: tab.splitRatioSub,
+          accountId: tab.accountId || 'acc_1',
           panes: tab.panes.map(p => ({
             symbol: p.symbol,
             timeframe: p.timeframe,
-            isInfoCollapsed: !!p.isInfoCollapsed
+            isInfoCollapsed: !!p.isInfoCollapsed,
+            accountId: p.accountId || tab.accountId || 'acc_1'
           }))
         }));
 
@@ -191,6 +218,7 @@
           showDrawingToolbar: state.showDrawingToolbar,
           cleanMode: state.cleanMode,
           showChartInfo: state.showChartInfo,
+          showStudiesLegend: state.showStudiesLegend,
           activeDrawingTool: state.activeDrawingTool
         };
         localStorage.setItem(TABS_KEY, JSON.stringify(data));
@@ -204,7 +232,6 @@
   const workspace = document.getElementById('workspace');
   const dragShield = document.getElementById('dragShield');
   const windowBadge = document.getElementById('windowBadge');
-  const btnNewWindow = document.getElementById('btnNewWindow');
   const activeWindowCount = document.getElementById('activeWindowCount');
   const btnLayoutDropdown = document.getElementById('btnLayoutDropdown');
   const layoutMenu = document.getElementById('layoutMenu');
@@ -214,11 +241,6 @@
   const inputGlobalSymbol = document.getElementById('inputGlobalSymbol');
   const symbolAutocompleteList = document.getElementById('symbolAutocompleteList');
   const btnApplyGlobalSymbol = document.getElementById('btnApplyGlobalSymbol');
-
-  // Master Timeframe elements
-  const btnTopTimeframe = document.getElementById('btnTopTimeframe');
-  const topTimeframeLabel = document.getElementById('topTimeframeLabel');
-  const topTfDropdownMenu = document.getElementById('topTfDropdownMenu');
 
   // Multi-Watchlist elements
   const btnWatchlistToggle = document.getElementById('btnWatchlistToggle');
@@ -234,6 +256,7 @@
 
   // Header toggles & actions
   const btnToggleChartInfo = document.getElementById('btnToggleChartInfo');
+  const btnToggleStudiesLegend = document.getElementById('btnToggleStudiesLegend');
   const btnToggleDrawingToolbar = document.getElementById('btnToggleDrawingToolbar');
   const btnToggleCleanMode = document.getElementById('btnToggleCleanMode');
   const btnFullscreen = document.getElementById('btnFullscreen');
@@ -529,8 +552,6 @@
       e.stopPropagation();
       const isOpen = watchlistDropdownMenu.classList.toggle('show');
       btnWatchlistToggle.classList.toggle('active', isOpen);
-      if (topTfDropdownMenu) topTfDropdownMenu.classList.remove('show');
-      if (btnTopTimeframe) btnTopTimeframe.classList.remove('active');
       if (isOpen && inputWatchlistQuickAdd) {
         setTimeout(() => inputWatchlistQuickAdd.focus(), 50);
       }
@@ -542,66 +563,6 @@
         if (watchlistDropdownMenu.classList.contains('show')) {
           watchlistDropdownMenu.classList.remove('show');
           btnWatchlistToggle.classList.remove('active');
-          updateTauriOverlaysState();
-        }
-      }
-    });
-  }
-
-  // =========================================================================
-  // --- MASTER TIMEFRAME ENGINE ---
-  // =========================================================================
-  function applyMasterTimeframe(tf) {
-    if (!tf) return;
-    const cleanTf = String(tf).trim().toUpperCase();
-    const curTab = getActiveTab();
-    if (!curTab) return;
-
-    if (topTimeframeLabel) {
-      topTimeframeLabel.textContent = formatTimeframe(cleanTf);
-    }
-
-    // Determine target panes:
-    // If state.syncSymbol is enabled, we update all visible panes in active tab;
-    // otherwise, we update the first visible pane (or active pane).
-    const visiblePanes = getVisiblePanesForTab(curTab);
-    const targetPanes = state.syncSymbol ? visiblePanes : (visiblePanes.slice(0, 1));
-
-    targetPanes.forEach(pane => {
-      pane.timeframe = cleanTf;
-      updatePaneChart(pane, pane.symbol, cleanTf);
-    });
-
-    saveAppSettings();
-    showToast(`Timeframe: ${formatTimeframe(cleanTf)}`);
-  }
-
-  if (btnTopTimeframe && topTfDropdownMenu) {
-    btnTopTimeframe.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = topTfDropdownMenu.classList.toggle('show');
-      btnTopTimeframe.classList.toggle('active', isOpen);
-      if (watchlistDropdownMenu) watchlistDropdownMenu.classList.remove('show');
-      if (btnWatchlistToggle) btnWatchlistToggle.classList.remove('active');
-      updateTauriOverlaysState();
-    });
-
-    topTfDropdownMenu.querySelectorAll('.top-tf-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const tf = btn.getAttribute('data-tf');
-        applyMasterTimeframe(tf);
-        topTfDropdownMenu.classList.remove('show');
-        btnTopTimeframe.classList.remove('active');
-        updateTauriOverlaysState();
-      });
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!btnTopTimeframe.contains(e.target) && !topTfDropdownMenu.contains(e.target)) {
-        if (topTfDropdownMenu.classList.contains('show')) {
-          topTfDropdownMenu.classList.remove('show');
-          btnTopTimeframe.classList.remove('active');
           updateTauriOverlaysState();
         }
       }
@@ -1095,11 +1056,13 @@
     if (!customizeToolsModal) return;
     renderCustomizeToolsGrid();
     customizeToolsModal.classList.add('show');
+    if (typeof updateTauriOverlaysState === 'function') updateTauriOverlaysState();
   }
 
   function closeCustomizeToolsModal() {
     if (!customizeToolsModal) return;
     customizeToolsModal.classList.remove('show');
+    if (typeof updateTauriOverlaysState === 'function') updateTauriOverlaysState();
   }
 
   function renderCustomizeToolsGrid() {
@@ -1241,6 +1204,25 @@
     });
   }
 
+  // Indicator legend (study list) toggle
+  function broadcastStudiesLegendState() {
+    if (!window.electronAPI || !window.electronAPI.evalInAllCharts) return;
+    // The eval also re-stamps the preference inside each chart profile, so charts rebuilt
+    // later come up with the same legend state without waiting for another push.
+    window.electronAPI.evalInAllCharts(`if (window.__TVSync && typeof window.__TVSync.setStudiesLegendVisible === 'function') { window.__TVSync.setStudiesLegendVisible(${state.showStudiesLegend}); }`);
+  }
+
+  if (btnToggleStudiesLegend) {
+    btnToggleStudiesLegend.classList.toggle('active', state.showStudiesLegend);
+    btnToggleStudiesLegend.addEventListener('click', () => {
+      state.showStudiesLegend = !state.showStudiesLegend;
+      btnToggleStudiesLegend.classList.toggle('active', state.showStudiesLegend);
+      broadcastStudiesLegendState();
+      saveAppSettings();
+      showToast(state.showStudiesLegend ? 'Indicator legend: Visible' : 'Indicator legend: Hidden');
+    });
+  }
+
   // --- COMPREHENSIVE MULTI-CHART LAYOUT DEFINITIONS & VISIBLE PANES GETTER ---
   const LAYOUT_PANE_COUNTS = {
     '1': 1,
@@ -1287,30 +1269,54 @@
   // --- UNIFIED PANE CHART UPDATER (Works seamlessly in both Tauri & Electron) ---
   function updatePaneChart(pane, symbol, timeframe) {
     if (!pane) return;
-    const targetSymbol = symbol || 'BINANCE:BTCUSDT';
+    const targetSymbol = symbol || pane.symbol || 'BINANCE:BTCUSDT';
     const targetTf = timeframe || pane.timeframe || '1D';
 
+    const symbolChanged = (pane.symbol !== targetSymbol);
+    const tfChanged = (pane.timeframe !== targetTf);
+
     pane.symbol = targetSymbol;
-    if (timeframe) pane.timeframe = targetTf;
+    pane.timeframe = targetTf;
 
     updatePaneInfoBadge(pane.id, targetSymbol, targetTf);
 
     const isTauriEnv = !!(window.electronAPI && window.electronAPI.isTauri) || !!window.__TAURI__ || !!window.__TAURI_INTERNALS__;
-    const targetUrl = `https://www.tradingview.com/chart/?symbol=${encodeURIComponent(targetSymbol)}&interval=${encodeURIComponent(targetTf)}&theme=dark`;
 
     if (isTauriEnv && window.electronAPI && window.electronAPI.evalInChart) {
-      window.electronAPI.evalInChart(pane.id, `
-        if (window.__TVSync && typeof window.__TVSync.setSymbol === 'function') {
-          var ok = window.__TVSync.setSymbol('${targetSymbol}');
-          if (!ok) {
-            window.location.replace('${targetUrl}');
-          } else if ('${targetTf}') {
-            window.__TVSync.setTimeframe('${targetTf}');
+      const script = `
+        (function() {
+          var targetSym = '${targetSymbol}';
+          var targetTf = '${targetTf}';
+          var needSym = ${symbolChanged};
+          var needTf = ${tfChanged};
+
+          function tryApply() {
+            var appliedSym = !needSym;
+            var appliedTf = !needTf;
+
+            if (window.__TVSync) {
+              if (needSym && typeof window.__TVSync.setSymbol === 'function') {
+                appliedSym = window.__TVSync.setSymbol(targetSym);
+              }
+              if (needTf && typeof window.__TVSync.setTimeframe === 'function') {
+                appliedTf = window.__TVSync.setTimeframe(targetTf);
+              }
+            }
+            return appliedSym && appliedTf;
           }
-        } else {
-          window.location.replace('${targetUrl}');
-        }
-      `);
+
+          if (!tryApply()) {
+            var retries = 0;
+            var timer = setInterval(function() {
+              retries++;
+              if (tryApply() || retries >= 15) {
+                clearInterval(timer);
+              }
+            }, 120);
+          }
+        })();
+      `;
+      window.electronAPI.evalInChart(pane.id, script);
     } else if (pane.webview) {
       updateWebviewChart(pane.webview, targetSymbol, targetTf);
     }
@@ -1442,6 +1448,17 @@
     }
 
     const layout = tab.layout || '1';
+    const targetCount = LAYOUT_PANE_COUNTS[layout] || 1;
+
+    // Clean up excess panes when switching to a layout with fewer charts
+    if (Array.isArray(tab.panes) && tab.panes.length > targetCount) {
+      const excessPanes = tab.panes.slice(targetCount);
+      if (excessPanes.length > 0 && window.electronAPI && window.electronAPI.closeChartViews) {
+        const excessIds = excessPanes.map(p => p.id);
+        window.electronAPI.closeChartViews(excessIds).catch(() => {});
+      }
+      tab.panes = tab.panes.slice(0, targetCount);
+    }
 
     // --- ROW 1: Single Chart ---
     if (layout === '1') {
@@ -1665,21 +1682,46 @@
     if (!appTabsWrapper) return;
     appTabsWrapper.innerHTML = '';
 
+    const accList = ACCOUNT_IDS;
+
     state.tabs.forEach((tab) => {
       const tabEl = document.createElement('div');
       const isActive = (tab.id === state.activeTabId);
       tabEl.className = `tab-item ${isActive ? 'active' : ''}`;
       tabEl.setAttribute('data-tab-id', tab.id);
-      tabEl.title = `${tab.title} (${tab.symbol}) - Click to switch, Double-click to rename`;
+
+      const currentAcc = tab.accountId || 'acc_1';
+      const accLabel = getAccountShortLabel(currentAcc);
+      tabEl.title = `${tab.title} (${tab.symbol}) - اکانت [${accLabel}] - برای چرخش اکانت روی نشان کلیک کنید`;
 
       tabEl.innerHTML = `
-        <span class="tab-tv-badge">TV</span>
+        <span class="tab-acc-badge ${currentAcc}" title="اکانت [${accLabel}] - کلیک برای تغییر اکانت">[${accLabel}]</span>
         <span class="tab-title-text">${tab.title || 'Chart'}</span>
         <span class="tab-close-btn" title="Close Tab (Ctrl+W)">&times;</span>
       `;
 
+      // Cycle account directly on click of account badge
+      const accBadge = tabEl.querySelector('.tab-acc-badge');
+      if (accBadge) {
+        accBadge.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const curIdx = accList.indexOf(tab.accountId || 'acc_1');
+          const nextAcc = accList[(curIdx + 1) % accList.length];
+          tab.accountId = nextAcc;
+          if (Array.isArray(tab.panes)) {
+            tab.panes.forEach(p => { p.accountId = nextAcc; });
+          }
+          renderTabsBar();
+          saveAppSettings();
+          if (typeof syncTauriChartBounds === 'function') {
+            syncTauriChartBounds();
+          }
+          showToast(`اکانت تب ${tab.title} به [${getAccountShortLabel(nextAcc)}] تغییر یافت`);
+        });
+      }
+
       tabEl.addEventListener('click', (e) => {
-        if (e.target.classList.contains('tab-close-btn')) return;
+        if (e.target.classList.contains('tab-close-btn') || e.target.classList.contains('tab-acc-badge')) return;
         switchTab(tab.id);
       });
 
@@ -1693,14 +1735,47 @@
 
       tabEl.addEventListener('dblclick', (e) => {
         e.stopPropagation();
+        const titleSpan = tabEl.querySelector('.tab-title-text');
+        if (!titleSpan || titleSpan.querySelector('input')) return;
+
         const curTitle = tab.title || '';
-        const newTitle = prompt('Rename workspace tab:', curTitle);
-        if (newTitle !== null && newTitle.trim()) {
-          tab.title = newTitle.trim();
-          const titleSpan = tabEl.querySelector('.tab-title-text');
-          if (titleSpan) titleSpan.textContent = tab.title;
-          saveAppSettings();
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'tab-inline-rename-input';
+        input.value = curTitle;
+
+        titleSpan.textContent = '';
+        titleSpan.appendChild(input);
+        input.focus();
+        input.select();
+
+        let finished = false;
+        function finishRename(save) {
+          if (finished) return;
+          finished = true;
+          const val = input.value.trim();
+          if (save && val) {
+            tab.title = val;
+            titleSpan.textContent = tab.title;
+            saveAppSettings();
+          } else {
+            titleSpan.textContent = tab.title;
+          }
         }
+
+        input.addEventListener('keydown', (ke) => {
+          if (ke.key === 'Enter') {
+            ke.preventDefault();
+            finishRename(true);
+          } else if (ke.key === 'Escape') {
+            ke.preventDefault();
+            finishRename(false);
+          }
+        });
+
+        input.addEventListener('blur', () => {
+          finishRename(true);
+        });
       });
 
       appTabsWrapper.appendChild(tabEl);
@@ -1718,7 +1793,7 @@
       renderWorkspaceForTab(targetTab);
     }
 
-    // Toggle visibility for all tab workspaces in DOM (zero reload, keeps webviews intact)
+    // Toggle visibility for all tab workspaces in DOM
     state.tabs.forEach(t => {
       if (t.workspaceEl) {
         const isActive = (t.id === tabId);
@@ -1744,42 +1819,31 @@
       inputGlobalSymbol.value = targetTab.symbol;
     }
 
-    if (topTimeframeLabel && targetTab.panes && targetTab.panes[0]) {
-      topTimeframeLabel.textContent = formatTimeframe(targetTab.panes[0].timeframe);
-    }
+    // Charts rebuilt for this tab may live in a profile that never received the last
+    // legend toggle, so re-push the preference every time a tab becomes active.
+    broadcastStudiesLegendState();
 
     renderWatchlist();
     saveAppSettings();
 
-    // Trigger canvas resize so charts adapt to container dimensions instantly
-    setTimeout(() => {
-      targetTab.panes.forEach(p => {
-        if (p.webview) {
-          try {
-            p.webview.executeJavaScript(`
-              window.dispatchEvent(new Event('resize'));
-              window.dispatchEvent(new UIEvent('resize'));
-              try { if (window._exposed_chartWidgetCollection) window._exposed_chartWidgetCollection._updateLayout(); } catch(e) {}
-            `).catch(() => {});
-          } catch(e) {}
-        }
-      });
-      if (typeof syncTauriChartBounds === 'function') {
-        syncTauriChartBounds();
-      }
-    }, 40);
+    // Sync bounds instantly (shows active tab webviews and hides background tab webviews with zero reload)
+    if (typeof syncTauriChartBounds === 'function') {
+      syncTauriChartBounds();
+    }
   }
 
   function createNewTab(opts = {}) {
     const defaultSym = opts.symbol || state.globalSymbol || 'BINANCE:BTCUSDT';
     const { symbol: ticker } = parseSymbolAndBroker(defaultSym);
     const title = opts.title || ticker || 'New Tab';
-    const newTab = createTabObject(title, defaultSym, opts.layout || '2v');
+    const current = getActiveTab();
+    const autoAcc = opts.accountId || (current && current.accountId) || 'acc_1';
+    const newTab = createTabObject(title, defaultSym, opts.layout || '2v', null, null, 50, 50, autoAcc);
 
     state.tabs.push(newTab);
     renderTabsBar();
     switchTab(newTab.id);
-    showToast(`New tab created: ${newTab.title}`);
+    showToast(`تب جدید با اکانت [${getAccountShortLabel(autoAcc)}] ایجاد شد: ${newTab.title}`);
   }
 
   function closeTab(tabId) {
@@ -1794,6 +1858,12 @@
     const [removedTab] = state.tabs.splice(tabIndex, 1);
     if (removedTab && removedTab.workspaceEl && removedTab.workspaceEl.parentNode) {
       removedTab.workspaceEl.parentNode.removeChild(removedTab.workspaceEl);
+    }
+
+    // Clean up native child webviews for the closed tab
+    if (removedTab && Array.isArray(removedTab.panes) && window.electronAPI && window.electronAPI.closeChartViews) {
+      const paneIds = removedTab.panes.map(p => p.id);
+      window.electronAPI.closeChartViews(paneIds).catch(() => {});
     }
 
     if (state.activeTabId === tabId) {
@@ -2047,9 +2117,6 @@
       if (detectedTf && detectedTf !== paneData.timeframe) {
         paneData.timeframe = detectedTf;
         updatePaneInfoBadge(paneData.id, paneData.symbol, detectedTf);
-        if (topTimeframeLabel) {
-          topTimeframeLabel.textContent = formatTimeframe(detectedTf);
-        }
         saveAppSettings();
       }
     }
@@ -2104,71 +2171,248 @@
         const curTab = getActiveTab();
         if (!curTab) return;
 
+        const visiblePanes = getVisiblePanesForTab(curTab);
+        const visibleIds = new Set(visiblePanes.map(p => p.id));
         const panesToSync = [];
-        curTab.panes.forEach(pane => {
+
+        // 1. Visible panes of the active tab (visible: true with real client rects)
+        visiblePanes.forEach(pane => {
           const paneEl = document.getElementById(`container_${pane.id}`);
+          const pAcc = pane.accountId || curTab.accountId || 'acc_1';
           if (paneEl && paneEl.offsetParent !== null) {
             const rect = paneEl.getBoundingClientRect();
-            panesToSync.push({
-              id: pane.id,
-              x: Math.round(rect.left),
-              y: Math.round(rect.top),
-              width: Math.round(rect.width),
-              height: Math.round(rect.height),
-              symbol: pane.symbol,
-              timeframe: pane.timeframe,
-              visible: true
-            });
-          } else {
-            panesToSync.push({
-              id: pane.id,
-              x: 0,
-              y: 0,
-              width: 100,
-              height: 100,
-              symbol: pane.symbol,
-              timeframe: pane.timeframe,
-              visible: false
+            if (rect.width > 20 && rect.height > 20) {
+              panesToSync.push({
+                id: pane.id,
+                x: Math.round(rect.left),
+                y: Math.round(rect.top),
+                width: Math.round(rect.width),
+                height: Math.round(rect.height),
+                symbol: pane.symbol || curTab.symbol || 'BINANCE:BTCUSDT',
+                timeframe: pane.timeframe || '1D',
+                visible: true,
+                account_id: pAcc
+              });
+            }
+          }
+        });
+
+        // 2. Inactive panes across active tab and background tabs (visible: false)
+        // Keeps background webviews alive in memory without closing them
+        state.tabs.forEach(tab => {
+          if (Array.isArray(tab.panes)) {
+            tab.panes.forEach(pane => {
+              if (!visibleIds.has(pane.id)) {
+                panesToSync.push({
+                  id: pane.id,
+                  x: 0,
+                  y: 0,
+                  width: 0,
+                  height: 0,
+                  symbol: pane.symbol || tab.symbol || 'BINANCE:BTCUSDT',
+                  timeframe: pane.timeframe || '1D',
+                  visible: false,
+                  account_id: pane.accountId || tab.accountId || 'acc_1'
+                });
+              }
             });
           }
         });
 
-        window.electronAPI.syncChartViews(panesToSync);
+        if (panesToSync.length > 0) {
+          window.electronAPI.syncChartViews(panesToSync);
+        }
       });
-    }, 25);
+    }, 20);
   }
   window.syncTauriChartBounds = syncTauriChartBounds;
 
-  // --- OVERLAY VISIBILITY CONTROLLER (Hides native webviews when modals or dropdown menus are active) ---
-  function updateTauriOverlaysState() {
-    if (!window.electronAPI || !window.electronAPI.isTauri || !window.electronAPI.setChartsVisible) return;
-    const anyModal = document.querySelectorAll('.modal-backdrop.show, .modal.show, [class*="modal"].show').length > 0;
-    const anyDropdown = document.querySelectorAll(
-      '.dropdown-menu.show, ' +
-      '.watchlist-menu-dropdown.show, ' +
-      '.symbol-autocomplete-dropdown.show, ' +
-      '.top-tf-menu-dropdown.show, ' +
-      '#topTfDropdownMenu.show, ' +
-      '#layoutMenu.show, ' +
-      '#watchlistDropdownMenu.show, ' +
-      '#symbolAutocompleteList.show'
-    ).length > 0;
-    const shouldHideCharts = anyModal || anyDropdown;
-    window.electronAPI.setChartsVisible(!shouldHideCharts);
+  // Prevent any browser viewport auto-scroll (locks tab strip and header in place)
+  window.addEventListener('scroll', () => {
+    if (window.scrollX !== 0 || window.scrollY !== 0) {
+      window.scrollTo(0, 0);
+    }
+  });
+
+  // --- OVERLAY MIRROR CONTROLLER ---------------------------------------------------
+  // Native chart webviews always paint above the shell's HTML, so a dropdown or modal
+  // opened by this page would end up hidden behind them. Instead of blanking every chart
+  // for as long as a menu is open, the open overlay is mirrored into a transparent native
+  // popup window and its pointer events are replayed back here.
+  const OVERLAY_SELECTOR = [
+    '.dropdown-menu.show',
+    '.watchlist-menu-dropdown.show',
+    '.symbol-autocomplete-dropdown.show',
+    '.modal-backdrop.show',
+    '.modal.show',
+    '[class*="modal"].show'
+  ].join(', ');
+
+  let _mirrorOpen = false;
+  let _mirrorPayload = '';
+  let _mirrorQueued = false;
+  let _mirrorUnavailable = false;
+  let _lastOverlaysState = true;
+
+  function openOverlays() {
+    return Array.from(document.querySelectorAll(OVERLAY_SELECTOR))
+      .filter(el => el.getClientRects().length > 0);
+  }
+
+  // Position of an element among its sibling elements, so it can be found again inside
+  // the detached clone that is shipped to the popup.
+  function elementPath(el) {
+    const path = [];
+    let node = el;
+    while (node && node !== document.body) {
+      const parent = node.parentNode;
+      if (!parent) return null;
+      path.push(Array.prototype.indexOf.call(parent.children, node));
+      node = parent;
+    }
+    return path.reverse();
+  }
+
+  function buildMirrorMarkup(overlays) {
+    overlays.forEach(el => {
+      el.querySelectorAll('input, textarea').forEach(field => {
+        if (field.value !== field.getAttribute('value')) field.setAttribute('value', field.value);
+      });
+    });
+
+    const clone = document.body.cloneNode(true);
+    overlays.forEach((el, index) => {
+      const path = elementPath(el);
+      if (!path) return;
+      let node = clone;
+      for (const step of path) {
+        node = node && node.children[step];
+        if (!node) break;
+      }
+      if (node) node.setAttribute('data-ov', String(index));
+    });
+    return clone.innerHTML;
+  }
+
+  function publishMirror() {
+    const api = window.electronAPI;
+    const overlays = openOverlays();
+
+    if (overlays.length === 0) {
+      if (_mirrorOpen) {
+        _mirrorOpen = false;
+        _mirrorPayload = '';
+        api.overlayHide();
+      }
+      return;
+    }
+
+    if (!_mirrorOpen) {
+      _mirrorOpen = true;
+      _mirrorPayload = '';
+      api.overlayShow().catch(() => {
+        _mirrorOpen = false;
+        _mirrorUnavailable = true;
+      });
+    }
+
+    const payload = JSON.stringify({
+      html: buildMirrorMarkup(overlays),
+      htmlClass: document.documentElement.className,
+      bodyClass: document.body.className,
+      vw: window.innerWidth,
+      vh: window.innerHeight
+    });
+    if (payload === _mirrorPayload) return;
+    _mirrorPayload = payload;
+    if (api.logToFile) api.logToFile(`mirror publish: ${overlays.map(el => el.id || el.className).join('|')} (${payload.length} bytes)`);
+    api.overlayPublish(payload);
+  }
+
+  // Legacy path for the (rare) case where the popup window could not be created: fall
+  // back to hiding the charts so menus stay reachable.
+  function hideChartsForOverlays() {
+    const shouldHide = openOverlays().length > 0;
+    const newChartsVisible = !shouldHide;
+    if (_lastOverlaysState !== newChartsVisible) {
+      _lastOverlaysState = newChartsVisible;
+      window.electronAPI.setChartsVisible(newChartsVisible);
+      if (newChartsVisible) syncTauriChartBounds();
+    }
+  }
+
+  function updateTauriOverlaysState(source) {
+    const api = window.electronAPI;
+    if (!api || !api.isTauri || !api.overlayShow) return;
+    if (_mirrorUnavailable) hideChartsForOverlays();
+    else publishMirror();
   }
   window.updateTauriOverlaysState = updateTauriOverlaysState;
 
+  // A click in the popup never reaches this document, so replay it on whatever element
+  // sits under those coordinates - the real handlers then run unchanged.
+  window.__mirrorEvent = function (ev) {
+    if (!ev || typeof ev.type !== 'string') return;
+    // The popup page reloads lazily; let it re-ask for the current markup.
+    if (ev.type === 'mirror-ready') {
+      _mirrorPayload = '';
+      if (_mirrorOpen) publishMirror();
+      if (window.electronAPI.overlayRefocus) window.electronAPI.overlayRefocus();
+      return;
+    }
+    if (typeof ev.x !== 'number') return;
+    const target = document.elementFromPoint(ev.x, ev.y) || document.body;
+    // A replayed click is untrusted, so the browser never moves the caret on its own.
+    if (ev.type === 'click') {
+      const field = target.closest && target.closest('input, textarea, select, [contenteditable="true"]');
+      if (field && document.activeElement !== field) field.focus();
+    }
+    const init = {
+      bubbles: true, cancelable: true, composed: true,
+      clientX: ev.x, clientY: ev.y, screenX: ev.x, screenY: ev.y,
+      button: ev.button || 0, buttons: ev.buttons || 0,
+      ctrlKey: !!ev.ctrlKey, shiftKey: !!ev.shiftKey, altKey: !!ev.altKey, metaKey: !!ev.metaKey
+    };
+    let event;
+    if (ev.type.indexOf('pointer') === 0) {
+      event = new PointerEvent(ev.type, Object.assign({ pointerId: 1, pointerType: 'mouse', isPrimary: true }, init));
+    } else if (ev.type === 'wheel') {
+      event = new WheelEvent('wheel', Object.assign({ deltaX: ev.deltaX || 0, deltaY: ev.deltaY || 0 }, init));
+    } else {
+      event = new MouseEvent(ev.type, init);
+    }
+    target.dispatchEvent(event);
+  };
+
+  document.addEventListener('click', (e) => {
+    if (window.electronAPI && window.electronAPI.logToFile) {
+      window.electronAPI.logToFile(`document clicked on: <${e.target.tagName}> id="${e.target.id}" class="${e.target.className}"`);
+    }
+  });
+
   // Automatic observer for modals and dropdowns
-  try {
-    const overlayObserver = new MutationObserver(() => {
-      updateTauriOverlaysState();
+  function requestMirrorUpdate() {
+    if (_mirrorQueued) return;
+    _mirrorQueued = true;
+    requestAnimationFrame(() => {
+      _mirrorQueued = false;
+      updateTauriOverlaysState('mutation');
     });
+  }
+
+  try {
+    const overlayObserver = new MutationObserver(requestMirrorUpdate);
     overlayObserver.observe(document.body, {
       attributes: true,
-      attributeFilter: ['class', 'style'],
+      attributeFilter: ['class', 'style', 'value'],
+      childList: true,
       subtree: true
     });
   } catch(e) {}
+
+  // Menus whose contents change without touching class/childList still stay in sync.
+  setInterval(() => { if (_mirrorOpen) publishMirror(); }, 120);
+  window.addEventListener('resize', () => { if (_mirrorOpen) { _mirrorPayload = ''; publishMirror(); } });
 
   // --- SETUP WEBVIEW EVENT LISTENERS ---
   function setupWebviewListeners(webview, paneData, index) {
@@ -2207,15 +2451,12 @@
     const targetTf = timeframe || '1D';
 
     if (window.electronAPI && window.electronAPI.isTauri) {
-      const targetUrl = `https://www.tradingview.com/chart/?symbol=${encodeURIComponent(targetSymbol)}&interval=${encodeURIComponent(targetTf)}&theme=dark`;
       webview.executeJavaScript(`
         if (window.__TVSync && typeof window.__TVSync.setSymbol === 'function') {
           window.__TVSync.setSymbol('${targetSymbol}');
           if ('${targetTf}') window.__TVSync.setTimeframe('${targetTf}');
-        } else {
-          window.location.replace('${targetUrl}');
         }
-      `);
+      `).catch(() => {});
       return;
     }
 
@@ -2312,18 +2553,6 @@
 
   // --- EVENT LISTENERS ---
 
-  // New Window Button (Multi-window capability)
-  if (btnNewWindow) {
-    btnNewWindow.addEventListener('click', () => {
-      if (window.electronAPI && window.electronAPI.openNewWindow) {
-        window.electronAPI.openNewWindow({
-          layout: state.layout,
-          symbol: state.globalSymbol
-        });
-      }
-    });
-  }
-
   // Layout Dropdown
   if (currentLayoutLabel) {
     currentLayoutLabel.textContent = getLayoutDisplayLabel(state.layout);
@@ -2340,10 +2569,12 @@
       updateTauriOverlaysState();
     });
 
-    document.addEventListener('click', () => {
-      if (layoutMenu.classList.contains('show')) {
-        layoutMenu.classList.remove('show');
-        updateTauriOverlaysState();
+    document.addEventListener('click', (e) => {
+      if (!btnLayoutDropdown.contains(e.target) && !layoutMenu.contains(e.target)) {
+        if (layoutMenu.classList.contains('show')) {
+          layoutMenu.classList.remove('show');
+          updateTauriOverlaysState('layout-click-outside');
+        }
       }
     });
 
@@ -2777,165 +3008,21 @@
     showToast('Charts reloaded with updated account session');
   }
 
-  function setupAccountModal() {
-    if (btnAccountLogin) {
-      btnAccountLogin.addEventListener('click', () => {
-        refreshAccountStatus();
-        if (accountModal) accountModal.classList.add('show');
-      });
-    }
-
-    if (btnCloseAccount) {
-      btnCloseAccount.addEventListener('click', () => {
-        if (accountModal) accountModal.classList.remove('show');
-      });
-    }
-
-    if (btnCloseAccountDone) {
-      btnCloseAccountDone.addEventListener('click', () => {
-        if (accountModal) accountModal.classList.remove('show');
-      });
-    }
-
-    if (accountModal) {
-      accountModal.addEventListener('click', (e) => {
-        if (e.target === accountModal) accountModal.classList.remove('show');
-      });
-    }
-
-    // Launch Google Sign In directly inside app (uses Firefox UA to bypass Google blocks)
-    if (btnLaunchGoogleLogin) {
-      btnLaunchGoogleLogin.addEventListener('click', () => {
-        if (window.electronAPI && window.electronAPI.openLoginWindow) {
-          window.electronAPI.openLoginWindow();
-          showToast('Sign-in window opened - select your Google account');
-        }
-      });
-    }
-
-    // Launch Official TradingView Browser Connect
-    if (btnOpenExternalBrowser) {
-      btnOpenExternalBrowser.addEventListener('click', async () => {
-        if (window.electronAPI && window.electronAPI.startBrowserLogin) {
-          isWaitingForBrowserAuth = true;
-          if (browserAuthWaitingArea) browserAuthWaitingArea.style.display = 'block';
-          if (browserAuthStatusText) browserAuthStatusText.textContent = '⏳ منتظر تأیید در مرورگر... روی دکمه آبی Grant Access کلیک کنید.';
-          showToast('مرورگر باز شد - روی Grant Access کلیک کنید');
-
-          await window.electronAPI.startBrowserLogin();
-
-          // Monitor clipboard every 1.5 seconds in background while waiting
-          if (clipboardMonitorTimer) clearInterval(clipboardMonitorTimer);
-          clipboardMonitorTimer = setInterval(checkClipboardForToken, 1500);
-        }
-      });
-    }
-
-    // Paste Secret Key button
-    if (btnPasteSecretKey) {
-      btnPasteSecretKey.addEventListener('click', async () => {
-        if (window.electronAPI && window.electronAPI.readClipboardText) {
-          const clip = await window.electronAPI.readClipboardText();
-          if (clip) {
-            if (browserAuthStatusText) browserAuthStatusText.textContent = 'در حال اعتبارسنجی کلید...';
-            const res = await window.electronAPI.submitAuthToken(clip);
-            if (res && res.success) {
-              isWaitingForBrowserAuth = false;
-              if (clipboardMonitorTimer) clearInterval(clipboardMonitorTimer);
-              if (browserAuthWaitingArea) browserAuthWaitingArea.style.display = 'none';
-              showToast('با موفقیت وارد حساب شدید!');
-              reloadAllWebviewPanes();
-              refreshAccountStatus();
-            } else {
-              showToast('کلید نامعتبر است یا هنوز تایید نشده است');
-            }
-          } else {
-            showToast('کلیپ‌بورد خالی است');
-          }
-        }
-      });
-    }
-
-    // Manual Auth Token Submit
-    if (btnSubmitAuthToken && inputAuthToken) {
-      btnSubmitAuthToken.addEventListener('click', async () => {
-        const val = inputAuthToken.value.trim();
-        if (!val) {
-          showToast('لطفاً توکن یا آدرس را وارد کنید');
-          return;
-        }
-        if (window.electronAPI && window.electronAPI.submitAuthToken) {
-          const res = await window.electronAPI.submitAuthToken(val);
-          if (res && res.success) {
-            isWaitingForBrowserAuth = false;
-            if (clipboardMonitorTimer) clearInterval(clipboardMonitorTimer);
-            if (browserAuthWaitingArea) browserAuthWaitingArea.style.display = 'none';
-            inputAuthToken.value = '';
-            showToast('با موفقیت وارد حساب شدید!');
-            reloadAllWebviewPanes();
-            refreshAccountStatus();
-          } else {
-            showToast('خطا در اعتبارسنجی توکن');
-          }
-        }
-      });
-    }
-
-    // Fast cookie apply
-    if (btnApplySessionCookie && inputSessionCookie) {
-      btnApplySessionCookie.addEventListener('click', async () => {
-        const val = inputSessionCookie.value.trim();
-        if (!val) {
-          showToast('Please paste a sessionid cookie value');
-          return;
-        }
-        if (window.electronAPI && window.electronAPI.setSessionCookie) {
-          const ok = await window.electronAPI.setSessionCookie(val);
-          if (ok) {
-            showToast('Session ID applied! Reloading charts...');
-            reloadAllWebviewPanes();
-            refreshAccountStatus();
-            inputSessionCookie.value = '';
-          } else {
-            showToast('Failed to apply session cookie');
-          }
-        }
-      });
-    }
-
-    if (btnReloadCharts) {
-      btnReloadCharts.addEventListener('click', () => {
-        reloadAllWebviewPanes();
-        refreshAccountStatus();
-      });
-    }
-
-    // Listen for session completion broadcast
-    if (window.electronAPI && window.electronAPI.onSessionLoginCompleted) {
-      window.electronAPI.onSessionLoginCompleted((status) => {
-        isWaitingForBrowserAuth = false;
-        if (clipboardMonitorTimer) clearInterval(clipboardMonitorTimer);
-        if (browserAuthWaitingArea) browserAuthWaitingArea.style.display = 'none';
-        showToast('ورود با موفقیت شناسایی و اعمال شد!');
-        reloadAllWebviewPanes();
-        refreshAccountStatus();
-      });
-    }
-
-    // Initial status check
-    refreshAccountStatus();
-  }
-
   // Help Modal
   if (btnHelp && helpModal && btnCloseHelp) {
     btnHelp.addEventListener('click', () => {
       helpModal.classList.add('show');
+      if (typeof updateTauriOverlaysState === 'function') updateTauriOverlaysState();
     });
     btnCloseHelp.addEventListener('click', () => {
       helpModal.classList.remove('show');
+      if (typeof updateTauriOverlaysState === 'function') updateTauriOverlaysState();
     });
     helpModal.addEventListener('click', (e) => {
-      if (e.target === helpModal) helpModal.classList.remove('show');
+      if (e.target === helpModal) {
+        helpModal.classList.remove('show');
+        if (typeof updateTauriOverlaysState === 'function') updateTauriOverlaysState();
+      }
     });
   }
 
@@ -3002,11 +3089,10 @@
     }
   }, { passive: true });
 
-  // Initialize Symbol Autocomplete, Master Tools, Watchlist, Tabs, Account & Workspace
+  // Initialize Symbol Autocomplete, Master Tools, Watchlist, Tabs & Workspace
   setupSymbolAutocomplete();
   renderFavoriteDrawingsBar();
   setupCustomizeToolsModal();
-  setupAccountModal();
   renderWatchlist();
   renderTabsBar();
   switchTab(state.activeTabId);

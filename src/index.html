@@ -302,45 +302,6 @@
         <div id="symbolAutocompleteList" class="symbol-autocomplete-dropdown"></div>
       </div>
 
-      <!-- Master Timeframe Dropdown (Sets Active Chart Timeframe / Custom Timeframes) -->
-      <div class="top-tf-dropdown-wrap">
-        <button id="btnTopTimeframe" class="btn-top-tf" title="Select or type custom timeframe for active chart">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12 6 12 12 16 14"></polyline>
-          </svg>
-          <span id="topTimeframeLabel">1D</span>
-          <svg class="chevron-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M6 9l6 6 6-6"></path>
-          </svg>
-        </button>
-
-        <div id="topTfDropdownMenu" class="dropdown-menu top-tf-menu-dropdown">
-          <div class="tf-menu-sec-title">Minutes</div>
-          <div class="tf-menu-grid tf-grid-3">
-            <button type="button" class="top-tf-btn" data-tf="1">1m</button>
-            <button type="button" class="top-tf-btn" data-tf="3">3m</button>
-            <button type="button" class="top-tf-btn" data-tf="5">5m</button>
-            <button type="button" class="top-tf-btn" data-tf="15">15m</button>
-            <button type="button" class="top-tf-btn" data-tf="30">30m</button>
-            <button type="button" class="top-tf-btn" data-tf="45">45m</button>
-          </div>
-          <div class="tf-menu-sec-title">Hours</div>
-          <div class="tf-menu-grid tf-grid-4">
-            <button type="button" class="top-tf-btn" data-tf="60">1h</button>
-            <button type="button" class="top-tf-btn" data-tf="120">2h</button>
-            <button type="button" class="top-tf-btn" data-tf="180">3h</button>
-            <button type="button" class="top-tf-btn" data-tf="240">4h</button>
-          </div>
-          <div class="tf-menu-sec-title">Days & Weeks</div>
-          <div class="tf-menu-grid tf-grid-3">
-            <button type="button" class="top-tf-btn" data-tf="1D">1D</button>
-            <button type="button" class="top-tf-btn" data-tf="1W">1W</button>
-            <button type="button" class="top-tf-btn" data-tf="1M">1M</button>
-          </div>
-        </div>
-      </div>
-
       <!-- Multiple Watchlists Dropdown Button & Panel -->
       <div class="watchlist-dropdown-wrap">
         <button id="btnWatchlistToggle" class="btn-watchlist-toggle" title="View & manage multiple watchlists">
@@ -428,13 +389,17 @@
         <span>Max Space</span>
       </button>
 
-      <!-- Detach to independent window (Multi-Monitor Ctrl+N) -->
-      <button id="btnNewWindow" class="icon-btn" title="Open new detached window for secondary monitors (Ctrl+N)">
+      <!-- Toggle Indicator Legend on Charts -->
+      <button id="btnToggleStudiesLegend" class="icon-toggle-btn active" title="Toggle the indicator legend on every chart">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-          <polyline points="15 3 21 3 21 9"></polyline>
-          <line x1="10" y1="14" x2="21" y2="3"></line>
+          <line x1="8" y1="6" x2="21" y2="6"></line>
+          <line x1="8" y1="12" x2="21" y2="12"></line>
+          <line x1="8" y1="18" x2="21" y2="18"></line>
+          <line x1="3" y1="6" x2="3.01" y2="6"></line>
+          <line x1="3" y1="12" x2="3.01" y2="12"></line>
+          <line x1="3" y1="18" x2="3.01" y2="18"></line>
         </svg>
+        <span>Legend</span>
       </button>
 
       <!-- Fullscreen Toggle -->
@@ -480,6 +445,7 @@
           <li><strong>Drawings Cloud Sync (Ctrl+S):</strong> Instantly saves line tools, Fibonacci levels, and technical analysis to your TradingView account.</li>
           <li><strong>Edge Split-Screen:</strong> Smooth draggable splitters with 50/50 double-click reset and 2V, 2H, 3-Chart, 4-Grid, and 6-Grid presets.</li>
           <li><strong>Clean Mode / Max Space:</strong> Eliminates sidebars, promotional popups, and bottom panels to provide an unobstructed candlestick view.</li>
+          <li><strong>Legend:</strong> Show or hide the indicator legend strip on top of every chart.</li>
         </ul>
       </div>
     </div>
@@ -511,7 +477,6 @@
       </div>
     </div>
   </div>
-
 
 
   <!-- TOAST NOTIFICATION -->

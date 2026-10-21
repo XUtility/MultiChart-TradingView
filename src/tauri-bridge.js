@@ -74,7 +74,7 @@
     startBrowserLogin: () => safeInvoke('start_browser_login'),
     submitAuthToken: (tokenOrUrl) => safeInvoke('submit_auth_token', { tokenOrUrl, keySource: null }),
     readClipboardText: () => safeInvoke('read_clipboard'),
-    setSessionCookie: async () => ({ success: true }),
+    openAccountLoginWindow: (accountId) => safeInvoke('open_account_login_window', { accountId: accountId || 'acc_1' }),
     checkLoginStatus: async () => ({ loggedIn: false }),
     onSessionLoginCompleted: (callback) => {
       if (typeof callback === 'function') window.__sessionLoginListeners.push(callback);
@@ -82,7 +82,13 @@
 
     // Tauri Native Multi-Chart View Controllers
     syncChartViews: (panes) => safeInvoke('sync_chart_views', { panes }),
+    closeChartViews: (paneIds) => safeInvoke('close_chart_views', { paneIds }),
+    logToFile: (msg) => safeInvoke('log_to_file', { msg }),
     setChartsVisible: (visible) => safeInvoke('set_charts_visible', { visible }),
+    overlayShow: () => safeInvoke('overlay_show'),
+    overlayHide: () => safeInvoke('overlay_hide'),
+    overlayPublish: (markup) => safeInvoke('overlay_publish', { markup }),
+    overlayRefocus: () => safeInvoke('overlay_refocus'),
     evalInChart: (paneId, script) => safeInvoke('eval_in_chart', { paneId, script }),
     evalInAllCharts: (script) => safeInvoke('eval_in_all_charts', { script }),
     onChartMessage: (callback) => {

@@ -1,9 +1,9 @@
 {
   "name": "multichart-tradingview",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Professional Multi-Window & Multi-Chart TradingView Desktop Terminal (Tauri Edition)",
   "scripts": {
-    "tauri:dev": "cargo tauri dev --manifest-path src-tauri/Cargo.toml",
-    "tauri:build": "cargo tauri build --manifest-path src-tauri/Cargo.toml"
+    "tauri:dev": "cd src-tauri && cargo tauri dev",
+    "tauri:build": "cd src-tauri && cargo tauri build"
   }
 }

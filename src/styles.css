@@ -26,15 +26,27 @@
   user-select: none;
 }
 
-body {
+html, body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-main);
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  height: 100vh !important;
+  width: 100vw !important;
+  max-height: 100vh !important;
+  max-width: 100vw !important;
+  overflow: hidden !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body {
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 /* Custom Scrollbars */
@@ -56,6 +68,9 @@ body {
 /* TRADINGVIEW DESKTOP TAB BAR (media_1792050718127_5f46646b.png) */
 .app-tab-strip {
   height: 36px;
+  min-height: 36px;
+  max-height: 36px;
+  flex-shrink: 0;
   background-color: #0e1117;
   border-bottom: 1px solid #1e222d;
   display: flex;
@@ -150,6 +165,115 @@ body {
   border-color: #2962ff;
 }
 
+/* Multi-Account Tab Badges */
+.tab-acc-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+  line-height: 1.1;
+  cursor: pointer;
+  transition: transform 0.1s ease, filter 0.15s ease;
+}
+.tab-acc-badge:hover {
+  transform: scale(1.12);
+  filter: brightness(1.2);
+}
+.tab-acc-badge.acc_1 {
+  background: rgba(41, 98, 255, 0.2);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.45);
+}
+.tab-acc-badge.acc_2 {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.45);
+}
+.tab-acc-badge.acc_3 {
+  background: rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.45);
+}
+.tab-acc-badge.acc_4 {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.45);
+}
+.tab-acc-badge.acc_5 {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.45);
+}
+.tab-acc-badge.acc_6 {
+  background: rgba(6, 182, 212, 0.2);
+  color: #22d3ee;
+  border: 1px solid rgba(6, 182, 212, 0.45);
+}
+.tab-acc-badge.acc_7 {
+  background: rgba(236, 72, 153, 0.2);
+  color: #f472b6;
+  border: 1px solid rgba(236, 72, 153, 0.45);
+}
+.tab-acc-badge.acc_8 {
+  background: rgba(132, 204, 22, 0.2);
+  color: #a3e635;
+  border: 1px solid rgba(132, 204, 22, 0.45);
+}
+
+.tab-item.active .tab-acc-badge.acc_1 {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #3b82f6;
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.5);
+}
+.tab-item.active .tab-acc-badge.acc_2 {
+  background: #059669;
+  color: #ffffff;
+  border-color: #10b981;
+  box-shadow: 0 0 6px rgba(5, 150, 105, 0.5);
+}
+.tab-item.active .tab-acc-badge.acc_3 {
+  background: #9333ea;
+  color: #ffffff;
+  border-color: #a855f7;
+  box-shadow: 0 0 6px rgba(147, 51, 234, 0.5);
+}
+.tab-item.active .tab-acc-badge.acc_4 {
+  background: #d97706;
+  color: #ffffff;
+  border-color: #f59e0b;
+  box-shadow: 0 0 6px rgba(217, 119, 6, 0.5);
+}
+.tab-item.active .tab-acc-badge.acc_5 {
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #ef4444;
+  box-shadow: 0 0 6px rgba(220, 38, 38, 0.5);
+}
+.tab-item.active .tab-acc-badge.acc_6 {
+  background: #0891b2;
+  color: #ffffff;
+  border-color: #06b6d4;
+  box-shadow: 0 0 6px rgba(8, 145, 178, 0.5);
+}
+.tab-item.active .tab-acc-badge.acc_7 {
+  background: #db2777;
+  color: #ffffff;
+  border-color: #ec4899;
+  box-shadow: 0 0 6px rgba(219, 39, 119, 0.5);
+}
+.tab-item.active .tab-acc-badge.acc_8 {
+  background: #65a30d;
+  color: #ffffff;
+  border-color: #84cc16;
+  box-shadow: 0 0 6px rgba(101, 163, 13, 0.5);
+}
+
 .tab-title-text {
   flex: 1;
   overflow: hidden;
@@ -158,6 +282,20 @@ body {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.3px;
+}
+
+.tab-inline-rename-input {
+  background: var(--bg-primary);
+  color: #ffffff;
+  border: 1px solid var(--accent-blue);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 11px;
+  font-weight: 700;
+  width: 95px;
+  max-width: 130px;
+  outline: none;
+  font-family: inherit;
 }
 
 .tab-close-btn {
@@ -213,6 +351,9 @@ body {
 /* TOP TOOLBAR */
 .app-header {
   height: var(--header-height);
+  min-height: var(--header-height);
+  max-height: var(--header-height);
+  flex-shrink: 0;
   background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
   display: flex;
@@ -751,100 +892,6 @@ body {
   color: var(--accent-blue);
 }
 
-/* Master Top Timeframe Dropdown */
-.top-tf-dropdown-wrap {
-  position: relative;
-}
-
-.btn-top-tf {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--bg-tertiary);
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 11px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  white-space: nowrap;
-}
-
-.btn-top-tf:hover, .btn-top-tf.active {
-  background: var(--bg-hover);
-  border-color: var(--accent-blue);
-  color: #ffffff;
-}
-
-.top-tf-menu-dropdown {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
-  width: 190px;
-  background: #1e222d;
-  border: 1px solid #2a2e39;
-  border-radius: 8px;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.85);
-  z-index: 99999;
-  display: none;
-  flex-direction: column;
-  padding: 8px 10px;
-  gap: 4px;
-}
-
-.top-tf-menu-dropdown.show {
-  display: flex !important;
-}
-
-.tf-menu-sec-title {
-  font-size: 10px;
-  font-weight: 700;
-  color: #787b86;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-top: 4px;
-  margin-bottom: 2px;
-}
-
-.tf-menu-grid {
-  display: grid;
-  gap: 4px;
-}
-
-.tf-grid-3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.tf-grid-4 {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.top-tf-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 4px;
-  color: #d1d4dc;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 0;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.top-tf-btn:hover {
-  background: rgba(41, 98, 255, 0.2);
-  border-color: #2962ff;
-  color: #ffffff;
-}
-
-.top-tf-btn.active {
-  background: #2962ff;
-  color: #ffffff;
-  border-color: #2962ff;
-}
-
 /* Vertical Multi-Watchlist Dropdown */
 .watchlist-dropdown-wrap {
   position: relative;
@@ -1367,7 +1414,11 @@ body {
 
 /* SPLIT WORKSPACE CONTAINER */
 .workspace-container {
-  flex: 1;
+  flex: 1 1 0%;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -1390,7 +1441,11 @@ body {
 
 .tab-workspace.active {
   display: flex;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 /* Split Pane Item - 100% full bleed, zero border gaps */
@@ -1782,45 +1837,6 @@ body {
   background: rgba(41, 98, 255, 0.15);
 }
 
-/* Account / Sign-In Button in Header */
-.btn-account-login {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(41, 98, 255, 0.12);
-  color: #2962ff;
-  border: 1px solid rgba(41, 98, 255, 0.35);
-  border-radius: 6px;
-  padding: 4px 10px;
-  font-size: 11px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn-account-login:hover {
-  background: rgba(41, 98, 255, 0.22);
-  border-color: #2962ff;
-  color: #ffffff;
-  box-shadow: 0 0 8px rgba(41, 98, 255, 0.3);
-}
-
-.btn-account-login.logged-in {
-  background: rgba(38, 166, 154, 0.12);
-  color: #26a69a;
-  border-color: rgba(38, 166, 154, 0.35);
-}
-
-.btn-account-login.logged-in:hover {
-  background: rgba(38, 166, 154, 0.25);
-  color: #ffffff;
-}
-
-/* Account Modal Styling */
-.account-modal-card {
-  width: 500px;
-  max-width: 95vw;
-}
 
 .account-status-box {
   display: flex;
@@ -2008,6 +2024,7 @@ body {
   line-height: 1.5;
   margin: 0;
 }
+
 
 
 
