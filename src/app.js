@@ -3149,6 +3149,7 @@
   let updatePicked = null;
   let updatePackage = '';
   let updateBusy = false;
+  let updateUpToDate = false;
 
   const UPDATE_KIND_LABEL = {
     installer: 'Installer',
@@ -3168,7 +3169,12 @@
   }
 
   function refreshUpdateButtons() {
-    if (btnDownloadUpdate) btnDownloadUpdate.disabled = updateBusy || !updatePicked;
+    const choosePackage = !!updateInfo && !updateUpToDate;
+    if (updateAssetsBox) updateAssetsBox.style.display = choosePackage ? '' : 'none';
+    if (btnDownloadUpdate) {
+      btnDownloadUpdate.style.display = choosePackage ? '' : 'none';
+      btnDownloadUpdate.disabled = updateBusy || !updatePicked;
+    }
     if (btnRecheckUpdate) btnRecheckUpdate.disabled = updateBusy;
     if (btnInstallUpdate) {
       const installable = updatePackage && /\.(exe|msi)$/i.test(updatePackage);
@@ -3210,13 +3216,15 @@
   function paintUpdateResult() {
     if (!updateInfo) return;
     const current = updateInfo.current || '?';
-    if (updateInfo.updateAvailable) {
+    updateUpToDate = !updateInfo.updateAvailable;
+    if (updateUpToDate) {
+      updateStatusLine.textContent = `Version ${current} is the newest release - you are up to date`;
+      updateNotes.textContent = updateInfo.title || '';
+    } else {
       updateStatusLine.textContent = `Version ${current} installed · ${updateInfo.tag} is available`;
       updateNotes.textContent = updateInfo.notes || updateInfo.title || '';
-    } else {
-      updateStatusLine.textContent = `Version ${current} is the newest release`;
-      updateNotes.textContent = updateInfo.title || '';
     }
+    updateStatusLine.classList.toggle('current', updateUpToDate);
     renderUpdateAssets();
     refreshUpdateButtons();
   }
@@ -3243,6 +3251,8 @@
       }
     } catch (err) {
       updateInfo = null;
+      updateUpToDate = false;
+      updateStatusLine.classList.remove('current');
       updateStatusLine.textContent = 'Could not check for updates.';
       setUpdateError(String(err && err.message ? err.message : err));
       refreshUpdateButtons();

@@ -2077,6 +2077,19 @@ body {
   color: #ffffff;
 }
 
+.update-status-line.current {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4ade80;
+}
+
+.update-status-line.current::before {
+  content: "\2713";
+  font-size: 15px;
+  line-height: 1;
+}
+
 .update-notes {
   font-family: inherit;
   font-size: 12px;
