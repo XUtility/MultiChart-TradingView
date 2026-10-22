@@ -636,8 +636,15 @@ if (paneId) {
 
     selectDrawingTool: function(toolName) {
       try {
-        window.__pendingDrawingTool = toolName;
-        window.__currentSelectedTool = toolName;
+        if (toolName !== 'removeAllDrawingTools') {
+          window.__pendingDrawingTool = toolName;
+          window.__currentSelectedTool = toolName;
+          // Remember what the shell asked for and wait until the live tool actually agrees before
+          // reporting a revert. Without that the pane would answer the shell's re-check with
+          // "cursor" while its own arm is still queued, cancelling the tool before any drawing.
+          window.__armedTool = toolName;
+          window.__armObserved = (toolName === 'cursor');
+        }
 
         var col = window._exposed_chartWidgetCollection;
         var active = col && col.activeChartWidget ? (typeof col.activeChartWidget.value === 'function' ? col.activeChartWidget.value() : col.activeChartWidget) : null;
@@ -695,8 +702,10 @@ if (paneId) {
           'LineToolFibChannel': ['LineToolFibChannel', 'FibChannel', 'fib_channel'],
           'LineToolFibTimeZone': ['LineToolFibTimeZone', 'FibTimeZone', 'fib_time_zone'],
           'LineToolPitchfork': ['LineToolPitchfork', 'Pitchfork', 'pitchfork'],
-          'LineToolGannBox': ['LineToolGannBox', 'GannBox', 'gann_box', 'gann-box', 'gannbox'],
-          'LineToolGannSquare': ['LineToolGannSquare', 'GannSquare', 'gann_square', 'gann-square', 'gannsquare'],
+          // TradingView registers "Gann box" as LineToolGannSquare and "Gann square" as
+          // LineToolGannComplex, so the app's own key order has to be translated here.
+          'LineToolGannBox': ['LineToolGannSquare', 'LineToolGannBox', 'GannBox', 'gann_box'],
+          'LineToolGannSquare': ['LineToolGannComplex', 'LineToolGannSquare', 'GannComplex', 'gann_square'],
           'LineToolGannComplex': ['LineToolGannComplex', 'GannComplex', 'gann_complex', 'gann-complex', 'ganncomplex'],
           'LineToolGannFan': ['LineToolGannFan', 'GannFan', 'gann_fan', 'gann-fan', 'gannfan'],
           'LineToolGannFixed': ['LineToolGannFixed', 'GannFixed', 'gann_fixed', 'gann-fixed'],
@@ -869,6 +878,22 @@ if (paneId) {
           if (canvas) canvas.focus();
         } catch(e) {}
       } catch(e) {}
+    },
+
+    // The shell re-asks while a tool is selected because a chart->shell report can be swallowed.
+    // Silence from a pane that is still drawing is correct here: only a pane that finished and
+    // reverted speaks up, and it keeps speaking up until the shell clears its toolbar.
+    reportStaleTool: function() {
+      try {
+        if (!window.__armedTool || window.__armedTool === 'cursor' || !window.__armObserved) return;
+        var col = window._exposed_chartWidgetCollection;
+        if (!col) return;
+        var t = (typeof col.tool === 'function') ? col.tool() : col._tool;
+        var live = (t && typeof t.value === 'function') ? String(t.value()) : '';
+        if (live === 'cursor') {
+          ipcRenderer.sendToHost('chart-drawing-tool-changed', { tool: 'cursor', paneId: paneId });
+        }
+      } catch(e) {}
     }
   };
 
@@ -884,6 +909,16 @@ if (paneId) {
         col.__toolSubscribed = true;
         toolWV.subscribe(function(tool) {
           window.__currentSelectedTool = tool;
+          if (tool === 'cursor') {
+            // TradingView drops back to the cursor on its own once a drawing is finished. Forget
+            // the armed tool so this pane stops claiming it, otherwise the shell's re-check would
+            // keep hearing about a tool that is already gone.
+            window.__armedTool = 'cursor';
+            window.__armObserved = false;
+            window.__pendingDrawingTool = 'cursor';
+          } else if (window.__armedTool === tool) {
+            window.__armObserved = true;
+          }
           ipcRenderer.sendToHost('chart-drawing-tool-changed', { tool: tool, paneId: paneId });
         });
       }
@@ -1544,6 +1579,14 @@ if (paneId) {
     try {
       if (window.__TVSync && typeof window.__TVSync.selectDrawingTool === 'function') {
         window.__TVSync.selectDrawingTool(data.tool);
+      }
+    } catch(e) {}
+  });
+
+  ipcRenderer.on('check-drawing-tool', () => {
+    try {
+      if (window.__TVSync && typeof window.__TVSync.reportStaleTool === 'function') {
+        window.__TVSync.reportStaleTool();
       }
     } catch(e) {}
   });

@@ -138,7 +138,7 @@
     cleanMode: savedTabData?.cleanMode ?? true,
     showChartInfo: savedTabData?.showChartInfo ?? true,
     showStudiesLegend: savedTabData?.showStudiesLegend ?? true,
-    activeDrawingTool: savedTabData?.activeDrawingTool || 'cursor',
+    activeDrawingTool: 'cursor',
     maximizedPaneId: null
   };
 
@@ -218,8 +218,7 @@
           showDrawingToolbar: state.showDrawingToolbar,
           cleanMode: state.cleanMode,
           showChartInfo: state.showChartInfo,
-          showStudiesLegend: state.showStudiesLegend,
-          activeDrawingTool: state.activeDrawingTool
+          showStudiesLegend: state.showStudiesLegend
         };
         localStorage.setItem(TABS_KEY, JSON.stringify(data));
       } catch(e) {}
@@ -943,25 +942,55 @@
     });
   }
 
+  function activeTabPanes() {
+    const curTab = getActiveTab();
+    return (curTab && curTab.panes) ? curTab.panes : state.panes;
+  }
+
+  function pushToolToPanes(panes, tool, exceptPaneId) {
+    (panes || []).forEach(pane => {
+      if (!pane.webview || pane.id === exceptPaneId) return;
+      try {
+        pane.webview.send('set-drawing-tool', { tool: tool });
+        pane.webview.executeJavaScript(`
+          if (window.__TVSync && typeof window.__TVSync.selectDrawingTool === 'function') {
+            window.__TVSync.selectDrawingTool('${tool}');
+          }
+        `).catch(() => {});
+      } catch(e) {}
+    });
+  }
+
+  function setToolSelected(tool) {
+    state.activeDrawingTool = tool || 'cursor';
+    updateFavoriteToolButtonsActive();
+    if (state.activeDrawingTool === 'cursor') stopToolReconcile();
+    else startToolReconcile();
+  }
+
+  // Chart -> shell reports ride on document.title, which TradingView rewrites constantly, so one
+  // of them can be swallowed and leave the button lit with the sibling panes still drawable.
+  // While a tool is armed each pane re-checks its own live tool and repeats a revert until it is
+  // heard. Only a pane that has actually seen the arm land may answer, otherwise the report races
+  // the arm itself and the selection would cancel before the user can draw.
+  let toolReconcileTimer = null;
+  function startToolReconcile() {
+    if (toolReconcileTimer) return;
+    toolReconcileTimer = setInterval(() => {
+      if (state.activeDrawingTool === 'cursor') { stopToolReconcile(); return; }
+      activeTabPanes().forEach(pane => {
+        if (!pane.webview) return;
+        try { pane.webview.send('check-drawing-tool', {}); } catch(e) {}
+      });
+    }, 1000);
+  }
+  function stopToolReconcile() {
+    if (toolReconcileTimer) { clearInterval(toolReconcileTimer); toolReconcileTimer = null; }
+  }
+
   function selectDrawingTool(tool) {
     if (tool === 'removeAllDrawingTools') {
-      if (window.electronAPI && window.electronAPI.evalInAllCharts) {
-        window.electronAPI.evalInAllCharts(`if (window.__TVSync && typeof window.__TVSync.selectDrawingTool === 'function') { window.__TVSync.selectDrawingTool('removeAllDrawingTools'); }`);
-      }
-      const curTab = getActiveTab();
-      const tabPanes = (curTab && curTab.panes) ? curTab.panes : state.panes;
-      tabPanes.forEach(pane => {
-        if (pane.webview) {
-          try {
-            pane.webview.send('set-drawing-tool', { tool: 'removeAllDrawingTools' });
-            pane.webview.executeJavaScript(`
-              if (window.__TVSync && typeof window.__TVSync.selectDrawingTool === 'function') {
-                window.__TVSync.selectDrawingTool('removeAllDrawingTools');
-              }
-            `).catch(() => {});
-          } catch(e) {}
-        }
-      });
+      pushToolToPanes(activeTabPanes(), 'removeAllDrawingTools');
       showToast('Drawings cleared on active chart');
       return;
     }
@@ -971,28 +1000,12 @@
       tool = 'cursor';
     }
 
-    state.activeDrawingTool = tool;
-    updateFavoriteToolButtonsActive();
-    saveAppSettings();
+    setToolSelected(tool);
 
-    if (window.electronAPI && window.electronAPI.evalInAllCharts) {
-      window.electronAPI.evalInAllCharts(`if (window.__TVSync && typeof window.__TVSync.selectDrawingTool === 'function') { window.__TVSync.selectDrawingTool('${tool}'); }`);
-    }
-
-    const curTab = getActiveTab();
-    const tabPanes = (curTab && curTab.panes) ? curTab.panes : state.panes;
-    tabPanes.forEach(pane => {
-      if (pane.webview) {
-        try {
-          pane.webview.send('set-drawing-tool', { tool: tool });
-          pane.webview.executeJavaScript(`
-            if (window.__TVSync && typeof window.__TVSync.selectDrawingTool === 'function') {
-              window.__TVSync.selectDrawingTool('${tool}');
-            }
-          `).catch(() => {});
-        } catch(e) {}
-      }
-    });
+    // Only the panes of the tab being worked in get armed. Arming every webview would give the
+    // tool to charts on other accounts and other windows that never receive the drawing, so they
+    // would never revert and stay drawable indefinitely.
+    pushToolToPanes(activeTabPanes(), tool);
 
     const toolObj = ALL_AVAILABLE_TOOLS.find(t => t.id === tool);
     const toolName = toolObj ? toolObj.name : tool;
@@ -1786,6 +1799,11 @@
     const targetTab = state.tabs.find(t => t.id === tabId);
     if (!targetTab) return;
 
+    // The outgoing tab may hold an armed drawing tool. It belongs to another account's charts, so
+    // releasing it on the way out is what stops a tool picked here from being usable over there.
+    const leavingTab = getActiveTab();
+    const leavingPanes = (leavingTab && leavingTab.id !== tabId) ? leavingTab.panes : null;
+
     state.activeTabId = tabId;
 
     // Render workspace DOM container for this tab if not yet created
@@ -1825,6 +1843,13 @@
 
     renderWatchlist();
     saveAppSettings();
+
+    // The outgoing tab keeps its webviews alive, so its armed tool has to be released explicitly
+    // or the next visit to it would still be drawable.
+    if (leavingPanes) {
+      pushToolToPanes(leavingPanes, 'cursor');
+      setToolSelected('cursor');
+    }
 
     // Sync bounds instantly (shows active tab webviews and hides background tab webviews with zero reload)
     if (typeof syncTauriChartBounds === 'function') {
@@ -2124,8 +2149,17 @@
       showToast('Analysis & drawings saved to cloud');
     }
     else if (channel === 'chart-drawing-tool-changed') {
+      // Background tabs keep their webviews alive, and a report from one of them arrives on the
+      // same global channel. Only the tab being worked in may drive the master toolbar.
+      const reportedPaneId = data.paneId;
+      if (reportedPaneId && !activeTabPanes().some(p => p.id === reportedPaneId)) return;
+
       let newTool = data.tool || 'cursor';
       const reverseMap = {
+        // TradingView names its "Gann box" LineToolGannSquare, which is also this app's key for
+        // "Gann Square" - without the two lines below the wrong toolbar button would light up.
+        'LineToolGannSquare': 'LineToolGannBox',
+        'LineToolGannComplex': 'LineToolGannSquare',
         'GannBox': 'LineToolGannBox',
         'gann_box': 'LineToolGannBox',
         'GannSquare': 'LineToolGannSquare',
@@ -2142,8 +2176,11 @@
         'LineToolEllipse': 'LineToolCircle'
       };
       if (reverseMap[newTool]) newTool = reverseMap[newTool];
-      state.activeDrawingTool = newTool;
-      updateFavoriteToolButtonsActive();
+      const wasArmed = state.activeDrawingTool;
+      setToolSelected(newTool);
+      if (newTool === 'cursor' && wasArmed !== 'cursor') {
+        pushToolToPanes(activeTabPanes(), 'cursor', paneData ? paneData.id : null);
+      }
     }
   }
 
@@ -2497,16 +2534,6 @@
         hideDrawingToolbar: !state.showDrawingToolbar,
         cleanMode: state.cleanMode
       });
-
-      // Synchronize active drawing tool to newly ready chart
-      if (state.activeDrawingTool) {
-        webview.send('set-drawing-tool', { tool: state.activeDrawingTool });
-        webview.executeJavaScript(`
-          if (window.__TVSync && typeof window.__TVSync.selectDrawingTool === 'function') {
-            window.__TVSync.selectDrawingTool('${state.activeDrawingTool}');
-          }
-        `).catch(() => {});
-      }
     });
   }
 
