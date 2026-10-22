@@ -2,126 +2,123 @@
 ### Professional Multi-Window & Multi-Chart TradingView Desktop Terminal
 ### ترمینال پیشرفته دسکتاپ چند پنجره‌ای و چند چارته تریدینگ‌ویو با همگام‌سازی سراسری
 
-[![Version](https://img.shields.io/badge/version-1.2.1-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases)
-[![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases)
+[![Version](https://img.shields.io/badge/version-1.2.1-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
-[![Download Portable](https://img.shields.io/badge/Download-Portable%20v1.0.0-success?style=for-the-badge&logo=windows)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Download Portable](https://img.shields.io/badge/Download-Portable%20zip-success?style=for-the-badge&logo=windows)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+
+![A tour of the terminal: synchronised crosshair, the drawing master bar, the layout picker, a 4-pane grid, live symbol search, the in-app updater and separate account tabs](assets/multichart-tour.gif)
 
 ---
 
 ## 🌐 English Documentation
 
 ### 📌 Overview
-**MultiChart-TradingView** is an elite standalone Windows desktop terminal engineered for active traders, technical analysts, and financial institutions. It unlocks advanced multi-chart layouts, cross-monitor multi-window workflows, and zero-latency crosshair/symbol synchronization — **without requiring paid subscription layout locks or browser extensions**.
+**MultiChart-TradingView** is a standalone Windows desktop terminal for active traders and technical analysts. It puts many TradingView charts on one screen — or across several monitors — and keeps the crosshair, the time axis, the symbol and the drawings synchronised between them, **without paid subscription layout locks and without browser extensions**. It is a single native executable: Rust on the outside, a WebView2 chart page per pane.
 
 ### ✨ Key Features
-* 🖥️ **Multi-Window & Multi-Monitor Workspace (`Ctrl+N`):**
-  * Spawn unlimited independent desktop windows.
-  * Drag and organize charts freely across 2, 3, or more physical monitors.
-  * Pop out any chart pane into its own independent window with a single click (`⧉`).
-* 🎯 **Zero-Latency Crosshair & Time Synchronization:**
-  * Real-time crosshair synchronization across all charts, split panes, and windows across all monitors.
-  * Sub-millisecond timestamp matching ensures perfect candle alignment across different timeframes (e.g. 1M, 5M, 1H, 1D).
-* 🔀 **Dynamic Split-Screen Layouts (Edge Split-Screen Engine):**
-  * **1 Chart (Single View):** Focused candlestick analysis.
-  * **2 Vertical (Side-by-Side):** Smooth draggable vertical divider.
-  * **2 Horizontal (Top / Bottom):** Stacked comparative views.
-  * **3 Charts (Triple View):** 1 primary dominant chart + 2 sub-charts.
-  * **4 Grid (2x2):** Multi-timeframe quadrant monitoring.
-  * **6 Grid (3x2):** Full market overview.
-  * **Smooth Draggable Splitters:** Resize panes on the fly; double-click the splitter to instantly snap back to a 50/50 ratio.
-* 🛠️ **Floating & Customizable Master Drawing Bar:**
-  * Shared floating toolbar providing instant access to your favorite drawing tools (Trend Line, Fibonacci, Horizontal Ray, Arrow Up/Down, Brush, Text, Long/Short Position).
-  * Customize which tools appear to keep your workspace clean and decluttered.
-* 🔍 **Live Symbol Search & Watchlist:**
-  * Built-in ticker search with direct exchange/broker autocomplete (Binance, Forex, OANDA, Bybit, KuCoin, etc.).
-  * Persistent saved watchlist with instant switching.
-* 🔄 **In-App Updates:**
-  * The Update button in the master bar checks the newest GitHub release, downloads the package that matches this platform, verifies it against the published SHA-256 checksum and hands it to the installer.
-  * Nothing is executed before the checksum matches, and no download starts without a click.
-* 🔐 **Seamless Account & Cloud Sync:**
-  * Direct Google OAuth login (bypasses browser security locks) and one-click official browser authorization.
-  * Automatic session preservation: line drawings, indicators, templates, and chart settings persist seamlessly across all charts.
-  * Manual Drawing Cloud Save shortcut (`Ctrl+S`).
-* ⚡ **Clean & Distraction-Free:**
-  * Eliminates sidebars, promotional banners, and bottom clutter to dedicate 100% of screen real estate to candlesticks.
+* 🖥️ **Multi-window, multi-monitor workspace (`Ctrl+N`):**
+  * Open as many independent terminal windows as you need and spread them over 2, 3 or more physical monitors.
+  * Each window keeps its own layout, its own charts and its own synchronised drawings.
+* 🎯 **Zero-latency crosshair and time synchronisation:**
+  * Moving the pointer in any pane mirrors the vertical line and the exact timestamp onto every other chart, in every pane and window.
+  * Timestamp matching keeps candles aligned across different timeframes (1m, 15m, 1H, 4H, 1D…).
+* 🔀 **48 split layouts, from one chart to a 16-pane grid:**
+  * 1, 2 (vertical / horizontal), 3 (rows, columns, dominant side, dominant top or bottom), 4 (grid, rows, columns, mixed), 5, 6, 7, 8, 9, 10, 12 and 16 panes.
+  * The layout picker is in the master bar and shows a thumbnail of every arrangement.
+  * Smooth draggable splitters; double-click a splitter to snap back to an even ratio.
+* 👤 **Up to 8 TradingView accounts side by side:**
+  * Each account tab runs in its own browser profile, so sessions, layouts and drawings never leak between accounts.
+  * Switch tabs with `Ctrl+Tab`, open a new one with `Ctrl+T`, close with `Ctrl+W`.
+* 🛠️ **Floating, customisable drawing master bar:**
+  * One shared toolbar for your favourite drawing tools — trend line, horizontal line, arrow marks, fib retracement, brush, text, gann box, long/short position and more.
+  * Choose exactly which tools the bar shows so it stays short.
+  * A tool armed from the master bar belongs to the tab you clicked it on and to the one drawing you are making — it does not follow you across every chart.
+* 🔍 **Live symbol search and watchlist:**
+  * Type a ticker and get results from every connected broker and exchange, each badged with its venue (Binance, OANDA, FXCM, CME, Bitstamp, Vantage…).
+  * Apply a symbol to all linked charts in one click, with a persistent watchlist for fast switching.
+* 📊 **Chart clarity controls in the master bar:**
+  * **Symbol** sync toggle, **Chart Info**, **Drawings** (cloud save with `Ctrl+S`), **Max Space** (strips TradingView chrome so the candles own the screen), **Legend** (show or hide the indicator values on every chart).
+* 🔄 **In-app updates:**
+  * The **Update** button checks the newest GitHub release against the version you are running and flags itself when something newer exists.
+  * It lists the packages for this platform — installer, MSI or portable zip — with their size and whether a checksum was published, and downloads with a live progress bar.
+  * **Nothing is executed until the SHA-256 of the download matches the published checksum**; a mismatch deletes the file and says so. When you are already on the newest release the panel simply says so.
+* 🔐 **Account and cloud sync:**
+  * Direct Google sign-in plus a browser-authorised login path, with sessions preserved between runs.
+  * Drawings, indicators, templates and chart settings persist per account.
+* ⚡ **Clean by default:**
+  * No sidebars, no promotional banners, no bottom clutter — the screen belongs to the charts.
 
 ### ⌨️ Keyboard Shortcuts
 | Shortcut | Action |
 | :--- | :--- |
-| `Ctrl + N` | Open New Independent Desktop Window |
-| `Ctrl + S` | Force Save Drawings to Cloud Account |
-| `F11` | Toggle Fullscreen Mode |
-| `Double-Click Splitter` | Reset Split Ratio to 50/50 |
-| `Enter` (in search) | Apply Symbol to All Connected Charts |
+| `Ctrl + N` | Open a new independent terminal window |
+| `Ctrl + T` / `Ctrl + W` | New account tab / close the current tab |
+| `Ctrl + Tab` | Cycle between account tabs |
+| `Ctrl + S` | Save drawings to the TradingView cloud account |
+| `F11` | Toggle fullscreen |
+| `Enter` (in search) | Apply the symbol to all linked charts |
+| `Esc` | Close the open menu or panel |
+| `Double-click splitter` | Reset that divider to an even ratio |
 
 ### ⚡ Performance & Specifications
-| Feature | ⚡ MultiChart-TradingView Native Terminal |
+| | |
 | :--- | :--- |
-| **Download Size (ZIP)** | **~3.2 MB** (Portable) |
-| **Installed / Extracted Size** | **~8.2 MB** (Single .exe) |
-| **RAM Usage per Chart** | **~40 - 60 MB** (Native WebView2) |
-| **Startup Speed** | Instant (< 0.5s) |
-| **Architecture** | Rust + Tauri Native Windows WebView2 |
+| **Portable download** | **3.4 MB** (ZIP) |
+| **Terminal executable** | **8.4 MB**, one file, no dependencies |
+| **Terminal process** | **~27 MB** of its own memory |
+| **Per chart** | **~250 MB** — that is TradingView's own web runtime, not the terminal |
+| **Startup** | Under half a second to the first chart |
+| **Architecture** | Rust + Tauri v2, one WebView2 page per chart pane |
+| **Requires** | Windows 10 or 11, x64. No admin rights for the portable build |
 
 ### 📥 Download & Installation
-1. Go to the [Releases](https://github.com/XUtility/MultiChart-TradingView/releases) page.
-2. Download `MultiChart-TradingView-Tauri-v1.0.0-Portable.zip` (~3.2 MB).
-3. Extract the ZIP archive anywhere on your PC.
-4. Run `MultiChart-TradingView.exe` (or `run-tauri.bat`).
-*No installation, admin rights, or extra software required.*
+1. Open the [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest) page.
+2. Pick one of:
+   * `MultiChart-TradingView-<version>-Portable.zip` — unzip anywhere and run `MultiChart-TradingView.exe`.
+   * `MultiChart-TradingView_<version>_x64-setup.exe` — NSIS installer (per-user, no elevation prompt).
+   * `MultiChart-TradingView_<version>_x64_en-US.msi` — MSI for managed machines.
+3. From then on, keep the terminal current with the **Update** button inside the app.
+
+*Sign-in, layouts and drawings are stored under your Windows user profile, so the same account state is reused by the portable and the installed build.*
 
 ---
 
-## 🇮🇷 راهنمای فارسی (Persian Documentation)
+## 🇮🇷 راهنمای فارسی
 
-### 📌 معرفی نرم‌افزار
-**MultiChart-TradingView** یک ترمینال دسکتاپ مستقل و فوق‌سریع برای ویندوز است که به صورت اختصاصی برای تریدرها و تحلیل‌گران بازارهای مالی (کریپتو، فارکس و سهام) توسعه یافته است. این برنامه امکان چیدمان همزمان چندین چارت، استفاده از چند مانیتور و هماهنگ‌سازی همزمان خط ماوس و نمادها را **بدون نیاز به خرید اشتراک‌های دلاری تریدینگ‌ویو و بدون نیاز به نصب هرگونه اکستنشن** فراهم می‌سازد.
+### 📌 معرفی
+**MultiChart-TradingView** یک ترمینال دسکتاپ مستقل و فوق‌سریع برای ویندوز است که چندین چارت تریدینگ‌ویو را روی یک صفحه (یا چند مانیتور) می‌چیند و خط نشانگر، زمان، نماد و رسم‌ها را بین همه آن‌ها همگام نگه می‌دارد — **بدون نیاز به اشتراک‌های دلاری و بدون هیچ اکستنشن مرورگر**. خروجی برنامه یک فایل اجرایی نیتیو است: بدنه با Rust و هر چارت در یک WebView2 مستقل.
 
-### 🌟 قابلیت‌های برجسته
-* 🖥️ **پشتیبانی کامل از چند مانیتور و چند پنجره مستقل (`Ctrl+N`):**
-  * امکان باز کردن بی‌نهایت پنجره مستقل در ویندوز.
-  * چینش آسان چارت‌ها روی مانیتور ۱، مانیتور ۲ و مانیتورهای جانبی.
-  * دکمه پاپ‌اوت (⧉) روی هر چارت برای انتقال آنی همان چارت به یک پنجره مستقل جدید.
-* 🎯 **سینک سراسری و بلادرنگ خط نشانگر (Crosshair Sync):**
-  * حرکت ماوس در هر چارت یا هر پنجره، خط عمودی و زمان دقیق متناظر را روی تمامی چارت‌ها و تایم‌فریم‌های دیگر به نمایش درمی‌آورد.
-  * بررسی تایم‌فریم‌های مختلف (مثلاً ۱ دقیقه، ۱۵ دقیقه و ۴ ساعته) به صورت همزمان با هماهنگی میلی‌ثانیه‌ای.
-* 🔀 **چیدمان‌های متنوع اسپیلیت‌اسکرین (Split Layouts):**
-  * **۱ چارت (تک چارت):** تمرکز کامل روی روند قیمتی.
-  * **۲ چارت عمودی (کنار هم):** مقایسه دو دارایی یا دو تایم‌فریم.
-  * **۲ چارت افقی (بالا و پایین):** چیدمان افقی بهینه.
-  * **۳ چارت (Triple View):** یک چارت اصلی بزرگ و دو چارت فرعی در کنار.
-  * **۴ چارت (گرید ۲×۲):** استاندارد ۴ چارت همزمان.
-  * **۶ چارت (گرید ۳×۲):** مانیتورینگ پیشرفته بازار.
-  * **خطوط تقسیم متحرک:** تغییر اندازه آسان با کشیدن ماوس + بازگشت فوری به ۵۰/۵۰ با دابل کلیک.
-* 🛠️ **نوار ابزارهای پرکاربرد و شناور (Customizable Drawing Bar):**
-  * نوار ابزار مشترک و بهینه بالای صفحه شامل خط روند، فیبوناچی، پیکان بالا/پایین، براش، باکس و پوزیشن‌های معاملاتی.
-  * امکان شخصی‌سازی و فعال/غیرفعال کردن هر ابزار به دلخواه کاربر.
-* 🔍 **جستجوی زنده نمادها با تفکیک بروکر و صرافی:**
-  * جستجوی سریع انواع نمادها با نام صرافی و بروکر (بایننس، آلپاری، فارکس دات کام، اوآندا و...).
-  * واچ‌لیست اختصاصی با قابلیت ذخیره و جابجایی فوق‌العاده سریع.
-* 🔐 **ورود آسان به حساب و ذخیره ابری تحلیل‌ها:**
-  * پشتیبانی از ورود مستقیم با حساب گوگل و همچنین اتصال ایمن از طریق مرورگر.
-  * سینک سراسری ابزارها، اندیکاتورها و چارت‌ها در تمام پنجره‌ها.
-  * کلید میانبر `Ctrl+S` برای ذخیره سریع رسم‌ها در فضای ابری اکانت تریدینگ‌ویو شما.
-* ⚡ **محیط کاملاً تمیز و بدون تبلیغات:**
-  * حذف کامل سایدبارهای اضافی، تبلیغات و بنرهای مزاحم برای استفاده حداکثری از فضای مانیتور.
+### 🌟 قابلیت‌های کلیدی
+* 🖥️ **چند پنجره و چند مانیتور (`Ctrl+N`):** هر تعداد پنجره مستقل باز کنید و چارت‌ها را بین مانیتورها پخش کنید.
+* 🎯 **سینک بلادرنگ خط نشانگر و زمان:** حرکت ماوس روی هر چارت، خط عمودی و زمان دقیق را روی همه چارت‌ها و تایم‌فریم‌های دیگر می‌اندازد.
+* 🔀 **۴۸ چیدمان، از تک‌چارت تا گرید ۱۶ خانه‌ای:** ۱، ۲، ۳، ۴، ۵، ۶، ۷، ۸، ۹، ۱۰، ۱۲ و ۱۶ چارت با پیش‌نمایش بصری در نوار بالا؛ خطوط تقسیم قابل کشیدن و با دابل‌کلیک روی حالت برابر برمی‌گردند.
+* 👤 **تا ۸ حساب تریدینگ‌ویو همزمان:** هر تب حساب پروفایل مرورگر مستقل خودش را دارد تا نشست، چیدمان و رسم‌ها قاطی نشود.
+* 🛠️ **نوار ابزار رسم شناور و شخصی‌سازی‌شدنی:** خط روند، افقی، پیکان، فیبوناچی، براش، متن، گن باکس و پوزیشن معاملاتی؛ فقط ابزارهای مورد علاقه‌تان را روی نوار نگه دارید. ابزاری که انتخاب می‌کنید فقط به همان تب و همان رسم مربوط است و به بقیه چارت‌ها سرایت نمی‌کند.
+* 🔍 **جستجوی زنده نماد + واچ‌لیست:** نتایج همه بروکرها و صرافی‌ها با برچسب نام آن‌ها، و اعمال نماد روی همه چارت‌های متصل با یک کلیک.
+* 📊 **دکمه‌های نمایش روی نوار بالا:** Symbol، Chart Info، Drawings (ذخیره ابری با `Ctrl+S`)، Max Space (حذف تمام عناصر اضافی تریدینگ‌ویو) و Legend (نمایش/مخفی‌سازی مقادیر اندیکاتورها).
+* 🔄 **آپدیت از داخل برنامه:** دکمه Update آخرین ریلیز گیت‌هاب را با نسخه فعلی مقایسه می‌کند، بسته مناسب را با نوار پیشرفت دانلود می‌کند و **تا SHA-256 فایل با چک‌سام منتشرشده مطابقت نکند هیچ چیز اجرا نمی‌شود**؛ اگر به‌روز باشید همین را اعلام می‌کند.
+* 🔐 **ورود به حساب و همگام‌سازی ابری:** ورود با گوگل یا مرورگر، و ماندگاری نشست، رسم‌ها، اندیکاتورها و تنظیمات هر حساب.
+* ⚡ **محیط تمیز:** بدون سایدبار، تبلیغ و شلوغی — کل صفحه مال چارت‌هاست.
 
 ### ⌨️ کلیدهای میانبر
 | میانبر | عملکرد |
 | :--- | :--- |
-| `Ctrl + N` | باز کردن پنجره ویندوزی جدید |
-| `Ctrl + S` | ذخیره تحلیل‌ها و رسم‌ها در اکانت ابری تریدینگ‌ویو |
-| `F11` | حالت تمام‌صفحه (Fullscreen) |
-| `دابل‌کلیک روی خط تقسیم` | بازگرداندن تقسیم چارت‌ها به نسبت برابر ۵۰/۵۰ |
-| `Enter` (در کادر جستجو) | اعمال نماد روی چارت‌های همگام‌شده |
+| `Ctrl + N` | پنجره ویندوزی جدید و مستقل |
+| `Ctrl + T` / `Ctrl + W` | تب حساب جدید / بستن تب فعلی |
+| `Ctrl + Tab` | جابه‌جایی بین تب‌های حساب |
+| `Ctrl + S` | ذخیره رسم‌ها در فضای ابری تریدینگ‌ویو |
+| `F11` | تمام‌صفحه |
+| `Enter` (در کادر جستجو) | اعمال نماد روی چارت‌های متصل |
+| `Esc` | بستن منو یا پنل باز |
+| `دابل‌کلیک روی خط تقسیم` | بازگشت به نسبت برابر |
 
-### 🚀 نحوه دانلود و اجرا
-1. به صفحه [Releases](https://github.com/XUtility/MultiChart-TradingView/releases) مراجعه کنید.
-2. فایل فشرده پرتابل `MultiChart-TradingView-Tauri-v1.0.0-Portable.zip` با **حجم کم‌نظیر تنها ۳.۲ مگابایت** را دانلود کنید.
-3. فایل زیپ را در هر پوشه‌ای استخراج (Extract) کنید.
-4. روی فایل `MultiChart-TradingView.exe` (یا `run-tauri.bat`) دابل کلیک کنید تا برنامه فوراً اجرا شود.
-*بدون نیاز به نصب، بدون نیاز به دسترسی ادمین و بدون پیش‌نیاز اضافی.*
+### 🚀 دانلود و اجرا
+1. به صفحه [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest) بروید.
+2. یکی را انتخاب کنید:
+   * فایل **Portable zip** (حدود ۳٫۴ مگابایت) را استخراج کنید و `MultiChart-TradingView.exe` را اجرا کنید — بدون نصب و بدون دسترسی ادمین.
+   * یا نصب‌کننده `setup.exe` / فایل `msi`.
+3. برای به‌روزرسانی‌های بعدی از همان دکمه **Update** داخل برنامه استفاده کنید.
 
 ---
 
