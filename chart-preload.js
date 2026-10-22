@@ -1324,6 +1324,15 @@ if (paneId) {
         z-index: 99999 !important;
       }
 
+      /* TradingView answers the rule above by also floating its *drawing* toolbar, and because the
+         real one is still in the DOM its content slot renders empty - a stray white pill with a
+         drag grip that is not a drawing, so it cannot be selected or deleted and reappears on
+         every pane as soon as a tool is armed. The shell has its own master toolbar; drop this. */
+      div.tv-floating-toolbar[data-name="drawing-toolbar"],
+      #overlap-manager-root div.tv-floating-toolbar[data-name="drawing-toolbar"] {
+        display: none !important;
+      }
+
       /* Ensure Color picker, Line width, and dropdown menus from the floating toolbar work */
       #overlap-manager-root div[class*="menu-"],
       #overlap-manager-root div[class*="popup-"],
