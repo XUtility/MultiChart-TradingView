@@ -2,7 +2,7 @@
 ### Professional Multi-Window & Multi-Chart TradingView Desktop Terminal
 ### ترمینال پیشرفته دسکتاپ چند پنجره‌ای و چند چارته تریدینگ‌ویو با همگام‌سازی سراسری
 
-[![Version](https://img.shields.io/badge/version-1.1.1-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases)
+[![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Download Portable](https://img.shields.io/badge/Download-Portable%20v1.0.0-success?style=for-the-badge&logo=windows)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
@@ -36,6 +36,9 @@
 * 🔍 **Live Symbol Search & Watchlist:**
   * Built-in ticker search with direct exchange/broker autocomplete (Binance, Forex, OANDA, Bybit, KuCoin, etc.).
   * Persistent saved watchlist with instant switching.
+* 🔄 **In-App Updates:**
+  * The Update button in the master bar checks the newest GitHub release, downloads the package that matches this platform, verifies it against the published SHA-256 checksum and hands it to the installer.
+  * Nothing is executed before the checksum matches, and no download starts without a click.
 * 🔐 **Seamless Account & Cloud Sync:**
   * Direct Google OAuth login (bypasses browser security locks) and one-click official browser authorization.
   * Automatic session preservation: line drawings, indicators, templates, and chart settings persist seamlessly across all charts.

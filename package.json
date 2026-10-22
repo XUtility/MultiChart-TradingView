@@ -1,6 +1,6 @@
 {
   "name": "multichart-tradingview",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Professional Multi-Window & Multi-Chart TradingView Desktop Terminal (Tauri Edition)",
   "scripts": {
     "tauri:dev": "cd src-tauri && cargo tauri dev",

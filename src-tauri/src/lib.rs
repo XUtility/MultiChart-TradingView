@@ -678,7 +678,7 @@ pub mod commands {
             urlencoding::encode(q)
         );
         let resp = client
-            .get(&url)
+            .get(url.as_str())
             .header("Referer", "https://www.tradingview.com/")
             .header("Origin", "https://www.tradingview.com")
             .header(
@@ -962,6 +962,379 @@ pub mod commands {
         let _win = builder.build().map_err(|e| e.to_string())?;
         Ok(())
     }
+
+    // --- IN-APP UPDATER ----------------------------------------------------------------
+    // Releases are published on GitHub. The app asks for the newest one, downloads the asset
+    // that matches this platform into its own cache directory, checks it against the published
+    // checksums, and only then hands it to the installer.
+    const UPDATE_REPO: &str = "XUtility/MultiChart-TradingView";
+
+    fn update_client() -> reqwest::Client {
+        reqwest::Client::builder()
+            .user_agent(concat!("MultiChart-TradingView/", env!("CARGO_PKG_VERSION")))
+            .build()
+            .unwrap_or_default()
+    }
+
+    fn version_parts(raw: &str) -> Vec<u64> {
+        raw.trim()
+            .trim_start_matches('v')
+            .split('.')
+            .map(|seg| {
+                let digits: String = seg.chars().take_while(|c| c.is_ascii_digit()).collect();
+                digits.parse().unwrap_or(0)
+            })
+            .collect()
+    }
+
+    fn is_newer_version(latest: &str, current: &str) -> bool {
+        let (a, b) = (version_parts(latest), version_parts(current));
+        for i in 0..a.len().max(b.len()) {
+            let x = *a.get(i).unwrap_or(&0);
+            let y = *b.get(i).unwrap_or(&0);
+            if x != y {
+                return x > y;
+            }
+        }
+        false
+    }
+
+    fn asset_kind(name: &str) -> &'static str {
+        let lower = name.to_lowercase();
+        if lower.ends_with("-setup.exe") {
+            "installer"
+        } else if lower.ends_with(".msi") {
+            "msi"
+        } else if lower.ends_with(".zip") {
+            "portable"
+        } else {
+            "other"
+        }
+    }
+
+    // The NSIS setup replaces the installed copy in place, the MSI needs its own elevation
+    // round and a portable zip never touches the running app, so they are ranked in that order.
+    fn asset_rank(name: &str) -> u8 {
+        match asset_kind(name) {
+            "installer" => 0,
+            "msi" => 1,
+            "portable" => 2,
+            _ => 3,
+        }
+    }
+
+    fn is_safe_asset_name(name: &str) -> bool {
+        !name.is_empty()
+            && !name.contains("..")
+            && name
+                .chars()
+                .all(|c| c.is_ascii_alphanumeric() || matches!(c, '.' | '-' | '_'))
+    }
+
+    fn is_github_url(raw: &str) -> bool {
+        // The download only ever follows a link handed out by the releases API, but a stale or
+        // tampered reply must not be able to point the updater at an arbitrary host.
+        match url::Url::parse(raw) {
+            Ok(parsed) => {
+                parsed.scheme() == "https"
+                    && matches!(
+                        parsed.host_str(),
+                        Some("github.com")
+                            | Some("objects.githubusercontent.com")
+                            | Some("api.github.com")
+                            | Some("raw.githubusercontent.com")
+                    )
+            }
+            Err(_) => false,
+        }
+    }
+
+    async fn published_checksums(client: &reqwest::Client, url: &str) -> HashMap<String, String> {
+        let mut sums = HashMap::new();
+        if !is_github_url(url) {
+            return sums;
+        }
+        let text = match client.get(url).send().await {
+            Ok(resp) if resp.status().is_success() => resp.text().await.unwrap_or_default(),
+            _ => return sums,
+        };
+        for line in text.lines() {
+            let mut parts = line.split_whitespace();
+            if let (Some(hash), Some(name)) = (parts.next(), parts.next()) {
+                if hash.len() == 64 && is_safe_asset_name(name) {
+                    sums.insert(name.to_string(), hash.to_lowercase());
+                }
+            }
+        }
+        sums
+    }
+
+    #[tauri::command]
+    pub async fn update_check(app: tauri::AppHandle) -> Result<serde_json::Value, String> {
+        let current = app.package_info().version.to_string();
+        let api = format!("https://api.github.com/repos/{UPDATE_REPO}/releases/latest");
+        let resp = update_client()
+            .get(api.as_str())
+            .header("Accept", "application/vnd.github+json")
+            .send()
+            .await
+            .map_err(|e| format!("Could not reach GitHub ({e})"))?;
+        let status = resp.status();
+        if status == reqwest::StatusCode::NOT_FOUND {
+            return Err("This repository has no published release yet".to_string());
+        }
+        if !status.is_success() {
+            return Err(format!("GitHub replied with {status}"));
+        }
+        let body: serde_json::Value = resp.json().await.map_err(|e| e.to_string())?;
+        let text = |key: &str| {
+            body.get(key)
+                .and_then(|v| v.as_str())
+                .unwrap_or("")
+                .to_string()
+        };
+        let tag = text("tag_name");
+        if tag.is_empty() {
+            return Err("The release reply carries no version tag".to_string());
+        }
+
+        let mut assets: Vec<serde_json::Value> = body
+            .get("assets")
+            .and_then(|v| v.as_array())
+            .map(|list| {
+                list.iter()
+                    .filter_map(|a| {
+                        let name = a.get("name").and_then(|v| v.as_str())?;
+                        let link = a.get("browser_download_url").and_then(|v| v.as_str())?;
+                        Some(serde_json::json!({
+                            "name": name,
+                            "size": a.get("size").and_then(|v| v.as_u64()).unwrap_or(0),
+                            "url": link,
+                            "kind": asset_kind(name),
+                            "sha256": serde_json::Value::Null,
+                        }))
+                    })
+                    .collect()
+            })
+            .unwrap_or_default();
+
+        let sums_asset = assets
+            .iter()
+            .find(|a| a.get("name").and_then(|v| v.as_str()) == Some("SHA256SUMS.txt"))
+            .and_then(|a| a.get("url").and_then(|v| v.as_str()).map(str::to_string));
+        let sums = match &sums_asset {
+            Some(link) => published_checksums(&update_client(), link).await,
+            None => HashMap::new(),
+        };
+        for asset in assets.iter_mut() {
+            if let Some(name) = asset.get("name").and_then(|v| v.as_str()) {
+                if let Some(hash) = sums.get(name) {
+                    asset["sha256"] = serde_json::Value::String(hash.clone());
+                }
+            }
+        }
+        assets.sort_by_key(|a| asset_rank(a.get("name").and_then(|v| v.as_str()).unwrap_or("")));
+
+        Ok(serde_json::json!({
+            "current": current,
+            "tag": tag,
+            "latest": tag.trim_start_matches('v'),
+            "updateAvailable": is_newer_version(&tag, &current),
+            "title": text("name"),
+            "notes": text("body"),
+            "publishedAt": text("published_at"),
+            "page": text("html_url"),
+            "assets": assets,
+        }))
+    }
+
+    #[tauri::command]
+    pub async fn update_download(
+        app: tauri::AppHandle,
+        url: String,
+        sha256: Option<String>,
+    ) -> Result<String, String> {
+        use futures_util::StreamExt;
+        use sha2::Digest;
+        use std::fmt::Write as _;
+        use std::io::Write;
+
+        if !is_github_url(&url) {
+            return Err("Refused to download from a non-GitHub address".to_string());
+        }
+        let name = url
+            .split(['?', '#'])
+            .next()
+            .unwrap_or("")
+            .rsplit('/')
+            .next()
+            .unwrap_or("");
+        if !is_safe_asset_name(name) {
+            return Err("Unexpected asset name in the release URL".to_string());
+        }
+
+        let dir = app.path().app_cache_dir().map_err(|e| e.to_string())?.join("updates");
+        std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
+        let dest = dir.join(name);
+        let _ = std::fs::remove_file(&dest);
+
+        let resp = update_client()
+            .get(url.as_str())
+            .send()
+            .await
+            .map_err(|e| format!("Could not start the download ({e})"))?;
+        let status = resp.status();
+        if !status.is_success() {
+            return Err(format!("GitHub replied with {status}"));
+        }
+        let total = resp.content_length().unwrap_or(0);
+        let mut file =
+            std::io::BufWriter::new(std::fs::File::create(&dest).map_err(|e| e.to_string())?);
+        let mut hasher = sha2::Sha256::new();
+        let mut stream = resp.bytes_stream();
+        let mut done = 0u64;
+        let mut last_emit = Instant::now();
+
+        while let Some(chunk) = stream.next().await {
+            let bytes = chunk.map_err(|e| format!("The download broke ({e})"))?;
+            file.write_all(&bytes).map_err(|e| e.to_string())?;
+            hasher.update(&bytes);
+            done += bytes.len() as u64;
+            if last_emit.elapsed().as_millis() >= 150 {
+                last_emit = Instant::now();
+                let _ = app.emit(
+                    "update-progress",
+                    serde_json::json!({
+                        "name": name,
+                        "downloaded": done,
+                        "total": total,
+                        "percent": if total > 0 { done * 100 / total } else { 0 },
+                    }),
+                );
+            }
+        }
+        file.flush().map_err(|e| e.to_string())?;
+        drop(file);
+
+        let mut hex = String::with_capacity(64);
+        for byte in hasher.finalize().iter() {
+            let _ = write!(hex, "{byte:02x}");
+        }
+        if let Some(expected) = &sha256 {
+            if !expected.is_empty() && hex != expected.to_lowercase() {
+                let _ = std::fs::remove_file(&dest);
+                return Err(
+                    "Checksum mismatch: what downloaded is not what the release published"
+                        .to_string(),
+                );
+            }
+        }
+        let _ = app.emit(
+            "update-progress",
+            serde_json::json!({
+                "name": name,
+                "downloaded": done,
+                "total": total.max(done),
+                "percent": 100,
+                "verified": sha256.as_deref().unwrap_or("").len() == 64,
+            }),
+        );
+        Ok(dest.to_string_lossy().to_string())
+    }
+
+    #[tauri::command]
+    pub fn update_install(app: tauri::AppHandle, path: String) -> Result<(), String> {
+        let file = std::path::Path::new(&path);
+        let name = file.file_name().and_then(|v| v.to_str()).unwrap_or("");
+        if !is_safe_asset_name(name) || !file.is_file() {
+            return Err("The downloaded installer is missing".to_string());
+        }
+        let kind = asset_kind(name);
+        if !matches!(kind, "installer" | "msi") {
+            return Err("Only a setup or MSI package can be installed from inside the app".to_string());
+        }
+
+        #[cfg(windows)]
+        {
+            use std::os::windows::process::CommandExt;
+            let target = path.replace('\'', "''");
+            let launch = if kind == "msi" {
+                format!("Start-Process msiexec.exe -ArgumentList '/i','{target}'")
+            } else {
+                format!("Start-Process '{target}'")
+            };
+            // The installer cannot overwrite files this process still holds, so a detached relay
+            // waits for us to exit and only then raises the installer.
+            std::process::Command::new("powershell.exe")
+                .args([
+                    "-NoProfile",
+                    "-NonInteractive",
+                    "-WindowStyle",
+                    "Hidden",
+                    "-Command",
+                    &format!("Start-Sleep -Milliseconds 2500; {launch}"),
+                ])
+                .creation_flags(0x08000000)
+                .spawn()
+                .map_err(|e| e.to_string())?;
+        }
+        #[cfg(not(windows))]
+        {
+            open::that(&path).map_err(|e| e.to_string())?;
+        }
+
+        let _ = app.emit("update-installing", serde_json::json!({ "name": name }));
+        app.exit(0);
+        Ok(())
+    }
+
+    #[cfg(test)]
+    mod updater_tests {
+        use super::*;
+
+        #[test]
+        fn compares_versions_by_number_not_string() {
+            assert!(is_newer_version("v1.2.0", "1.1.9"));
+            assert!(is_newer_version("v1.10.0", "1.9.2"));
+            assert!(!is_newer_version("v1.1.1", "1.1.1"));
+            assert!(!is_newer_version("v1.0.9", "1.1.0"));
+            assert!(is_newer_version("2.0", "1.9.9"));
+        }
+
+        #[test]
+        fn prefers_the_setup_over_msi_and_zip() {
+            assert!(asset_rank("MultiChart-TradingView_1_2_0_x64-setup.exe") < asset_rank("a.msi"));
+            assert!(asset_rank("a.msi") < asset_rank("a.zip"));
+            assert_eq!(asset_rank("notes.txt"), 3);
+        }
+
+        #[test]
+        fn refuses_names_that_could_escape_the_cache_dir() {
+            assert!(is_safe_asset_name("MultiChart-TradingView_1.2.0_x64-setup.exe"));
+            assert!(!is_safe_asset_name("..\\evil.exe"));
+            assert!(!is_safe_asset_name("a/b.exe"));
+            assert!(!is_safe_asset_name("with space.exe"));
+            assert!(!is_safe_asset_name(""));
+        }
+
+        #[test]
+        fn only_accepts_github_hosts_for_the_download() {
+            assert!(is_github_url("https://github.com/XUtility/MultiChart-TradingView/releases/download/v1.1.1/a.msi"));
+            assert!(is_github_url("https://objects.githubusercontent.com/x?sig=1"));
+            assert!(!is_github_url("http://github.com/x"));
+            assert!(!is_github_url("https://evil.com/github.com/x"));
+            assert!(!is_github_url("not a url"));
+        }
+
+        #[test]
+        fn parses_the_two_column_sums_format() {
+            let line = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef  App-setup.exe";
+            let mut parts = line.split_whitespace();
+            let (hash, name) = (parts.next().unwrap(), parts.next().unwrap());
+            assert_eq!(hash.len(), 64);
+            assert!(is_safe_asset_name(name));
+        }
+    }
 }
 
 use commands::*;
@@ -1028,6 +1401,9 @@ pub fn run() {
             toggle_fullscreen,
             open_new_window,
             open_account_login_window,
+            update_check,
+            update_download,
+            update_install,
             log_to_file
         ])
         .run(tauri::generate_context!())

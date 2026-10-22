@@ -411,6 +411,15 @@
 
 
 
+      <!-- In-app update from GitHub releases -->
+      <button id="btnUpdate" class="icon-btn" title="Check for updates">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 3v12m0 0 4-4m-4 4-4-4"></path>
+          <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path>
+        </svg>
+        <span id="updateBadgeDot" class="update-badge-dot" style="display:none;"></span>
+      </button>
+
       <!-- Help / Shortcuts -->
       <button id="btnHelp" class="icon-btn" title="Shortcuts & Multi-Window Guide">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -447,6 +456,37 @@
           <li><strong>Clean Mode / Max Space:</strong> Eliminates sidebars, promotional popups, and bottom panels to provide an unobstructed candlestick view.</li>
           <li><strong>Legend:</strong> Show or hide the indicator legend strip on top of every chart.</li>
         </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPDATE MODAL -->
+  <div id="updateModal" class="modal-backdrop">
+    <div class="modal-card update-modal-card">
+      <div class="modal-header">
+        <div class="modal-header-left">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 3v12m0 0 4-4m-4 4-4-4"></path>
+            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path>
+          </svg>
+          <span class="modal-title-text">Update MultiChart-TradingView</span>
+        </div>
+        <button id="btnCloseUpdate" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body update-modal-body">
+        <p id="updateStatusLine" class="update-status-line">Checking GitHub releases…</p>
+        <pre id="updateNotes" class="update-notes"></pre>
+        <div id="updateAssets" class="update-assets"></div>
+        <div id="updateProgressWrap" class="update-progress-wrap" style="display:none;">
+          <div class="update-progress-track"><div id="updateProgressBar" class="update-progress-bar"></div></div>
+          <span id="updateProgressText" class="update-progress-text">0%</span>
+        </div>
+        <p id="updateError" class="update-error" style="display:none;"></p>
+      </div>
+      <div class="modal-footer update-modal-footer">
+        <button id="btnRecheckUpdate" class="btn-tool-action">Check again</button>
+        <button id="btnDownloadUpdate" class="btn-tool-action primary" disabled>Download</button>
+        <button id="btnInstallUpdate" class="btn-tool-action primary" disabled style="display:none;">Install &amp; restart</button>
       </div>
     </div>
   </div>

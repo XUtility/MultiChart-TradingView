@@ -23,12 +23,14 @@ serde = { version = "1.0", features = ["derive"] }
 log = "0.4"
 tauri = { version = "2.11.3", features = ["unstable", "devtools"] }
 tauri-plugin-log = "2"
-reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "stream"] }
 open = "5.3"
 arboard = "3.4"
 url = "2.5"
 urlencoding = "2.1"
 tokio = { version = "1", features = ["time", "sync"] }
+futures-util = "0.3"
+sha2 = "0.10"
 
 [[bin]]
 name = "MultiChart-TradingView"

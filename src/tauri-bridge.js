@@ -12,6 +12,7 @@
   window.__broadcastSyncListeners = window.__broadcastSyncListeners || [];
   window.__windowCountListeners = window.__windowCountListeners || [];
   window.__sessionLoginListeners = window.__sessionLoginListeners || [];
+  window.__updateProgressListeners = window.__updateProgressListeners || [];
 
   // Global direct dispatch hook called by Rust native backend eval
   window.__tvReceiveChartMessage = function(msg) {
@@ -101,6 +102,13 @@
       if (typeof callback === 'function') {
         window.__chartMessageListeners.push(callback);
       }
+    },
+
+    updateCheck: () => safeInvoke('update_check'),
+    updateDownload: (url, sha256) => safeInvoke('update_download', { url, sha256: sha256 || null }),
+    updateInstall: (path) => safeInvoke('update_install', { path }),
+    onUpdateProgress: (callback) => {
+      if (typeof callback === 'function') window.__updateProgressListeners.push(callback);
     }
   };
 
@@ -120,6 +128,9 @@
       });
       eventModule.listen('session-login-completed', (event) => {
         window.__sessionLoginListeners.forEach(fn => { try { fn(event.payload); } catch(e) {} });
+      });
+      eventModule.listen('update-progress', (event) => {
+        window.__updateProgressListeners.forEach(fn => { try { fn(event.payload); } catch(e) {} });
       });
       return true;
     }

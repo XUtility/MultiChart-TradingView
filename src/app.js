@@ -3126,6 +3126,218 @@
     });
   }
 
+  // --- IN-APP UPDATER ----------------------------------------------------------------
+  // GitHub publishes the releases. The shell only reads the release list, streams the chosen
+  // package into the app cache and hands it to the installer after its checksum matches, so an
+  // unverified binary is never executed.
+  const updateModal = document.getElementById('updateModal');
+  const btnUpdate = document.getElementById('btnUpdate');
+  const updateBadgeDot = document.getElementById('updateBadgeDot');
+  const updateStatusLine = document.getElementById('updateStatusLine');
+  const updateNotes = document.getElementById('updateNotes');
+  const updateAssetsBox = document.getElementById('updateAssets');
+  const updateProgressWrap = document.getElementById('updateProgressWrap');
+  const updateProgressBar = document.getElementById('updateProgressBar');
+  const updateProgressText = document.getElementById('updateProgressText');
+  const updateErrorBox = document.getElementById('updateError');
+  const btnCloseUpdate = document.getElementById('btnCloseUpdate');
+  const btnRecheckUpdate = document.getElementById('btnRecheckUpdate');
+  const btnDownloadUpdate = document.getElementById('btnDownloadUpdate');
+  const btnInstallUpdate = document.getElementById('btnInstallUpdate');
+
+  let updateInfo = null;
+  let updatePicked = null;
+  let updatePackage = '';
+  let updateBusy = false;
+
+  const UPDATE_KIND_LABEL = {
+    installer: 'Installer',
+    msi: 'MSI package',
+    portable: 'Portable zip'
+  };
+
+  function setUpdateError(message) {
+    if (!updateErrorBox) return;
+    updateErrorBox.textContent = message || '';
+    updateErrorBox.style.display = message ? 'block' : 'none';
+  }
+
+  function formatUpdateSize(bytes) {
+    if (!bytes) return '';
+    return bytes >= 1048576 ? `${(bytes / 1048576).toFixed(1)} MB` : `${Math.round(bytes / 1024)} KB`;
+  }
+
+  function refreshUpdateButtons() {
+    if (btnDownloadUpdate) btnDownloadUpdate.disabled = updateBusy || !updatePicked;
+    if (btnRecheckUpdate) btnRecheckUpdate.disabled = updateBusy;
+    if (btnInstallUpdate) {
+      const installable = updatePackage && /\.(exe|msi)$/i.test(updatePackage);
+      btnInstallUpdate.style.display = installable ? '' : 'none';
+      btnInstallUpdate.disabled = updateBusy || !installable;
+    }
+    if (typeof updateTauriOverlaysState === 'function') updateTauriOverlaysState();
+  }
+
+  function renderUpdateAssets() {
+    if (!updateAssetsBox) return;
+    updateAssetsBox.textContent = '';
+    const assets = ((updateInfo && updateInfo.assets) || []).filter(a => UPDATE_KIND_LABEL[a.kind]);
+    assets.forEach(asset => {
+      const row = document.createElement('button');
+      row.type = 'button';
+      row.className = 'update-asset' + (updatePicked && updatePicked.name === asset.name ? ' selected' : '');
+      const title = document.createElement('span');
+      title.className = 'update-asset-name';
+      title.textContent = `${UPDATE_KIND_LABEL[asset.kind]} · ${asset.name}`;
+      const meta = document.createElement('span');
+      meta.className = 'update-asset-meta';
+      meta.textContent = [formatUpdateSize(asset.size), asset.sha256 ? 'checksum published' : 'no published checksum']
+        .filter(Boolean)
+        .join(' · ');
+      row.appendChild(title);
+      row.appendChild(meta);
+      row.addEventListener('click', () => {
+        if (updateBusy) return;
+        updatePicked = asset;
+        updatePackage = '';
+        renderUpdateAssets();
+        refreshUpdateButtons();
+      });
+      updateAssetsBox.appendChild(row);
+    });
+  }
+
+  function paintUpdateResult() {
+    if (!updateInfo) return;
+    const current = updateInfo.current || '?';
+    if (updateInfo.updateAvailable) {
+      updateStatusLine.textContent = `Version ${current} installed · ${updateInfo.tag} is available`;
+      updateNotes.textContent = updateInfo.notes || updateInfo.title || '';
+    } else {
+      updateStatusLine.textContent = `Version ${current} is the newest release`;
+      updateNotes.textContent = updateInfo.title || '';
+    }
+    renderUpdateAssets();
+    refreshUpdateButtons();
+  }
+
+  async function runUpdateCheck() {
+    if (!window.electronAPI || !window.electronAPI.updateCheck) {
+      setUpdateError('Updates are checked by the native layer, which is unavailable here.');
+      return;
+    }
+    updateBusy = true;
+    setUpdateError('');
+    updateStatusLine.textContent = 'Checking GitHub releases…';
+    refreshUpdateButtons();
+    try {
+      const info = await window.electronAPI.updateCheck();
+      updateInfo = info;
+      updatePicked = (info.assets || []).filter(a => UPDATE_KIND_LABEL[a.kind])[0] || null;
+      paintUpdateResult();
+      if (updateBadgeDot) updateBadgeDot.style.display = info.updateAvailable ? '' : 'none';
+      if (btnUpdate) {
+        btnUpdate.title = info.updateAvailable
+          ? `Update to ${info.tag} is available`
+          : `You are on ${info.current}, the newest release`;
+      }
+    } catch (err) {
+      updateInfo = null;
+      updateStatusLine.textContent = 'Could not check for updates.';
+      setUpdateError(String(err && err.message ? err.message : err));
+      refreshUpdateButtons();
+    } finally {
+      updateBusy = false;
+      refreshUpdateButtons();
+    }
+  }
+
+  function setUpdateProgress(percent, note) {
+    if (updateProgressBar) updateProgressBar.style.width = `${Math.max(0, Math.min(100, percent))}%`;
+    if (updateProgressText) updateProgressText.textContent = `${Math.round(percent)}%${note ? ' · ' + note : ''}`;
+    if (typeof updateTauriOverlaysState === 'function') updateTauriOverlaysState();
+  }
+
+  async function runUpdateDownload() {
+    if (!updatePicked || updateBusy) return;
+    updateBusy = true;
+    updatePackage = '';
+    setUpdateError('');
+    if (updateProgressWrap) updateProgressWrap.style.display = '';
+    setUpdateProgress(0, updatePicked.name);
+    refreshUpdateButtons();
+    try {
+      const path = await window.electronAPI.updateDownload(updatePicked.url, updatePicked.sha256 || null);
+      updatePackage = path;
+      setUpdateProgress(100, updatePicked.sha256 ? 'checksum verified' : 'downloaded');
+      updateStatusLine.textContent = `Downloaded. ${/\.exe$|\.msi$/i.test(path) ? 'Close your charts - installing restarts the app.' : 'Extract this zip over your copy to update.'}`;
+    } catch (err) {
+      setUpdateProgress(0, 'failed');
+      setUpdateError(String(err && err.message ? err.message : err));
+    } finally {
+      updateBusy = false;
+      refreshUpdateButtons();
+    }
+  }
+
+  if (window.electronAPI && window.electronAPI.onUpdateProgress) {
+    window.electronAPI.onUpdateProgress((payload) => {
+      if (!payload || !updateBusy) return;
+      setUpdateProgress(payload.percent || 0, payload.verified ? 'checksum verified' : null);
+    });
+  }
+
+  if (btnUpdate && updateModal) {
+    btnUpdate.addEventListener('click', () => {
+      updateModal.classList.add('show');
+      setUpdateProgress(0, '');
+      if (updateProgressWrap) updateProgressWrap.style.display = 'none';
+      if (updateInfo) {
+        paintUpdateResult();
+        refreshUpdateButtons();
+      } else {
+        runUpdateCheck();
+      }
+      if (typeof updateTauriOverlaysState === 'function') updateTauriOverlaysState();
+    });
+    btnCloseUpdate.addEventListener('click', () => {
+      updateModal.classList.remove('show');
+      if (typeof updateTauriOverlaysState === 'function') updateTauriOverlaysState();
+    });
+    updateModal.addEventListener('click', (e) => {
+      if (e.target !== updateModal) return;
+      // A download in flight keeps running in the native layer, so closing the panel mid-download
+      // must not look like a cancel that never happens.
+      if (updateBusy) {
+        showToast('Update download is still running');
+        return;
+      }
+      updateModal.classList.remove('show');
+      if (typeof updateTauriOverlaysState === 'function') updateTauriOverlaysState();
+    });
+    btnRecheckUpdate.addEventListener('click', runUpdateCheck);
+    btnDownloadUpdate.addEventListener('click', runUpdateDownload);
+    btnInstallUpdate.addEventListener('click', async () => {
+      if (!updatePackage || updateBusy) return;
+      updateBusy = true;
+      refreshUpdateButtons();
+      updateStatusLine.textContent = 'Starting the installer…';
+      try {
+        await window.electronAPI.updateInstall(updatePackage);
+      } catch (err) {
+        updateBusy = false;
+        setUpdateError(String(err && err.message ? err.message : err));
+        refreshUpdateButtons();
+      }
+    });
+
+    // A silent check shortly after start-up: the badge tells the user an update exists without
+    // ever interrupting the session, and nothing downloads until they ask for it.
+    setTimeout(() => {
+      if (!updateInfo) runUpdateCheck();
+    }, 8000);
+  }
+
   // Add New Tab Button
   if (btnAddNewTab) {
     btnAddNewTab.addEventListener('click', () => {

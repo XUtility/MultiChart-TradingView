@@ -2028,3 +2028,154 @@ body {
 
 
 
+
+/* --- IN-APP UPDATE PANEL ---------------------------------------------------------- */
+#btnUpdate {
+  position: relative;
+}
+
+.update-badge-dot {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  border: 2px solid var(--bg-secondary);
+  animation: update-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes update-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.35); opacity: 0.65; }
+}
+
+.update-modal-card {
+  width: 560px;
+  max-width: 95vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.update-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 6px;
+  margin-bottom: 14px;
+}
+
+.update-status-line {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.update-notes {
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 180px;
+  overflow-y: auto;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 10px 12px;
+  user-select: text;
+}
+
+.update-notes:empty {
+  display: none;
+}
+
+.update-assets {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.update-asset {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  text-align: left;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.update-asset:hover {
+  background: var(--bg-hover);
+  border-color: rgba(41, 98, 255, 0.5);
+}
+
+.update-asset.selected {
+  background: rgba(41, 98, 255, 0.12);
+  border-color: var(--accent-blue);
+}
+
+.update-asset-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  word-break: break-all;
+}
+
+.update-asset-meta {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.update-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.update-progress-track {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--bg-tertiary);
+  overflow: hidden;
+}
+
+.update-progress-bar {
+  height: 100%;
+  width: 0;
+  background: var(--accent-blue);
+  transition: width 0.2s ease;
+}
+
+.update-progress-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  min-width: 96px;
+  text-align: right;
+}
+
+.update-error {
+  font-size: 12px;
+  color: var(--accent-red);
+  word-break: break-word;
+}
+
+.update-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
