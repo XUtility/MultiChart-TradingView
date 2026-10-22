@@ -2,7 +2,7 @@
 ### Professional Multi-Window & Multi-Chart TradingView Desktop Terminal
 ### ترمینال پیشرفته دسکتاپ چند پنجره‌ای و چند چارته تریدینگ‌ویو با همگام‌سازی سراسری
 
-[![Version](https://img.shields.io/badge/version-1.2.1-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.2.2-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Download Portable](https://img.shields.io/badge/Download-Portable%20zip-success?style=for-the-badge&logo=windows)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
