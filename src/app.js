@@ -3383,6 +3383,7 @@
     } else if (e.key === 'Escape') {
       if (helpModal) helpModal.classList.remove('show');
       if (accountModal) accountModal.classList.remove('show');
+      if (updateModal && !updateBusy) updateModal.classList.remove('show');
       closeCustomizeToolsModal();
     }
   });
