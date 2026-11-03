@@ -2,16 +2,15 @@
 ### Professional multi-chart TradingView desktop terminal
 ### ترمینال پیشرفته دسکتاپ چند چارته تریدینگ‌ویو با چیدمان اسپلیت و همگام‌سازی
 
-[![Version](https://img.shields.io/badge/version-1.3.4-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.3.5-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
 [![Download Portable](https://img.shields.io/badge/Download-Portable%20zip-success?style=for-the-badge&logo=windows)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 
-![A tour of the terminal: split layouts, synchronised crosshairs, the shared drawing master bar, global look and saved templates, live symbol search, the in-app updater and the eight-account grid](assets/multichart-tour.gif)
+![A tour of the terminal: split layouts, the master bar, synchronised crosshairs, the shared drawing toolbar, global look and saved templates, live symbol search, real per-profile sign-in with account names you can hide, the in-app updater and the eight-account grid](assets/multichart-tour.gif)
 
-> **This is the public download and documentation channel.**
-> The application source code is **not** published in this repository. Here you will find the README, the [LICENSE](LICENSE) and a demo GIF; Windows packages are attached to [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest).
+> **Source repository.** The application source lives here; the public download channel at [XUtility/MultiChart-TradingView](https://github.com/XUtility/MultiChart-TradingView) carries only this documentation, the [LICENSE](LICENSE), the demo GIF and the release packages.
 
 **Contents:** [English documentation](#-english-documentation) · [راهنمای فارسی](#-راهنمای-فارسی) · [Download](#-download--installation) · [FAQ](#-frequently-asked-questions) · [License](#-license--copyright)
 
@@ -25,13 +24,12 @@
 
 It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 chart page per pane on the inside. Sign-in happens in a real TradingView page inside an isolated profile, so passkeys, OAuth and two-factor authentication work exactly as they do in a browser.
 
-### 🆕 What's new in 1.3.4
+### 🆕 What's new in 1.3.5
 
-* 🎨 **Global look from a source account** — choose which account supplies the chart appearance and apply its **background, grid, scales and candle colours** to every linked chart. A single toggle turns the sync on or off.
-* 🧩 **Saved drawing templates across accounts** — templates you save in TradingView's own **Templates** menu on the source account are captured by name and can be applied to drawings on any other account.
-* 👤 **Source account picker** — pick `All` or a specific profile (`A1`…`A8`); styles, templates and chart appearance are learned only from that source.
-* 📐 **Compact global-look menu** — a two-row account chip grid keeps the whole template list visible without scrolling.
-* 🖌️ **Clearer master-bar icons** — a new magnet, a global-look palette, a layout icon that mirrors the active split, and a proper split-reset glyph.
+* 🔑 **Sign-in windows that open and load** — each profile's sign-in window now shows the real TradingView page, so Google, e-mail and two-factor sign-in work instead of a blank white window.
+* 👤 **Account name on every profile** — the Accounts grid shows the TradingView username each profile is signed in as, updated live from that profile's sign-in window.
+* 🙈 **Hide account names** — one click in the Accounts header masks every username and its tooltip; the choice is remembered between launches.
+* 🪟 **No console window** — the terminal starts straight into its own window in both debug and release builds; no stray `cmd` window next to it.
 
 ### ✨ Key features
 
@@ -49,7 +47,8 @@ It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 
 * Every tab runs in one of eight separate browser profiles (`acc_1`…`acc_8`), each with its own WebView2 data folder — sessions, layouts and drawings never leak between accounts.
 * Tabs that share a profile may stay open together: only the visible tab keeps its chart connections alive, and background tabs of that profile are reopened when you switch back. This keeps one account under TradingView's concurrent-tab limit.
 * If TradingView still shows its multi-tab / plan-limit dialog, the terminal dismisses it automatically and releases the profile's background tabs instead of clicking **Restore connection**, which would steal the session from the visible chart.
-* The **Accounts** button opens the profile grid; each profile has its own sign-in window.
+* The **Accounts** button opens the profile grid; each profile has its own sign-in window and shows the TradingView account it is signed in as (or **Open sign-in** if not yet).
+* **Hide names** in the Accounts header replaces every username with dots and drops its tooltip — useful when sharing your screen; the setting is remembered.
 * Click a tab's `[A#]` badge to move it to another profile, then **Reload charts** to pick up that profile's session.
 * Switch tabs with `Ctrl+Tab` or `Ctrl+1`…`Ctrl+9`, open a new one with `Ctrl+T`, close with `Ctrl+W`.
 
@@ -58,7 +57,7 @@ It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 
 * Choose exactly which tools the bar shows so it stays short, and set the magnet mode from the same bar.
 * A tool armed from the master bar belongs to the tab you clicked it on and to the one drawing you are making — it does not follow you across every chart.
 
-#### 🎨 Global look & shared templates *(new in 1.3.4)*
+#### 🎨 Global look & shared templates
 * Open the palette button in the master bar to choose the **source account** (`All` or `A1`…`A8`).
 * **Sync chart appearance** copies the source chart's background, grid, scales and candle colours to every linked chart; the source account keeps its own look and keeps reporting changes.
 * Apply a template from TradingView's **Templates** menu on the source account and it appears in the global-look menu, grouped by tool. One click makes it the style for new drawings in the active tab.
@@ -79,7 +78,7 @@ It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 
 * **Nothing is downloaded without a published SHA-256, and nothing is executed until the hash of the file on disk matches it**; a mismatch deletes the file and says so. When you are already on the newest release the panel simply says so.
 
 #### 🔐 Accounts and persistence
-* Sign-in happens in a real TradingView page inside a dedicated profile, so passkeys, OAuth and two-factor all work the way TradingView expects.
+* Sign-in happens in a real TradingView page inside a dedicated profile, so passkeys, OAuth and two-factor all work the way TradingView expects. The profile's account name is reported back to the Accounts grid and can be masked with **Hide names**.
 * Drawings, indicators, templates and chart settings persist per account, because they belong to the profile's own session.
 * Window placement, tabs, layouts and the global-look source are remembered by the terminal itself.
 
@@ -138,7 +137,7 @@ The terminal collects no telemetry of its own. The charts inside it are TradingV
 3. Verify the download if you wish:
 
 ```powershell
-Get-FileHash .\MultiChart-TradingView-1.3.4-Portable.zip -Algorithm SHA256
+Get-FileHash .\MultiChart-TradingView-1.3.5-Portable.zip -Algorithm SHA256
 # compare with the matching line in SHA256SUMS.txt
 ```
 
@@ -190,27 +189,26 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 
 > **این ریپو فقط کانال دانلود و مستندات است.** سورس برنامه در اینجا منتشر نمی‌شود؛ فایل‌های نصبی در بخش [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest) قرار دارند.
 
-### 🆕 تازه در نسخه ۱.۳.۴
+### 🆕 تازه در نسخه ۱.۳.۵
 
-* 🎨 **ظاهر سراسری از یک حساب منبع:** انتخاب کنید کدام حساب ظاهر چارت را تعیین کند و **پس‌زمینه، گرید، مقیاس‌ها و رنگ کندل‌ها** روی همه چارت‌های متصل اعمال شود؛ یک کلید برای روشن/خاموش کردن این همگام‌سازی.
-* 🧩 **قالب‌های ذخیره‌شده رسم بین حساب‌ها:** قالب‌هایی که در منوی **Templates** خود تریدینگ‌ویو روی حساب منبع ذخیره می‌کنید، با نام شناسایی می‌شوند و روی رسم‌های حساب‌های دیگر قابل اعمال‌اند.
-* 👤 **انتخاب حساب منبع:** گزینه `All` یا یک پروفایل مشخص (`A1` تا `A8`)؛ استایل‌ها، قالب‌ها و ظاهر فقط از همان منبع یاد گرفته می‌شوند.
-* 📐 **منوی جمع‌وجور ظاهر سراسری:** شبکه دو ردیفی حساب‌ها باعث می‌شود فهرست قالب‌ها بدون اسکرول دیده شود.
-* 🖌️ **آیکون‌های واضح‌تر نوار ابزار:** آهنربای جدید، پالت ظاهر سراسری، آیکون چیدمان هماهنگ با اسپلیت فعال و نشان درست برای ریست تقسیم‌بندی.
+* 🔑 **پنجره ورود واقعی و کارا:** پنجره ورود هر پروفایل حالا صفحه واقعی تریدینگ‌ویو را باز می‌کند؛ ورود با گوگل، ایمیل و تأیید دومرحله‌ای کار می‌کند و خبری از پنجره سفید خالی نیست.
+* 👤 **نمایش نام حساب روی هر پروفایل:** شبکه Accounts نام کاربری تریدینگ‌ویوی هر پروفایل را نشان می‌دهد و از پنجره ورود همان پروفایل به‌صورت زنده به‌روز می‌شود.
+* 🙈 **مخفی کردن نام حساب‌ها:** با یک کلیک در سربرگ Accounts همه نام‌ها و تولتیپشان پنهان می‌شوند؛ این انتخاب بین اجراهای بعدی هم به یاد می‌ماند.
+* 🪟 **بدون پنجره CMD:** برنامه در هر دو بیلد دیباگ و ریلیز مستقیم داخل پنجره خودش بالا می‌آید و کنارش پنجره `cmd` باز نمی‌شود.
 
 ### ✨ قابلیت‌های کلیدی
 
 * 🖥️ **یک پنجره، چندین چارت:** شبکه چارت دلخواهت را بساز و تب‌ها، چیدمان و چارت‌ها را همان‌طور که رها کردی برگردان. اندازه و موقعیت پنجره بعد از بستن به یاد می‌ماند و آیکون سینی (Tray) ترمینال را همیشه در دسترس نگه می‌دارد.
 * 🔀 **۴۸ چیدمان، از تک‌چارت تا گرید ۱۶ خانه‌ای:** ۱، ۲ (عمودی/افقی)، ۳، ۴، ۵، ۶، ۷، ۸، ۹، ۱۰، ۱۲ و ۱۶ چارت با پیش‌نمایش بصری در نوار بالا؛ خطوط تقسیم قابل کشیدن و با دابل‌کلیک روی حالت برابر برمی‌گردند.
-* 👤 **تا ۸ حساب تریدینگ‌ویو مستقل:** هر تب در یکی از هشت پروفایل (`acc_1` تا `acc_8`) اجرا می‌شود و هر پروفایل پوشه داده WebView2 خودش را دارد؛ نشست، چیدمان و رسم‌ها بین حساب‌ها قاطی نمی‌شود. تب‌هایی که یک پروفایل دارند می‌توانند کنار هم باز بمانند: فقط تب فعال اتصال چارت‌ها را نگه می‌دارد و تب‌های پس‌زمینه همان پروفایل هنگام برگشتن دوباره باز می‌شوند، تا یک حساب از محدودیت چند تب تریدینگ‌ویو رد نشود. اگر باز هم پنجره محدودیت پلن ظاهر شد، خودکار بسته می‌شود و تب‌های پس‌زمینه آزاد می‌شوند (به‌جای زدن دکمه Restore connection که اتصال را از چارت مقابل می‌قاپد). دکمه **Accounts** شبکه پروفایل‌ها را باز می‌کند و هر پروفایل پنجره ورود مستقل خودش را دارد؛ با کلیک روی نشان `[A#]` هر تب، آن تب را به پروفایل دیگری ببرید و سپس **Reload charts** بزنید.
+* 👤 **تا ۸ حساب تریدینگ‌ویو مستقل:** هر تب در یکی از هشت پروفایل (`acc_1` تا `acc_8`) اجرا می‌شود و هر پروفایل پوشه داده WebView2 خودش را دارد؛ نشست، چیدمان و رسم‌ها بین حساب‌ها قاطی نمی‌شود. تب‌هایی که یک پروفایل دارند می‌توانند کنار هم باز بمانند: فقط تب فعال اتصال چارت‌ها را نگه می‌دارد و تب‌های پس‌زمینه همان پروفایل هنگام برگشتن دوباره باز می‌شوند، تا یک حساب از محدودیت چند تب تریدینگ‌ویو رد نشود. اگر باز هم پنجره محدودیت پلن ظاهر شد، خودکار بسته می‌شود و تب‌های پس‌زمینه آزاد می‌شوند (به‌جای زدن دکمه Restore connection که اتصال را از چارت مقابل می‌قاپد). دکمه **Accounts** شبکه پروفایل‌ها را باز می‌کند؛ هر پروفایل پنجره ورود مستقل خودش را دارد و نام کاربری حساب همان پروفایل را نشان می‌دهد (یا دکمه **Open sign-in** اگر هنوز وارد نشده). دکمه **Hide names** در سربرگ، همه نام‌ها را با نقطه جایگزین و تولتیپ را حذف می‌کند و انتخابش ذخیره می‌شود. با کلیک روی نشان `[A#]` هر تب، آن تب را به پروفایل دیگری ببرید و سپس **Reload charts** بزنید.
 * 🛠️ **نوار ابزار رسم شناور و شخصی‌سازی‌شدنی:** خط روند، افقی، پیکان، فیبوناچی، براش، متن، گن باکس و پوزیشن معاملاتی؛ فقط ابزارهای مورد علاقه‌تان را روی نوار نگه دارید و حالت آهنربا را از همان نوار انتخاب کنید. ابزاری که انتخاب می‌کنید فقط به همان تب و همان رسم مربوط است و به بقیه چارت‌ها سرایت نمی‌کند.
-* 🎨 **ظاهر سراسری و قالب‌های مشترک (جدید):** از دکمه پالت در نوار ابزار، حساب منبع را انتخاب کنید. گزینه **Sync chart appearance** پس‌زمینه، گرید، مقیاس‌ها و رنگ کندل‌ها را به همه چارت‌های متصل می‌برد؛ حساب منبع ظاهر خودش را نگه می‌دارد. قالب‌هایی که روی حساب منبع در منوی Templates تریدینگ‌ویو ذخیره می‌کنید در همین منو ظاهر می‌شوند و با یک کلیک استایل رسم‌های جدید در تب فعال می‌شوند.
+* 🎨 **ظاهر سراسری و قالب‌های مشترک:** از دکمه پالت در نوار ابزار، حساب منبع را انتخاب کنید. گزینه **Sync chart appearance** پس‌زمینه، گرید، مقیاس‌ها و رنگ کندل‌ها را به همه چارت‌های متصل می‌برد؛ حساب منبع ظاهر خودش را نگه می‌دارد. قالب‌هایی که روی حساب منبع در منوی Templates تریدینگ‌ویو ذخیره می‌کنید در همین منو ظاهر می‌شوند و با یک کلیک استایل رسم‌های جدید در تب فعال می‌شوند.
 * 🔍 **جستجوی زنده نماد + واچ‌لیست:** نتایج همه بروکرها و صرافی‌ها با برچسب نام آن‌ها، و اعمال نماد روی همه چارت‌های متصل با یک کلیک.
 * 📊 **دکمه‌های نمایش روی نوار بالا:** Symbol، Crosshair (همگام‌سازی نشانگر بین چارت‌ها)، Chart Info، Sync (`Ctrl+S` برای ذخیره و همگام‌سازی رسم‌ها در فضای ابری)، Drawings (نمایش/مخفی‌سازی نوار ابزار رسم سمت چپ)، Max Space (حذف تمام عناصر اضافی تریدینگ‌ویو) و Legend (نمایش/مخفی‌سازی مقادیر اندیکاتورها).
 * 🎯 **همگام‌سازی کراسهیر بین چارت‌ها:** نشانگر موس بر اساس **زمان کندل و قیمت** (نه پیکسل صفحه) بین چارت‌های تب فعال منتقل می‌شود، پس با تایم‌فریم، اندازه و زوم متفاوت هم دقیق می‌ماند. چارت‌های هم‌نماد خط قیمت را هم نشان می‌دهند و نماد متفاوت فقط خط زمان را می‌گیرد؛ هنگام انتخاب ابزار رسم متوقف می‌شود و با دکمه **Crosshair** خاموش/روشن می‌شود.
 * ⛶ **بزرگ‌کردن تکی پنل:** با `Alt+Enter`، `Alt+کلیک` روی چارت یا دکمه fullscreen خود تریدینگ‌ویو، آن پنل روی بقیه باز می‌شود و دوباره برمی‌گردد.
 * 🔄 **آپدیت از داخل برنامه:** دکمه Update آخرین ریلیز گیت‌هاب را با نسخه فعلی مقایسه می‌کند و بسته مناسب را با نوار پیشرفت دانلود می‌کند. **بسته‌ای که چک‌سام SHA-256 منتشرشده نداشته باشد اصلاً دانلود نمی‌شود، و فایل دانلودشده تا وقتی هش آن روی دیسک با چک‌سام مطابقت نکند اجرا نمی‌شود**؛ اگر به‌روز باشید همین را اعلام می‌کند.
-* 🔐 **ورود به حساب و ماندگاری:** رسم‌ها، اندیکاتورها، قالب‌ها و تنظیمات هر حساب در همان نشست پروفایل باقی می‌ماند. ترمینال خودش هیچ تله‌متری جمع نمی‌کند؛ چارت‌های داخل آن صفحات تریدینگ‌ویو هستند و مثل مرورگر رفتار می‌کنند.
+* 🔐 **ورود به حساب و ماندگاری:** ورود در صفحه واقعی تریدینگ‌ویو داخل هر پروفایل انجام می‌شود و نام حساب همان پروفایل به شبکه Accounts گزارش می‌شود (قابل پنهان‌سازی با **Hide names**)؛ رسم‌ها، اندیکاتورها، قالب‌ها و تنظیمات هر حساب در همان نشست پروفایل باقی می‌ماند. ترمینال خودش هیچ تله‌متری جمع نمی‌کند؛ چارت‌های داخل آن صفحات تریدینگ‌ویو هستند و مثل مرورگر رفتار می‌کنند.
 * 🛡️ **سطح تماس محدود:** صفحه چارت‌ها فقط از طریق کانال یک‌طرفه `document.title` با ترمینال حرف می‌زنند و هیچ دسترسی IPC ندارند؛ پس یک صفحه نمی‌تواند به بدنه برنامه فرمان بدهد. پنجره‌های pop-up و `window.open` هرگز داخل ترمینال باز نمی‌شوند و به مرورگر پیش‌فرض می‌روند. ورودی نماد و تایم‌فریم قبل از رسیدن به چارت اعتبارسنجی می‌شود.
 * ⚡ **محیط تمیز:** بدون سایدبار، تبلیغ و شلوغی — کل صفحه مال چارت‌هاست.
 
