@@ -8,7 +8,7 @@
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
 [![Download Portable](https://img.shields.io/badge/Download-Portable%20zip-success?style=for-the-badge&logo=windows)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 
-![A tour of the terminal: split layouts, the shared drawing master bar, synchronised crosshairs, live symbol search, the in-app updater and account tabs](assets/multichart-tour.gif)
+![A tour of the terminal: split layouts, synchronised crosshairs, the shared drawing master bar, global look and saved templates, live symbol search, the in-app updater and the eight-account grid](assets/multichart-tour.gif)
 
 > **This is the public download and documentation channel.**
 > The application source code is **not** published in this repository. Here you will find the README, the [LICENSE](LICENSE) and a demo GIF; Windows packages are attached to [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest).
@@ -69,7 +69,7 @@ It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 
 * Apply a symbol to all linked charts in one click, with a persistent watchlist for fast switching.
 
 #### 📊 Chart clarity controls
-* **Symbol** sync and **Crosshair** sync toggles, **Chart Info**, **Drawings** (cloud save with `Ctrl+S`), **Max Space** (strips TradingView chrome so the candles own the screen), **Legend** (show or hide indicator values on every chart).
+* **Symbol** sync and **Crosshair** sync toggles, **Chart Info**, **Sync** (`Ctrl+S`, save and sync drawings to the TradingView cloud), **Drawings** (show or hide the left drawing toolbar), **Max Space** (strips TradingView chrome so the candles own the screen), **Legend** (show or hide indicator values on every chart).
 * Crosshair sync mirrors the pointer across every chart in the active tab by **bar time and price**, not by screen pixels, so panes with different timeframes, sizes or zoom levels stay aligned. Same-symbol panes share the price line; a different symbol gets the time line only. It pauses while a drawing tool is armed, stays off for maximized panes, and the **Crosshair** button turns it off for everyone.
 * **Per-pane maximize** — `Alt+Enter`, `Alt+click` on a chart, or TradingView's own fullscreen button grows that pane over its siblings and restores it again.
 
@@ -206,7 +206,7 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 * 🛠️ **نوار ابزار رسم شناور و شخصی‌سازی‌شدنی:** خط روند، افقی، پیکان، فیبوناچی، براش، متن، گن باکس و پوزیشن معاملاتی؛ فقط ابزارهای مورد علاقه‌تان را روی نوار نگه دارید و حالت آهنربا را از همان نوار انتخاب کنید. ابزاری که انتخاب می‌کنید فقط به همان تب و همان رسم مربوط است و به بقیه چارت‌ها سرایت نمی‌کند.
 * 🎨 **ظاهر سراسری و قالب‌های مشترک (جدید):** از دکمه پالت در نوار ابزار، حساب منبع را انتخاب کنید. گزینه **Sync chart appearance** پس‌زمینه، گرید، مقیاس‌ها و رنگ کندل‌ها را به همه چارت‌های متصل می‌برد؛ حساب منبع ظاهر خودش را نگه می‌دارد. قالب‌هایی که روی حساب منبع در منوی Templates تریدینگ‌ویو ذخیره می‌کنید در همین منو ظاهر می‌شوند و با یک کلیک استایل رسم‌های جدید در تب فعال می‌شوند.
 * 🔍 **جستجوی زنده نماد + واچ‌لیست:** نتایج همه بروکرها و صرافی‌ها با برچسب نام آن‌ها، و اعمال نماد روی همه چارت‌های متصل با یک کلیک.
-* 📊 **دکمه‌های نمایش روی نوار بالا:** Symbol، Crosshair (همگام‌سازی نشانگر بین چارت‌ها)، Chart Info، Drawings (ذخیره ابری با `Ctrl+S`)، Max Space (حذف تمام عناصر اضافی تریدینگ‌ویو) و Legend (نمایش/مخفی‌سازی مقادیر اندیکاتورها).
+* 📊 **دکمه‌های نمایش روی نوار بالا:** Symbol، Crosshair (همگام‌سازی نشانگر بین چارت‌ها)، Chart Info، Sync (`Ctrl+S` برای ذخیره و همگام‌سازی رسم‌ها در فضای ابری)، Drawings (نمایش/مخفی‌سازی نوار ابزار رسم سمت چپ)، Max Space (حذف تمام عناصر اضافی تریدینگ‌ویو) و Legend (نمایش/مخفی‌سازی مقادیر اندیکاتورها).
 * 🎯 **همگام‌سازی کراسهیر بین چارت‌ها:** نشانگر موس بر اساس **زمان کندل و قیمت** (نه پیکسل صفحه) بین چارت‌های تب فعال منتقل می‌شود، پس با تایم‌فریم، اندازه و زوم متفاوت هم دقیق می‌ماند. چارت‌های هم‌نماد خط قیمت را هم نشان می‌دهند و نماد متفاوت فقط خط زمان را می‌گیرد؛ هنگام انتخاب ابزار رسم متوقف می‌شود و با دکمه **Crosshair** خاموش/روشن می‌شود.
 * ⛶ **بزرگ‌کردن تکی پنل:** با `Alt+Enter`، `Alt+کلیک` روی چارت یا دکمه fullscreen خود تریدینگ‌ویو، آن پنل روی بقیه باز می‌شود و دوباره برمی‌گردد.
 * 🔄 **آپدیت از داخل برنامه:** دکمه Update آخرین ریلیز گیت‌هاب را با نسخه فعلی مقایسه می‌کند و بسته مناسب را با نوار پیشرفت دانلود می‌کند. **بسته‌ای که چک‌سام SHA-256 منتشرشده نداشته باشد اصلاً دانلود نمی‌شود، و فایل دانلودشده تا وقتی هش آن روی دیسک با چک‌سام مطابقت نکند اجرا نمی‌شود**؛ اگر به‌روز باشید همین را اعلام می‌کند.
