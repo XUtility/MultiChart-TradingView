@@ -8,7 +8,7 @@
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
 [![Download Portable](https://img.shields.io/badge/Download-Portable%20zip-success?style=for-the-badge&logo=windows)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 
-![A tour of the terminal: split layouts, the shared drawing master bar, the global-look menu, synchronised crosshairs, live symbol search, the in-app updater and account tabs](assets/multichart-tour.gif)
+![A tour of the terminal: split layouts, the shared drawing master bar, synchronised crosshairs, live symbol search, the in-app updater and account tabs](assets/multichart-tour.gif)
 
 > **This is the public download and documentation channel.**
 > The application source code is **not** published in this repository. Here you will find the README, the [LICENSE](LICENSE) and a demo GIF; Windows packages are attached to [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest).
