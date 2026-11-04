@@ -7,12 +7,13 @@
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
 [![Download Portable](https://img.shields.io/badge/Download-Portable%20zip-success?style=for-the-badge&logo=windows)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Donate](https://img.shields.io/badge/Donate-NOWPayments-ff7da0?style=for-the-badge&logo=bitcoin&logoColor=white)](https://nowpayments.io/donation/isiliya)
 
 ![A tour of the terminal: split layouts, the master bar, synchronised crosshairs, the shared drawing toolbar, global look and saved templates, live symbol search, real per-profile sign-in with account names you can hide, the in-app updater and the eight-account grid](assets/multichart-tour.gif)
 
-> **Source repository.** The application source lives here; the public download channel at [XUtility/MultiChart-TradingView](https://github.com/XUtility/MultiChart-TradingView) carries only this documentation, the [LICENSE](LICENSE), the demo GIF and the release packages.
+> **Source repository.** The application source lives here; the public download channel at [XUtility/MultiChart-TradingView](https://github.com/XUtility/MultiChart-TradingView) carries only this documentation, the [LICENSE](LICENSE), the demo GIF, the donation artwork and the release packages.
 
-**Contents:** [English documentation](#-english-documentation) · [راهنمای فارسی](#-راهنمای-فارسی) · [Download](#-download--installation) · [FAQ](#-frequently-asked-questions) · [License](#-license--copyright)
+**Contents:** [English documentation](#-english-documentation) · [راهنمای فارسی](#-راهنمای-فارسی) · [Download](#-download--installation) · [Support](#-support-the-project) · [FAQ](#-frequently-asked-questions) · [License](#-license--copyright)
 
 ---
 
@@ -173,6 +174,16 @@ The executable may not be code-signed. Verify the SHA-256 against `SHA256SUMS.tx
 **Does it run on macOS or Linux?**
 No. It requires Windows 10/11 x64 and the WebView2 runtime.
 
+### 💖 Support the project
+
+[![Support MultiChart-TradingView with crypto via NOWPayments](assets/nowpayments-banner.png)](https://nowpayments.io/donation/isiliya)
+
+If MultiChart saves you time, you can support its development with crypto. Donations are handled by **NOWPayments** — BTC, ETH, USDT and 300+ coins. The pink heart in the app's master bar opens the same page in your browser.
+
+[![Donate crypto with NOWPayments](assets/nowpayments-donate-button.svg)](https://nowpayments.io/donation/isiliya)
+
+**Donation page:** [nowpayments.io/donation/isiliya](https://nowpayments.io/donation/isiliya)
+
 ### ⚠️ Disclaimer
 
 TradingView is a trademark of TradingView, Inc. This project is not affiliated with, endorsed by or sponsored by TradingView. Trading involves substantial risk; this software is a window-management tool, not investment advice. Use it at your own risk and in accordance with TradingView's terms of service.
@@ -259,6 +270,16 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 
 **روی مک یا لینوکس اجرا می‌شود؟**
 نه. ویندوز ۱۰/۱۱ نسخه ۶۴ بیتی و WebView2 لازم است.
+
+### 💖 حمایت از پروژه
+
+[![حمایت از MultiChart-TradingView با کریپتو از طریق NOWPayments](assets/nowpayments-banner.png)](https://nowpayments.io/donation/isiliya)
+
+اگر MultiChart برایتان وقت ذخیره می‌کند، می‌توانید با کریپتو از توسعه‌اش حمایت کنید. پرداخت‌ها توسط **NOWPayments** انجام می‌شود — بیت‌کوین، اتریوم، تتر و بیش از ۳۰۰ ارز دیگر. دکمه قلب صورتی در نوار بالای برنامه همین صفحه را باز می‌کند.
+
+[![کمک مالی با کریپتو از طریق NOWPayments](assets/nowpayments-donate-button.svg)](https://nowpayments.io/donation/isiliya)
+
+**صفحه دونیت:** [nowpayments.io/donation/isiliya](https://nowpayments.io/donation/isiliya)
 
 ### ⚠️ سلب مسئولیت
 
