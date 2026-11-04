@@ -76,6 +76,20 @@ It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 
 * The compact readout tracks the frontier bar's local time and OHLC, plus how many candles are revealed and hidden; `Esc` ends the run and restores the chart exactly as it was.
 * The run is single-chart only, so a veil is never broadcast to sibling panes. The price scale, legend, price line, countdown and last-price tag are hidden and fitted to the revealed bars, so the veiled future never leaks through the axis.
 
+**How far back can I go?** The replay covers the candles the chart already holds, and TradingView decides how much history a chart may load — that limit comes from your plan, not from the terminal. Measured on a free (non-Pro) account on `OANDA:GBPUSD` in November 2026:
+
+| Timeframe | Oldest candle | Bars available |
+| :--- | :--- | ---: |
+| `1m` | 2026-10-25 (~10 days) | 11,017 |
+| `5m` | 2026-10-11 (~24 days) | 5,094 |
+| `15m` | 2026-08-02 (~3 months) | 6,498 |
+| `1h` | 2026-01-01 (~10 months) | 5,249 |
+| `4h` | 2023-01-01 (~2.8 years) | 5,981 |
+| `1D` | 2002-05-05 (start of the symbol) | 6,365 |
+| `1W` | 2002-05-05 (start of the symbol) | 1,279 |
+
+In short: a free plan gives a couple of weeks of 1-minute data and about ten months of hourly data, while daily and weekly candles reach the symbol's full history. Scroll the chart back towards older candles before opening the Backtest panel so it can offer those dates, or switch to a higher timeframe for older ranges. A paid TradingView plan or another venue can expose more; the terminal never works around TradingView's limits.
+
 #### 🔄 In-app updates
 * The **Update** button checks the newest GitHub release against the version you are running and flags itself when something newer exists.
 * It lists the packages for this platform — installer, MSI or portable zip — with their size and whether a checksum was published, and downloads with a live progress bar.
@@ -222,6 +236,22 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 * 🔐 **ورود به حساب و ماندگاری:** ورود در صفحه واقعی تریدینگ‌ویو داخل هر پروفایل انجام می‌شود و نام حساب همان پروفایل به شبکه Accounts گزارش می‌شود (قابل پنهان‌سازی با **Hide names**)؛ رسم‌ها، اندیکاتورها، قالب‌ها و تنظیمات هر حساب در همان نشست پروفایل باقی می‌ماند. ترمینال خودش هیچ تله‌متری جمع نمی‌کند؛ چارت‌های داخل آن صفحات تریدینگ‌ویو هستند و مثل مرورگر رفتار می‌کنند.
 * 🛡️ **سطح تماس محدود:** صفحه چارت‌ها فقط از طریق کانال یک‌طرفه `document.title` با ترمینال حرف می‌زنند و هیچ دسترسی IPC ندارند؛ پس یک صفحه نمی‌تواند به بدنه برنامه فرمان بدهد. پنجره‌های pop-up و `window.open` هرگز داخل ترمینال باز نمی‌شوند و به مرورگر پیش‌فرض می‌روند. ورودی نماد و تایم‌فریم قبل از رسیدن به چارت اعتبارسنجی می‌شود.
 * ⚡ **محیط تمیز:** بدون سایدبار، تبلیغ و شلوغی — کل صفحه مال چارت‌هاست.
+
+### ⏮️ تاریخچه داده برای بک‌تست
+
+بک‌تست همان کندل‌هایی را نشان می‌دهد که چارت از قبل بارگذاری کرده، و مقدار تاریخچه‌ای که یک چارت می‌تواند لود کند را تریدینگ‌ویو بر اساس پلن شما تعیین می‌کند، نه ترمینال. اندازه‌گیری‌شده روی حساب رایگان (غیر Pro) با نماد `OANDA:GBPUSD` در نوامبر ۲۰۲۶:
+
+| تایم‌فریم | قدیمی‌ترین کندل | تعداد کندل |
+| :--- | :--- | ---: |
+| `1m` | 2026-10-25 (حدود ۱۰ روز) | 11,017 |
+| `5m` | 2026-10-11 (حدود ۲۴ روز) | 5,094 |
+| `15m` | 2026-08-02 (حدود ۳ ماه) | 6,498 |
+| `1h` | 2026-01-01 (حدود ۱۰ ماه) | 5,249 |
+| `4h` | 2023-01-01 (حدود ۲.۸ سال) | 5,981 |
+| `1D` | 2002-05-05 (شروع تاریخچه نماد) | 6,365 |
+| `1W` | 2002-05-05 (شروع تاریخچه نماد) | 1,279 |
+
+خلاصه اینکه در پلن رایگان از تایم‌فریم ۱ دقیقه حدود دو هفته و از ۱ ساعته حدود ده ماه عقب‌تر نمی‌روید، اما کندل‌های روزانه و هفتگی تا ابتدای تاریخچه نماد می‌رسند. برای بازه‌های قدیمی‌تر، پیش از باز کردن پنل بک‌تست چارت را به سمت کندل‌های قدیمی‌تر اسکرول کنید تا داده بیشتری لود شود، یا تایم‌فریم بالاتری انتخاب کنید. پلن پولی تریدینگ‌ویو یا بروکر دیگر می‌تواند تاریخچه بیشتری بدهد؛ ترمینال هیچ‌وقت محدودیت‌های تریدینگ‌ویو را دور نمی‌زند.
 
 ### ⌨️ کلیدهای میانبر
 
