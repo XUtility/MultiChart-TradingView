@@ -2,14 +2,14 @@
 ### Professional multi-chart TradingView desktop terminal
 ### ترمینال پیشرفته دسکتاپ چند چارته تریدینگ‌ویو با چیدمان اسپلیت و همگام‌سازی
 
-[![Version](https://img.shields.io/badge/version-1.3.6-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.3.7-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
 [![Download Portable](https://img.shields.io/badge/Download-Portable%20zip-success?style=for-the-badge&logo=windows)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Donate](https://img.shields.io/badge/Donate-NOWPayments-ff7da0?style=for-the-badge&logo=bitcoin&logoColor=white)](https://nowpayments.io/donation/XUtility)
 
-![A tour of the terminal: split layouts, the master bar, synchronised crosshairs, the shared drawing toolbar, global look and saved templates, live symbol search, real per-profile sign-in with account names you can hide, the in-app updater, the eight-account grid and the crypto support panel](assets/multichart-tour.gif)
+![A tour of the terminal: split layouts, the master bar, synchronised crosshairs, the shared drawing toolbar, global look and saved templates, live symbol search, real per-profile sign-in with account names you can hide, the in-app updater, the eight-account grid, the crypto support panel and an app-native backtest replay](assets/multichart-tour.gif)
 
 > **Source repository.** The application source lives here; the public download channel at [XUtility/MultiChart-TradingView](https://github.com/XUtility/MultiChart-TradingView) carries only this documentation, the [LICENSE](LICENSE), the demo GIF, the donation artwork and the release packages.
 
@@ -25,10 +25,9 @@
 
 It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 chart page per pane on the inside. Sign-in happens in a real TradingView page inside an isolated profile, so passkeys, OAuth and two-factor authentication work exactly as they do in a browser.
 
-### 🆕 What's new in 1.3.6
+### 🆕 What's new in 1.3.7
 
-* 💖 **Support panel** — a pink heart in the master bar opens a NOWPayments panel with the official banner; donations are handled in your browser, never inside the app.
-* 🔗 **Donation link on GitHub** — the README and the repo's Sponsor heart now point at `nowpayments.io/donation/XUtility`.
+* ⏮️ **Backtest / bar replay** — TradingView locks its own replay behind a paid plan, so the terminal now has its own. Pick a date and every later candle is covered with a veil the colour of your chart; step the frontier with `←` / `→`, one candle or 5 / 10 at a time, and a compact readout shows the revealed bar's time and OHLC. Available in the single-chart layout; the price scale, legend and last-price tag are fitted to the revealed bars so the hidden future never leaks.
 
 ### ✨ Key features
 
@@ -71,6 +70,12 @@ It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 
 * Crosshair sync mirrors the pointer across every chart in the active tab by **bar time and price**, not by screen pixels, so panes with different timeframes, sizes or zoom levels stay aligned. Same-symbol panes share the price line; a different symbol gets the time line only. It pauses while a drawing tool is armed, stays off for maximized panes, and the **Crosshair** button turns it off for everyone.
 * **Per-pane maximize** — `Alt+Enter`, `Alt+click` on a chart, or TradingView's own fullscreen button grows that pane over its siblings and restores it again.
 
+#### ⏮️ Backtest / bar replay
+* Pick a date in the **Backtest** panel; every later candle is covered by a veil painted in the chart's own background colour.
+* `←` / `→` step the frontier back or forward — one candle at a time, or switch the step to 5 or 10.
+* The compact readout tracks the frontier bar's local time and OHLC, plus how many candles are revealed and hidden; `Esc` ends the run and restores the chart exactly as it was.
+* The run is single-chart only, so a veil is never broadcast to sibling panes. The price scale, legend, price line, countdown and last-price tag are hidden and fitted to the revealed bars, so the veiled future never leaks through the axis.
+
 #### 🔄 In-app updates
 * The **Update** button checks the newest GitHub release against the version you are running and flags itself when something newer exists.
 * It lists the packages for this platform — installer, MSI or portable zip — with their size and whether a checksum was published, and downloads with a live progress bar.
@@ -109,10 +114,11 @@ The terminal collects no telemetry of its own. The charts inside it are TradingV
 | `Ctrl + Tab` | Cycle between account tabs |
 | `Ctrl + 1` … `Ctrl + 9` | Jump straight to a tab |
 | `Ctrl + S` | Save drawings to the TradingView cloud account |
+| `←` / `→` | Backtest: hide or reveal the next candle (or 5 / 10 steps) |
 | `F11` | Toggle fullscreen |
 | `Alt + Enter` / `Alt + click pane` | Maximize or restore that chart pane |
 | `Enter` (in search) | Apply the symbol to all linked charts |
-| `Esc` | Close the open menu or panel |
+| `Esc` | Close the open menu, panel or backtest |
 | `Double-click splitter` | Reset that divider to an even ratio |
 
 ### ⚡ Performance & specifications
@@ -136,7 +142,7 @@ The terminal collects no telemetry of its own. The charts inside it are TradingV
 3. Verify the download if you wish:
 
 ```powershell
-Get-FileHash .\MultiChart-TradingView-1.3.6-Portable.zip -Algorithm SHA256
+Get-FileHash .\MultiChart-TradingView-1.3.7-Portable.zip -Algorithm SHA256
 # compare with the matching line in SHA256SUMS.txt
 ```
 
@@ -196,10 +202,9 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 
 > **این ریپو فقط کانال دانلود و مستندات است.** سورس برنامه در اینجا منتشر نمی‌شود؛ فایل‌های نصبی در بخش [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest) قرار دارند.
 
-### 🆕 تازه در نسخه ۱.۳.۶
+### 🆕 تازه در نسخه ۱.۳.۷
 
-* 💖 **پنل حمایت:** یک قلب صورتی در نوار بالای برنامه پنل NOWPayments را با بنر رسمی باز می‌کند؛ پرداخت دونیت در مرورگر انجام می‌شود، نه داخل برنامه.
-* 🔗 **لینک دونیت روی گیت‌هاب:** README و قلب Sponsor مخزن حالا به `nowpayments.io/donation/XUtility` اشاره می‌کنند.
+* ⏮️ **بک‌تست / پخش مجدد کندل:** قابلیت Bar Replay خود تریدینگ‌ویو پلن پولی می‌خواهد، پس ترمینال نسخه خودش را دارد. تاریخ را انتخاب می‌کنید و همه کندل‌های بعد از آن با پرده‌ای هم‌رنگ پس‌زمینه چارت پوشیده می‌شوند؛ با `←` / `→` مرز را جلو یا عقب می‌برید — یک کندل یا ۵ / ۱۰ کندل — و یک پنل جمع‌وجور زمان و OHLC کندل مرز را نشان می‌دهد. فقط در چیدمان تک‌چارت فعال است و مقیاس قیمت، لجند، تگ قیمت آخر و شمارش معکوس به کندل‌های آشکار محدود می‌شوند تا آینده مخفی از محور قیمت لو نرود.
 
 ### ✨ قابلیت‌های کلیدی
 
@@ -212,6 +217,7 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 * 📊 **دکمه‌های نمایش روی نوار بالا:** Symbol، Crosshair (همگام‌سازی نشانگر بین چارت‌ها)، Chart Info، Sync (`Ctrl+S` برای ذخیره و همگام‌سازی رسم‌ها در فضای ابری)، Drawings (نمایش/مخفی‌سازی نوار ابزار رسم سمت چپ)، Max Space (حذف تمام عناصر اضافی تریدینگ‌ویو) و Legend (نمایش/مخفی‌سازی مقادیر اندیکاتورها).
 * 🎯 **همگام‌سازی کراسهیر بین چارت‌ها:** نشانگر موس بر اساس **زمان کندل و قیمت** (نه پیکسل صفحه) بین چارت‌های تب فعال منتقل می‌شود، پس با تایم‌فریم، اندازه و زوم متفاوت هم دقیق می‌ماند. چارت‌های هم‌نماد خط قیمت را هم نشان می‌دهند و نماد متفاوت فقط خط زمان را می‌گیرد؛ هنگام انتخاب ابزار رسم متوقف می‌شود و با دکمه **Crosshair** خاموش/روشن می‌شود.
 * ⛶ **بزرگ‌کردن تکی پنل:** با `Alt+Enter`، `Alt+کلیک` روی چارت یا دکمه fullscreen خود تریدینگ‌ویو، آن پنل روی بقیه باز می‌شود و دوباره برمی‌گردد.
+* ⏮️ **بک‌تست (پخش مجدد کندل):** از دکمه **Backtest** در نوار بالا تاریخ را انتخاب کنید؛ کندل‌های بعد از آن با پرده‌ای هم‌رنگ پس‌زمینه چارت پوشیده می‌شوند. با `←` / `→` یک‌یکی (یا ۵ و ۱۰ تایی) جلو بروید، زمان و OHLC هر کندل را ببینید و با `Esc` خارج شوید. فقط در چیدمان تک‌چارت، و مقیاس قیمت هم به کندل‌های آشکار محدود می‌شود تا سقف/کف آینده لو نرود.
 * 🔄 **آپدیت از داخل برنامه:** دکمه Update آخرین ریلیز گیت‌هاب را با نسخه فعلی مقایسه می‌کند و بسته مناسب را با نوار پیشرفت دانلود می‌کند. **بسته‌ای که چک‌سام SHA-256 منتشرشده نداشته باشد اصلاً دانلود نمی‌شود، و فایل دانلودشده تا وقتی هش آن روی دیسک با چک‌سام مطابقت نکند اجرا نمی‌شود**؛ اگر به‌روز باشید همین را اعلام می‌کند.
 * 🔐 **ورود به حساب و ماندگاری:** ورود در صفحه واقعی تریدینگ‌ویو داخل هر پروفایل انجام می‌شود و نام حساب همان پروفایل به شبکه Accounts گزارش می‌شود (قابل پنهان‌سازی با **Hide names**)؛ رسم‌ها، اندیکاتورها، قالب‌ها و تنظیمات هر حساب در همان نشست پروفایل باقی می‌ماند. ترمینال خودش هیچ تله‌متری جمع نمی‌کند؛ چارت‌های داخل آن صفحات تریدینگ‌ویو هستند و مثل مرورگر رفتار می‌کنند.
 * 🛡️ **سطح تماس محدود:** صفحه چارت‌ها فقط از طریق کانال یک‌طرفه `document.title` با ترمینال حرف می‌زنند و هیچ دسترسی IPC ندارند؛ پس یک صفحه نمی‌تواند به بدنه برنامه فرمان بدهد. پنجره‌های pop-up و `window.open` هرگز داخل ترمینال باز نمی‌شوند و به مرورگر پیش‌فرض می‌روند. ورودی نماد و تایم‌فریم قبل از رسیدن به چارت اعتبارسنجی می‌شود.
@@ -225,10 +231,11 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 | `Ctrl + Tab` | جابه‌جایی بین تب‌های حساب |
 | `Ctrl + 1` … `Ctrl + 9` | پرش مستقیم به تب شماره‌دار |
 | `Ctrl + S` | ذخیره رسم‌ها در فضای ابری تریدینگ‌ویو |
+| `←` / `→` | بک‌تست: مخفی/آشکار کردن کندل بعدی (یا ۵ / ۱۰ تایی) |
 | `F11` | تمام‌صفحه |
 | `Alt + Enter` / `Alt + کلیک روی پنل` | بزرگ‌کردن یا بازگرداندن همان پنل |
 | `Enter` (در کادر جستجو) | اعمال نماد روی چارت‌های متصل |
-| `Esc` | بستن منو یا پنل باز |
+| `Esc` | بستن منو، پنل یا بک‌تست |
 | `دابل‌کلیک روی خط تقسیم` | بازگشت به نسبت برابر |
 
 ### 🚀 دانلود و نصب
