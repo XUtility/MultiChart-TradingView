@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
 [![Download Portable](https://img.shields.io/badge/Download-Portable%20zip-success?style=for-the-badge&logo=windows)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
-[![Donate](https://img.shields.io/badge/Donate-NOWPayments-ff7da0?style=for-the-badge&logo=bitcoin&logoColor=white)](https://nowpayments.io/donation/isiliya)
+[![Donate](https://img.shields.io/badge/Donate-NOWPayments-ff7da0?style=for-the-badge&logo=bitcoin&logoColor=white)](https://nowpayments.io/donation/XUtility)
 
 ![A tour of the terminal: split layouts, the master bar, synchronised crosshairs, the shared drawing toolbar, global look and saved templates, live symbol search, real per-profile sign-in with account names you can hide, the in-app updater and the eight-account grid](assets/multichart-tour.gif)
 
@@ -176,13 +176,13 @@ No. It requires Windows 10/11 x64 and the WebView2 runtime.
 
 ### 💖 Support the project
 
-[![Support MultiChart-TradingView with crypto via NOWPayments](assets/nowpayments-banner.png)](https://nowpayments.io/donation/isiliya)
+[![Support MultiChart-TradingView with crypto via NOWPayments](assets/nowpayments-banner.png)](https://nowpayments.io/donation/XUtility)
 
 If MultiChart saves you time, you can support its development with crypto. Donations are handled by **NOWPayments** — BTC, ETH, USDT and 300+ coins. The pink heart in the app's master bar opens the same page in your browser.
 
-[![Donate crypto with NOWPayments](assets/nowpayments-donate-button.svg)](https://nowpayments.io/donation/isiliya)
+[![Donate crypto with NOWPayments](assets/nowpayments-donate-button.svg)](https://nowpayments.io/donation/XUtility)
 
-**Donation page:** [nowpayments.io/donation/isiliya](https://nowpayments.io/donation/isiliya)
+**Donation page:** [nowpayments.io/donation/XUtility](https://nowpayments.io/donation/XUtility)
 
 ### ⚠️ Disclaimer
 
@@ -273,13 +273,13 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 
 ### 💖 حمایت از پروژه
 
-[![حمایت از MultiChart-TradingView با کریپتو از طریق NOWPayments](assets/nowpayments-banner.png)](https://nowpayments.io/donation/isiliya)
+[![حمایت از MultiChart-TradingView با کریپتو از طریق NOWPayments](assets/nowpayments-banner.png)](https://nowpayments.io/donation/XUtility)
 
 اگر MultiChart برایتان وقت ذخیره می‌کند، می‌توانید با کریپتو از توسعه‌اش حمایت کنید. پرداخت‌ها توسط **NOWPayments** انجام می‌شود — بیت‌کوین، اتریوم، تتر و بیش از ۳۰۰ ارز دیگر. دکمه قلب صورتی در نوار بالای برنامه همین صفحه را باز می‌کند.
 
-[![کمک مالی با کریپتو از طریق NOWPayments](assets/nowpayments-donate-button.svg)](https://nowpayments.io/donation/isiliya)
+[![کمک مالی با کریپتو از طریق NOWPayments](assets/nowpayments-donate-button.svg)](https://nowpayments.io/donation/XUtility)
 
-**صفحه دونیت:** [nowpayments.io/donation/isiliya](https://nowpayments.io/donation/isiliya)
+**صفحه دونیت:** [nowpayments.io/donation/XUtility](https://nowpayments.io/donation/XUtility)
 
 ### ⚠️ سلب مسئولیت
 
