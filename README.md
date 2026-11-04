@@ -2,14 +2,14 @@
 ### Professional multi-chart TradingView desktop terminal
 ### ترمینال پیشرفته دسکتاپ چند چارته تریدینگ‌ویو با چیدمان اسپلیت و همگام‌سازی
 
-[![Version](https://img.shields.io/badge/version-1.3.5-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.3.6-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
 [![Download Portable](https://img.shields.io/badge/Download-Portable%20zip-success?style=for-the-badge&logo=windows)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Donate](https://img.shields.io/badge/Donate-NOWPayments-ff7da0?style=for-the-badge&logo=bitcoin&logoColor=white)](https://nowpayments.io/donation/XUtility)
 
-![A tour of the terminal: split layouts, the master bar, synchronised crosshairs, the shared drawing toolbar, global look and saved templates, live symbol search, real per-profile sign-in with account names you can hide, the in-app updater and the eight-account grid](assets/multichart-tour.gif)
+![A tour of the terminal: split layouts, the master bar, synchronised crosshairs, the shared drawing toolbar, global look and saved templates, live symbol search, real per-profile sign-in with account names you can hide, the in-app updater, the eight-account grid and the crypto support panel](assets/multichart-tour.gif)
 
 > **Source repository.** The application source lives here; the public download channel at [XUtility/MultiChart-TradingView](https://github.com/XUtility/MultiChart-TradingView) carries only this documentation, the [LICENSE](LICENSE), the demo GIF, the donation artwork and the release packages.
 
@@ -25,12 +25,10 @@
 
 It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 chart page per pane on the inside. Sign-in happens in a real TradingView page inside an isolated profile, so passkeys, OAuth and two-factor authentication work exactly as they do in a browser.
 
-### 🆕 What's new in 1.3.5
+### 🆕 What's new in 1.3.6
 
-* 🔑 **Sign-in windows that open and load** — each profile's sign-in window now shows the real TradingView page, so Google, e-mail and two-factor sign-in work instead of a blank white window.
-* 👤 **Account name on every profile** — the Accounts grid shows the TradingView username each profile is signed in as, updated live from that profile's sign-in window.
-* 🙈 **Hide account names** — one click in the Accounts header masks every username and its tooltip; the choice is remembered between launches.
-* 🪟 **No console window** — the terminal starts straight into its own window in both debug and release builds; no stray `cmd` window next to it.
+* 💖 **Support panel** — a pink heart in the master bar opens a NOWPayments panel with the official banner; donations are handled in your browser, never inside the app.
+* 🔗 **Donation link on GitHub** — the README and the repo's Sponsor heart now point at `nowpayments.io/donation/XUtility`.
 
 ### ✨ Key features
 
@@ -138,7 +136,7 @@ The terminal collects no telemetry of its own. The charts inside it are TradingV
 3. Verify the download if you wish:
 
 ```powershell
-Get-FileHash .\MultiChart-TradingView-1.3.5-Portable.zip -Algorithm SHA256
+Get-FileHash .\MultiChart-TradingView-1.3.6-Portable.zip -Algorithm SHA256
 # compare with the matching line in SHA256SUMS.txt
 ```
 
@@ -198,12 +196,10 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 
 > **این ریپو فقط کانال دانلود و مستندات است.** سورس برنامه در اینجا منتشر نمی‌شود؛ فایل‌های نصبی در بخش [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest) قرار دارند.
 
-### 🆕 تازه در نسخه ۱.۳.۵
+### 🆕 تازه در نسخه ۱.۳.۶
 
-* 🔑 **پنجره ورود واقعی و کارا:** پنجره ورود هر پروفایل حالا صفحه واقعی تریدینگ‌ویو را باز می‌کند؛ ورود با گوگل، ایمیل و تأیید دومرحله‌ای کار می‌کند و خبری از پنجره سفید خالی نیست.
-* 👤 **نمایش نام حساب روی هر پروفایل:** شبکه Accounts نام کاربری تریدینگ‌ویوی هر پروفایل را نشان می‌دهد و از پنجره ورود همان پروفایل به‌صورت زنده به‌روز می‌شود.
-* 🙈 **مخفی کردن نام حساب‌ها:** با یک کلیک در سربرگ Accounts همه نام‌ها و تولتیپشان پنهان می‌شوند؛ این انتخاب بین اجراهای بعدی هم به یاد می‌ماند.
-* 🪟 **بدون پنجره CMD:** برنامه در هر دو بیلد دیباگ و ریلیز مستقیم داخل پنجره خودش بالا می‌آید و کنارش پنجره `cmd` باز نمی‌شود.
+* 💖 **پنل حمایت:** یک قلب صورتی در نوار بالای برنامه پنل NOWPayments را با بنر رسمی باز می‌کند؛ پرداخت دونیت در مرورگر انجام می‌شود، نه داخل برنامه.
+* 🔗 **لینک دونیت روی گیت‌هاب:** README و قلب Sponsor مخزن حالا به `nowpayments.io/donation/XUtility` اشاره می‌کنند.
 
 ### ✨ قابلیت‌های کلیدی
 
