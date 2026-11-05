@@ -2,7 +2,7 @@
 ### Professional multi-chart TradingView desktop terminal
 ### ترمینال پیشرفته دسکتاپ چند چارته تریدینگ‌ویو با چیدمان اسپلیت و همگام‌سازی
 
-[![Version](https://img.shields.io/badge/version-1.3.7-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.3.8-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
@@ -25,9 +25,13 @@
 
 It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 chart page per pane on the inside. Sign-in happens in a real TradingView page inside an isolated profile, so passkeys, OAuth and two-factor authentication work exactly as they do in a browser.
 
-### 🆕 What's new in 1.3.7
+### 🆕 What's new in 1.3.8
 
-* ⏮️ **Backtest / bar replay** — TradingView locks its own replay behind a paid plan, so the terminal now has its own. Pick a date and every later candle is covered with a veil the colour of your chart; step the frontier with `←` / `→`, one candle or 5 / 10 at a time, and a compact readout shows the revealed bar's time and OHLC. Available in the single-chart layout; the price scale, legend and last-price tag are fitted to the revealed bars so the hidden future never leaks.
+* 🎨 **TradingView-style drawing tools in the replay studio** — select any drawing and a floating white toolbar appears above it, with the object's style, text, line width, dash, lock, delete and a full settings dialog. The settings dialog carries the four TradingView tabs — **Style**, **Text**, **Coordinates** and **Visibility** — so a line can be recoloured, given a price tag, extended, bent at its midpoint, labelled with a stats chip or hidden on chosen timeframes without ever leaving the chart.
+* 🔵 **Real selection and resize handles** — TradingView blue rings on line and shape points, and eight handles on a rectangle (four corners plus four edge midpoints), each of which drags only the edge it belongs to.
+* ✏️ **Per-drawing text and labels** — choose size, bold, italic, colour and alignment; price labels ride the right scale of every point; the stats chip shows price and percent move, green or red.
+* 🔒 **Lock and per-timeframe visibility** — a locked drawing refuses to move, reshape or delete until you unlock it, and the Visibility tab decides which timeframes each drawing is shown on.
+* ⏮️ *From 1.3.7:* **Backtest / bar replay** — pick a date and every later candle is covered with a veil the colour of your chart; step the frontier with `←` / `→`, one candle or 5 / 10 at a time. Single-chart only, and the price scale, legend and last-price tag are fitted to the revealed bars so the hidden future never leaks.
 
 ### ✨ Key features
 
@@ -156,7 +160,7 @@ The terminal collects no telemetry of its own. The charts inside it are TradingV
 3. Verify the download if you wish:
 
 ```powershell
-Get-FileHash .\MultiChart-TradingView-1.3.7-Portable.zip -Algorithm SHA256
+Get-FileHash .\MultiChart-TradingView-1.3.8-Portable.zip -Algorithm SHA256
 # compare with the matching line in SHA256SUMS.txt
 ```
 
@@ -189,6 +193,9 @@ That is TradingView's web runtime per chart page, not the terminal shell. The sh
 **Windows shows a SmartScreen warning — is that expected?**
 The executable may not be code-signed. Verify the SHA-256 against `SHA256SUMS.txt` first; if it matches, use **More info → Run anyway**. Never run a package whose hash does not match.
 
+**My antivirus quarantined the installer — what should I do?**
+A self-extracting installer that was just published and has not been seen much yet can trip heuristic detections even though it is harmless. Do not skip verification: compare the file's SHA-256 with `SHA256SUMS.txt`, and restore it from quarantine only when they match. Then report the false positive together with the file and its hash — for Microsoft Defender at [microsoft.com/wdsi/filesubmission](https://www.microsoft.com/en-us/wdsi/filesubmission); these reports are normally cleared within a day or two. If your product keeps blocking the installer, use the Portable ZIP instead.
+
 **Does it run on macOS or Linux?**
 No. It requires Windows 10/11 x64 and the WebView2 runtime.
 
@@ -216,9 +223,13 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 
 > **این ریپو فقط کانال دانلود و مستندات است.** سورس برنامه در اینجا منتشر نمی‌شود؛ فایل‌های نصبی در بخش [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest) قرار دارند.
 
-### 🆕 تازه در نسخه ۱.۳.۷
+### 🆕 تازه در نسخه ۱.۳.۸
 
-* ⏮️ **بک‌تست / پخش مجدد کندل:** قابلیت Bar Replay خود تریدینگ‌ویو پلن پولی می‌خواهد، پس ترمینال نسخه خودش را دارد. تاریخ را انتخاب می‌کنید و همه کندل‌های بعد از آن با پرده‌ای هم‌رنگ پس‌زمینه چارت پوشیده می‌شوند؛ با `←` / `→` مرز را جلو یا عقب می‌برید — یک کندل یا ۵ / ۱۰ کندل — و یک پنل جمع‌وجور زمان و OHLC کندل مرز را نشان می‌دهد. فقط در چیدمان تک‌چارت فعال است و مقیاس قیمت، لجند، تگ قیمت آخر و شمارش معکوس به کندل‌های آشکار محدود می‌شوند تا آینده مخفی از محور قیمت لو نرود.
+* 🎨 **ابزارهای رسم مثل خود تریدینگ‌ویو:** روی هر رسم کلیک کنید تا نوار ابزار شناور سفید بالای آن باز شود — استایل، متن، ضخامت خط، نوع خط، قفل، حذف و پنجره تنظیمات کامل. پنجره تنظیمات همان چهار تب تریدینگ‌ویو را دارد: **Style**، **Text**، **Coordinates** و **Visibility**؛ پس رنگ، برچسب قیمت، امتداد خط، خم شدن از نقطه میانی، چیپ آمار حرکت و مخفی‌کردن رسم روی تایم‌فریم‌های دلخواه همه از روی خود چارت انجام می‌شود.
+* 🔵 **دستگیره‌های انتخاب و تغییر اندازه واقعی:** حلقه‌های آبی تریدینگ‌ویو روی نقاط خطوط و شکل‌ها، و هشت دستگیره روی مستطیل (چهار گوشه و چهار وسط ضلع) که هر کدام فقط همان ضلع را جابه‌جا می‌کند.
+* ✏️ **متن و برچسب برای هر رسم:** اندازه، بولد، ایتالیک، رنگ و تراز؛ برچسب قیمت روی مقیاس راست هر نقطه؛ چیپ آمار با قیمت و درصد حرکت، سبز یا قرمز.
+* 🔒 **قفل و نمایش بر اساس تایم‌فریم:** رسم قفل‌شده تا باز نشود جابه‌جا، تغییر شکل یا حذف نمی‌شود، و تب Visibility تعیین می‌کند هر رسم روی کدام تایم‌فریم‌ها دیده شود.
+* ⏮️ *از نسخه ۱.۳.۷:* **بک‌تست / پخش مجدد کندل** — تاریخ را انتخاب می‌کنید و همه کندل‌های بعد از آن با پرده‌ای هم‌رنگ پس‌زمینه چارت پوشیده می‌شوند؛ با `←` / `→` مرز را جلو یا عقب می‌برید — یک کندل یا ۵ / ۱۰ کندل. فقط در چیدمان تک‌چارت و مقیاس قیمت، لجند و تگ قیمت آخر به کندل‌های آشکار محدود می‌شوند تا آینده مخفی لو نرود.
 
 ### ✨ قابلیت‌های کلیدی
 
@@ -232,6 +243,7 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 * 🎯 **همگام‌سازی کراسهیر بین چارت‌ها:** نشانگر موس بر اساس **زمان کندل و قیمت** (نه پیکسل صفحه) بین چارت‌های تب فعال منتقل می‌شود، پس با تایم‌فریم، اندازه و زوم متفاوت هم دقیق می‌ماند. چارت‌های هم‌نماد خط قیمت را هم نشان می‌دهند و نماد متفاوت فقط خط زمان را می‌گیرد؛ هنگام انتخاب ابزار رسم متوقف می‌شود و با دکمه **Crosshair** خاموش/روشن می‌شود.
 * ⛶ **بزرگ‌کردن تکی پنل:** با `Alt+Enter`، `Alt+کلیک` روی چارت یا دکمه fullscreen خود تریدینگ‌ویو، آن پنل روی بقیه باز می‌شود و دوباره برمی‌گردد.
 * ⏮️ **بک‌تست (پخش مجدد کندل):** از دکمه **Backtest** در نوار بالا تاریخ را انتخاب کنید؛ کندل‌های بعد از آن با پرده‌ای هم‌رنگ پس‌زمینه چارت پوشیده می‌شوند. با `←` / `→` یک‌یکی (یا ۵ و ۱۰ تایی) جلو بروید، زمان و OHLC هر کندل را ببینید و با `Esc` خارج شوید. فقط در چیدمان تک‌چارت، و مقیاس قیمت هم به کندل‌های آشکار محدود می‌شود تا سقف/کف آینده لو نرود.
+* 🎨 **رسم حرفه‌ای در بک‌تست:** خط روند، مستطیل، فیبوناچی، پوزیشن لانگ/شورت، براش و متن با دستگیره‌های آبی انتخاب و تغییر اندازه، نوار شناور تنظیمات، برچسب قیمت، چیپ آمار، قفل و نمایش بر اساس تایم‌فریم — رسم‌ها روی نماد ذخیره می‌شوند و بعد از باز کردن دوباره همان‌جا هستند.
 * 🔄 **آپدیت از داخل برنامه:** دکمه Update آخرین ریلیز گیت‌هاب را با نسخه فعلی مقایسه می‌کند و بسته مناسب را با نوار پیشرفت دانلود می‌کند. **بسته‌ای که چک‌سام SHA-256 منتشرشده نداشته باشد اصلاً دانلود نمی‌شود، و فایل دانلودشده تا وقتی هش آن روی دیسک با چک‌سام مطابقت نکند اجرا نمی‌شود**؛ اگر به‌روز باشید همین را اعلام می‌کند.
 * 🔐 **ورود به حساب و ماندگاری:** ورود در صفحه واقعی تریدینگ‌ویو داخل هر پروفایل انجام می‌شود و نام حساب همان پروفایل به شبکه Accounts گزارش می‌شود (قابل پنهان‌سازی با **Hide names**)؛ رسم‌ها، اندیکاتورها، قالب‌ها و تنظیمات هر حساب در همان نشست پروفایل باقی می‌ماند. ترمینال خودش هیچ تله‌متری جمع نمی‌کند؛ چارت‌های داخل آن صفحات تریدینگ‌ویو هستند و مثل مرورگر رفتار می‌کنند.
 * 🛡️ **سطح تماس محدود:** صفحه چارت‌ها فقط از طریق کانال یک‌طرفه `document.title` با ترمینال حرف می‌زنند و هیچ دسترسی IPC ندارند؛ پس یک صفحه نمی‌تواند به بدنه برنامه فرمان بدهد. پنجره‌های pop-up و `window.open` هرگز داخل ترمینال باز نمی‌شوند و به مرورگر پیش‌فرض می‌روند. ورودی نماد و تایم‌فریم قبل از رسیدن به چارت اعتبارسنجی می‌شود.
@@ -298,6 +310,9 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 
 **ویندوز هشدار SmartScreen می‌دهد؛ طبیعی است؟**
 ممکن است فایل اجرایی امضای دیجیتال نداشته باشد. اول SHA-256 را با `SHA256SUMS.txt` مقایسه کنید؛ اگر یکی بود، **More info → Run anyway** را بزنید. هرگز بسته‌ای که هش آن مطابقت ندارد اجرا نکنید.
+
+**آنتی‌ویروس فایل نصب را به عنوان ویروس پاک کرده؛ چه کنم؟**
+فایل نصبی self-extracting که تازه منتشر شده و هنوز در اینترنت زیاد دیده نشده، ممکن است به اشتباه توسط موتورهای اکتشافی آنتی‌ویروس علامت بخورد، در حالی که سالم است. اول صحت فایل را بررسی کنید: SHA-256 آن را با `SHA256SUMS.txt` مقایسه کنید و فقط در صورت تطابق از قرنطینه بازیابی کنید. سپس آن را همراه با فایل و هش آن به عنوان False Positive گزارش دهید — برای Microsoft Defender از [microsoft.com/wdsi/filesubmission](https://www.microsoft.com/en-us/wdsi/filesubmission)؛ این گزارش‌ها معمولاً ظرف یکی دو روز پاک می‌شوند. اگر همچنان مسدود ماند، از نسخه Portable ZIP استفاده کنید.
 
 **روی مک یا لینوکس اجرا می‌شود؟**
 نه. ویندوز ۱۰/۱۱ نسخه ۶۴ بیتی و WebView2 لازم است.
