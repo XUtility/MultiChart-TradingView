@@ -2,7 +2,7 @@
 ### Professional multi-chart TradingView desktop terminal
 ### ترمینال پیشرفته دسکتاپ چند چارته تریدینگ‌ویو با چیدمان اسپلیت و همگام‌سازی
 
-[![Version](https://img.shields.io/badge/version-1.3.9-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.3.10-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
@@ -25,9 +25,12 @@
 
 It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 chart page per pane on the inside. Sign-in happens in a real TradingView page inside an isolated profile, so passkeys, OAuth and two-factor authentication work exactly as they do in a browser.
 
-### 🆕 What's new in 1.3.9
+### 🆕 What's new in 1.3.10
 
-* 🖥️ **Charts fill their pane on every monitor and scaling** — the native chart surface is now sized in real device pixels and re-measured after every layout, DPI or monitor change. On 19" screens, high-DPI displays and Windows "override high DPI scaling" setups the chart used to shrink into the top-left corner with dark space around it; it now always fills its pane exactly.
+* 🪟 **A drawing settings panel that stays out of your way** — it opens beside the selected shape and its floating toolbar instead of covering them, can be dragged by its header, remembers that position for next time, and folds down to its title bar with one click. Double-click the header to snap it back to the automatic spot, `Ctrl+Enter` applies the changes and `Esc` closes only the panel.
+* ↩️ **Undo and redo for every drawing action** — add, move, reshape, restyle, duplicate, lock, delete or clear; two new arrows in the drawing rail do it, or `Ctrl+Z` / `Ctrl+Y` (`Ctrl+Shift+Z`). Each symbol keeps the last 60 steps.
+* ⧉ **Duplicate a drawing** from the floating toolbar or with `Ctrl+D` — the copy is offset two bars to the right and selected straight away.
+* 🖥️ *From 1.3.9:* **Charts fill their pane on every monitor and scaling** — the native chart surface is now sized in real device pixels and re-measured after every layout, DPI or monitor change. On 19" screens, high-DPI displays and Windows "override high DPI scaling" setups the chart used to shrink into the top-left corner with dark space around it; it now always fills its pane exactly.
 * 📐 **A master bar that fits narrow windows** — under 1990 px the right-hand actions collapse to icons, under 1400 px the bar takes a second row, and under 1000 px the extra labels disappear. No button is clipped or unreachable at 1280×720, 1366×768 or 1024×600.
 * 🎨 *From 1.3.8:* **TradingView-style drawing tools in the replay studio** — select any drawing and a floating white toolbar appears above it, with the object's style, text, line width, dash, lock, delete and a full settings dialog. The settings dialog carries the four TradingView tabs — **Style**, **Text**, **Coordinates** and **Visibility** — so a line can be recoloured, given a price tag, extended, bent at its midpoint, labelled with a stats chip or hidden on chosen timeframes without ever leaving the chart.
 * 🔵 **Real selection and resize handles** — TradingView blue rings on line and shape points, and eight handles on a rectangle (four corners plus four edge midpoints), each of which drags only the edge it belongs to.
@@ -162,7 +165,7 @@ The terminal collects no telemetry of its own. The charts inside it are TradingV
 3. Verify the download if you wish:
 
 ```powershell
-Get-FileHash .\MultiChart-TradingView-1.3.9-Portable.zip -Algorithm SHA256
+Get-FileHash .\MultiChart-TradingView-1.3.10-Portable.zip -Algorithm SHA256
 # compare with the matching line in SHA256SUMS.txt
 ```
 
@@ -225,9 +228,12 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 
 > **این ریپو فقط کانال دانلود و مستندات است.** سورس برنامه در اینجا منتشر نمی‌شود؛ فایل‌های نصبی در بخش [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest) قرار دارند.
 
-### 🆕 تازه در نسخه ۱.۳.۹
+### 🆕 تازه در نسخه ۱.۳.۱۰
 
-* 🖥️ **چارت روی هر مانیتور و هر مقیاسی اندازه کامل می‌گیرد:** سطح چارت نیتیو حالا بر اساس پیکسل واقعی دستگاه اندازه‌گیری می‌شود و بعد از هر تغییر چیدمان، DPI یا مانیتور دوباره محاسبه می‌شود. روی مانیتورهای ۱۹ اینچ، نمایشگرهای با مقیاس بالا و ویندوزهایی که گزینه «Override high DPI scaling» روشن دارند، قبلاً چارت کوچک می‌شد و گوشه بالا-چپ می‌ماند و اطرافش فضای تیره دیده می‌شد؛ حالا همیشه دقیقاً کل پنل خودش را پر می‌کند.
+* 🪟 **پنجرهٔ تنظیمات رسم دیگر روی کار شما نمی‌افتد:** کنار خود شکل و نوار ابزار شناورش باز می‌شود، با کشیدن هدر جابه‌جا می‌شود، جای آن برای بار بعد ذخیره می‌شود و با یک کلیک تا نوار عنوان جمع می‌شود. دوبار کلیک روی هدر آن را به جای خودکار برمی‌گرداند، `Ctrl+Enter` تغییرات را تأیید می‌کند و `Esc` فقط همین پنجره را می‌بندد.
+* ↩️ **واگرد و ازنو برای همهٔ کارهای رسم:** ساخت، جابه‌جایی، تغییر شکل، تغییر سبک، تکثیر، قفل، حذف و پاک‌کردن؛ یا با دو فلش جدید در نوار ابزار ترسیم یا با `Ctrl+Z` / `Ctrl+Y` (`Ctrl+Shift+Z`). برای هر نماد ۶۰ مرحله نگه داشته می‌شود.
+* ⧉ **تکثیر رسم** از نوار ابزار شناور یا با `Ctrl+D` — نسخهٔ کپی دو کندل جلوتر قرار می‌گیرد و همان لحظه انتخاب می‌شود.
+* 🖥️ *از نسخه ۱.۳.۹:* **چارت روی هر مانیتور و هر مقیاسی اندازه کامل می‌گیرد:** سطح چارت نیتیو حالا بر اساس پیکسل واقعی دستگاه اندازه‌گیری می‌شود و بعد از هر تغییر چیدمان، DPI یا مانیتور دوباره محاسبه می‌شود. روی مانیتورهای ۱۹ اینچ، نمایشگرهای با مقیاس بالا و ویندوزهایی که گزینه «Override high DPI scaling» روشن دارند، قبلاً چارت کوچک می‌شد و گوشه بالا-چپ می‌ماند و اطرافش فضای تیره دیده می‌شد؛ حالا همیشه دقیقاً کل پنل خودش را پر می‌کند.
 * 📐 **نوار ابزار روی پنجره‌های باریک جا می‌شود:** زیر ۱۹۹۰ پیکسل دکمه‌های سمت راست آیکونی می‌شوند، زیر ۱۴۰۰ پیکسل نوار دو ردیفه می‌شود و زیر ۱۰۰۰ پیکسل برچسب‌های اضافی حذف می‌شوند. در ۱۲۸۰×۷۲۰، ۱۳۶۶×۷۶۸ و ۱۰۲۴×۶۰۰ هیچ دکمه‌ای بریده یا غیرقابل‌کلیک نمی‌ماند.
 * 🎨 *از نسخه ۱.۳.۸:* **ابزارهای رسم مثل خود تریدینگ‌ویو:** روی هر رسم کلیک کنید تا نوار ابزار شناور سفید بالای آن باز شود — استایل، متن، ضخامت خط، نوع خط، قفل، حذف و پنجره تنظیمات کامل. پنجره تنظیمات همان چهار تب تریدینگ‌ویو را دارد: **Style**، **Text**، **Coordinates** و **Visibility**؛ پس رنگ، برچسب قیمت، امتداد خط، خم شدن از نقطه میانی، چیپ آمار حرکت و مخفی‌کردن رسم روی تایم‌فریم‌های دلخواه همه از روی خود چارت انجام می‌شود.
 * 🔵 **دستگیره‌های انتخاب و تغییر اندازه واقعی:** حلقه‌های آبی تریدینگ‌ویو روی نقاط خطوط و شکل‌ها، و هشت دستگیره روی مستطیل (چهار گوشه و چهار وسط ضلع) که هر کدام فقط همان ضلع را جابه‌جا می‌کند.
