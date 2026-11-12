@@ -2,7 +2,7 @@
 ### Professional multi-chart TradingView desktop terminal
 ### ترمینال پیشرفته دسکتاپ چند چارته تریدینگ‌ویو با چیدمان اسپلیت و همگام‌سازی
 
-[![Version](https://img.shields.io/badge/version-1.3.15-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.3.16-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
@@ -24,6 +24,13 @@
 **MultiChart-TradingView** is a standalone Windows desktop terminal for active traders and technical analysts. It puts many TradingView charts on one screen — up to a 16-pane grid in a single window — and keeps symbols, crosshairs and drawings in step, **without paid layout locks and without browser extensions**.
 
 It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 chart page per pane on the inside. Sign-in happens in a real TradingView page inside an isolated profile, so passkeys, OAuth and two-factor authentication work exactly as they do in a browser.
+
+### 🆕 What's new in 1.3.16
+
+* 🧷 **The watchlist "+" no longer freezes the terminal** — it opened the browser's native name prompt, which sits underneath the transparent mirror window that carries every menu, so the prompt could not be clicked or dismissed and the whole window went dead until a restart. It is now an in-app dialog: type a name, **Enter** creates it, **Esc** cancels, and the rest of the terminal keeps working.
+* 🔐 **Google sign-in finishes inside the account profile** — a Google consent window opened from a chart was handed to the system browser, which has none of that profile's cookies, so after choosing the Google account the consent page stayed blank. Google and TradingView auth windows now open inside the account's own sign-in window and use the same WebView2 profile as its charts, and the panes on that account reload themselves once the sign-in completes. Ordinary links still open in your browser.
+* 🖤 **Charts no longer go black after a few minutes** — two copies of the terminal running at once share one WebView2 profile, which WebView2 cannot host; the second runtime blanks chart surfaces and corrupts the sign-in. Starting the terminal a second time now brings the existing window forward instead of opening a competing copy.
+* ✍️ Watchlist names typed in Persian are shown whole in the toolbar title instead of being cut at the first word.
 
 ### 🆕 What's new in 1.3.15
 
@@ -186,7 +193,7 @@ The terminal collects no telemetry of its own. The charts inside it are TradingV
 3. Verify the download if you wish:
 
 ```powershell
-Get-FileHash .\MultiChart-TradingView-1.3.15-Portable.zip -Algorithm SHA256
+Get-FileHash .\MultiChart-TradingView-1.3.16-Portable.zip -Algorithm SHA256
 # compare with the matching line in SHA256SUMS.txt
 ```
 
@@ -248,6 +255,13 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 ورود به حساب در یک صفحه واقعی تریدینگ‌ویو داخل پروفایل اختصاصی انجام می‌شود، پس OAuth، پس‌کی و ورود دومرحله‌ای همان‌طور که تریدینگ‌ویو انتظار دارد کار می‌کند.
 
 > **این ریپو فقط کانال دانلود و مستندات است.** سورس برنامه در اینجا منتشر نمی‌شود؛ فایل‌های نصبی در بخش [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest) قرار دارند.
+
+### 🆕 تازه در نسخه ۱.۳.۱۶
+
+* 🧷 **دکمهٔ + واچ‌لیست دیگر برنامه را قفل نمی‌کند:** دیالوگ بومی نام در ویندوز باز می‌شد و زیر پنجرهٔ شفاف واسط می‌افتاد؛ نه قابل کلیک بود و نه قابل بستن، و کل برنامه تا ری‌استارت بی‌استفاده می‌ماند. حالا یک دیالوگ داخل خود برنامه است: نام را بنویسید، **Enter** می‌سازد و **Esc** لغو می‌کند.
+* 🔐 **ورود گوگل داخل پروفایل خود اکانت کامل می‌شود:** پنجرهٔ تأیید گوگل که از چارت باز می‌شد به مرورگر پیش‌فرض سیستم سپرده می‌شد و کوکی‌های آن پروفایل را نداشت، برای همین بعد از انتخاب اکانت صفحهٔ تأیید سفید می‌ماند. حالا پنجره‌های ورود گوگل و تریدینگ‌ویو داخل پنجرهٔ ورود همان اکانت و با همان پروفایل WebView2 چارت‌ها باز می‌شوند و بعد از تکمیل ورود، پنل‌های آن اکانت خودکار بارگذاری دوباره می‌شوند. لینک‌های معمولی همچنان در مرورگر باز می‌شوند.
+* 🖤 **چارت‌ها دیگر بعد از چند دقیقه سیاه نمی‌شوند:** دو نسخهٔ هم‌زمان از برنامه یک پروفایل WebView2 را شریک می‌شوند و WebView2 دو رانتایم روی یک پروفایل را پشتیبانی نمی‌کند؛ نتیجه‌اش چارت سیاه و خرابی ورود است. حالا اجرای دوم برنامه، پنجرهٔ باز را جلو می‌آورد و نسخهٔ رقیب نمی‌سازد.
+* ✍️ نام فارسی واچ‌لیست در عنوان نوار ابزار کامل نمایش داده می‌شود.
 
 ### 🆕 تازه در نسخه ۱.۳.۱۳
 
