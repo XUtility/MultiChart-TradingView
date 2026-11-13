@@ -2,7 +2,7 @@
 ### Professional multi-chart TradingView desktop terminal
 ### ترمینال پیشرفته دسکتاپ چند چارته تریدینگ‌ویو با چیدمان اسپلیت و همگام‌سازی
 
-[![Version](https://img.shields.io/badge/version-1.3.19-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.3.20-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
@@ -24,6 +24,11 @@
 **MultiChart-TradingView** is a standalone Windows desktop terminal for active traders and technical analysts. It puts many TradingView charts on one screen — up to a 16-pane grid in a single window — and keeps symbols, crosshairs and drawings in step, **without paid layout locks and without browser extensions**.
 
 It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 chart page per pane on the inside. Sign-in happens in a real TradingView page inside an isolated profile, so passkeys, OAuth and two-factor authentication work exactly as they do in a browser.
+
+### 🆕 What's new in 1.3.20
+
+* 🛑 **Charts no longer reload themselves** — two automatic paths could recycle healthy panes: the black-pane watchdog read a failed screen capture as a blank chart on some GPU/driver setups, and the account probe could read a blocked session check as a sign-out and reload that account's charts. Both are gone. A pane whose renderer really stops is still rebuilt from the heartbeat watchdog, and **Reload charts** in the Accounts panel reloads on demand.
+* 👤 **Account names no longer flip on a bad answer** — a session check that fails or is blocked can no longer clear a name by itself; the page has to agree that the profile is signed out.
 
 ### 🆕 What's new in 1.3.19
 
@@ -211,7 +216,7 @@ The terminal collects no telemetry of its own. The charts inside it are TradingV
 3. Verify the download if you wish:
 
 ```powershell
-Get-FileHash .\MultiChart-TradingView-1.3.19-Portable.zip -Algorithm SHA256
+Get-FileHash .\MultiChart-TradingView-1.3.20-Portable.zip -Algorithm SHA256
 # compare with the matching line in SHA256SUMS.txt
 ```
 
@@ -273,6 +278,11 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 ورود به حساب در یک صفحه واقعی تریدینگ‌ویو داخل پروفایل اختصاصی انجام می‌شود، پس OAuth، پس‌کی و ورود دومرحله‌ای همان‌طور که تریدینگ‌ویو انتظار دارد کار می‌کند.
 
 > **این ریپو فقط کانال دانلود و مستندات است.** سورس برنامه در اینجا منتشر نمی‌شود؛ فایل‌های نصبی در بخش [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest) قرار دارند.
+
+### 🆕 تازه در نسخه ۱.۳.۲۰
+
+* 🛑 **چارت‌ها دیگر خودشان رفرش نمی‌شوند:** دو مسیر خودکار می‌توانستند پنل سالم را بازسازی کنند — نگهبان چارت سیاه، تصویر ناموفق صفحه را روی بعضی درایورها «چارت سیاه» می‌دید، و بررسی اکانت پاسخ خطای نشست را «خروج از حساب» تلقی می‌کرد و چارت‌های آن اکانت را رفرش می‌کرد. هر دو حذف شدند. پنلی که رندررش واقعاً از کار بیفتد هنوز از طریق ضربان بازسازی می‌شود و دکمهٔ **Reload charts** در پنل اکانت‌ها رفرش دستی می‌دهد.
+* 👤 **نام اکانت با یک پاسخ خطا عوض نمی‌شود:** بررسی ناموفق یا مسدودشدهٔ نشست به‌تنهایی نمی‌تواند نام را پاک کند؛ باید خود صفحه هم تأیید کند که پروفایل خارج شده است.
 
 ### 🆕 تازه در نسخه ۱.۳.۱۹
 
