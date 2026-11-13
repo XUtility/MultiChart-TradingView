@@ -2,7 +2,7 @@
 ### Professional multi-chart TradingView desktop terminal
 ### ترمینال پیشرفته دسکتاپ چند چارته تریدینگ‌ویو با چیدمان اسپلیت و همگام‌سازی
 
-[![Version](https://img.shields.io/badge/version-1.3.16-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.3.17-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
@@ -24,6 +24,12 @@
 **MultiChart-TradingView** is a standalone Windows desktop terminal for active traders and technical analysts. It puts many TradingView charts on one screen — up to a 16-pane grid in a single window — and keeps symbols, crosshairs and drawings in step, **without paid layout locks and without browser extensions**.
 
 It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 chart page per pane on the inside. Sign-in happens in a real TradingView page inside an isolated profile, so passkeys, OAuth and two-factor authentication work exactly as they do in a browser.
+
+### 🆕 What's new in 1.3.17
+
+* 📋 **Every watchlist you create is reachable** — the list chips used to sit on one hidden scroll rail, so a new watchlist landed out of sight and could not be picked. The chips now wrap onto extra rows with a thin scrollbar, and the active list is scrolled into view whenever the panel opens.
+* 🖤 **Black chart panes heal themselves again** — the watchdog sampled the page's offscreen render, and a pane whose *presented* surface had died (a GPU reset, a monitor switch, Windows parking the window) still rendered perfectly offscreen, so the watchdog saw a healthy chart while the screen showed black. It now reads the pixels actually on screen, and a pane that shows one flat colour for two probes in a row is rebuilt. A pane that paints again gets its rebuild budget back.
+* 🔐 **Google sign-in opens its own popup** — the previous build replayed Google's popup URL inside the sign-in window; after choosing an account Google returned to a page with no opener and the consent flow ended on white. WebView2 now opens the popup itself, in the same profile and with the opener intact, exactly like a normal browser.
 
 ### 🆕 What's new in 1.3.16
 
@@ -193,7 +199,7 @@ The terminal collects no telemetry of its own. The charts inside it are TradingV
 3. Verify the download if you wish:
 
 ```powershell
-Get-FileHash .\MultiChart-TradingView-1.3.16-Portable.zip -Algorithm SHA256
+Get-FileHash .\MultiChart-TradingView-1.3.17-Portable.zip -Algorithm SHA256
 # compare with the matching line in SHA256SUMS.txt
 ```
 
@@ -255,6 +261,12 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 ورود به حساب در یک صفحه واقعی تریدینگ‌ویو داخل پروفایل اختصاصی انجام می‌شود، پس OAuth، پس‌کی و ورود دومرحله‌ای همان‌طور که تریدینگ‌ویو انتظار دارد کار می‌کند.
 
 > **این ریپو فقط کانال دانلود و مستندات است.** سورس برنامه در اینجا منتشر نمی‌شود؛ فایل‌های نصبی در بخش [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest) قرار دارند.
+
+### 🆕 تازه در نسخه ۱.۳.۱۷
+
+* 📋 **همهٔ واچ‌لیست‌هایی که می‌سازید در دسترس‌اند:** چیپ‌های لیست‌ها روی یک ریل پنهان می‌نشستند و لیست تازه بیرون از دید می‌افتاد و انتخاب‌شدنی نبود. حالا چیپ‌ها در چند ردیف می‌پیچند، نوار باریک اسکرول دارند و لیست فعال هربار که پنل باز می‌شود به دید می‌آید.
+* 🖤 **پنل سیاه چارت دوباره خودش درمان می‌شود:** نگهبان قبلاً خروجی رندرِ آفسکرین صفحه را می‌خواند و پنلی که سطح نمایش‌داده‌شده‌اش از کار افتاده بود (ریست GPU، جابه‌جایی بین مانیتورها، پارک‌شدن پنجره توسط ویندوز) هنوز آفسکرین کامل رندر می‌شد؛ برای همین نگهبان چارت را سالم می‌دید درحالی‌که صفحه سیاه بود. حالا پیکسل‌های واقعی روی صفحه خوانده می‌شوند و پنلی که دو بار پیاپی یک‌رنگ بماند بازسازی می‌شود. پنلی که دوباره نقاشی کند سهمیهٔ بازسازی‌اش برمی‌گردد.
+* 🔐 **ورود گوگل پنجرهٔ پاپ‌آپ خودش را باز می‌کند:** نسخهٔ قبلی نشانی پاپ‌آپ گوگل را داخل پنجرهٔ ورود باز می‌کرد؛ بعد از انتخاب اکانت، گوگل به صفحه‌ای برمی‌گشت که opener نداشت و جریان تأیید روی صفحهٔ سفید می‌ماند. حالا خود WebView2 پاپ‌آپ را در همان پروفایل و با opener باز می‌کند، درست مثل یک مرورگر معمولی.
 
 ### 🆕 تازه در نسخه ۱.۳.۱۶
 
