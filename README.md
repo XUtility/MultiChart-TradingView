@@ -2,7 +2,7 @@
 ### Professional multi-chart TradingView desktop terminal
 ### ترمینال پیشرفته دسکتاپ چند چارته تریدینگ‌ویو با چیدمان اسپلیت و همگام‌سازی
 
-[![Version](https://img.shields.io/badge/version-1.3.17-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.3.18-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
@@ -24,6 +24,13 @@
 **MultiChart-TradingView** is a standalone Windows desktop terminal for active traders and technical analysts. It puts many TradingView charts on one screen — up to a 16-pane grid in a single window — and keeps symbols, crosshairs and drawings in step, **without paid layout locks and without browser extensions**.
 
 It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 chart page per pane on the inside. Sign-in happens in a real TradingView page inside an isolated profile, so passkeys, OAuth and two-factor authentication work exactly as they do in a browser.
+
+### 🆕 What's new in 1.3.18
+
+* 🖤 **Charts stop staying black after a new tab or a tab switch** — WebView2 tears a pane's presented surface down while the pane is parked hidden and does not always paint a fresh frame when it comes back, which is why a reload was the only cure. A returning pane now gets its geometry applied and is woken, and the watchdog heals a stuck pane the same way you did by hand — it reloads the page in place first and only rebuilds the webview if that fails, with a much shorter wait.
+* 📋 **Creating a watchlist always sticks** — an empty name used to close the dialog and create nothing, a click a few pixels off the card could cancel it, and a failed write was silent. The dialog now stays open on an empty field, ignores backdrop clicks, verifies the new list was saved, and leaves the panel open on the new chip.
+* 👤 **Account names follow sign-in and sign-out** — a chart signed in from its own page now reports its TradingView user, and signing out clears the green name instead of leaving the old one behind.
+* 🧹 **Updates clean up after themselves** — once per version, the WebView2 GPU and compositor caches of the shell and every account profile, plus downloaded installers, are removed. Cookies, local storage (layouts, watchlists, templates) and IndexedDB are untouched, so no new sign-in or setup is needed.
 
 ### 🆕 What's new in 1.3.17
 
@@ -199,7 +206,7 @@ The terminal collects no telemetry of its own. The charts inside it are TradingV
 3. Verify the download if you wish:
 
 ```powershell
-Get-FileHash .\MultiChart-TradingView-1.3.17-Portable.zip -Algorithm SHA256
+Get-FileHash .\MultiChart-TradingView-1.3.18-Portable.zip -Algorithm SHA256
 # compare with the matching line in SHA256SUMS.txt
 ```
 
@@ -261,6 +268,13 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 ورود به حساب در یک صفحه واقعی تریدینگ‌ویو داخل پروفایل اختصاصی انجام می‌شود، پس OAuth، پس‌کی و ورود دومرحله‌ای همان‌طور که تریدینگ‌ویو انتظار دارد کار می‌کند.
 
 > **این ریپو فقط کانال دانلود و مستندات است.** سورس برنامه در اینجا منتشر نمی‌شود؛ فایل‌های نصبی در بخش [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest) قرار دارند.
+
+### 🆕 تازه در نسخه ۱.۳.۱۸
+
+* 🖤 **چارت بعد از تب جدید یا جابه‌جایی بین تب‌ها سیاه نمی‌ماند:** WebView2 سطح نمایش پنل را وقتی مخفی است جمع می‌کند و در بازگشت همیشه فریم تازه نمی‌سازد؛ برای همین تنها راه رفرش دستی بود. حالا پنل برگشته هندسه‌اش را دوباره می‌گیرد و بیدار می‌شود، و نگهبان همان کاری را می‌کند که دستی می‌کردید: اول صفحه را در جا رفرش می‌کند و فقط اگر جواب نداد پنل را از نو می‌سازد، با انتظار بسیار کوتاه‌تر.
+* 📋 **ساخت واچ‌لیست همیشه ثبت می‌شود:** نام خالی دیالوگ را می‌بست و چیزی نمی‌ساخت، کلیک چند پیکسل بیرون کارت آن را لغو می‌کرد و خطای ذخیره بی‌صدا بود. حالا دیالوگ با فیلد خالی باز می‌ماند، کلیک روی زمینه لغو نمی‌کند، ذخیره‌شدن بررسی می‌شود و پنل روی چیپ جدید باز می‌ماند.
+* 👤 **نام اکانت با ورود و خروج هماهنگ است:** چارتی که از صفحهٔ خودش وارد شده باشد کاربرش را گزارش می‌کند و خروج از حساب نام سبز را پاک می‌کند.
+* 🧹 **به‌روزرسانی، باقی‌مانده‌های خودش را پاک می‌کند:** یک بار برای هر نسخه، کش‌های GPU/ترکیب‌بندی پوسته و همهٔ پروفایل‌ها و نصب‌کننده‌های دانلودشده پاک می‌شوند. کوکی‌ها، Local Storage (چیدمان، واچ‌لیست، قالب‌ها) و IndexedDB دست‌نخورده می‌مانند، پس نه لاگین دوباره لازم است نه تنظیم مجدد.
 
 ### 🆕 تازه در نسخه ۱.۳.۱۷
 
