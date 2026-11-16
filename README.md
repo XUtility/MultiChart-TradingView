@@ -2,7 +2,7 @@
 ### Professional multi-chart TradingView desktop terminal
 ### ترمینال پیشرفته دسکتاپ چند چارته تریدینگ‌ویو با چیدمان اسپلیت و همگام‌سازی
 
-[![Version](https://img.shields.io/badge/version-1.3.22-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.3.23-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
@@ -24,6 +24,12 @@
 **MultiChart-TradingView** is a standalone Windows desktop terminal for active traders and technical analysts. It puts many TradingView charts on one screen — up to a 16-pane grid in a single window — and keeps symbols, crosshairs and drawings in step, **without paid layout locks and without browser extensions**.
 
 It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 chart page per pane on the inside. Sign-in happens in a real TradingView page inside an isolated profile, so passkeys, OAuth and two-factor authentication work exactly as they do in a browser.
+
+### 🆕 What's new in 1.3.23
+
+* 🎯 **The synced horizontal line sits on the right price** — TradingView's price and time scales work in the chart canvas' own coordinates, and the canvas starts a toolbar height below the window. The relay treated window pixels as chart pixels, so the price line in the other pane was shifted by that offset. Both directions now convert through the canvas origin.
+* ⌨️ **Typing in dialogs always reaches the field** — WebView2 parked keyboard focus inside the mirrored popup on some machines, so text appeared in the copy of the dialog while the real field stayed empty and "Create" was refused. Clicks now hand focus back to the app before they are replayed, mirror fields can no longer take focus, and typed characters echo to the mirror within 60 ms.
+* 📦 **Update checks no longer stop on a blocked download host** — the updater also reads SHA-256 checksums from the release description, which is delivered over the GitHub API, so verification works even when the package host is unreachable.
 
 ### 🆕 What's new in 1.3.22
 
@@ -225,7 +231,7 @@ The terminal collects no telemetry of its own. The charts inside it are TradingV
 3. Verify the download if you wish:
 
 ```powershell
-Get-FileHash .\MultiChart-TradingView-1.3.22-Portable.zip -Algorithm SHA256
+Get-FileHash .\MultiChart-TradingView-1.3.23-Portable.zip -Algorithm SHA256
 # compare with the matching line in SHA256SUMS.txt
 ```
 
@@ -287,6 +293,12 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 ورود به حساب در یک صفحه واقعی تریدینگ‌ویو داخل پروفایل اختصاصی انجام می‌شود، پس OAuth، پس‌کی و ورود دومرحله‌ای همان‌طور که تریدینگ‌ویو انتظار دارد کار می‌کند.
 
 > **این ریپو فقط کانال دانلود و مستندات است.** سورس برنامه در اینجا منتشر نمی‌شود؛ فایل‌های نصبی در بخش [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest) قرار دارند.
+
+### 🆕 تازه در نسخه ۱.۳.۲۳
+
+* 🎯 **خط افقی هم‌گام روی قیمت درست می‌نشیند:** مقیاس قیمت و زمان تریدینگ‌ویو در مختصات بوم چارت کار می‌کند و بوم یک قد نوار ابزار پایین‌تر از بالای پنجره شروع می‌شود. رله پیکسل پنجره را پیکسل چارت فرض می‌کرد و خط قیمت در پنل مقابل به همان اندازه جابه‌جا می‌شد؛ حالا هر دو طرف از مبدأ بوم تبدیل می‌کنند.
+* ⌨️ **تایپ در دیالوگ‌ها همیشه به فیلد اصلی می‌رسد:** WebView2 روی بعضی سیستم‌ها فوکوس کیبورد را داخل پنجرهٔ آینه می‌برد؛ متن در نسخهٔ آینه دیده می‌شد ولی فیلد واقعی خالی می‌ماند و «Create» رد می‌شد. حالا قبل از بازپخش هر کلیک، فوکوس به برنامه برمی‌گردد، فیلدهای آینه فوکوس نمی‌گیرند و تایپ ظرف ۶۰ میلی‌ثانیه در آینه دیده می‌شود.
+* 📦 **بررسی آپدیت با مسدود بودن هاست دانلود متوقف نمی‌شود:** آپدیتر هش SHA-256 را از متن توضیحات انتشار هم می‌خواند که از API گیت‌هاب می‌آید؛ پس حتی وقتی هاست بستهٔ نصب در دسترس نیست، تأیید انجام می‌شود.
 
 ### 🆕 تازه در نسخه ۱.۳.۲۲
 
