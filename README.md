@@ -2,7 +2,7 @@
 ### Professional multi-chart TradingView desktop terminal
 ### ترمینال پیشرفته دسکتاپ چند چارته تریدینگ‌ویو با چیدمان اسپلیت و همگام‌سازی
 
-[![Version](https://img.shields.io/badge/version-1.3.24-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.3.25-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
@@ -24,6 +24,10 @@
 **MultiChart-TradingView** is a standalone Windows desktop terminal for active traders and technical analysts. It puts many TradingView charts on one screen — up to a 16-pane grid in a single window — and keeps symbols, crosshairs and drawings in step, **without paid layout locks and without browser extensions**.
 
 It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 chart page per pane on the inside. Sign-in happens in a real TradingView page inside an isolated profile, so passkeys, OAuth and two-factor authentication work exactly as they do in a browser.
+
+### 🆕 What's new in 1.3.25
+
+* 📦 **Updates try both routes and only give up when both fail** — the update check retries the checksum download before reporting a missing checksum, and the installer is fetched from the GitHub API first and from the ordinary release link second. Whichever route answers wins, so an intermittent block of one host no longer stops an in-app update.
 
 ### 🆕 What's new in 1.3.24
 
@@ -235,7 +239,7 @@ The terminal collects no telemetry of its own. The charts inside it are TradingV
 3. Verify the download if you wish:
 
 ```powershell
-Get-FileHash .\MultiChart-TradingView-1.3.24-Portable.zip -Algorithm SHA256
+Get-FileHash .\MultiChart-TradingView-1.3.25-Portable.zip -Algorithm SHA256
 # compare with the matching line in SHA256SUMS.txt
 ```
 
@@ -297,6 +301,10 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 ورود به حساب در یک صفحه واقعی تریدینگ‌ویو داخل پروفایل اختصاصی انجام می‌شود، پس OAuth، پس‌کی و ورود دومرحله‌ای همان‌طور که تریدینگ‌ویو انتظار دارد کار می‌کند.
 
 > **این ریپو فقط کانال دانلود و مستندات است.** سورس برنامه در اینجا منتشر نمی‌شود؛ فایل‌های نصبی در بخش [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest) قرار دارند.
+
+### 🆕 تازه در نسخه ۱.۳.۲۵
+
+* 📦 **آپدیت هر دو مسیر را امتحان می‌کند و فقط وقتی هر دو شکست بخورند تسلیم می‌شود:** بررسی آپدیت دانلود فایل هش را چند بار تلاش می‌کند، و نصب‌کننده ابتدا از API گیت‌هاب و بعد از لینک معمولی انتشار گرفته می‌شود؛ هر کدام پاسخ داد همان برنده است. قطعی موقت یک هاست دیگر آپدیت داخل برنامه را متوقف نمی‌کند.
 
 ### 🆕 تازه در نسخه ۱.۳.۲۴
 
