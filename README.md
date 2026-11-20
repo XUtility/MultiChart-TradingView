@@ -2,7 +2,7 @@
 ### Professional multi-chart TradingView desktop terminal
 ### ترمینال پیشرفته دسکتاپ چند چارته تریدینگ‌ویو با چیدمان اسپلیت و همگام‌سازی
 
-[![Version](https://img.shields.io/badge/version-1.3.25-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.4.0-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
@@ -24,6 +24,12 @@
 **MultiChart-TradingView** is a standalone Windows desktop terminal for active traders and technical analysts. It puts many TradingView charts on one screen — up to a 16-pane grid in a single window — and keeps symbols, crosshairs and drawings in step, **without paid layout locks and without browser extensions**.
 
 It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 chart page per pane on the inside. Sign-in happens in a real TradingView page inside an isolated profile, so passkeys, OAuth and two-factor authentication work exactly as they do in a browser.
+
+### 🆕 What's new in 1.4.0
+
+* 🖥️ **The trading desk became a command center** — **میز کار** now has five sections. The dashboard shows journal statistics, open risk, the market-session clock and one-click shortcuts; the journal carries entry/exit, size, fees and tags with win rate, expectancy in R and a drawn equity curve; a risk calculator turns balance, risk percent and stop distance into position size; workspaces can be duplicated; and the settings backup shows exactly what a file contains before anything is restored.
+* 🧾 **Journal entries that hold real numbers** — each trade stores entry and exit price, position size, fees and free-form tags; lists can be searched and filtered by outcome, and the insights strip totals R, profit factor and open exposure without leaving the desk.
+* 🧮 **Risk before every order** — choose the direction, type balance, risk percent, entry and stop, and the calculator returns the risk amount and position size for forex, crypto or indices; the last values are kept for the next session.
 
 ### 🆕 What's new in 1.3.25
 
@@ -239,7 +245,7 @@ The terminal collects no telemetry of its own. The charts inside it are TradingV
 3. Verify the download if you wish:
 
 ```powershell
-Get-FileHash .\MultiChart-TradingView-1.3.25-Portable.zip -Algorithm SHA256
+Get-FileHash .\MultiChart-TradingView-1.4.0-Portable.zip -Algorithm SHA256
 # compare with the matching line in SHA256SUMS.txt
 ```
 
