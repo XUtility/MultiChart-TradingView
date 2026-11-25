@@ -2,7 +2,7 @@
 ### Professional multi-chart TradingView desktop terminal
 ### ترمینال پیشرفته دسکتاپ چند چارته تریدینگ‌ویو با چیدمان اسپلیت و همگام‌سازی
 
-[![Version](https://img.shields.io/badge/version-1.4.0-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.4.6-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
@@ -24,6 +24,15 @@
 **MultiChart-TradingView** is a standalone Windows desktop terminal for active traders and technical analysts. It puts many TradingView charts on one screen — up to a 16-pane grid in a single window — and keeps symbols, crosshairs and drawings in step, **without paid layout locks and without browser extensions**.
 
 It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 chart page per pane on the inside. Sign-in happens in a real TradingView page inside an isolated profile, so passkeys, OAuth and two-factor authentication work exactly as they do in a browser.
+
+### 🆕 What's new in 1.4.6
+
+* 🕒 **Draggable floating clock with radial arc menu** — a standalone always-on-top monitor clock that remembers its dragged position (`Pin` to lock), and expands into a semi-circle menu showing Persian/Gregorian dates, active chart symbol/price, a `5m / 15m / 1H` candle countdown, quick timezone switching (`Sys / IR / NY / LON`), and optional ICT/candle chime alerts.
+* 🌍 **On-chart ICT Killzones** — tracks `Asia`, `London`, `NY AM`, and `London Close` (`America/New_York`), shown in the top-right corner of the chart with next-session countdowns and a quick on/off toggle.
+* 📊 **Multi-Timeframe (MTF) presets** — five one-click MTF layouts (`4H/15m/5m`, `1D/4H/1H`, `1H/15m/1m`, `15m/5m/1m`, and `1D/4H/15m/5m`) with symbol sync.
+* 🧰 **Quick trading tools popover on the chart** — access the Risk Calculator (auto-fetches live chart price, draws Entry/SL/TP lines, and logs directly to the Trading Desk Journal with a chart screenshot), Alert Center (recurring alerts, sound toggle, and on-chart alert lines), and Per-Symbol Sticky Notes without leaving the chart.
+* 📅 **Journal PnL Calendar & Best ICT Session** — monthly R-multiple calendar heatmap and session performance insights inside the Trading Desk journal.
+* 🔒 **Layout Lock, Auto-Sleep Tabs & New App Icon** — lock splitters and tabs against accidental changes, auto-hibernate idle background tabs after 15 minutes, and customize header tool visibility.
 
 ### 🆕 What's new in 1.4.0
 
@@ -245,7 +254,7 @@ The terminal collects no telemetry of its own. The charts inside it are TradingV
 3. Verify the download if you wish:
 
 ```powershell
-Get-FileHash .\MultiChart-TradingView-1.4.0-Portable.zip -Algorithm SHA256
+Get-FileHash .\MultiChart-TradingView-1.4.6-Portable.zip -Algorithm SHA256
 # compare with the matching line in SHA256SUMS.txt
 ```
 
@@ -307,6 +316,15 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 ورود به حساب در یک صفحه واقعی تریدینگ‌ویو داخل پروفایل اختصاصی انجام می‌شود، پس OAuth، پس‌کی و ورود دومرحله‌ای همان‌طور که تریدینگ‌ویو انتظار دارد کار می‌کند.
 
 > **این ریپو فقط کانال دانلود و مستندات است.** سورس برنامه در اینجا منتشر نمی‌شود؛ فایل‌های نصبی در بخش [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest) قرار دارند.
+
+### 🆕 تازه در نسخه ۱.۴.۶
+
+* 🕒 **ساعت شناور با منوی نیم‌دایره و ذخیره موقعیت:** ساعت همیشه-رو و قابل جابه‌جایی با ماوس (با دکمه `Pin` برای قفل موقعیت) که با کلیک رویش منوی نیم‌دایره شامل تاریخ شمسی/میلادی، نماد و قیمت لحظه‌ای، شمارش معکوس کندل (`5m / 15m / 1H`)، تغییر سریع تایم‌زون (`Sys / IR / NY / LON`) و زنگ هشدار باز می‌شود.
+* 🌍 **ساعت سشن‌های ICT روی خود چارت:** نمایش کیل‌زون‌های `Asia`، `London`، `NY AM` و `London Close` (به وقت نیویورک) در گوشه بالا سمت راست چارت با شمارش معکوس سشن بعدی و کلید خاموش/روشن.
+* 📊 **قالب‌های آماده چندتایم‌فریمی (MTF):** ۵ چیدمان آماده (`4H/15m/5m`، `1D/4H/1H`، `1H/15m/1m`، `15m/5m/1m` و `1D/4H/15m/5m`) با همگام‌سازی خودکار نماد.
+* 🧰 **ابزارهای سریع روی چارت:** ماشین‌حساب ریسک (دریافت خودکار قیمت چارت + دکمه **ثبت در ژورنال همراه با اسکرین‌شات چارت**)، مرکز هشدارها (حالت تکرارشونده، زنگ هشدار و خطوط سطح هشدار روی چارت) و یادداشت چسبان اختصاصی برای هر نماد.
+* 📅 **تقویم سود و زیان (PnL Calendar) در ژورنال میز کار:** نمایش رنگی روزهای معاملاتی بر اساس مجموع `R` و شناسایی بهترین سشن ICT.
+* 🔒 **قفل چیدمان، خواب خودکار تب‌های غیرفعال و لوگوی جدید:** جلوگیری از تغییر تصادفی اسپلیترها و تب‌ها، آزادسازی خودکار تب‌های غیرفعال پس از ۱۵ دقیقه و آیکون جدید برنامه.
 
 ### 🆕 تازه در نسخه ۱.۳.۲۵
 
