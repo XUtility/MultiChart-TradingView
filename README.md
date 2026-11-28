@@ -2,7 +2,7 @@
 ### Professional multi-chart TradingView desktop terminal
 ### ترمینال پیشرفته دسکتاپ چند چارته تریدینگ‌ویو با چیدمان اسپلیت و همگام‌سازی
 
-[![Version](https://img.shields.io/badge/version-1.4.8-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
+[![Version](https://img.shields.io/badge/version-1.5.0-blue.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)](https://github.com/XUtility/MultiChart-TradingView/releases/latest)
 [![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/XUtility/MultiChart-TradingView/total?color=success)](https://github.com/XUtility/MultiChart-TradingView/releases)
@@ -24,6 +24,12 @@
 **MultiChart-TradingView** is a standalone Windows desktop terminal for active traders and technical analysts. It puts many TradingView charts on one screen — up to a 16-pane grid in a single window — and keeps symbols, crosshairs and drawings in step, **without paid layout locks and without browser extensions**.
 
 It is one native executable: a Rust/Tauri v2 shell on the outside, one WebView2 chart page per pane on the inside. Sign-in happens in a real TradingView page inside an isolated profile, so passkeys, OAuth and two-factor authentication work exactly as they do in a browser.
+
+### 🆕 What's new in 1.5.0
+
+* 🤖 **Expert Pro Standalone Corner HUD & Demo Trading Engine** — separated Risk & Demo Trading into an independent always-on-top corner HUD window (`Plan A/B/C`, `Risk % / Money $ / Lot`, `NB` multi-trade split, `Buy / Sell / Buy.P / Sell.P` preview lines, Auto-TP `1:3`, accurate Lot sizing across Forex & USD-base pairs like `USDJPY`, live chart price fetch, automatic `Keep Lines` cleanup, and responsive `Partial %` & `Break Even` on live ticks and open-trade lines).
+* 🛡️ **Black Screen & Ad-Overlay Stability Fixes** — reuses a single top-right non-activating alert toast window, strips TradingView toast ads cleanly without leaving stray `✕` close buttons, hardens WebView2 against Windows occlusion/EcoQoS/MPO dropouts, purges stale GPU shader caches across upgrades, and adds zero-reload DirectComposition recovery.
+* 📊 **Reliable Single-Chart & MTF Presets** — fixed Single (`[data-layout="1"]`) layout switching and enforced MTF timeframes across panes without stale timeframe snapbacks.
 
 ### 🆕 What's new in 1.4.8
 
@@ -263,7 +269,7 @@ The terminal collects no telemetry of its own. The charts inside it are TradingV
 3. Verify the download if you wish:
 
 ```powershell
-Get-FileHash .\MultiChart-TradingView-1.4.8-Portable.zip -Algorithm SHA256
+Get-FileHash .\MultiChart-TradingView-1.5.0-Portable.zip -Algorithm SHA256
 # compare with the matching line in SHA256SUMS.txt
 ```
 
@@ -325,6 +331,12 @@ TradingView is a trademark of TradingView, Inc. This project is not affiliated w
 ورود به حساب در یک صفحه واقعی تریدینگ‌ویو داخل پروفایل اختصاصی انجام می‌شود، پس OAuth، پس‌کی و ورود دومرحله‌ای همان‌طور که تریدینگ‌ویو انتظار دارد کار می‌کند.
 
 > **این ریپو فقط کانال دانلود و مستندات است.** سورس برنامه در اینجا منتشر نمی‌شود؛ فایل‌های نصبی در بخش [Releases](https://github.com/XUtility/MultiChart-TradingView/releases/latest) قرار دارند.
+
+### 🆕 تازه در نسخه ۱.۵.۰
+
+* 🤖 **پنجره مستقل گوشه صفحه Expert Pro و موتور معاملاتی دمو:** جداسازی کامل بخش ریسک و معامله دمو به یک پنجره حرفه‌ای همیشه-رو با پلن‌های `A / B / C`، محاسبه دقیق حجم بر اساس `Lot` و درصد ریسک (شامل جفت‌ارزهای پایه دلاری مثل `USDJPY`)، گرفتن قیمت دقیق زنده از چارت، پیش‌نمایش و درگ خطوط معامله، هدف خودکار `1:3`، پاک‌سازی خودکار خطوط تنظیم هنگام خاموش بودن `Keep Lines`، و اجرای واقعی `Break Even` و `Partial` هم به‌صورت خودکار و هم دستی.
+* 🛡️ **رفع صفحه سیاه و حذف کامل تبلیغات روی چارت:** بهینه‌سازی پنجره اعلان بالا-راست، حذف کامل تبلیغات و دکمه‌های `✕` اضافی در تریدینگ‌ویو، پاک‌سازی کش GPU بین آپدیت‌ها و بازیابی خودکار سطح گرافیکی WebView2 بدون ریلود چارت.
+* 📊 **اصلاح حالت تک‌چارته و قالب‌های MTF:** اعمال دقیق حالت تک‌چارته (`Single`) و تایم‌فریم‌های قالب‌های `MTF` در همه چارت‌ها.
 
 ### 🆕 تازه در نسخه ۱.۴.۸
 
